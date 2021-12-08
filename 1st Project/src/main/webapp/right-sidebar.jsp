@@ -16,12 +16,12 @@
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="index.html" id="logo">Arcana <em>by HTML5 UP</em></a></h1>
+						<h1><a href="index.jsp" id="logo">Arcana <em>by HTML5 UP</em></a></h1>
 
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li><a href="index.html">Home</a></li>
+								<li><a href="index.jsp">Home</a></li>
 								<li>
 									<a href="#">Dropdown</a>
 									<ul>
@@ -41,10 +41,10 @@
 										<li><a href="#">Veroeros feugiat</a></li>
 									</ul>
 								</li>
-								<li><a href="left-sidebar.html">Left Sidebar</a></li>
-								<li class="current"><a href="right-sidebar.html">Right Sidebar</a></li>
-								<li><a href="two-sidebar.html">Two Sidebar</a></li>
-								<li><a href="no-sidebar.html">No Sidebar</a></li>
+								<li><a href="left-sidebar.jsp">Left Sidebar</a></li>
+								<li class="current"><a href="right-sidebar.jsp">Right Sidebar</a></li>
+								<li><a href="two-sidebar.jsp">Two Sidebar</a></li>
+								<li><a href="no-sidebar.jsp">No Sidebar</a></li>
 							</ul>
 						</nav>
 

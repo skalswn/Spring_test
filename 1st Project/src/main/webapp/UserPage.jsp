@@ -19,19 +19,19 @@
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="index.html" id="logo">Grea:it</a></h1>
+						<h1><a href="UserPage.jsp" id="logo">Grea:it</a></h1>
 
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li class="current"><a href="index.html">MY MBTIT</a></li>
+								<li class="current"><a href="UserPage.jsp">MY MBTIT</a></li>
 								<li>
 									<a href="#">AboutIT</a>
 									<ul>
 										<li><a href="#">IT란</a></li>
 										<li><a href="#">IT직무</a></li>
 										<li><a href="#">IT전망</a></li>
-							<!-- 안쓰는거===================================================
+<!-- 안쓰는거=============================================================================================
 										<li> 
 											<a href="#">Submenu</a>
 											<ul>
@@ -43,30 +43,30 @@
 											</ul>
 										</li>
 										<li><a href="#">Veroeros feugiat</a></li> 
-							========================================================  -->
+안쓰는거 ===============================================================================================  -->
 									</ul>
 								</li>
-								<li><a href="left-sidebar.html">RoadMap</a></li>
-								<li><a href="right-sidebar.html">Study</a></li>
+								<li><a href="left-sidebar.jsp">RoadMap</a></li>
+								<li><a href="right-sidebar.jsp">Study</a></li>
 								<li>
-									<a href="two-sidebar.html">Community</a>
+									<a href="two-sidebar.jsp">Community</a>
 									<ul>
 										<li><a href="#">자유게시판</a></li>
 										<li><a href="#">스터디게시판</a></li>
 										<li><a href="#">중고게시판</a></li>
 									</ul>
 								</li>
-								<li><a href="no-sidebar.html">MyPage</a></li>
+								<li><a href="no-sidebar.jsp">MyPage</a></li>
 							</ul>
 						</nav>
-
 				</div>
 
-			<!-- Banner -->
+<!------------회원페이지 MBTIT 검사구역 ---------------------------->
 				<section id="banner">
 					<header>
-						<h2>Arcana: <em>A responsive site template freebie by <a href="http://html5up.net">HTML5 UP</a></em></h2>
-						<a href="#" class="button">Learn More</a>
+						<!-- <h2>Arcana: <em>A responsive site template freebie by <a href="http://html5up.net">HTML5 UP</a></em></h2> -->
+						<img src="https://thenounproject.com/icon/arrow-1725414/"></img>
+						<a href="#" class="button">검사하러 가기!</a>
 					</header>
 				</section>
 
@@ -100,6 +100,7 @@
 				</section>
 
 			<!-- Gigantic Heading -->
+<!-- 안쓰는거=====================================================================================================================================================================================
 				<section class="wrapper style2">
 					<div class="container">
 						<header class="major">
@@ -108,8 +109,6 @@
 						</header>
 					</div>
 				</section>
-
-			<!-- Posts -->
 				<section class="wrapper style1">
 					<div class="container">
 						<div class="row">
@@ -154,8 +153,8 @@
 						</div>
 					</div>
 				</section>
-
-			<!-- CTA -->
+				
+				
 				<section id="cta" class="wrapper style3">
 					<div class="container">
 						<header>
@@ -164,8 +163,7 @@
 						</header>
 					</div>
 				</section>
-
-			<!-- Footer -->
+				
 				<div id="footer">
 					<div class="container">
 						<div class="row">
@@ -193,6 +191,7 @@
 									<li><a href="#">Rutrum amet varius</a></li>
 								</ul>
 							</section>
+
 							<section class="col-6 col-12-narrower">
 								<h3>Get In Touch</h3>
 								<form>
@@ -216,7 +215,7 @@
 							</section>
 						</div>
 					</div>
-
+안쓰는거=====================================================================================================-->
 					<!-- Icons -->
 						<ul class="icons">
 							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
