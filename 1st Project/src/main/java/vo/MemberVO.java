@@ -90,6 +90,4 @@ public class MemberVO {
 		this.admin_yn = admin_yn;
 	}
 	
-	
-
 }
