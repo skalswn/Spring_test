@@ -19,12 +19,12 @@
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="UserPage.jsp" id="logo">Grea:it</a></h1>
+						<h1><a href="#" id="logo">Grea:it</a></h1>
 
 					<!-- Nav -->
 						<nav id="nav"> 
 							<ul>
-								<li class="current"><a href="UserPage.jsp">MY MBTIT</a></li>
+								<li class="current"><a href="#">MY MBTIT</a></li>
 								<li>
 									<a href="#">AboutIT</a>
 									<ul>
@@ -46,29 +46,39 @@
 안쓰는거 ===============================================================================================  -->
 									</ul>
 								</li>
-								<li><a href="left-sidebar.jsp">RoadMap</a></li>
-								<li><a href="right-sidebar.jsp">Study</a></li>
+								<li><a href="#">RoadMap</a></li>
+								<li><a href="#">Study</a></li>
 								<li>
-									<a href="two-sidebar.jsp">Community</a>
+									<a href="#">Community</a>
 									<ul>
 										<li><a href="#">자유게시판</a></li>
 										<li><a href="#">스터디게시판</a></li>
 										<li><a href="#">중고게시판</a></li>
 									</ul>
 								</li>
-								<li><a href="no-sidebar.jsp">MyPage</a></li>
+								<li><a href="#">MyPage</a></li>
 							</ul>
 						</nav>
 				</div>
 
-<!------------회원페이지 MBTIT 검사구역 ---------------------------->
+<!---회원페이지 MBTIT 검사구역 ------------------------------------->
 				<section id="banner">
 					<header>
-						<!-- <h2>Arcana: <em>A responsive site template freebie by <a href="http://html5up.net">HTML5 UP</a></em></h2> -->
+						<a href="#" class="button">검사하러 가기!</a>
+						<br><br>
 						<a href="#" class="button">검사하러 가기!</a>
 					</header>
 				</section>
-
+<!---회원페이지 학습달성률 구역----------------------------------------->	
+				<div>
+				<section id="banner">
+				<h1>나의 학습 현황</h1x>
+						<header>
+							
+						</header>
+					
+					</section>
+				</div>
 			<!-- 
 				<section class="wrapper style1">
 					<div class="container">
@@ -216,7 +226,7 @@
 					</div>
 안쓰는거=====================================================================================================-->
 					<!-- Icons -->
-					<br><br><br><br>
+					<br><br>
 						<ul class="icons">
 							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
