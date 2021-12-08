@@ -33,7 +33,7 @@
 										
 									</ul>
 								</li>
-								<li><a href="3.plan.html">공부 PLAN</a>
+								<li><a href="3.plan.html">로드맵</a>
 									<ul>
 										<li><a href="#">내 직군의 로드맵 확인</a></li>
 										<li><a href="#">나의 공부 계획</a></li>
@@ -42,14 +42,14 @@
 									</ul>
 								</li>
 								<li>
-									<a href="4.community.html">커뮤니티</a>
+									<a href="4.community.html">Study</a>
 									<ul>
 										<li><a href="#">스터디 커뮤</a></li>
 										<li><a href="#">중고 커뮤</a></li>
 										<li><a href="#">자유 커뮤</a></li>
 									</ul>
 								</li>
-								<li><a href="5.test.html">코딩테스트(우선 칸만)</a>
+								<li><a href="5.test.html">Community</a>
 									<ul>
 										<li><a href="#">단계별(난이도별) 코딩테스트</a>
 											<ul>
@@ -65,6 +65,14 @@
 										<li><a href="#">코딩테스트를 모아 놓을지</a></li>
 										<li><a href="#">프로그래머스 같이 각 칸을 만들지</a></li>
 										<li><a href="#">하게되면 구현 문제로 자료판 형식으로 해야할듯?</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="4.community.html">My page</a>
+									<ul>
+										<li><a href="#">스터디 커뮤</a></li>
+										<li><a href="#">중고 커뮤</a></li>
+										<li><a href="#">자유 커뮤</a></li>
 									</ul>
 								</li>
 								</li>
