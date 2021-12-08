@@ -15,6 +15,20 @@ public class MemberVO {
 	private Date m_joindate;
 	private String admin_yn;
 	
+	public MemberVO(String m_id, String m_pw, String m_email, String m_name, String m_nick, String m_gender,
+			Date m_birthdate, String m_memo, Date m_joindate, String admin_yn) {
+		super();
+		this.m_id = m_id;
+		this.m_pw = m_pw;
+		this.m_email = m_email;
+		this.m_name = m_name;
+		this.m_nick = m_nick;
+		this.m_gender = m_gender;
+		this.m_birthdate = m_birthdate;
+		this.m_memo = m_memo;
+		this.m_joindate = m_joindate;
+		this.admin_yn = admin_yn;
+	}
 	public String getM_id() {
 		return m_id;
 	}
