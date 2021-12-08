@@ -6,11 +6,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Left Sidebar - Arcana by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+<title>IT_job - Grea:it</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="assets/css/main.css" />
+<style>
+	table{
+		width: 1000px;
+		border: 1px solid #444444;
+	}
+	tr{
+		border: 1px solid #444444;
+	}
+	#head_tr{
+		background-color: black;
+		text-align: center;
+		color: white;
+	}
+	.main_td{
+		text-align:center;
+		color: black;
+	}
+	.main_a{
+		color: black;
+	}
+
+</style>		
 </head>
 <body>
 <div id="page-wrapper">
@@ -62,18 +83,11 @@
 
 									<!-- Sidebar -->
 										<section>
-											<h3>Another Subheading</h3>
+											<h3>다른 커뮤니티로 이동하기</h3>
 											<ul class="links">
-												<li><a href="#">Amet turpis, feugiat et sit amet</a></li>
-												<li><a href="#">Ornare in hendrerit in lectus</a></li>
-												<li><a href="#">Semper mod quis eget mi dolore</a></li>
-												<li><a href="#">Consequat etiam lorem phasellus</a></li>
-												<li><a href="#">Amet turpis, feugiat et sit amet</a></li>
-												<li><a href="#">Semper mod quisturpis nisi</a></li>
+												<li><a href="c_Study_Community.jsp">스터디 커뮤니티</a></li>
+												<li><a href="c_Used_Market">중고거래 커뮤니티</a></li>
 											</ul>
-											<footer>
-												<a href="#" class="button">More Random Links</a>
-											</footer>
 										</section>
 
 								</div>
@@ -90,34 +104,38 @@ DAO dao = new DAO();
 ArrayList<CommunityVO> arr = dao.Community();
 %>										
 			<div id="board">
-				<table id = "list">
-					<tr>
-						<td>번호</td>
-						<td>제목</td>
-						<td>작성자</td>
-						<td>시간</td>
-						<td>조회수</td>
+			<h1>자유게시판</h1>
+				<table>
+					<tr id="head_tr" class="cm_tr">
+						<td class="cm_td">번호</td>
+						<td class="cm_td">제목</td>
+						<td class="cm_td">작성자</td>
+						<td class="cm_td">시간</td>
+						<td class="cm_td">조회수</td>
 					</tr>
 					<%for(int i=0;i<arr.size();i++){%>
-					<tr>
-						<td><a href="c_Communityview?num=<%=arr.get(i).getC_seq()%>"><%=arr.get(i).getC_seq()%></a></td>
-						<td><a href="c_Communityview?num=<%=arr.get(i).getC_seq()%>"><%=arr.get(i).getTitle()%></a></td>
-						<td><a href="c_Communityview?num=<%=arr.get(i).getC_seq()%>"><%=arr.get(i).getWriter()%></a></td>
-						<td><a href="c_Communityview?num=<%=arr.get(i).getC_seq()%>"><%=arr.get(i).getDay()%></a></td>
-						<td><a href="c_Communityview?num=<%=arr.get(i).getC_seq()%>"><%=arr.get(i).getC_cnt()%></a></td>
+					<%String result = arr.get(i).getDay().substring(5,11);%>
+					<tr class="main_tr">
+						<td class="main_td"><a class="main_a" href="c_Communityview?num=<%=arr.get(i).getC_seq()%>"><%=arr.get(i).getC_seq()%></a></td>
+						<td class="main_td"><a class="main_a" href="c_Communityview?num=<%=arr.get(i).getC_seq()%>"><%=arr.get(i).getTitle()%></a></td>
+						<td class="main_td"><a class="main_a" href="c_Communityview?num=<%=arr.get(i).getC_seq()%>"><%=arr.get(i).getWriter()%></a></td>
+						<td class="main_td"><a class="main_a" href="c_Communityview?num=<%=arr.get(i).getC_seq()%>"><%=result%></a></td>
+						<td class="main_td"><a class="main_a" href="c_Communityview?num=<%=arr.get(i).getC_seq()%>"><%=arr.get(i).getC_cnt()%></a></td>
 					</tr> 	
 					<% }%>
 				</table>
-				
-				<a href="UserPage.jsp"><button id="writer">홈으로가기</button></a>
-				<a href="c_Communitywrite.jsp"><button id="writer">작성하러가기</button></a>
-				<form>
-				<input type="search">
-				<input type="submit">
+				<!--페이지 넘기기  -->
+		<%-- <%if (pageNumber != 1) {%>
+			<a href="c_Community.jsp?pageNumber=<%=pageNumber - 1%>" class="btn btn-success btn-arrow-left">이전</a>
+		<%} if (bbsDAO.nextPage(pageNumber + 1)) {%>
+			<a href="bbs.jsp?pageNumber=<%=pageNumber + 1%>" class="btn btn-success btn-arrow-left">다음</a>
+		<%}%> --%>
+				<form action="search_community">
+				<select><option value="제목">제목</option><option value="내용">내용</option><option value="작성자">작성자</option></select>
+				<input type="text"><input class="search_button" type="button" value="검색하기">
+				<a href="c_Communitywrite.jsp">작성하러가기</a>
 				</form>
 			</div>
-
-
 			<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>

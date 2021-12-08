@@ -17,7 +17,6 @@ public class c_Communityview extends HttpServlet {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("euc-kr");
 		int num =  Integer.parseInt(request.getParameter("num"));
-		System.out.println(num);
 		DAO dao = new DAO();
 		CommunityVO vo = dao.communityview(num);
 		if(vo != null){

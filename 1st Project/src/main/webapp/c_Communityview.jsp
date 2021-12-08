@@ -6,6 +6,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+	table{
+		width: 1500px;
+		border: 1px solid #444444;
+	}
+	tr,td{
+		width: 500px;
+		border: 1px solid #444444;
+	}
+	.title{
+		width: 718px;
+	}
+	.content{
+		height: 200px;
+		text-align: left;
+	}
+</style>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
@@ -19,14 +36,15 @@ ArrayList<CommunityVO> arr = dao.Community();
 			<div id = "board">
 				<table id="list">
 					<tr>
-						<td><%=vo.getTitle() %></td>
+						<td>제목 : <%=vo.getTitle() %></td>
 					</tr>
 					<tr>
-						<td><%=vo.getWriter() %></td>
+						<td>작성자 : <%=vo.getWriter() %></td>
 					</tr>
 					<tr>
-						<td colspan="2"><%=vo.getContent() %></td>
+						<td colspan="2" class="content"><%=vo.getContent() %></td>
 					</tr>
+					<%if(vo.getFile1() !=null && vo.getFile2() !=null && vo.getFile3() !=null) { %>
 					<tr>
 						<td colspan="2">
 							<img src="./images/<%=vo.getFile1() %>">
@@ -34,10 +52,24 @@ ArrayList<CommunityVO> arr = dao.Community();
 							<img src="./images/<%=vo.getFile3() %>">
 						</td>
 					</tr>
+					<%}else if(vo.getFile1() !=null && vo.getFile2() !=null){ %>
 					<tr>
-						<td colspan="2"><a href="boardMain.jsp"><button>뒤로가기</button></a></td>
+						<td colspan="2">
+							<img src="./images/<%=vo.getFile1() %>">
+							<img src="./images/<%=vo.getFile2() %>">
+						</td>
 					</tr>
-				</table>
+					<%}else if(vo.getFile1() !=null){ %>
+					<tr>
+						<td colspan="2">
+							<img src="./images/<%=vo.getFile1() %>">
+						</td>
+					</tr>
+					<%}%>
+					</table>
+					<a href="c_Community.jsp"><button>수정하기</button></a></td>
+					<a href="c_Community.jsp"><button>삭제하기</button></a></td>
+					<a href="c_Community.jsp"><button>뒤로가기</button></a></td>				
 			</div>
 			<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

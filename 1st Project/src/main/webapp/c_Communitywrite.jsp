@@ -1,36 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<style>
+	table{
+		width: 1500px;
+	}
+	td{
+		width: 500px;
+	}
+	.title{
+		width: 718px;
+	}
+</style>
 </head>
 <body>
 <div>
+<%//C:\Users\smhrd\OneDrive\바탕 화면\Web_Study\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps %>
+<%
+		String userID = "skalswn";
+		if(session.getAttribute("userID") != null){
+			userID = (String)session.getAttribute("userID");
+		}	
+%>
 				<form action="c_Communitywrite" method="post" enctype="multipart/form-data" >
+				
 				<table id="list">
 					<tr>
-						<td>제목</td>
-						<td><input type="text" name="title" > </td>
-					</tr>
-					<tr>
-						<td>작성자</td>
-						<td><input  type="text" name="writer" > </td>
-					</tr>
-					<tr>
-						<td colspan="2">내용</td>
+						<td><input type="text" name="title" class="title" placeholder="제목을 입력해주세요" > </td>
 					</tr>
 					<tr>
 						<td colspan="2">
-							<textarea name="content"  rows="10" style="resize: none;"></textarea>			
+							<textarea name="content"  rows="20" cols="100" style="resize: none;"></textarea>			
 						</td>
 					</tr>
 					<tr>
 					<td colspan="2">
-					<input name="file1" type="file" style="float: right;">
-					<input name="file2" type="file" style="float: right;">
-					<input name="file3" type="file" style="float: right;">
+					<input name="file1" type="file">
+					<input name="file2" type="file">
+					<input name="file3" type="file">
 					</td>
 					</tr>
 					<tr>

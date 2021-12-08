@@ -222,8 +222,8 @@ public class DAO {
 			   String sql = "insert into tbl_community(article_seq, article_subject,article_content,m_id,ARTICLE_FILE1,ARTICLE_FILE2,ARTICLE_FILE3) values(tbl_community_SEQ.NEXTVAL, ?,?,?,?,?,?)";
 			   psmt = conn.prepareStatement(sql);	 
 			   psmt.setString(1,title);
-			   psmt.setString(2,writer);
-			   psmt.setString(3,content);
+			   psmt.setString(2,content);
+			   psmt.setString(3,writer);
 			   psmt.setString(4,file1);
 			   psmt.setString(5,file2);
 			   psmt.setString(6,file3);
