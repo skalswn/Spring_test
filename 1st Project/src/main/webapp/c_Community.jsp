@@ -32,10 +32,11 @@ ArrayList<CommunityVO> arr = dao.Community();
 					</tr>
 					<%for(int i=0;i<arr.size();i++){%>
 					<tr>
-						<td><a href="viewBoard?num=<%=arr.get(i).getNum() %>"><%=arr.get(i).getNum()%></a></td>
-						<td><a href="viewBoard?num=<%=arr.get(i).getNum() %>"><%=arr.get(i).getTitle()%></a></td>
-						<td><a href="viewBoard?num=<%=arr.get(i).getNum() %>"><%=arr.get(i).getWriter()%></a></td>
-						<td><a href="viewBoard?num=<%=arr.get(i).getNum() %>"><%=arr.get(i).getDay()%></a></td>
+						<td><a href="viewBoard?num=<%=arr.get(i).getC_seq()%>"><%=arr.get(i).getC_seq()%></a></td>
+						<td><a href="viewBoard?num=<%=arr.get(i).getC_seq()%>"><%=arr.get(i).getTitle()%></a></td>
+						<td><a href="viewBoard?num=<%=arr.get(i).getC_seq()%>"><%=arr.get(i).getWriter()%></a></td>
+						<td><a href="viewBoard?num=<%=arr.get(i).getC_seq()%>"><%=arr.get(i).getDay()%></a></td>
+						<td><a href="viewBoard?num=<%=arr.get(i).getC_seq()%>"><%=arr.get(i).getC_cnt()%></a></td>
 					</tr> 	
 					<% }%>
 				</table>
@@ -43,14 +44,14 @@ ArrayList<CommunityVO> arr = dao.Community();
 				<a href="writerBoard.jsp"><button id="writer">작성하러가기</button></a>
 			</div>
 
-<!-- 
-			Scripts
+
+			<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
-			[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]
-			<script src="assets/js/main.js"></script> -->
+			<!-- [if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif] -->
+			<script src="assets/js/main.js"></script>
 </body>
 </html>
