@@ -159,5 +159,33 @@ public class DAO {
 		}
 		return vo;
 	}
+	public ArrayList<CommunityVO> Community() { 
+		ArrayList arr = new ArrayList<CommunityVO>(); 
+		connection();
+		 try{ 
+			 String sql = "select* from tbl_community order by num desc";
+			 psmt = conn.prepareStatement(sql);
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("article_seq");
+			      String title = rs.getString("article_subject");
+			      String content = rs.getString("article_content");
+			      String day = rs.getString("reg_date");
+			      int c_cnt = rs.getInt("article_cnt");
+			      String writer = rs.getString("m_id");
+			      String file1 = rs.getString("article_file1");
+			      String file2 = rs.getString("article_file2");
+			      String file3 = rs.getString("article_file3");
+			      CommunityVO vo =new CommunityVO(c_seq, title, content, day,c_cnt,writer,file1,file2,file3);
+			      arr.add(vo);    
+			 }
+			
+		 }catch(Exception e){
+			 e.printStackTrace(); 
+		 }finally{ 
+			 close(); 
+			 }
+		return arr;
+	 }
 
 }
