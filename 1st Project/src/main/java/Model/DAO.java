@@ -7,8 +7,47 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class DAO {
 
+public class DAO {
+	 MemberVO vo = null;
+	   CommunityVO bo=null;
+	   Connection conn = null;   
+	   PreparedStatement psmt = null;
+	   ResultSet rs = null;
+	   int lognum=0;
+	   public void connection() {
+		      try {
+		         // 1. 동적 로딩
+		         Class.forName("oracle.jdbc.driver.OracleDriver");
+
+		         // 2. DB 연결 / connection 객체 생성
+		         String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		         String dbic = "hr";
+		         String dbpw = "hr";
+		         conn = DriverManager.getConnection(url, dbic, dbpw);
+		      } catch (Exception e) {
+
+		      }
+		   }
+	public void close() {
+		      // jdbc 사용 이후 닫아주기
+		      // 닫아줄때는 열었던 순서의 반대
+		      try {
+		         if (rs != null) {
+		            rs.close();
+		         }
+		         if (psmt != null) {
+		            psmt.close();
+		         }
+		         if (conn != null) {
+		            conn.close();
+		         }
+		      } catch (Exception e) {
+		         // 아무것도 안적어도 된다.
+		         e.printStackTrace();
+		      }
+
+		   }
 	public int Join(String id, String pw, String email, String name, String nick, String gender,
 			java.sql.Date birthdate, String memo, java.sql.Date joindate, String admin_yn) {
 		
