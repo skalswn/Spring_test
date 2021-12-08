@@ -49,7 +49,7 @@ public class DAO {
 
 		   }
 	public int Join(String id, String pw, String email, String name, String nick, String gender,
-			java.sql.Date birthdate, String memo, java.sql.Date joindate, String admin_yn) {
+			String birthdate, String memo, String joindate, String admin_yn) {
 		
 		int cnt = 0;
 		Connection conn = null;
@@ -76,9 +76,9 @@ public class DAO {
 			psmt.setString(4, name);
 			psmt.setString(5, nick);
 			psmt.setString(6, gender);
-			psmt.setDate(7, birthdate);
+			psmt.setString(7, birthdate);
 			psmt.setString(8, memo);
-			psmt.setDate(9, joindate);
+			psmt.setString(9, joindate);
 			psmt.setString(10, admin_yn);
 
 			cnt = psmt.executeUpdate();

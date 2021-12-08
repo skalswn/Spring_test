@@ -2019,7 +2019,6 @@ input, select, textarea {
 		outline: 0;
 		padding: 0.75em;
 		text-decoration: none;
-		width: 100%;
 	}
 
 		input[type="text"]:focus,
@@ -2350,7 +2349,7 @@ input, select, textarea {
 					ul.actions:not(.fixed) li input[type="button"],
 					ul.actions:not(.fixed) li button,
 					ul.actions:not(.fixed) li .button {
-						width: 100%;
+					
 					}
 
 						ul.actions:not(.fixed) li input[type="submit"].icon:before,
@@ -3217,14 +3216,106 @@ input, select, textarea {
 				-ms-transform: translateX(0);
 				transform: translateX(0);
 			}
+			
+/* Login, Join */
+			.login_btn{
+				-moz-appearance: none;
+				-webkit-appearance: none;
+				-ms-appearance: none;
+				appearance: none;
+				-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+				-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+				-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+				transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+				background-image: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
+				background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
+				background-image: -ms-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
+				background-image: linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
+				background-color: #37c0fb;
+				border-radius: 5px;
+				border: 0;
+				color: #fff;
+				cursor: pointer;
+				display: inline-block;
+				padding: 0 1.5em;
+				line-height: 2.75em;
+				min-width: 9em;
+				text-align: center;
+				text-decoration: none;
+				font-weight: 600;
+				letter-spacing: -0.025em;
+			}
+			
+			a.join_btn{
+				-moz-appearance: none;
+				-webkit-appearance: none;
+				-ms-appearance: none;
+				appearance: none;
+				-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+				-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+				-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+				transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+				background-image: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
+				background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
+				background-image: -ms-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
+				background-image: linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
+				background-color: #37c0fb;
+				border-radius: 5px;
+				border: 0;
+				color: #fff;
+				cursor: pointer;
+				display: inline-block;
+				padding: 0 1.5em;
+				line-height: 2.75em;
+				min-width: 9em;
+				text-align: center;
+				text-decoration: none;
+				font-weight: 600;
+				letter-spacing: -0.025em;
+			}
+			
+		a.join_btn:hover {
+			background-color: #50c8fc;
+			color: #fff !important;
+		}
+
+		a.join_btn:active {
+			background-color: #1eb8fb;
+			color: #fff;
+		}
+
+		a.join_btn.alt {
+			background-color: #555555;
+			color: #fff;
+		}
+
+			a.join_btn.alt:hover {
+				background-color: #626262;
+			}
+
+			a.join_btn.alt:active {
+				background-color: #484848;
+			}
+
+		a.join_btn.icon:before {
+			margin-right: 0.5em;
+		}
+
+		a.join_btn.fit {
+			width: 100%;
+		}
+
+		a.join_btn.small {
+			font-size: 0.8em;
+		}
 
 	}
 
 /* Mobile */
 
-	@media screen and (max-width: 736px) {
+	/* @media screen and (max-width: 736px) {
 
-		/* Basic */
+		Basic
 
 			body, input, select, textarea {
 				font-size: 11pt;
@@ -3262,7 +3353,7 @@ input, select, textarea {
 					font-size: 1em;
 				}
 
-		/* Menu */
+		Menu
 
 			ul.menu li {
 				border: 0;
@@ -3272,13 +3363,13 @@ input, select, textarea {
 				line-height: 2em;
 			}
 
-		/* Banner */
+		Banner
 
 			#banner {
 				height: 18em;
 			}
 
-		/* Wrapper */
+		Wrapper
 
 			.wrapper {
 				padding: 2em 0 1px 0;
@@ -3286,11 +3377,11 @@ input, select, textarea {
 
 	}
 
-/* Mobile (Portrait) */
+Mobile (Portrait)
 
 	@media screen and (max-width: 480px) {
 
-		/* Icon */
+		Icon
 
 			.icon.major {
 				width: 4em;
@@ -3303,18 +3394,17 @@ input, select, textarea {
 					font-size: 24px;
 				}
 
-		/* Button */
+		Button
 
 			input[type="submit"],
 			input[type="reset"],
 			input[type="button"],
 			button,
 			.button {
-				width: 100%;
 				display: block;
 			}
 
-		/* Box */
+		Box
 
 			.box.highlight {
 				padding-left: calc(4em + 30px);
@@ -3328,7 +3418,7 @@ input, select, textarea {
 				width: 30%;
 			}
 
-		/* Banner */
+		Banner
 
 			#banner {
 				height: 20em;
@@ -3338,23 +3428,24 @@ input, select, textarea {
 					padding: 20px;
 				}
 
-		/* Wrapper */
+		Wrapper
 
 			.wrapper {
 				padding: 2em 20px 1px 20px;
 			}
 
-		/* CTA */
+		CTA
 
 			#cta {
 				padding: 20px;
 			}
 
-		/* Footer */
+		Footer
 
 			#footer {
 				padding: 2em 20px;
 				text-align: left;
 			}
-
-	}
+<<<<<<< HEAD
+		
+} */

@@ -3,11 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-		<title>Arcana by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
 <body class="is-preload">
 		<div id="page-wrapper">
 
@@ -26,14 +24,12 @@
 				
 				<nav id="menu">	
 						<ul class="links">
-							<li align = "center"><h5>로그인</h5></li>
-								<form action = "LoginService" method = "post" align = "center">
+							<li align = "center"><h5>회원가입</h5></li>
+								<form action = "JoinService" method = "post" align = "center">
 									<li><input name = "email" type="text"  placeholder="아이디"></li>
 									<li><input name = "pw" type="password"  placeholder="패스워드"></li>
-									<br>
 									<li><input type="submit" value="로그인" class="login_btn"></li>
 								</form>
-									<li><a href="Join.jsp" class = "join_btn">회원가입</a></li>
 						</ul>
 					</nav>	
 					
