@@ -41,10 +41,10 @@
 										<li><a href="#">Veroeros feugiat</a></li>
 									</ul>
 								</li>
-								<li><a href="left-sidebar.jsp">Left Sidebar</a></li>
-								<li class="current"><a href="right-sidebar.jsp">Right Sidebar</a></li>
-								<li><a href="two-sidebar.jsp">Two Sidebar</a></li>
-								<li><a href="no-sidebar.jsp">No Sidebar</a></li>
+								<li><a href="left-sidebar.html">Left Sidebar</a></li>
+								<li class="current"><a href="right-sidebar.html">Right Sidebar</a></li>
+								<li><a href="two-sidebar.html">Two Sidebar</a></li>
+								<li><a href="no-sidebar.html">No Sidebar</a></li>
 							</ul>
 						</nav>
 

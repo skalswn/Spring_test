@@ -22,7 +22,7 @@
 						<h1><a href="UserPage.jsp" id="logo">Grea:it</a></h1>
 
 					<!-- Nav -->
-						<nav id="nav">
+						<nav id="nav"> 
 							<ul>
 								<li class="current"><a href="UserPage.jsp">MY MBTIT</a></li>
 								<li>
@@ -65,12 +65,11 @@
 				<section id="banner">
 					<header>
 						<!-- <h2>Arcana: <em>A responsive site template freebie by <a href="http://html5up.net">HTML5 UP</a></em></h2> -->
-						<img src="https://thenounproject.com/icon/arrow-1725414/"></img>
 						<a href="#" class="button">검사하러 가기!</a>
 					</header>
 				</section>
 
-			<!-- Highlights -->
+			<!-- 
 				<section class="wrapper style1">
 					<div class="container">
 						<div class="row gtr-200">
@@ -98,7 +97,7 @@
 						</div>
 					</div>
 				</section>
-
+ -->
 			<!-- Gigantic Heading -->
 <!-- 안쓰는거=====================================================================================================================================================================================
 				<section class="wrapper style2">
@@ -217,6 +216,7 @@
 					</div>
 안쓰는거=====================================================================================================-->
 					<!-- Icons -->
+					<br><br><br><br>
 						<ul class="icons">
 							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
