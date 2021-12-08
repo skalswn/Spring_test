@@ -15,7 +15,7 @@ public class DAO {
 	   PreparedStatement psmt = null;
 	   ResultSet rs = null;
 	   int lognum=0;
-	   public void connection() {
+	 public void connection() {
 		      try {
 		         // 1. 동적 로딩
 		         Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -160,24 +160,24 @@ public class DAO {
 		return vo;
 	}
 	public ArrayList<CommunityVO> Community() { 
-		ArrayList arr = new ArrayList<CommunityVO>(); 
+		ArrayList<CommunityVO> arr = new ArrayList<CommunityVO>(); 
 		connection();
 		 try{ 
-			 String sql = "select* from tbl_community order by num desc";
+			 String sql = "select* from tbl_community order by article_seq desc";
 			 psmt = conn.prepareStatement(sql);
 			 rs =  psmt.executeQuery();
 			 while(rs.next()) {
-				  int c_seq = rs.getInt("article_seq");
-			      String title = rs.getString("article_subject");
-			      String content = rs.getString("article_content");
-			      String day = rs.getString("reg_date");
-			      int c_cnt = rs.getInt("article_cnt");
-			      String writer = rs.getString("m_id");
-			      String file1 = rs.getString("article_file1");
-			      String file2 = rs.getString("article_file2");
-			      String file3 = rs.getString("article_file3");
-			      CommunityVO vo =new CommunityVO(c_seq, title, content, day,c_cnt,writer,file1,file2,file3);
-			      arr.add(vo);    
+				  int c_seq = rs.getInt("ARTICLE_SEQ");
+			      String title = rs.getString("ARTICLE_SUBJECT");
+			      String content = rs.getString("ARTICLE_CONTENT");
+			      String day = rs.getString("REG_DATE");
+			      int c_cnt = rs.getInt("ARTICLE_CNT");
+			      String writer = rs.getString("M_ID");
+			      String file1 = rs.getString("ARTICLE_FILE1");
+			      String file2 = rs.getString("ARTICLE_FILE2");
+			      String file3 = rs.getString("ARTICLE_FILE3");
+			      CommunityVO vo =new CommunityVO(c_seq, title, content,day,c_cnt,writer,file1,file2,file3);
+			      arr.add(vo);
 			 }
 			
 		 }catch(Exception e){
@@ -187,5 +187,56 @@ public class DAO {
 			 }
 		return arr;
 	 }
-
+	
+	public CommunityVO communityview(int num) {
+		connection();  
+	 	try{
+		   String sql = "select * from tbl_community where ARTICLE_SEQ=?";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   rs = psmt.executeQuery();
+		   if(rs.next() == true) {
+			   int c_seq = rs.getInt("ARTICLE_SEQ");
+			   String title = rs.getString("ARTICLE_SUBJECT");
+			   String content = rs.getString("ARTICLE_CONTENT");
+			   String date = rs.getString("REG_DATE");
+			   int cnt = rs.getInt("ARTICLE_CNT");
+			   String writer = rs.getString("M_ID");
+			   String filename1 = rs.getString("ARTICLE_FILE1");
+			   String filename2 = rs.getString("ARTICLE_FILE2");
+			   String filename3 = rs.getString("ARTICLE_FILE3");
+		       bo = new CommunityVO(c_seq,title,content,date,cnt,writer,filename1,filename2,filename3);
+		      }
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return bo;
+} 
+	public int community_write(String title, String writer, String content, String file1,String file2,String file3) {
+		
+		 connection();  
+		 	try{
+			   String sql = "insert into tbl_community(article_seq, article_subject,article_content,m_id,ARTICLE_FILE1,ARTICLE_FILE2,ARTICLE_FILE3) values(tbl_community_SEQ.NEXTVAL, ?,?,?,?,?,?)";
+			   psmt = conn.prepareStatement(sql);	 
+			   psmt.setString(1,title);
+			   psmt.setString(2,writer);
+			   psmt.setString(3,content);
+			   psmt.setString(4,file1);
+			   psmt.setString(5,file2);
+			   psmt.setString(6,file3);
+			   lognum = psmt.executeUpdate();
+			   if (lognum>0) {
+				   System.out.println("성공");
+			   }
+			      }catch(Exception e){
+			    	 System.out.println("실패");
+			        e.printStackTrace();
+			      }finally{
+			        close();
+	     }
+		   return lognum; 
+	}  
 }

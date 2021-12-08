@@ -10,6 +10,7 @@ public class CommunityVO {
 	private String file1;
 	private String file2;
 	private String file3;
+	
 	public CommunityVO(int c_seq, String title, String content, String day, int c_cnt, String writer, String file1,
 			String file2, String file3) {
 		super();
