@@ -10,7 +10,7 @@
 -->
 <html>
 	<head>
-		<title>Arcana by HTML5 UP</title>
+		<title>Grea:it</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -27,11 +27,10 @@
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li><a href="What_IT.html">IT란</a>
-								<li><a href="left-sidebar.html">IT 직무소개</a></li>
-								<li><a href="right-sidebar.html">로드맵</a></li>
-								<li><a href="two-sidebar.html">IT 전망</a></li>
-								</li>
+								<li><a href="b_What_IT.html">IT란</a></li>
+								<li><a href="b_IT_job.html">IT 직무소개</a></li>
+								<li><a href="b_Roadmap.html">로드맵</a></li>
+								<li><a href="b_Future.html">IT 전망</a></li>
 							</ul>
 						
 						</nav>
