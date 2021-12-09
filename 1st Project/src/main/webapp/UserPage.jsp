@@ -19,7 +19,7 @@
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="UserPage.jsp" id="logo">Grea:it</a></h1>
+						<h1><a href="UserPage.jsp" id="logo">ÇÇÁþ</a></h1>
 
 					<!-- Nav -->
 						<nav id="nav"> 

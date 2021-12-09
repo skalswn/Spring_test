@@ -28,7 +28,7 @@
 						<ul class="links">
 							<li align = "center"><h5>로그인</h5></li>
 								<form action = "LoginService" method = "post" align = "center">
-									<li><input name = "email" type="text"  placeholder="아이디"></li>
+									<li><input name = "id" type="text"  placeholder="아이디"></li>
 									<li><input name = "pw" type="password"  placeholder="패스워드"></li>
 									<br>
 									<li><input type="submit" value="로그인" class="login_btn"></li>
