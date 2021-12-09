@@ -44,7 +44,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
   <!--header-->
   <header class="main-header clearfix" role="header">
     <div class="logo">
-      <a href="#"><em>Welcome</em> PSIT</a>
+      <a href="#"><em>Welcome</em> PSIT</a> 
     </div>
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
