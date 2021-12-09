@@ -1,12 +1,12 @@
 package Model;
 
-public class Community_comment {
+public class Community_commentVO {
 	private int cm_seq;
 	private int c_seq;
 	private String content;
 	private String day;
 	private String c_writer;
-	public Community_comment(int cm_seq, int c_seq, String content, String day, String c_writer) {
+	public Community_commentVO(int cm_seq, int c_seq, String content, String day, String c_writer) {
 		super();
 		this.cm_seq = cm_seq;
 		this.c_seq = c_seq;
