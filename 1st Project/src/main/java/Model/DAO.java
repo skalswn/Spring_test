@@ -21,7 +21,7 @@ public class DAO {
 		         Class.forName("oracle.jdbc.driver.OracleDriver");
 
 		         // 2. DB 연결 / connection 객체 생성
-		         String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		         String url = "jdbc:oracle:thin:@172.30.1.19:1521:xe";
 		         String dbic = "hr";
 		         String dbpw = "hr";
 		         conn = DriverManager.getConnection(url, dbic, dbpw);
@@ -60,7 +60,7 @@ public class DAO {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String url = "jdbc:oracle:thin:@172.30.1.19:1521:xe";
 			String dbid = "hr";
 			String dbpw = "hr";
 
