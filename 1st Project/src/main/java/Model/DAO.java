@@ -246,6 +246,11 @@ public class DAO {
 	public int communitydelete(int num) {
 		 connection();  
 		 	try{
+		 	   String sql0 = "delete from TBL_COMMUNITY_REPLY where article_seq=?";
+			   psmt = conn.prepareStatement(sql0);
+				   //5. 바인드 변수 채우기
+			   psmt.setInt(1,num);
+			   lognum = psmt.executeUpdate();
 			   String sql = "delete from tbl_community where article_seq=?";
 			   psmt = conn.prepareStatement(sql);
 			   //5. 바인드 변수 채우기
