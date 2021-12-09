@@ -15,6 +15,9 @@ public class DAO {
 	   PreparedStatement psmt = null;
 	   ResultSet rs = null;
 	   int lognum=0;
+	   int cnt = 0;
+	   
+// DB연결================================================================================================
 	 public void connection() {
 		      try {
 		         // 1. 동적 로딩
@@ -29,7 +32,10 @@ public class DAO {
 
 		      }
 		   }
+	 
+// DB종료=================================================================================================
 	public void close() {
+
 		      // jdbc 사용 이후 닫아주기
 		      // 닫아줄때는 열었던 순서의 반대
 		      try {
@@ -48,6 +54,8 @@ public class DAO {
 		      }
 
 		   }
+
+// 회원가입==================================================================================================
 	public int Join(String id, String pw, String email, String name, String nick, String gender,
 			String birthdate, String memo, String joindate, String admin_yn) {
 		
@@ -99,6 +107,48 @@ public class DAO {
 		return cnt;
 	}
 
+// 회원탈퇴=====================================================================================================
+	
+	public int deleteUser(String id, String pw) {
+
+		try {
+
+			connection();
+			
+			String sql = "delete from tbl_member where id = ?, pw= ?";
+
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setString(1, id);
+			psmt.setString(1, pw);
+
+			cnt = psmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (psmt != null) {
+					psmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e) {
+
+			}
+		}
+
+		return cnt;
+	}
+
+	
+	
+	
+// 로그인=======================================================================================================
 	public MemberVO Login(String m_id, String m_pw) {
 
 		Connection conn = null;
@@ -160,6 +210,8 @@ public class DAO {
 		return vo;
 	}
 	
+	
+// 자유게시판 전체게시판보여주기========================================================================================
 	public ArrayList<CommunityVO> Community() { 
 		ArrayList<CommunityVO> arr = new ArrayList<CommunityVO>(); 
 		connection();
@@ -189,6 +241,7 @@ public class DAO {
 		return arr;
 	 }
 	
+// 자유게시판 클릭한 게시판 보여주기=====================================================================================================
 	public CommunityVO communityview(int num) {
 		connection();  
 	 	try{
@@ -220,6 +273,8 @@ public class DAO {
      }
 	   return bo;
 } 
+	
+// 자유게시판 글쓰기=======================================================================================================================================	
 	public int community_write(String title, String writer, String content, String file1,String file2,String file3) {
 		
 		 connection();  
@@ -244,6 +299,8 @@ public class DAO {
 	     }
 		   return lognum; 
 	}
+	
+// 자유게시판 게시글삭제=================================================================================================================================
 	public int communitydelete(int num) {
 		 connection();  
 		 	try{
@@ -260,3 +317,5 @@ public class DAO {
 		   return lognum;	   
 	} 
 }
+
+
