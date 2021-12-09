@@ -76,13 +76,16 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
       </video>
 
       <div class="video-overlay header-text">
-          <div class="caption">
+          <div class="caption" align = "left">
               <h6>PSIT사진넣을곳</h6>
-              <h2><em>PSIT</em> PSIT</h2>
+              <span><h2><em>PSIT</em> PSIT</h2></span>
               <div class="main-button">
                   <div class="scroll-to-section"><a href="#">검사하러가기</a></div>
               </div>
-          </div>
+				<div align = "right">
+					<span><h2>학습진행률</h2></span>
+				</div>
+			</div>
       </div>
   </section>
   <!-- ***** Main Banner Area End ***** -->
