@@ -29,86 +29,60 @@
 								<table class = "joinform">
 								<th colspan = "2"><h5>회원가입</h5></th>
 								<tr>
-									<td>
-										아이디 : 
-									</td>
+									<td> 아이디 : </td>
 									<td>
 										<input name = "id" type="text"  placeholder="아이디">
 									</td>
 								</tr>
 								<tr>
-									<td>
-										패스워드 : 
-									</td>
+									<td> 패스워드 : </td>
 									<td>
 										<input name = "pw" type="password"  placeholder="패스워드">
 									</td>
 								</tr>
 								<tr>
-									<td>
-										이메일 : 
-									</td>
+									<td> 이메일 : </td>
 									<td>
 										<input name = "email" type="text">
 									</td>
 								</tr>
 								<tr>
-									<td>
-										이름 : 
-									</td>
+									<td> 이름 : </td>
 									<td>
 										<input name = "name" type="text">
 									</td>
 								</tr>
 								<tr>
-									<td>
-										닉네임 : 
-									</td>
+									<td> 닉네임 : </td>
 									<td>
 										<input name = "nick" type="text">
 									</td>
 								</tr>
 								<tr>
-									<td>
-										성별 : 
-									</td>
+									<td> 성별 : </td>
 									<td>
 										남
 										<input type="radio" name = "gender" value = "man">
 										여
-										<input name = "gender" type="radio" value = "woman">
+										<input type="radio" name = "gender" value = "woman">
 									</td>
 								</tr>
 								<tr>
-									<td>
-										생년월일 : 
-									</td>
+									<td> 생년월일 : </td>
 									<td>
 										<input name = "birthdate" type="text">
 									</td>
 								</tr>
 								<tr>
-									<td>
-										MEMO 
-									</td>
+									<td> MEMO </td>
 									<td align="left" colspan="2"> 
 					                    <textarea cols = "51" rows = "5"></textarea>
 					                </td>
 								</tr>
 								<tr>
-									<td>
-										회원가입일 :
-									</td>
+									<td> 회원가입일 </td>
 									<td>
 										<input name = "joindate" type="text">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										관리자 여부 : 
-									</td>
-									<td>
-										<input name = "admin_yn" type="text">
 									</td>
 								</tr>
 								
