@@ -15,6 +15,9 @@ public class DAO {
 	   PreparedStatement psmt = null;
 	   ResultSet rs = null;
 	   int lognum=0;
+	   int cnt = 0;
+	   
+// DB연결========================================================================================
 	 public void connection() {
 		      try {
 		         // 1. 동적 로딩
@@ -29,6 +32,8 @@ public class DAO {
 
 		      }
 		   }
+	
+// DB종료========================================================================================
 	public void close() {
 		      // jdbc 사용 이후 닫아주기
 		      // 닫아줄때는 열었던 순서의 반대
@@ -48,6 +53,8 @@ public class DAO {
 		      }
 
 		   }
+	
+// 회원가입========================================================================================	
 	public int Join(String id, String pw, String email, String name, String nick, String gender,
 			String birthdate, String memo) {
 		
@@ -97,6 +104,7 @@ public class DAO {
 		return cnt;
 	}
 
+// 로그인========================================================================================
 	public MemberVO Login(String m_id, String m_pw) {
 
 		Connection conn = null;
@@ -157,7 +165,8 @@ public class DAO {
 		}
 		return vo;
 	}
-	
+
+// 자유게시판 전체게시판보기===============================================================================	
 	public ArrayList<CommunityVO> Community() { 
 		ArrayList<CommunityVO> arr = new ArrayList<CommunityVO>(); 
 		connection();
@@ -187,6 +196,7 @@ public class DAO {
 		return arr;
 	 }
 	
+// 자유게시판 자기글 보기========================================================================================
 	public CommunityVO communityview(int num) {
 		connection();  
 	 	try{
@@ -218,6 +228,8 @@ public class DAO {
      }
 	   return bo;
 } 
+	
+// 자유게시판 글쓰기========================================================================================
 	public int community_write(String title, String writer, String content, String file1,String file2,String file3) {
 		
 		 connection();  
@@ -242,6 +254,8 @@ public class DAO {
 	     }
 		   return lognum; 
 	}
+	
+// 자유게시판 글삭제========================================================================================	
 	public int communitydelete(int num) {
 		 connection();  
 		 	try{
@@ -257,6 +271,8 @@ public class DAO {
 	     }
 		   return lognum;	   
 	}
+	
+// 자유게시판 댓글쓰기========================================================================================
 	public int cm_write(int c_seq, String cm_content, String writer) {
 		connection();  
 	 	try{
@@ -277,4 +293,56 @@ public class DAO {
      }
 	   return lognum; 
   }
+
+// 단계별학습 문제 넣기==========================================================================================
+	public int insertCoding(String coding_lang, String coding_q, String coding_a, int coding_cnt, int likes, String id) {
+		
+		try {
+			connection();
+
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			String url = "jdbc:oracle:thin:@172.30.1.19:1521:xe";
+			String dbid = "hr";
+			String dbpw = "hr";
+
+			conn = DriverManager.getConnection(url, dbid, dbpw);
+
+			String sql = "insert into tbl_coding values(tbl_coding_seq.nextval,?,?,?,?,?,sysdate,?)";
+
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setString(1, coding_lang);
+			psmt.setString(2, coding_q);
+			psmt.setString(3, coding_a);
+			psmt.setInt(4, coding_cnt);
+			psmt.setInt(5, likes);
+			psmt.setString(6, id);
+			
+			cnt = psmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (psmt != null) {
+					psmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+				if (cnt == 0) {
+					conn.close();
+				}
+			} catch (Exception e) {
+			}
+		}
+		return cnt;
+	}
+
+// 단계별학습 문제 보여주기====================================================================================
+	public void ShowStudy(String id, String lang  ) {
+		
+	}
 }
+
