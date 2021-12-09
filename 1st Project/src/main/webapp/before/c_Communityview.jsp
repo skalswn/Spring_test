@@ -77,7 +77,8 @@ ArrayList<CommunityVO> arr = dao.Community();
 					<%}%>
 					</table>
 					
-					<form action="c_Commit">
+					<form action="c_Comment">
+					<input value="<%=cvo.getC_seq()%>" name="num" style="display">
 					<input type="text" name="C_comment" id="C_comment" >
 					<input type="submit" value="´ñ±Û ÀÛ¼º">
 					</form>
