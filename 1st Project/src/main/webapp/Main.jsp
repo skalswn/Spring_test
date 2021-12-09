@@ -58,15 +58,16 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
             <!-- <li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li> -->
           </ul>
         </li>
-          <li><a href="Login.jsp">Login</a></li>
-          <li><a href="Join.jsp">Join</a></li>
-   	 <% if(vo!=null){%> 
+   	<%--  <% if(vo!=null){%>  --%>
         <li><a href="#">직무탐색</a></li>
         <!-- <li><a href="#section5">Video</a></li> -->
         <li><a href="#section6">단계별학습</a></li>
         <li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
-        <li><a href="Mypage.jsp" class="external">마이페이지</a></li>
-        <%} %> 
+        <li><a href="My_page.jsp" class="external">마이페이지</a></li>
+        
+          <li><a href="Login.jsp">Login</a></li>
+          <li><a href="Join.jsp">Join</a></li>
+        <%-- <%} %> --%> 
         </ul>
     </nav>
   </header>
@@ -218,7 +219,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
               </div>
               <div class="text-button-pay">
               <%String a ="1"; %>
-                <a href="Roadmap.jsp?num=<%=a%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
+                <a href="Road_map.jsp?num=<%=a%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -232,7 +233,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
               </div>
               <div class="text-button-free">
               <%String b ="2"; %>
-                <a href="Roadmap.jsp?num=<%=b%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
+                <a href="Road_map.jsp?num=<%=b%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -246,7 +247,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
               </div>
               <div class="text-button-pay">
              	<%String c ="3"; %>
-                <a href="Roadmap.jsp?num=<%=c%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
+                <a href="Road_map.jsp?num=<%=c%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -260,7 +261,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
               </div>
               <div class="text-button-free">
                 <%String d ="4"; %>
-                <a href="Roadmap.jsp?num=<%=d%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
+                <a href="Road_map.jsp?num=<%=d%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -274,7 +275,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
               </div>
               <div class="text-button-pay">
                <%String e ="5"; %>
-                <a href="Roadmap.jsp?num=<%=e%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
+                <a href="Road_map.jsp?num=<%=e%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -288,7 +289,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
               </div>
               <div class="text-button-free">
                 <%String f ="6"; %>
-                <a href="Roadmap.jsp?num=<%=f%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
+                <a href="Road_map.jsp?num=<%=f%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -302,7 +303,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
               </div>
               <div class="text-button-free">
                <%String g ="7"; %>
-                <a href="Roadmap.jsp?num=<%=g%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
+                <a href="Road_map.jsp?num=<%=g%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
