@@ -4,13 +4,53 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
-	<title>Arcana by HTML5 UP</title>
+<title>PSIT</title>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="assets/css/main.css" />
+	<style>
+.btn {
+  border-radius: 4px;
+  background-color: rgb(24, 134, 224);
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.btn:hover span {
+  padding-right: 25px;
+}
+
+.btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
+	
+
 </head>
-<body>
 
 <body class="is-preload">
 		<div id="page-wrapper">
@@ -19,7 +59,7 @@
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="UserPage.jsp" id="logo">Grea:it</a></h1>
+						<h1><a href="UserPage.jsp" id="logo">PSIT</a></h1>
 
 					<!-- Nav -->
 						<nav id="nav"> 
@@ -51,7 +91,8 @@
 <!---회원페이지 MBTIT 검사구역 ------------------------------------->
 				<section id="banner">
 					<header>
-						<a href="p_Psit.jsp" class="btn ">검사하러 가기!</a>
+					<a href="p_Psit.jsp" class="btn" ><span>검사하러가기 </span></a>
+				
 					</header>
 				</section>
 <!---회원페이지 학습달성률 구역----------------------------------------->	
@@ -67,7 +108,6 @@
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
 
 <!--sns계정 하이퍼링크------------------------------------------------------------------------------------------------------->
 				<br><br><br><br>
@@ -82,7 +122,7 @@
 					<!-- Copyright -->
 						<div class="copyright">
 							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">Grea:it</a></li>
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">PSIT</a></li>
 							</ul>
 						</div>
 
