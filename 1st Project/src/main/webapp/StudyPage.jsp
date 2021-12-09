@@ -34,7 +34,6 @@
 </style>		
 </head>
 <body>
-
 									<!-- Sidebar -->
 										<section>
 											<h3>다른 커뮤니티로 이동하기</h3>
