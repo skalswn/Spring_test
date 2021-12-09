@@ -41,16 +41,24 @@ public class JoinService extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		
 		if (cnt > 0) {
 			System.out.println("회원가입 성공");
 			
-			MemberVO vo = null;
+			 RequestDispatcher rd = request.getRequestDispatcher("Main.jsp");
+	         
+	         request.setAttribute("vo", new MemberVO(m_id, m_pw, m_email, m_name, m_nick, m_gender, m_memo));
+	         
+	         rd.forward(request, response);
 			
-			if (vo != null) {
-				request.setAttribute("vo", vo);
-				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
-				rd.forward(request, response);
-			}
+			
+		//	MemberVO vo = null;
+			
+//			if (vo != null) {
+//				request.setAttribute("vo", vo);
+//				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+//				rd.forward(request, response);
+//			}
 		} else {
 			System.out.println("회원가입 실패");
 		}
