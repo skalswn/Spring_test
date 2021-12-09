@@ -72,7 +72,7 @@ public class DAO {
 			
 			conn = DriverManager.getConnection(url, dbid, dbpw);
 
-			String sql = "insert into tbl_member values(?,?,?,?,?,?,sysdate,?,sysdate,N)";
+			String sql = "insert into tbl_member values(?,?,?,?,?,?,sysdate,?,sysdate,?)";
 
 			psmt = conn.prepareStatement(sql);
 
@@ -83,6 +83,8 @@ public class DAO {
 			psmt.setString(5, nick);
 			psmt.setString(6, gender);
 			psmt.setString(7, memo);
+			psmt.setString(8, "N");
+			
 			
 			cnt = psmt.executeUpdate();
 
@@ -130,7 +132,6 @@ public class DAO {
 			rs = psmt.executeQuery();
 
 			if (rs.next() == true) {
-				System.out.println("로그인 성공");
 				
 				String id = rs.getString(1);
 				String pw = rs.getString(2);
