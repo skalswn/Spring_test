@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -438,7 +440,7 @@ https://templatemo.com/tm-557-grad-school
       <div class="row">
         <div class="col-md-12">
           <div class="section-heading">
-            <h2>Letâ€™s Keep In Touch</h2>
+            <h2>Let¡¯s Keep In Touch</h2>
           </div>
         </div>
         <div class="col-md-6">
