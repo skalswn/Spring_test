@@ -64,21 +64,20 @@
 <!---회원페이지 MBTIT 검사구역 ------------------------------------->
 				<section id="banner">
 					<header>
-						<a href="#" class="button">검사하러 가기!</a>
+						<a href="#" class="btn ">검사하러 가기!</a>
 						<br><br>
-						<a href="#" class="button">검사하러 가기!</a>
+						<a href="#" class="btn">검사하러 가기!</a>
 					</header>
 				</section>
 <!---회원페이지 학습달성률 구역----------------------------------------->	
-				<div>
-				<section id="banner">
-				<h1>나의 학습 현황</h1x>
-						<header>
-							
-						</header>
+				<section id="mystudy">
+					<div>
+						<h1>나의 학습 현황</h1>
+							<
+						
 					
-					</section>
-				</div>
+					</div>
+				</section>
 			<!-- 
 				<section class="wrapper style1">
 					<div class="container">
