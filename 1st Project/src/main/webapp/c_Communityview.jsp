@@ -23,12 +23,16 @@
 		height: 400px;
 		text-align: left;
 	}
+	#C_comment{
+		width: 500px;
+		height: 30px;
+	}
 </style>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
-<%
+<%	
 MemberVO vo = null;
 if (session.getAttribute("vo") != null){
 	vo = (MemberVO)session.getAttribute("vo");
@@ -72,6 +76,12 @@ ArrayList<CommunityVO> arr = dao.Community();
 					</tr>
 					<%}%>
 					</table>
+					
+					<form action="c_Commit">
+					<input type="text" name="C_comment" id="C_comment" >
+					<input type="submit" value="댓글 작성">
+					</form>
+					
 					<%-- <%if(vo != null){
 						if (vo.getM_id()==cvo.getWriter()) {%> --%>
 						<a href="c_Communitychange?num=<%=cvo.getC_seq()%>"><button>수정하기</button></a></td>
