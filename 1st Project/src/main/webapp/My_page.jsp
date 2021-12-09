@@ -1,3 +1,4 @@
+<%@page import="Model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -31,12 +32,12 @@ https://templatemo.com/tm-557-grad-school
   </head>
 
 <body>
-
+<% MemberVO vo = (MemberVO)session.getAttribute("vo");%>
    
    <!--header-->
   <header class="main-header clearfix" role="header">
     <div class="logo">
-      <a href="Main.jsp"><em>Welcome</em> PSIT</a>
+      <a href="#"><em>Welcome</em> PSIT</a>
     </div>
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
@@ -47,12 +48,19 @@ https://templatemo.com/tm-557-grad-school
             <li><a href="#section2">IT란?</a></li>
             <li><a href="#section4">IT직무</a></li>
             <li><a href="#section3">IT전망</a></li>
+            <!-- <li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li> -->
+          </ul>
         </li>
-         <li><a href="#">직무탐색</a></li>
+   	<%--  <% if(vo!=null){%>  --%>
+        <li><a href="#">직무탐색</a></li>
         <!-- <li><a href="#section5">Video</a></li> -->
         <li><a href="#section6">단계별학습</a></li>
         <li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
-        <li><a href="Mypage.jsp" class="external">마이페이지</a></li>
+        <li><a href="My_page.jsp" class="external">마이페이지</a></li>
+        
+          <li><a href="Login.jsp">Login</a></li>
+          <li><a href="Join.jsp">Join</a></li>
+        <%-- <%} %> --%> 
       </ul>
     </nav>
   </header>
