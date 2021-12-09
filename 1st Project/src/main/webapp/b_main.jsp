@@ -3,61 +3,13 @@
 
 <!DOCTYPE HTML>
 
-<!--
-	Arcana by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
-		<title>Grea:it</title>
+		<title>PSIT</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		 <style>
-         .button{
-            border-radius: 15px;
-            background-color: navy;
-            border : none;
-            color : white;
-            text-align : center;
-            font-size: 30px;
-            padding : 5px;
-            width: 300px;
-            height : 100px;
-            cursor: pointer;
-            margin : 10px;
-        } 
-        .button span{
-            size: 40px;
-            width: 100px;
-            position: relative;
-            left : -10px;
-            transition: 0.5s;                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-        }
-        .button span:after{
-        	
-            cursor: pointer;
-            
-            content : '\00bb';
-            display: inline-block;
-            position: absolute;
-            opacity : 0;
-            top : -30px;
-            left : 150px;
-            font-size : 45px;
-            transition: 0.5s;
-        } 
-        .button:hover span {
-            opacity:1;
-            left :0;
-            
-        }
-        .button:hover span:after {
-            opacity:1;
-            left :40;
-        }
-    </style>
+		
 	</head>
 	<body class="is-preload">
 		<div id="page-wrapper">
@@ -66,7 +18,7 @@
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="b_main.jsp" id="logo">Great:it </a></h1>
+						<h1><a href="b_main.jsp" id="logo">PSIT</a></h1>
 
 					<!-- Nav -->
 						<nav id="nav">
@@ -79,18 +31,14 @@
 						</nav>
 				</div>
 
-			<!-- Banner -->
-				<section id="banner">
+			<!-- Banner 검사박스-->
+		<section id="banner">
 					<header>
-						<div class = "box">
-        <button class="button">
-            <span>PSIT 검사</span>
-        </button>
-    </div>
+						<button class="btn" onclick = "p_Psit.jsp"><span>검사하러가기 </span></button>
 					</header>
 				</section>
 
-<!--sns계정 하이퍼링크------------------------------------------------------------------------------------------------------->
+		<!--sns계정 하이퍼링크------------------------------------------------------------------------------------------------------->
 				<br><br><br><br>
 						<ul class="icons">
 							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -103,7 +51,7 @@
 					<!-- Copyright -->
 						<div class="copyright">
 							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">Grea:it</a></li>
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">PSIT</a></li>
 							</ul>
 						</div>
 	</body>

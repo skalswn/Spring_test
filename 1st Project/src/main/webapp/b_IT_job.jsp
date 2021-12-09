@@ -8,7 +8,7 @@
 -->
 <html>
 	<head>
-		<title>IT_job - Grea:it</title>
+		<title>IT_job - PSIT</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -20,7 +20,7 @@
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="b_main.jsp" id="logo">Grea:it</a></h1>
+						<h1><a href="b_main.jsp" id="logo">PSIT</a></h1>
 
 					<!-- Nav -->
 						<nav id="nav">
@@ -78,7 +78,7 @@
 					<!-- Copyright -->
 						<div class="copyright">
 							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">Grea:it</a></li>
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">PSIT</a></li>
 							</ul>
 						</div>
 			
