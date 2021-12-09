@@ -217,7 +217,8 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
                 <img src="assets/images/author-01.png" alt="Author 1">
               </div>
               <div class="text-button-pay">
-                <a href="Roadmap.jsp">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
+              <%String a ="1"; %>
+                <a href="Roadmap.jsp?num=<%=a%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -230,7 +231,8 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
                 <img src="assets/images/author-02.png" alt="Author 2">
               </div>
               <div class="text-button-free">
-                <a href="Roadmap.jsp">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
+              <%String b ="2"; %>
+                <a href="Roadmap.jsp?num=<%=b%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -243,7 +245,8 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
                 <img src="assets/images/author-03.png" alt="Author 3">
               </div>
               <div class="text-button-pay">
-             	<a href="Roadmap.jsp">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
+             	<%String c ="3"; %>
+                <a href="Roadmap.jsp?num=<%=c%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -256,7 +259,8 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
                 <img src="assets/images/author-04.png" alt="Author 4">
               </div>
               <div class="text-button-free">
-                <a href="Roadmap.jsp">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
+                <%String d ="4"; %>
+                <a href="Roadmap.jsp?num=<%=d%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -269,7 +273,8 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
                 <img src="assets/images/author-05.png" alt="">
               </div>
               <div class="text-button-pay">
-                <a href="Roadmap.jsp">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
+               <%String e ="5"; %>
+                <a href="Roadmap.jsp?num=<%=e%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -282,7 +287,8 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
                 <img src="assets/images/author-01.png" alt="">
               </div>
               <div class="text-button-free">
-                <a href="Roadmap.jsp">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
+                <%String f ="6"; %>
+                <a href="Roadmap.jsp?num=<%=f%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -295,7 +301,8 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
                 <img src="assets/images/author-02.png" alt="">
               </div>
               <div class="text-button-free">
-                <a href="Roadmap.jsp">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
+               <%String g ="7"; %>
+                <a href="Roadmap.jsp?num=<%=g%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
