@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,19 +30,22 @@ public class JoinService extends HttpServlet {
 		String m_name = request.getParameter("name");
 		String m_nick = request.getParameter("nick");
 		String m_gender = request.getParameter("gender");
-		String m_birthdate = request.getParameter("birthdate");
 		String m_memo = request.getParameter("memo");
 		
 		DAO dao = new DAO();
-		int cnt = dao.Join(m_id, m_pw, m_email, m_name, m_nick, m_gender, m_birthdate, m_memo);
-
+		int cnt = 0;
 		try {
+			cnt = dao.Join(m_id, m_pw, m_email, m_name, m_nick, m_gender, m_memo);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		if (cnt > 0) {
 			System.out.println("회원가입 성공");
-
-			MemberVO vo;
-				vo = new MemberVO(m_id, m_pw, m_email, m_name, m_nick, m_gender, m_birthdate, m_memo);
-
+			
+			MemberVO vo = null;
+			
 			if (vo != null) {
 				request.setAttribute("vo", vo);
 				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
@@ -50,11 +54,6 @@ public class JoinService extends HttpServlet {
 		} else {
 			System.out.println("회원가입 실패");
 		}
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 	
 	}
 

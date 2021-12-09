@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -48,14 +49,14 @@ public class DAO {
 		      }
 
 		   }
-	public int Join(String id, String pw, String email, String name, String nick, String gender,
-			String birthdate, String memo) {
+	
+	public int Join(String id, String pw, String email, String name, String nick, String gender, String memo) throws ParseException {
 		
 		int cnt = 0;
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ArrayList<MemberVO> list = new ArrayList<>();
-
+		
 		try {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -63,10 +64,10 @@ public class DAO {
 			String url = "jdbc:oracle:thin:@172.30.1.19:1521:xe";
 			String dbid = "hr";
 			String dbpw = "hr";
-
+			
 			conn = DriverManager.getConnection(url, dbid, dbpw);
 
-			String sql = "insert into tbl_member values(?,?,?,?,?,?,?,?,sysdate,N)";
+			String sql = "insert into tbl_member values(?,?,?,?,?,?,sysdate,?,sysdate,N)";
 
 			psmt = conn.prepareStatement(sql);
 
@@ -76,8 +77,7 @@ public class DAO {
 			psmt.setString(4, name);
 			psmt.setString(5, nick);
 			psmt.setString(6, gender);
-			psmt.setString(7, birthdate);
-			psmt.setString(8, memo);
+			psmt.setString(7, memo);
 			
 			cnt = psmt.executeUpdate();
 
@@ -132,7 +132,7 @@ public class DAO {
 				String name = rs.getString(4);
 				String nick = rs.getString(5);
 				String gender = rs.getString(6);
-				Date birthdate = rs.getDate(7);
+				String birthdate = rs.getString(7);
 				String memo = rs.getString(8);
 				Date joindate = rs.getDate(9);
 				String admin_yn = rs.getString(10);
