@@ -2,6 +2,8 @@ package Controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLEncoder;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,16 +22,16 @@ import Model.DAO;
 public class c_Communitywrite extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		File file = new File("images");	//상대경로(class파일과 동일한 폴더)
-//		if(file.exists()) {
-//			System.out.println("getPath : "+file.getPath());//상대경로
-//			System.out.println("getAbsolutePath : "+file.getAbsolutePath());//절대경로
-//		}else {
-//			file.mkdir();
-//			System.out.println("해당 파일 없음.");
-//		}
+		/*
+		 * System.out.println(request.getServletContext().getRealPath("images"));
+		 * 
+		 * File file = new File("images"); //상대경로(class파일과 동일한 폴더) if(file.exists()) {
+		 * System.out.println("getPath : "+file.getPath());//상대경로
+		 * System.out.println("getAbsolutePath : "+file.getAbsolutePath());//절대경로 }else
+		 * { file.mkdir(); System.out.println("해당 파일 없음."); }
+		 */
 		HttpSession session = request.getSession();
-		String userID = "skalswn";
+		String userID = "doflsld";
 		if(session.getAttribute("userID") != null){
 			userID = (String)session.getAttribute("userID");
 		}
@@ -40,9 +42,22 @@ public class c_Communitywrite extends HttpServlet {
 		String title = multi.getParameter("title");
 		String writer= userID;
 		String content = multi.getParameter("content");
-		String filename1 = multi.getFilesystemName("file1");
-		String filename2 = multi.getFilesystemName("file2");
-		String filename3 = multi.getFilesystemName("file3");
+		String filename1 = "none.jpg";
+		try {
+			filename1 = URLEncoder.encode(multi.getFilesystemName("file1"), "euc-kr");
+		} catch (Exception e) {
+		}
+		String filename2 = "none.jpg";
+		try {
+			filename2 = URLEncoder.encode(multi.getFilesystemName("file2"), "euc-kr");
+		} catch (Exception e) {
+		}
+		String filename3 = "none.jpg";
+		try {
+			filename3 = URLEncoder.encode(multi.getFilesystemName("file3"), "euc-kr");
+		} catch (Exception e) {
+		}
+		System.out.println(filename1);
 		DAO dao=new DAO();
 		int lognum=dao.community_write(title,writer,content,filename1, filename2, filename3);
 		if (lognum>0) {
@@ -50,7 +65,7 @@ public class c_Communitywrite extends HttpServlet {
 			response.sendRedirect("c_Community.jsp");
 		}else {
 			System.out.println("게시글 작성 실패!");
-			response.sendRedirect("hi.jsp");
+			response.sendRedirect("c_Comminity.jsp");
 		}
 		
 	}

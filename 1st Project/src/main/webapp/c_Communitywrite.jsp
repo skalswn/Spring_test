@@ -22,7 +22,7 @@
 <div>
 <%//C:\Users\smhrd\OneDrive\¹ÙÅÁ È­¸é\Web_Study\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps %>
 <%
-		String userID = "skalswn";
+		String userID = "doflsld";
 		if(session.getAttribute("userID") != null){
 			userID = (String)session.getAttribute("userID");
 		}	

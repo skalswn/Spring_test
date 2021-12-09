@@ -209,6 +209,10 @@ public class DAO {
 			   String filename3 = rs.getString("ARTICLE_FILE3");
 		       bo = new CommunityVO(c_seq,title,content,date,cnt,writer,filename1,filename2,filename3);
 		      }
+		   String sql_seq = "update tbl_community set ARTICLE_CNT = tbl_community_cnt.NEXTVAL where ARTICLE_SEQ=?";
+		   psmt = conn.prepareStatement(sql_seq);
+		   psmt.setInt(1,num);
+		   lognum = psmt.executeUpdate();
 		      }catch(Exception e){
 		        e.printStackTrace();
 		      }finally{
@@ -239,5 +243,20 @@ public class DAO {
 			        close();
 	     }
 		   return lognum; 
-	}  
+	}
+	public int communitydelete(int num) {
+		 connection();  
+		 	try{
+			   String sql = "delete from tbl_community where article_seq=?";
+			   psmt = conn.prepareStatement(sql);
+			   //5. 바인드 변수 채우기
+			   psmt.setInt(1,num);
+			   lognum = psmt.executeUpdate();
+			      }catch(Exception e){
+			        e.printStackTrace();
+			      }finally{
+			        close();
+	     }
+		   return lognum;	   
+	} 
 }
