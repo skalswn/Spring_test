@@ -2715,6 +2715,16 @@ input, select, textarea {
 				vertical-align: middle;
 				margin-left: 1em;
 			}
+			
+/* mystudy */
+	#mystudy{
+		background-image: url("../../images/banner.jpg");
+		background-position: center center;
+		background-size: cover;
+		height: 28em;
+		text-align: center;
+		position: relative;
+	}
 
 /* Wrapper */
 
@@ -2746,7 +2756,7 @@ input, select, textarea {
 			.wrapper.style3 .button {
 				background: #fff;
 				color: #474747;
-			}
+			} 
 
 				.wrapper.style3 .button:hover {
 					color: #37c0fb !important;
@@ -2988,7 +2998,7 @@ input, select, textarea {
 					display: block;
 				}
 
-				#banner header .button {
+			 #banner header .button {
 					margin: 1em 0 0 0;
 				}
 
@@ -3307,6 +3317,18 @@ input, select, textarea {
 
 		a.join_btn.small {
 			font-size: 0.8em;
+		}
+		
+		
+			
+		
+		table.joinform tr{
+				
+		}
+		table.joinform input{
+			margin-left : 50px;
+			margin-right : 50px;
+			width : 200px;
 		}
 
 	}

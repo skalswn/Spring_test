@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE HTML>
 <!--
 	Arcana by HTML5 UP
@@ -30,11 +25,11 @@
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li><a href="b_What_IT.html">IT란</a></li>
-								<li><a href="b_IT_job.html">IT 직무소개</a></li>
-								<li><a href="b_Roadmap.html">로드맵</a></li>
-								<li><a href="b_Future.html">IT 전망</a></li>
-							
+								<li><a href="b_What_IT.jsp">IT란</a></li>
+								<li><a href="b_IT_job.jsp">IT 직무소개</a></li>
+								<li><a href="b_Roadmap.jsp">로드맵</a></li>
+								<li><a href="b_Future.jsp">IT 전망</a></li>
+								
 							</ul>
 						</nav>
 				</div>
@@ -52,7 +47,7 @@
 										<article>
 											<header>
 												<br>
-												<h2>IT 전망</h2>
+												<h2>IT 직무소개</h2>
 											</header>
 
 											<span class="image featured"><img src="images/banner.jpg" alt="" /></span>
@@ -70,9 +65,22 @@
 						</div>
 					</div>
 				</section>
+<!--sns계정 하이퍼링크------------------------------------------------------------------------------------------------------->
+				<br><br><br><br>
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon brands fa-google-plus-g"><span class="label">Google+</span></a></li>
+						</ul>
 
+					<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">Grea:it</a></li>
+							</ul>
+						</div>
 			
 	</body>
-</html>
-</body>
 </html>

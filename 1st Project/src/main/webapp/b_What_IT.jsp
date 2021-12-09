@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE HTML>
 <!--
 	Arcana by HTML5 UP
@@ -23,10 +25,10 @@
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li><a href="b_What_IT.html">ITë€</a></li>
-								<li><a href="b_IT_job.html">IT ì§ë¬´ì†Œê°œ</a></li>
-								<li><a href="b_Roadmap.html">ë¡œë“œë§µ</a></li>
-								<li><a href="b_Future.html">IT ì „ë§</a></li>
+								<li><a href="b_What_IT.jsp">IT¶õ</a></li>
+								<li><a href="b_IT_job.jsp">IT Á÷¹«¼Ò°³</a></li>
+								<li><a href="b_Roadmap.jsp">·Îµå¸Ê</a></li>
+								<li><a href="b_Future.jsp">IT Àü¸Á</a></li>
 							</ul>
 						</nav>
 				</div>
@@ -44,7 +46,7 @@
 										<article>
 											<header>
 												<br>
-												<h2>ITë€</h2>
+												<h2>IT¶õ</h2>
 											</header>
 
 											<span class="image featured"><img src="images/banner.jpg" alt="" /></span>
@@ -62,7 +64,22 @@
 						</div>
 					</div>
 				</section>
+<!--sns°èÁ¤ ÇÏÀÌÆÛ¸µÅ©------------------------------------------------------------------------------------------------------->
+				<br><br><br><br>
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon brands fa-google-plus-g"><span class="label">Google+</span></a></li>
+						</ul>
 
+					<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">Grea:it</a></li>
+							</ul>
+						</div>
 			
 	</body>
 </html>

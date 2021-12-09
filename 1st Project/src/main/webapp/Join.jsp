@@ -3,8 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+		<title>Arcana by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body class="is-preload">
 		<div id="page-wrapper">
@@ -23,14 +25,98 @@
 				</div>
 				
 				<nav id="menu">	
-						<ul class="links">
-							<li align = "center"><h5>회원가입</h5></li>
 								<form action = "JoinService" method = "post" align = "center">
-									<li><input name = "email" type="text"  placeholder="아이디"></li>
-									<li><input name = "pw" type="password"  placeholder="패스워드"></li>
-									<li><input type="submit" value="로그인" class="login_btn"></li>
+								<table class = "joinform">
+								<th colspan = "2"><h5>회원가입</h5></th>
+								<tr>
+									<td>
+										아이디 : 
+									</td>
+									<td>
+										<input name = "id" type="text"  placeholder="아이디">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										패스워드 : 
+									</td>
+									<td>
+										<input name = "pw" type="password"  placeholder="패스워드">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										이메일 : 
+									</td>
+									<td>
+										<input name = "email" type="text">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										이름 : 
+									</td>
+									<td>
+										<input name = "name" type="text">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										닉네임 : 
+									</td>
+									<td>
+										<input name = "nick" type="text">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										성별 : 
+									</td>
+									<td>
+										남
+										<input type="radio" name = "gender" value = "man">
+										여
+										<input name = "gender" type="radio" value = "woman">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										생년월일 : 
+									</td>
+									<td>
+										<input name = "birthdate" type="text">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										MEMO 
+									</td>
+									<td align="left" colspan="2"> 
+					                    <textarea cols = "51" rows = "5"></textarea>
+					                </td>
+								</tr>
+								<tr>
+									<td>
+										회원가입일 :
+									</td>
+									<td>
+										<input name = "joindate" type="text">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										관리자 여부 : 
+									</td>
+									<td>
+										<input name = "admin_yn" type="text">
+									</td>
+								</tr>
+								
+								</table>
+								<br>
+										<input type="reset" value="초기화">
+										<input type="submit" value="완료">
 								</form>
-						</ul>
 					</nav>	
 					
 			<!-- Footer -->
