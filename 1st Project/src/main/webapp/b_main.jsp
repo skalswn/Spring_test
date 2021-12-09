@@ -9,8 +9,49 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		
-	</head>
+<style>
+.btn {
+	border-radius: 4px;
+	background-color: rgb(24, 134, 224);
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 18px;
+	padding: 20px;
+	width: 200px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+}
+
+.btn span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.btn span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+.btn:hover span {
+	padding-right: 25px;
+}
+
+.btn:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+</style>
+
+
+</head>
 	<body class="is-preload">
 		<div id="page-wrapper">
 
@@ -34,7 +75,7 @@
 			<!-- Banner 검사박스-->
 		<section id="banner">
 					<header>
-						<button class="btn" onclick = "p_Psit.jsp"><span>검사하러가기 </span></button>
+						<a href="p_Psit.jsp" class="btn" ><span>검사하러가기 </span></a>
 					</header>
 				</section>
 

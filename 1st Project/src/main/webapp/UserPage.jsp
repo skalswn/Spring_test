@@ -4,13 +4,11 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
-	<title>Arcana by HTML5 UP</title>
+<title>PSIT</title>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="assets/css/main.css" />
-	
-<style>
+	<style>
 .btn {
   border-radius: 4px;
   background-color: rgb(24, 134, 224);
@@ -50,6 +48,8 @@
   right: 0;
 }
 </style>
+	
+
 </head>
 
 <body class="is-preload">
@@ -59,7 +59,7 @@
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="UserPage.jsp" id="logo">Grea:it</a></h1>
+						<h1><a href="UserPage.jsp" id="logo">PSIT</a></h1>
 
 					<!-- Nav -->
 						<nav id="nav"> 
@@ -91,7 +91,7 @@
 <!---회원페이지 MBTIT 검사구역 ------------------------------------->
 				<section id="banner">
 					<header>
-					<button class="btn" onclick = "p_Psit.jsp"><span>검사하러가기 </span></button>
+					<a href="p_Psit.jsp" class="btn" ><span>검사하러가기 </span></a>
 				
 					</header>
 				</section>
