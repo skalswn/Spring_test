@@ -35,13 +35,15 @@
 <body>
 <%	
 MemberVO vo = null;
+DAO dao = new DAO();
+CommunityVO cvo = (CommunityVO)session.getAttribute("cvo");
+ArrayList<Community_commentVO> cm_arr = dao.cm_Community(cvo.getC_seq());
 if (session.getAttribute("vo") != null){
 	vo = (MemberVO)session.getAttribute("vo");
 }
-CommunityVO cvo = (CommunityVO)session.getAttribute("cvo");
-DAO dao = new DAO();
 ArrayList<CommunityVO> arr = dao.Community();
 Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
+System.out.print(cm_arr);
 %>
 				
 			<div id = "board">
@@ -84,6 +86,14 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 					<input type="text" name="C_comment" id="C_comment" >
 					<input type="submit" value="´ñ±Û ÀÛ¼º">
 					</form>
+					<%if (cm_arr != null){%>
+						<%for(int i=0;i<cm_arr.size();i++){%>
+						<span><%=cm_arr.get(i).getC_writer()%> : </span>
+						<span><%=cm_arr.get(i).getContent()%></span>
+						<br>
+					</tr> 	
+					<% }%>
+					<%}%>
 					<%-- <%if (cmvo !=null){
 						for(int i=0;i<arr.size();i++){%>
 						<%}%>
