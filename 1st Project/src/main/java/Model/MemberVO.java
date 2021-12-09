@@ -13,30 +13,13 @@ public class MemberVO {
 	private String m_name;
 	private String m_nick;
 	private String m_gender;
-	private Date m_birthdate;
+	private String m_birthdate;
 	private String m_memo;
 	private Date m_joindate;
 	private String admin_yn;
 	
 	public MemberVO(String m_id, String m_pw, String m_email, String m_name, String m_nick, String m_gender,
-			String m_birthdate, String m_memo, String m_joindate, String admin_yn) throws ParseException {
-		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-mm-dd");
-		
-		this.m_birthdate = transFormat.parse(m_birthdate);
-		this.m_joindate = transFormat.parse(m_joindate);
-		this.m_id = m_id;
-		this.m_pw = m_pw;
-		this.m_email = m_email;
-		this.m_name = m_name;
-		this.m_nick = m_nick;
-		this.m_gender = m_gender;
-		this.m_memo = m_memo;
-		this.admin_yn = admin_yn;
-	}
-	
-	public MemberVO(String m_id, String m_pw, String m_email, String m_name, String m_nick, String m_gender,
-			Date m_birthdate, String m_memo, Date m_joindate, String admin_yn) {
-		super();
+			String m_birthdate, String m_memo, Date m_joindate, String admin_yn) {
 		this.m_id = m_id;
 		this.m_pw = m_pw;
 		this.m_email = m_email;
@@ -48,10 +31,8 @@ public class MemberVO {
 		this.m_joindate = m_joindate;
 		this.admin_yn = admin_yn;
 	}
-	public MemberVO(String m_id, String m_pw, String m_email, String m_name, String m_nick, String m_gender,
-			String m_birthdate, String m_memo) throws ParseException {
-		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-mm-dd");
-		this.m_birthdate = transFormat.parse(m_birthdate);
+	
+	public MemberVO(String m_id, String m_pw, String m_email, String m_name, String m_nick, String m_gender,String m_memo) {
 		this.m_id = m_id;
 		this.m_pw = m_pw;
 		this.m_email = m_email;
@@ -97,10 +78,10 @@ public class MemberVO {
 	public void setM_gender(String m_gender) {
 		this.m_gender = m_gender;
 	}
-	public Date getM_birthdate() {
+	public String getM_birthdate() {
 		return m_birthdate;
 	}
-	public void setM_birthdate(Date m_birthdate) {
+	public void setM_birthdate(String m_birthdate) {
 		this.m_birthdate = m_birthdate;
 	}
 	public String getM_memo() {

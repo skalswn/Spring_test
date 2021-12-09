@@ -76,7 +76,7 @@ https://templatemo.com/tm-557-grad-school
 						</div>
 						<div class="col-md-12">
 							<fieldset>
-								<input name="pw" type="text" class="form-control" id="pw"
+								<input name="pw" type="password" class="form-control" id="pw"
 									placeholder="패스워드를 입력하세요" required="">
 							</fieldset>
 						</div>
@@ -98,15 +98,9 @@ https://templatemo.com/tm-557-grad-school
 									placeholder="닉네임을 입력하세요" required="">
 							</fieldset>
 						</div>
-						<div class="col-md-12">
+						<div class="genderinput">
 								남 <input name="gender" type="radio" class="form-control" id="gender" value="M"> 
 								여 <input name="gender" type="radio" class="form-control" id="gender" value="W">
-						</div>
-						<div class="col-md-12">
-							<fieldset>
-								<input name="birthdate" type="date" class="form-control"
-									id="birthdate">
-							</fieldset>
 						</div>
 						<div class="col-md-12">
 							<fieldset>
