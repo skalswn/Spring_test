@@ -99,7 +99,7 @@
 
 										<article>
 <%
-CommunityVO vo = (CommunityVO)session.getAttribute("vo");
+CommunityVO cvo = (CommunityVO)session.getAttribute("cvo");
 DAO dao = new DAO();
 ArrayList<CommunityVO> arr = dao.Community();
 %>										

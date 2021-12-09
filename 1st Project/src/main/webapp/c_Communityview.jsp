@@ -1,3 +1,4 @@
+<%@page import="Model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ page import="Model.CommunityVO"%>
@@ -19,7 +20,7 @@
 		width: 718px;
 	}
 	.content{
-		height: 200px;
+		height: 400px;
 		text-align: left;
 	}
 </style>
@@ -28,7 +29,11 @@
 </head>
 <body>
 <%
-CommunityVO vo = (CommunityVO)session.getAttribute("vo");
+MemberVO vo = null;
+if (session.getAttribute("vo") != null){
+	vo = (MemberVO)session.getAttribute("vo");
+}
+CommunityVO cvo = (CommunityVO)session.getAttribute("cvo");
 DAO dao = new DAO();
 ArrayList<CommunityVO> arr = dao.Community();
 %>
@@ -36,39 +41,43 @@ ArrayList<CommunityVO> arr = dao.Community();
 			<div id = "board">
 				<table id="list">
 					<tr>
-						<td>제목 : <%=vo.getTitle() %></td>
+						<td>제목 : <%=cvo.getTitle() %></td>
 					</tr>
 					<tr>
-						<td>작성자 : <%=vo.getWriter() %></td>
+						<td>작성자 : <%=cvo.getWriter() %></td>
 					</tr>
 					<tr>
-						<td colspan="2" class="content"><%=vo.getContent() %></td>
+						<td colspan="2" class="content"><%=cvo.getContent() %></td>
 					</tr>
-					<%if(vo.getFile1() !=null && vo.getFile2() !=null && vo.getFile3() !=null) { %>
+					<%if(cvo.getFile1() !=null && cvo.getFile2() !=null && cvo.getFile3() !=null) { %>
 					<tr>
 						<td colspan="2">
-							<img src="./images/<%=vo.getFile1() %>">
-							<img src="./images/<%=vo.getFile2() %>">
-							<img src="./images/<%=vo.getFile3() %>">
+							<img src="./images/<%=cvo.getFile1() %>">
+							<img src="./images/<%=cvo.getFile2() %>">
+							<img src="./images/<%=cvo.getFile3() %>">
 						</td>
 					</tr>
-					<%}else if(vo.getFile1() !=null && vo.getFile2() !=null){ %>
+					<%}else if(cvo.getFile1() !=null && cvo.getFile2() !=null){ %>
 					<tr>
 						<td colspan="2">
-							<img src="./images/<%=vo.getFile1() %>">
-							<img src="./images/<%=vo.getFile2() %>">
+							<img src="./images/<%=cvo.getFile1() %>">
+							<img src="./images/<%=cvo.getFile2() %>">
 						</td>
 					</tr>
-					<%}else if(vo.getFile1() !=null){ %>
+					<%}else if(cvo.getFile1() !=null){ %>
 					<tr>
 						<td colspan="2">
-							<img src="./images/<%=vo.getFile1() %>">
+							<img src="images/<%=cvo.getFile1() %>">
 						</td>
 					</tr>
 					<%}%>
 					</table>
-					<a href="c_Community.jsp"><button>수정하기</button></a></td>
-					<a href="c_Community.jsp"><button>삭제하기</button></a></td>
+					<%-- <%if(vo != null){
+						if (vo.getM_id()==cvo.getWriter()) {%> --%>
+						<a href="c_Communitychange?num=<%=cvo.getC_seq()%>"><button>수정하기</button></a></td>
+						<a href="c_Communitydelete?num=<%=cvo.getC_seq()%>"><button>삭제하기</button></a></td>
+					<%-- 	<%}
+					}%>--%>
 					<a href="c_Community.jsp"><button>뒤로가기</button></a></td>				
 			</div>
 			<!-- Scripts -->

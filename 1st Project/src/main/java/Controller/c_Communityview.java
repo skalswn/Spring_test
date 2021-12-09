@@ -18,9 +18,9 @@ public class c_Communityview extends HttpServlet {
 		request.setCharacterEncoding("euc-kr");
 		int num =  Integer.parseInt(request.getParameter("num"));
 		DAO dao = new DAO();
-		CommunityVO vo = dao.communityview(num);
-		if(vo != null){
-            session.setAttribute("vo", vo);
+		CommunityVO cvo = dao.communityview(num);
+		if(cvo != null){
+            session.setAttribute("cvo", cvo);
             response.sendRedirect("c_Communityview.jsp");
             System.out.println("접근 성공");
          }else{
