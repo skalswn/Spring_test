@@ -277,4 +277,29 @@ public class DAO {
      }
 	   return lognum; 
   }
+	public ArrayList<Community_commentVO> cm_Community(int c_seq) { 
+		ArrayList<Community_commentVO> arr = new ArrayList<Community_commentVO>(); 
+		connection();
+		 try{ 
+			 String sql = "select* from tbl_community_reply WHERE ARTICLE_SEQ=? order by REG_DATE desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setInt(1,c_seq);
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int cm_seq = rs.getInt("COMM_REPLY_SEQ");
+			      c_seq = rs.getInt("ARTICLE_SEQ");
+			      String content = rs.getString("COMM_REPLY_CONTENT");
+			      String day = rs.getString("REG_DATE");
+			      String writer = rs.getString("M_ID");
+			      Community_commentVO vo =new Community_commentVO(cm_seq, c_seq, content, day, writer);
+			      arr.add(vo);
+			 }
+			
+		 }catch(Exception e){
+			 e.printStackTrace(); 
+		 }finally{ 
+			 close(); 
+			 }
+		return arr;
+	 }
 }
