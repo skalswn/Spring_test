@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 
 
 public class DAO {
@@ -339,34 +338,88 @@ public class DAO {
 		return cnt;
 	}
 
-// 단계별학습 문제 보여주기====================================================================================
-	public void ShowStudy(String id, String lang  ) {
-		
-	}
+//자유게시판 댓글달기
 	public ArrayList<Community_commentVO> cm_Community(int c_seq) { 
 		ArrayList<Community_commentVO> arr = new ArrayList<Community_commentVO>(); 
 		connection();
-		 try{ 
-			 String sql = "select* from tbl_community_reply WHERE ARTICLE_SEQ=? order by REG_DATE desc";
-			 psmt = conn.prepareStatement(sql);
-			 psmt.setInt(1,c_seq);
-			 rs =  psmt.executeQuery();
-			 while(rs.next()) {
-				  int cm_seq = rs.getInt("COMM_REPLY_SEQ");
-			      c_seq = rs.getInt("ARTICLE_SEQ");
-			      String content = rs.getString("COMM_REPLY_CONTENT");
-			      String day = rs.getString("REG_DATE");
-			      String writer = rs.getString("M_ID");
-			      Community_commentVO vo =new Community_commentVO(cm_seq, c_seq, content, day, writer);
-			      arr.add(vo);
-			 }
+		try{ 
+			String sql = "select* from tbl_community_reply WHERE ARTICLE_SEQ=? order by REG_DATE desc";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1,c_seq);
+			rs =  psmt.executeQuery();
+			while(rs.next()) {
+				int cm_seq = rs.getInt("COMM_REPLY_SEQ");
+				c_seq = rs.getInt("ARTICLE_SEQ");
+				String content = rs.getString("COMM_REPLY_CONTENT");
+				String day = rs.getString("REG_DATE");
+				String writer = rs.getString("M_ID");
+				Community_commentVO vo =new Community_commentVO(cm_seq, c_seq, content, day, writer);
+				arr.add(vo);
+			}
 			
-		 }catch(Exception e){
-			 e.printStackTrace(); 
-		 }finally{ 
-			 close(); 
-			 }
+		}catch(Exception e){
+			e.printStackTrace(); 
+		}finally{ 
+			close(); 
+		}
 		return arr;
-	 }
-}
+	}
 
+// 단계별학습 문제 보여주기====================================================================================
+	public ArrayList ShowCoding(String id, String lang) {
+		
+		ArrayList<CodingVO> codingarray = new ArrayList<>();
+		
+		try {
+			
+			connection();
+			
+			String sql = "select * from tbl_coding ";
+			psmt = conn.prepareStatement(sql);
+
+			// 5. 실행
+			// select -> executeQuery() -> return ResultSet
+			// insert, delete, update -> executeUpdate() -> return int(몇 행이 성공했는지)
+			rs = psmt.executeQuery();
+
+			while (rs.next() == true) {
+				System.out.println("성공");
+
+				int coding_seq = rs.getInt(1);
+				String coding_lang = rs.getString(2);
+				String coding_q = rs.getString(3);
+				String coding_a = rs.getString(4);
+//				int coding_cnt = rs.getInt(5);
+//				int likes = rs.getInt(6);
+//				String reg_date = rs.getString(7);
+//				String m_id = rs.getString(8);
+
+				vo = new MemberVO(coding_seq, coding_lang, coding_q, coding_a);
+
+				arraylist.add(vo);
+
+				// rs.next() -> 한칸 내려가라는 뜻 : false(빈칸)이면 안내려간다
+				// 그래서 굳이 break문을 쓸 필요 없다!!
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (psmt != null) {
+					psmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e) {
+
+			}
+		}
+	
+		return codingarray;
+	}
+		

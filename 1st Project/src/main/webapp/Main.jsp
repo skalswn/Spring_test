@@ -58,18 +58,17 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
             <!-- <li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li> -->
           </ul>
         </li>
-    <% if(vo!=null){%>  
+     <% if(vo!=null){%>
         <li><a href="#">직무탐색</a></li>
         <!-- <li><a href="#section5">Video</a></li> -->
         <li><a href="#section6">단계별학습</a></li>
         <li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
         <li><a href="My_page.jsp" class="external">마이페이지</a></li>
         <li><a href="Main.jsp" class="external">로그아웃</a></li>
-        
-        <%} else {%>
+     <%} else {%>
         <li><a href="Login.jsp">Login</a></li>
         <li><a href="Join.jsp">Join</a></li>        
-        <%} %> 
+     <%} %>
         </ul>
     </nav>
   </header>
