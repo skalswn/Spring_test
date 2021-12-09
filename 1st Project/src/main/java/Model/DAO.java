@@ -116,7 +116,7 @@ public class DAO {
 
 			conn = DriverManager.getConnection(url, dbid, dbpw);
 
-			String sql = "select * from tbl_member where id = ? and pw = ?";
+			String sql = "select * from tbl_member where m_id = ? and m_pw = ?";
 
 			psmt = conn.prepareStatement(sql);
 
@@ -159,6 +159,7 @@ public class DAO {
 		}
 		return vo;
 	}
+	
 	public ArrayList<CommunityVO> Community() { 
 		ArrayList<CommunityVO> arr = new ArrayList<CommunityVO>(); 
 		connection();

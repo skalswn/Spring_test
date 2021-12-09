@@ -15,7 +15,7 @@
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="index.html" id="logo">Grea:it</a></h1>
+						<h1><a href="index.html" id="logo">PSIT</a></h1>
 
 					<!-- Nav -->
 						<nav id="nav">
@@ -30,12 +30,11 @@
 								<form action = "LoginService" method = "post" align = "center">
 									<li><input name = "id" type="text"  placeholder="아이디"></li>
 									<li><input name = "pw" type="password"  placeholder="패스워드"></li>
-									<br>
 									<li><input type="submit" value="로그인" class="login_btn"></li>
 								</form>
 									<li><a href="Join.jsp" class = "join_btn">회원가입</a></li>
 						</ul>
-					</nav>	
+				</nav>	
 					
 			<!-- Footer -->
 				<div id="footer">

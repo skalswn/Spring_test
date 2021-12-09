@@ -23,7 +23,6 @@ public class MemberVO {
 		
 		this.m_birthdate = transFormat.parse(m_birthdate);
 		this.m_joindate = transFormat.parse(m_joindate);
-		
 		this.m_id = m_id;
 		this.m_pw = m_pw;
 		this.m_email = m_email;
