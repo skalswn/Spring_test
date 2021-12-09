@@ -16,7 +16,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import Model.CommunityVO;
 import Model.Community_commentVO;
 import Model.DAO;
-@WebServlet("/C_comment")
+@WebServlet("/c_Comment")
 public class c_Comment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,7 +29,7 @@ public class c_Comment extends HttpServlet {
 		request.setCharacterEncoding("euc-kr");
 		DAO dao=new DAO();
 		int c_seq=Integer.parseInt(request.getParameter("num"));
-		String cm_content=request.getParameter("cm_content");
+		String cm_content=request.getParameter("C_comment");
 		String writer=userID;
 		int lognum = dao.cm_write(c_seq,cm_content,writer);
 		if (lognum>0) {
@@ -37,7 +37,7 @@ public class c_Comment extends HttpServlet {
 			response.sendRedirect("c_Communityview.jsp?cvo=cvo");
 		}else {
 			System.out.println("댓글 작성 실패!");
-			response.sendRedirect("c_Comminity.jsp");
+			response.sendRedirect("c_Community.jsp");
 		}
 			
 			

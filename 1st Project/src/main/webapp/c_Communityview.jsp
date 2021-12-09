@@ -3,6 +3,7 @@
     pageEncoding="EUC-KR"%>
 <%@ page import="Model.CommunityVO"%>
 <%@page import="Model.DAO"%> 
+<%@ page import="Model.Community_commentVO"%>
 <%@page import="java.util.ArrayList"%> 
 <!DOCTYPE html>
 <html>
@@ -40,6 +41,7 @@ if (session.getAttribute("vo") != null){
 CommunityVO cvo = (CommunityVO)session.getAttribute("cvo");
 DAO dao = new DAO();
 ArrayList<CommunityVO> arr = dao.Community();
+Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 %>
 				
 			<div id = "board">
@@ -82,7 +84,11 @@ ArrayList<CommunityVO> arr = dao.Community();
 					<input type="text" name="C_comment" id="C_comment" >
 					<input type="submit" value="댓글 작성">
 					</form>
-					
+					<%-- <%if (cmvo !=null){
+						for(int i=0;i<arr.size();i++){%>
+						<%}%>
+					<%}%> --%>
+						
 					<%-- <%if(vo != null){
 						if (vo.getM_id()==cvo.getWriter()) {%> --%>
 						<a href="c_Communitychange?num=<%=cvo.getC_seq()%>"><button>수정하기</button></a></td>
