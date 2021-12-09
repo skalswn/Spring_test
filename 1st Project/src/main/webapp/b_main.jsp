@@ -44,7 +44,7 @@
             position: absolute;
             opacity : 0;
             top : -30px;
-            left : 120px;
+            left : 150px;
             font-size : 45px;
             transition: 0.5s;
         } 
