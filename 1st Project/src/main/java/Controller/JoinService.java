@@ -31,18 +31,16 @@ public class JoinService extends HttpServlet {
 		String m_gender = request.getParameter("gender");
 		String m_birthdate = request.getParameter("birthdate");
 		String m_memo = request.getParameter("memo");
-		String m_joindate = request.getParameter("joindate");
-		String admin_yn = request.getParameter("admin_yn");
 		
 		DAO dao = new DAO();
-		int cnt = dao.Join(m_id, m_pw, m_email, m_name, m_nick, m_gender, m_birthdate, m_memo, m_joindate, admin_yn);
+		int cnt = dao.Join(m_id, m_pw, m_email, m_name, m_nick, m_gender, m_birthdate, m_memo);
 
 		try {
 		if (cnt > 0) {
 			System.out.println("회원가입 성공");
 
 			MemberVO vo;
-				vo = new MemberVO(m_id, m_pw, m_email, m_name, m_nick, m_gender, m_birthdate, m_memo, m_joindate, admin_yn);
+				vo = new MemberVO(m_id, m_pw, m_email, m_name, m_nick, m_gender, m_birthdate, m_memo);
 
 			if (vo != null) {
 				request.setAttribute("vo", vo);

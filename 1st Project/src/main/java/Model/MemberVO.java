@@ -1,5 +1,6 @@
 package Model;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,6 +48,19 @@ public class MemberVO {
 		this.m_joindate = m_joindate;
 		this.admin_yn = admin_yn;
 	}
+	public MemberVO(String m_id, String m_pw, String m_email, String m_name, String m_nick, String m_gender,
+			String m_birthdate, String m_memo) throws ParseException {
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-mm-dd");
+		this.m_birthdate = transFormat.parse(m_birthdate);
+		this.m_id = m_id;
+		this.m_pw = m_pw;
+		this.m_email = m_email;
+		this.m_name = m_name;
+		this.m_nick = m_nick;
+		this.m_gender = m_gender;
+		this.m_memo = m_memo;
+	}
+
 	public String getM_id() {
 		return m_id;
 	}
