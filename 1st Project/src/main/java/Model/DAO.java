@@ -375,9 +375,9 @@ public class DAO {
 	}
 
 // 단계별학습 문제 보여주기====================================================================================
-	public ArrayList ShowAllCoding(String lang) {
+	public ArrayList<CodingVO> ShowAllCoding(String lang) {
 		
-		ArrayList<CodingVO> codingarray = new ArrayList<>();
+		ArrayList<CodingVO> codingarray = new ArrayList<CodingVO>();
 		
 		try {
 			connection();
@@ -405,7 +405,6 @@ public class DAO {
 				
 				//vo를 다시 배열에 넣기
 				codingarray.add(codingvo);
-
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

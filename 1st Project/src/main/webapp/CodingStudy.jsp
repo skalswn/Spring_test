@@ -1,3 +1,4 @@
+<%@page import="Model.DAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.CodingVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -26,8 +27,10 @@
 </head>
 <body>
 <%
- ArrayList<CodingVO> codingarray = (ArrayList<CodingVO>)request.getAttribute("codingarray");
-CodingVO vo = null;
+ArrayList<CodingVO> codingarray=(ArrayList<CodingVO>)request.getAttribute("codingarray"); 
+DAO dao = new DAO();
+/* ArrayList<CodingVO> codingarray = dao.ShowAllCoding(); */
+CodingVO vo=null;
 %>
 	<form action="ShowCoding" method="post">
 		ÆÄÀÌ½ã<input type="radio" name="lang" value="ÆÄÀÌ½ã">

@@ -25,18 +25,16 @@ public class ShowCoding extends HttpServlet {
 		
 		request.setCharacterEncoding("euc-kr");
 		String lang = request.getParameter("lang");
-//		String lang = "파이썬";
 		DAO dao = new DAO();
 				
-		ArrayList codingarray = dao.ShowAllCoding(lang);
+		ArrayList<CodingVO> codingarray = dao.ShowAllCoding(lang);
 		
 		if(codingarray!=null) {
 			System.out.println("문제나오기성공");
 			
 			RequestDispatcher rd = request.getRequestDispatcher("CodingStudy.jsp");
 			
-			request.setAttribute("codingarray", codingarray);
-			
+			request.setAttribute("codingarray", codingarray); 
 			rd.forward(request, response);
 		}
 		else {

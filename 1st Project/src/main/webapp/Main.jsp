@@ -38,7 +38,6 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 out.print(vo);
 
 
-
 %>
    
   <!--header-->
@@ -409,3 +408,6 @@ out.print(vo);
     </script>
 </body>
 </html>
+
+
+
