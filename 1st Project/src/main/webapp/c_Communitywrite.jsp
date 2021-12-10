@@ -1,3 +1,4 @@
+<%@page import="Model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 
@@ -22,11 +23,14 @@
 <div>
 <%//C:\Users\smhrd\OneDrive\바탕 화면\Web_Study\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps %>
 <%
-		String userID = "doflsld";
-		if(session.getAttribute("userID") != null){
-			userID = (String)session.getAttribute("userID");
-		}	
-%>
+MemberVO vo =null;
+if(session.getAttribute("vo") != null){
+	vo = (MemberVO)session.getAttribute("vo");
+	String userID =vo.getM_id();
+}else{%>
+	Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
+	Response.Write("<script>location.href='Main.jsp';</script>");
+<%}%>
 				<form action="c_Communitywrite" method="post" enctype="multipart/form-data" >
 				
 				<table id="list">

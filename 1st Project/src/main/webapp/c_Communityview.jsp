@@ -59,9 +59,9 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 					<%if(cvo.getFile1() !=null && cvo.getFile2() !=null && cvo.getFile3() !=null) { %>
 					<tr>
 						<td colspan="2">
-							<img src="./IMAGES/<%=cvo.getFile1() %>">
-							<img src="./IMAGES/<%=cvo.getFile2() %>">
-							<img src="./IMAGES/<%=cvo.getFile3() %>">
+							<img src="./images/<%=cvo.getFile1() %>">
+							<img src="./images/<%=cvo.getFile2() %>">
+							<img src="./images/<%=cvo.getFile3() %>">
 						</td>
 					</tr>
 					<%}else if(cvo.getFile1() !=null && cvo.getFile2() !=null){ %>
@@ -74,7 +74,7 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 					<%}else if(cvo.getFile1() !=null){ %>
 					<tr>
 						<td colspan="2">
-							<img src="images/<%=cvo.getFile1() %>">
+							<img src="./images/<%=cvo.getFile1() %>">
 						</td>
 					</tr>
 					<%}%>
@@ -98,12 +98,12 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 						<%}%>
 					<%}%> --%>
 						
-					<%-- <%if(vo != null){
-						if (vo.getM_id()==cvo.getWriter()) {%> --%>
+					<%if(vo != null){
+						if (vo.getM_id()==cvo.getWriter()) {%>
 						<a href="c_Communitychange.jsp?num=<%=cvo.getC_seq()%>"><button>수정하기</button></a></td>
 						<a href="c_Communitydelete?num=<%=cvo.getC_seq()%>"><button>삭제하기</button></a></td>
-					<%-- 	<%}
-					}%>--%>
+					<%}
+					}%>
 					<a href="c_Community.jsp"><button>뒤로가기</button></a></td>				
 			</div>
 			<!-- Scripts -->

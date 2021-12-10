@@ -36,8 +36,8 @@
 <%	
 MemberVO vo = null;
 DAO dao = new DAO();
-s_CommunityVO cvo = (s_CommunityVO)session.getAttribute("cvo");
-ArrayList<s_Community_commentVO> cm_arr = dao.s_cm_Community(cvo.getSTUDY_SEQ());
+s_CommunityVO scvo = (s_CommunityVO)session.getAttribute("scvo");
+ArrayList<s_Community_commentVO> cm_arr = dao.s_cm_Community(scvo.getSTUDY_SEQ());
 if (session.getAttribute("vo") != null){
 	vo = (MemberVO)session.getAttribute("vo");
 }
@@ -49,25 +49,25 @@ System.out.print(cm_arr);
 			<div id = "board">
 				<table id="list">
 					<tr>
-						<td>제목 : <%=cvo.getSTUDY_SUBJECT() %></td>
-						<td>언어 : <%=cvo.getSTUDY_LANG() %></td>
+						<td>제목 : <%=scvo.getSTUDY_SUBJECT() %></td>
+						<td>언어 : <%=scvo.getSTUDY_LANG() %></td>
 					</tr>
 					<tr>
-						<td>작성자 : <%=cvo.getM_ID() %></td>
+						<td>작성자 : <%=scvo.getM_ID() %></td>
 					</tr>
 					<tr>
-						<td colspan="2" class="content"><%=cvo.getSTUDY_CONTENT() %></td>
+						<td colspan="2" class="content"><%=scvo.getSTUDY_CONTENT() %></td>
 					</tr>
-					<%if(cvo.getSTUDY_FILE1() !=null) { %>
+					<%if(scvo.getSTUDY_FILE1() !=null) { %>
 					<tr>
 						<td colspan="2">
-							<img src="./IMAGES/<%=cvo.getSTUDY_FILE1() %>">
+							<img src="./images/<%=scvo.getSTUDY_FILE1() %>">
 						</td>
 					</tr>
 					<%}%>
 					</table>
 					<form action="s_c_Comment">
-					<input value="<%=cvo.getSTUDY_SEQ()%>" name="num" style="display:none">
+					<input value="<%=scvo.getSTUDY_SEQ()%>" name="num" style="display:none">
 					<input type="text" name="C_comment" id="C_comment" >
 					<input type="submit" value="댓글 작성">
 					</form>
@@ -84,12 +84,12 @@ System.out.print(cm_arr);
 						<%}%>
 					<%}%> --%>
 						
-					<%-- <%if(vo != null){
-						if (vo.getM_id()==cvo.getWriter()) {%> --%>
-						<a href="s_c_Communitychange?num=<%=cvo.getSTUDY_SEQ()%>"><button>수정하기</button></a></td>
-						<a href="s_c_Communitydelete?num=<%=cvo.getSTUDY_SEQ()%>"><button>삭제하기</button></a></td>
-					<%-- 	<%}
-					}%>--%>
+					<%if(vo != null){
+						if (vo.getM_id()==scvo.getM_ID()) {%>
+						<a href="s_c_Communitychange?num=<%=scvo.getSTUDY_SEQ()%>"><button>수정하기</button></a></td>
+						<a href="s_c_Communitydelete?num=<%=scvo.getSTUDY_SEQ()%>"><button>삭제하기</button></a></td>
+					<%}
+					}%>
 					<a href="c_Study_Community.jsp"><button>뒤로가기</button></a></td>				
 			</div>
 			<!-- Scripts -->

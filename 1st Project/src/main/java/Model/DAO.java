@@ -11,8 +11,10 @@ import java.util.Date;
 
 public class DAO {
 	   CommunityVO bo=null;
+	   u_CommunityVO vo =null;
 	   s_CommunityVO svo =null;
 	   s_Community_commentVO scvo =null;
+	   u_Community_commentVO ucvo = null;
 	   Connection conn = null;   
 	   PreparedStatement psmt = null;
 	   ResultSet rs = null;
@@ -674,6 +676,164 @@ public class DAO {
      }
 	   return lognum; 
   }
+	public ArrayList<u_CommunityVO> u_Community() { 
+		ArrayList<u_CommunityVO> arr = new ArrayList<u_CommunityVO>(); 
+		connection();
+		 try{ 
+			 String sql = "select* from TBL_USED_MARKET order by USED_SEQ desc";
+			 psmt = conn.prepareStatement(sql);
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("USED_SEQ");
+			      String title = rs.getString("USED_SUBJECT");
+			      String content = rs.getString("USED_CONTENT");
+			      int price = rs.getInt("USED_PRICE");
+			      int c_cnt = rs.getInt("USED_CNT");
+			      String way = rs.getString("USED_TRADE");
+			      String how = rs.getString("USED_PAY");
+			      String date = rs.getString("REG_DATE");
+			      String writer = rs.getString("M_ID");
+			      String status = rs.getString("USED_STATUS");
+			      String file1 = rs.getString("FILE1");
+			      u_CommunityVO vo =new u_CommunityVO(c_seq, title, content,price,c_cnt,way,how,date,writer,status,file1);
+			      arr.add(vo);
+			 }
+			
+		 }catch(Exception e){
+			 e.printStackTrace(); 
+		 }finally{ 
+			 close(); 
+			 }
+		return arr;
+	 }
+
+	public int u_community_write(String title, String way, String writer, String status, String kinds, int price,
+			String content, String filename1) {
+		connection();  
+	 	try{
+		   String sql = "insert into TBL_USED_MARKET(USED_SEQ, USED_SUBJECT,USED_CONTENT,USED_PRICE,USED_TRADE,USED_PAY,M_ID,USED_STATUS,FILE1) values(TBL_USED_MARKET_SEQ.NEXTVAL,?,?,?,?,?,?,?,?)";
+		   psmt = conn.prepareStatement(sql);	 
+		   psmt.setString(1,title);
+		   psmt.setString(2,content);
+		   psmt.setInt(3,price);
+		   psmt.setString(4,way);
+		   psmt.setString(5,kinds);
+		   psmt.setString(6,writer);
+		   psmt.setString(7,status);
+		   psmt.setString(8,filename1);
+		   lognum = psmt.executeUpdate();
+		   if (lognum>0) {
+			   System.out.println("성공");
+		   }
+		      }catch(Exception e){
+		    	 System.out.println("실패");
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum;
+	}
+	public u_CommunityVO u_communityview(int num) {
+		connection();  
+	 	try{
+		   String sql = "select * from TBL_USED_MARKET where USED_SEQ=?";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   rs = psmt.executeQuery();
+		   if(rs.next() == true) {
+			   int c_seq = rs.getInt("USED_SEQ");
+			   String title = rs.getString("USED_SUBJECT");
+			   String content = rs.getString("USED_CONTENT");
+			   int price = rs.getInt("USED_PRICE");
+			   int cnt = rs.getInt("USED_CNT");
+			   String way = rs.getString("USED_TRADE");
+			   String kinds = rs.getString("USED_PAY");
+			   String date = rs.getString("REG_DATE");
+			   String writer = rs.getString("M_ID");
+			   String status = rs.getString("USED_STATUS");
+			   String filename1 = rs.getString("FILE1");
+		       vo = new u_CommunityVO(c_seq,title,content,price,cnt,way,kinds,date,writer,status,filename1);
+		      }
+		   String sql_seq = "update TBL_USED_MARKET set USED_CNT = TBL_USED_MARKET_cnt_SEQ.NEXTVAL where USED_SEQ=?";
+		   psmt = conn.prepareStatement(sql_seq);
+		   psmt.setInt(1,num);
+		   lognum = psmt.executeUpdate();
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return vo;
+	}
+	public ArrayList<u_Community_commentVO> u_cm_Community(int c_seq) { 
+		ArrayList<u_Community_commentVO> arr = new ArrayList<u_Community_commentVO>(); 
+		connection();
+		 try{ 
+			 String sql = "select* from TBL_MARKET_REPLY WHERE USED_SEQ=? order by REG_DATE desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setInt(1,c_seq);
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int cm_seq = rs.getInt("UM_SEQ");
+			      c_seq = rs.getInt("USED_SEQ");
+			      String content = rs.getString("UM_COMMENT");
+			      String day = rs.getString("REG_DATE");
+			      String writer = rs.getString("M_ID");
+			      u_Community_commentVO ucvo =new u_Community_commentVO(cm_seq, c_seq, content, day, writer);
+			      arr.add(ucvo);
+			 }
+			
+		 }catch(Exception e){
+			 e.printStackTrace(); 
+		 }finally{ 
+			 close(); 
+			 }
+		return arr;
+	 }
+
+	public int u_cm_write(int c_seq, String cm_content, String writer) {
+		connection();  
+	 	try{
+		   String sql = "insert into TBL_MARKET_REPLY(UM_SEQ, USED_SEQ,UM_COMMENT,M_ID) values(TBL_MARKET_REPLY_SEQ.NEXTVAL, ?,?,?)";
+		   psmt = conn.prepareStatement(sql);	 
+		   psmt.setInt(1,c_seq);
+		   psmt.setString(2,cm_content);
+		   psmt.setString(3,writer);
+		   lognum = psmt.executeUpdate();
+		   if (lognum>0) {
+			   System.out.println("성공");
+		   }
+		      }catch(Exception e){
+		    	 System.out.println("실패");
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum; 
+  }
+
+	public int u_communitydelete(int num) {
+		connection();  
+	 	try{
+	 	   String sql0 = "delete from TBL_MARKET_REPLY where USED_SEQ=?";
+		   psmt = conn.prepareStatement(sql0);
+			   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   lognum = psmt.executeUpdate();
+		   String sql = "delete from TBL_USED_MARKET where USED_SEQ=?";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   lognum = psmt.executeUpdate();
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum;	   
+}
+
 }
 
 

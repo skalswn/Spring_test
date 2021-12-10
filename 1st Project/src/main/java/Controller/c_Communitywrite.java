@@ -18,23 +18,22 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 
 import Model.DAO;
+import Model.MemberVO;
 @WebServlet("/c_Communitywrite")
 public class c_Communitywrite extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		File file = new File("C:\\Users\\smhrd\\OneDrive\\바탕 화면\\Web_Study\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\1st Project\\images");
+		File file = new File("C:/Users/smhrd/git/PSIT/1st Project/src/main/webapp/images");
 		if(file.exists()) {
 			System.out.println("해당 파일 확인");
 		}else { 
 			file.mkdir(); System.out.println("해당 파일 없음."); 
 		}
 		HttpSession session = request.getSession();
-		String userID = "doflsld";
-		if(session.getAttribute("userID") != null){
-			userID = (String)session.getAttribute("userID");
-		}
-		String savePath = request.getServletContext().getRealPath("IMAGES");
+		MemberVO vo = (MemberVO)session.getAttribute("vo");
+		String userID =vo.getM_id();
+		String savePath = "C:/Users/smhrd/git/PSIT/1st Project/src/main/webapp/images";
 		int maxSize =5*1024*1024;
 		String encoding = "euc-kr";
 		MultipartRequest multi = new MultipartRequest(request,savePath,maxSize,encoding,new DefaultFileRenamePolicy());

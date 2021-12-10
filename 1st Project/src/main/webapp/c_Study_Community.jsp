@@ -39,7 +39,7 @@
 											<h3>다른 커뮤니티로 이동하기</h3>
 											<ul class="links">
 												<li><a href="c_Study_Community.jsp">스터디 커뮤니티</a></li>
-												<li><a href="c_Used_Market">중고거래 커뮤니티</a></li>
+												<li><a href="c_Used_Community.jsp">중고거래 커뮤니티</a></li>
 											</ul>
 										</section>
 
@@ -52,7 +52,10 @@
 
 										<article>
 <%
-s_CommunityVO cvo = (s_CommunityVO)session.getAttribute("cvo");
+s_CommunityVO scvo = null;
+if(session.getAttribute("cvo") !=null){
+	scvo = (s_CommunityVO)session.getAttribute("scvo");
+}
 DAO dao = new DAO();
 ArrayList<s_CommunityVO> arr = dao.s_Community();
 %>										
