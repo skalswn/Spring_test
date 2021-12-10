@@ -246,7 +246,7 @@ public class DAO {
 		   return lognum; 
 	}
 	public int communitydelete(int num) {
-		 connection();  
+		connection();  
 		 	try{
 		 	   String sql0 = "delete from TBL_COMMUNITY_REPLY where article_seq=?";
 			   psmt = conn.prepareStatement(sql0);
@@ -264,7 +264,7 @@ public class DAO {
 			        close();
 	     }
 		   return lognum;	   
-	}
+	} 
 	public int cm_write(int c_seq, String cm_content, String writer) {
 		connection();  
 	 	try{
@@ -413,5 +413,25 @@ public class DAO {
 		        close();
      }
 	   return svo;
-	} 
+	}
+	public int s_communitydelete(int num) {
+		connection();  
+	 	try{
+	 	   String sql0 = "delete from TBL_STUDY_COMMENT where STUDY_SEQ=?";
+		   psmt = conn.prepareStatement(sql0);
+			   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   lognum = psmt.executeUpdate();
+		   String sql = "delete from TBL_STUDY where STUDY_SEQ=?";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   lognum = psmt.executeUpdate();
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum;	   
+} 
 }

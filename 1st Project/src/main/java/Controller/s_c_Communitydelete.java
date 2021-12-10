@@ -20,18 +20,18 @@ public class s_c_Communitydelete extends HttpServlet {
 		}
 		DAO dao=new DAO();
 		if (num == 0) {
-			System.out.println("게시판접근차단");
+			System.out.println("공부게시판접근차단");
 		}else {
-			System.out.println("게시판 접근 성공");
+			System.out.println("공부게시판 접근 성공");
 			System.out.println(num);
 		}
-		int lognum = dao.communitydelete(num);
+		int lognum = dao.s_communitydelete(num);
 		 if (lognum>0){
-			 System.out.println("삭제성공");
-	         response.sendRedirect("c_Community.jsp");
+			 System.out.println("S_삭제");
+	         response.sendRedirect("c_Study_Community.jsp");
 		}else{
 			System.out.println("삭제실패");
-			response.sendRedirect("c_Community.jsp");
+			response.sendRedirect("c_Study_Community.jsp");
 		} 
    }
 	
