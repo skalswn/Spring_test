@@ -15,13 +15,11 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import Model.DAO;
-
-@WebServlet("/c_Communitychange")
-public class c_Communitychange extends HttpServlet {
+@WebServlet("/u_c_Comment")
+public class u_c_Communitychange extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println(request.getServletContext().getRealPath("IMAGES"));
+		System.out.println(request.getServletContext().getRealPath("images"));
 		File file = new File("images"); //상대경로(class파일과 동일한 폴더) 
 		if(file.exists()) {
 			System.out.println("getPath : "+file.getPath());//상대경로
