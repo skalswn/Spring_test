@@ -43,13 +43,14 @@ https://templatemo.com/tm-557-grad-school
     <nav id="menu" class="main-nav" role="navigation">
       <ul class="main-menu">
         <li><a href="Main.jsp">Home</a></li>
-				 <li class="has-submenu"><a href="">About IT</a>
+				<!-- 굳이 보여줄 필요X -->
+				<!--  <li class="has-submenu"><a href="">About IT</a>
 					<ul class="sub-menu">
-						<li><a href="#section2">IT란?</a></li>
+						<li><a href="Main.jsp#section2">IT란?</a></li>
 						<li><a href="#section4">IT직무</a></li>
 						<li><a href="#section3">IT전망</a></li>
 						<li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li>
-					</ul></li>
+					</ul></li> -->
 				<%
 				if (vo != null) {
 				%>
