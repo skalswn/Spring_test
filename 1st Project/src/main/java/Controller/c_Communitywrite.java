@@ -23,16 +23,12 @@ public class c_Communitywrite extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		System.out.println(request.getServletContext().getRealPath("images"));
-		File file = new File("images"); //상대경로(class파일과 동일한 폴더) 
+		File file = new File("C:\\Users\\smhrd\\OneDrive\\바탕 화면\\Web_Study\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\1st Project\\images");
 		if(file.exists()) {
-		System.out.println("getPath : "+file.getPath());//상대경로
-		System.out.println("getAbsolutePath : "+file.getAbsolutePath());//절대경로 
+			System.out.println("해당 파일 확인");
 		}else { 
 			file.mkdir(); System.out.println("해당 파일 없음."); 
 		}
-		 
 		HttpSession session = request.getSession();
 		String userID = "doflsld";
 		if(session.getAttribute("userID") != null){

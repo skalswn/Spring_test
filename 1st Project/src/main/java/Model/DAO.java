@@ -337,7 +337,7 @@ public class DAO {
 	}
 
 	public int Update(String m_id, String m_pw, String m_email, String m_name, String m_nick, String m_gender,
-			String m_birthdate, String m_memo) {
+		String m_memo) {
 		
 	    	   Connection conn = null;
 	    	    PreparedStatement psmt = null;
@@ -353,14 +353,14 @@ public class DAO {
 	    	       Class.forName("oracle.jdbc.driver.OracleDriver");
 	    	       
 	    	       // 2. 연결객체 생성
-	    	       String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	    	       String url = "jdbc:oracle:thin:@172.30.1.19:1521:xe";
 	    	       String dbid = "hr";
 	    	       String dbpw = "hr";
 	    	       
 	    	       conn = DriverManager.getConnection(url, dbid, dbpw);
 	    	       
 	    	       // 3. sql문 준비
-	    	       String sql = "update web_member set m_pw = ?, m_email =?, m_name=?,m_nick=?,m_gender=?,m_birthdate=?,m_memo=? where m_id = ?,";
+	    	       String sql = "update tbl_member set m_pw = ?, m_email =?, m_name=?, m_nick=?, m_gender=?, m_memo=? where m_id = ?";
 	    	       psmt = conn.prepareStatement(sql);
 	    	       
 	    	       // 4. 바인드 변수 채우기
@@ -369,8 +369,7 @@ public class DAO {
 	    	       psmt.setString(3, m_name);
 	    	       psmt.setString(4, m_nick);
 	    	       psmt.setString(5, m_gender);
-	    	       psmt.setString(6, m_birthdate);
-	    	       psmt.setString(7, m_memo);
+	    	       psmt.setString(6, m_memo);
 	    	       
 	    	       
 	    	       // 5. 실행
@@ -433,9 +432,9 @@ public class DAO {
 		   String sql = "insert into TBL_STUDY(STUDY_SEQ, STUDY_SUBJECT,STUDY_CONTENT,STUDY_LANG,M_ID,STUDY_FILE1) values(TBL_STUDY_SEQ.NEXTVAL, ?,?,?,?,?)";
 		   psmt = conn.prepareStatement(sql);	 
 		   psmt.setString(1,title);
-		   psmt.setString(2,writer);
+		   psmt.setString(2,content);
 		   psmt.setString(3,language);
-		   psmt.setString(4,content);
+		   psmt.setString(4,writer);
 		   psmt.setString(5,filename1);
 		   lognum = psmt.executeUpdate();
 		   if (lognum>0) {

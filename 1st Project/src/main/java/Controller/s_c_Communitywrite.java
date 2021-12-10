@@ -24,12 +24,13 @@ public class s_c_Communitywrite extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		  
-	System.out.println(request.getServletContext().getRealPath("images"));
-		/* * File file = new File("images"); //상대경로(class파일과 동일한 폴더) if(file.exists()) {
-		 * System.out.println("getPath : "+file.getPath());//상대경로
-		 * System.out.println("getAbsolutePath : "+file.getAbsolutePath());//절대경로 }else
-		 * { file.mkdir(); System.out.println("해당 파일 없음."); }
-		 */
+	
+		File file = new File("C:\\Users\\smhrd\\OneDrive\\바탕 화면\\Web_Study\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\1st Project\\images"); //상대경로(class파일과 동일한 폴더) 
+		if(file.exists()) {
+			System.out.println("해당 파일 확인");
+		}else{ 
+			file.mkdir(); System.out.println("해당 파일 없음.");
+		}
 		HttpSession session = request.getSession();
 		String userID = "doflsld";
 		if(session.getAttribute("userID") != null){
@@ -41,7 +42,6 @@ public class s_c_Communitywrite extends HttpServlet {
 		MultipartRequest multi = new MultipartRequest(request,savePath,maxSize,encoding,new DefaultFileRenamePolicy());
 		String title = multi.getParameter("title");
 		String language = multi.getParameter("language");
-		System.out.println(language);
 		String writer= userID;
 		String content = multi.getParameter("content");
 		String filename1 = "none.png";
