@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import Model.CommunityVO;
-import Model.Community_commentVO;
+import Model.s_CommunityVO;
+import Model.s_Community_commentVO;
 import Model.DAO;
 @WebServlet("/s_c_Comment")
 public class s_c_Comment extends HttpServlet {
@@ -25,19 +25,19 @@ public class s_c_Comment extends HttpServlet {
 		if(session.getAttribute("userID") != null){
 			userID = (String)session.getAttribute("userID");
 		}
-		CommunityVO cvo = (CommunityVO)session.getAttribute("cvo");
+		s_CommunityVO cvo = (s_CommunityVO)session.getAttribute("cvo");
 		request.setCharacterEncoding("euc-kr");
 		DAO dao=new DAO();
 		int c_seq=Integer.parseInt(request.getParameter("num"));
 		String cm_content=request.getParameter("C_comment");
 		String writer=userID;
-		int lognum = dao.cm_write(c_seq,cm_content,writer);
+		int lognum = dao.s_cm_write(c_seq,cm_content,writer);
 		if (lognum>0) {
 			System.out.println("댓글 작성 성공!");
-			response.sendRedirect("c_Communityview.jsp?cvo=cvo");
+			response.sendRedirect("c_Study_Communityview.jsp?cvo=cvo");
 		}else {
 			System.out.println("댓글 작성 실패!");
-			response.sendRedirect("c_Community.jsp");
+			response.sendRedirect("c_Study_Community.jsp");
 		}
 			
 			

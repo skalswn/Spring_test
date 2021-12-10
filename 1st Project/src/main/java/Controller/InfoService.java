@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import Model.DAO;
 import Model.MemberVO;
 
-@WebServlet("/Info_edit")
+@WebServlet("/InfoService")
 public class InfoService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,16 +33,15 @@ public class InfoService extends HttpServlet {
 		String m_name = request.getParameter("name");
 		String m_nick = request.getParameter("nick");
 		String m_gender = request.getParameter("gender");
-		String m_birthdate = request.getParameter("birthdate");
 		String m_memo = request.getParameter("memo");
 		
 		DAO dao = new DAO();
-		int cnt = dao.Update(m_id, m_pw, m_email, m_name, m_nick, m_gender, m_birthdate, m_memo);
+		int cnt = dao.Update(m_id, m_pw, m_email, m_name, m_nick, m_gender, m_memo);
 
 		
 		if (cnt > 0) {
 			System.out.println("수정성공");
-			session.setAttribute("vo",new MemberVO(m_pw, m_email, m_name, m_nick, m_gender, m_birthdate,m_memo));
+			session.setAttribute("vo",new MemberVO(m_id, m_pw, m_email, m_name, m_nick, m_gender,m_memo));
 		
 		} else {
 			 System.out.println("수정 실패");

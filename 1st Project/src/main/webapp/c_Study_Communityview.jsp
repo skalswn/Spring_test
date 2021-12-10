@@ -3,7 +3,7 @@
     pageEncoding="EUC-KR"%>
 <%@ page import="Model.s_CommunityVO"%>
 <%@page import="Model.DAO"%> 
-<%@ page import="Model.Community_commentVO"%>
+<%@ page import="Model.s_Community_commentVO"%>
 <%@page import="java.util.ArrayList"%> 
 <!DOCTYPE html>
 <html>
@@ -37,12 +37,12 @@
 MemberVO vo = null;
 DAO dao = new DAO();
 s_CommunityVO cvo = (s_CommunityVO)session.getAttribute("cvo");
-ArrayList<Community_commentVO> cm_arr = dao.cm_Community(cvo.getSTUDY_SEQ());
+ArrayList<s_Community_commentVO> cm_arr = dao.s_cm_Community(cvo.getSTUDY_SEQ());
 if (session.getAttribute("vo") != null){
 	vo = (MemberVO)session.getAttribute("vo");
 }
 ArrayList<s_CommunityVO> arr = dao.s_Community();
-Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
+s_Community_commentVO cmvo = (s_Community_commentVO)session.getAttribute("cmvo");
 System.out.print(cm_arr);
 %>
 				
@@ -61,7 +61,7 @@ System.out.print(cm_arr);
 					<%if(cvo.getSTUDY_FILE1() !=null) { %>
 					<tr>
 						<td colspan="2">
-							<img src="./images/<%=cvo.getSTUDY_FILE1() %>">
+							<img src="./IMAGES/<%=cvo.getSTUDY_FILE1() %>">
 						</td>
 					</tr>
 					<%}%>
@@ -73,8 +73,8 @@ System.out.print(cm_arr);
 					</form>
 					<%if (cm_arr != null){%>
 						<%for(int i=0;i<cm_arr.size();i++){%>
-						<span><%=cm_arr.get(i).getC_writer()%> : </span>
-						<span><%=cm_arr.get(i).getContent()%></span>
+						<span><%=cm_arr.get(i).getM_ID()%> : </span>
+						<span><%=cm_arr.get(i).getC_STUDY_CONTENT()%></span>
 						<br>
 					</tr> 	
 					<% }%>
