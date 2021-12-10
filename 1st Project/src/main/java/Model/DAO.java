@@ -415,57 +415,9 @@ public class DAO {
 		return codingarray;
 	}
 	
-	
+// =====================================================================================================
 	
 // ===============================================
-/* public CodingVO Showcoding_q(String id, String lang) {
-	try {
-		
-		connection();
-		
-		String sql = "select * from tbl_coding where coding_lang =?";
-		psmt = conn.prepareStatement(sql);
-		
-		psmt.setString(1, lang);
-
-		rs = psmt.executeQuery();
-
-		if (rs.next() == true) {
-			System.out.println("¼º°ø");
-
-			int coding_seq = rs.getInt(1);
-			String coding_lang = rs.getString(2);
-			String coding_q = rs.getString(3);
-			String coding_a = rs.getString(4);
-			int coding_cnt = rs.getInt(5);
-			int likes = rs.getInt(6);
-			String reg_date = rs.getString(7);
-			String m_id = rs.getString(8);
-
-			codingvo = new CodingVO(coding_seq, coding_lang, coding_q, coding_a, coding_cnt, likes, reg_date, m_id);
-		}
-		
-	} catch (Exception e) {
-		e.printStackTrace();
-	} finally {
-		try {
-			if (rs != null) {
-				rs.close();
-			}
-			if (psmt != null) {
-				psmt.close();
-			}
-			if (conn != null) {
-				conn.close();
-			}
-		} catch (Exception e) {
-
-		}
-	}
-
-	return codingvo;
-}
-	*/
 	public int community_change(String title, String content, String filename1, String filename2,
 			String filename3, int num) {
 		 connection();  

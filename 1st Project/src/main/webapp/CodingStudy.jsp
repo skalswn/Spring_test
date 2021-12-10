@@ -33,6 +33,11 @@ CodingVO vo = null;
 		파이썬<input type="radio" name="lang" value="파이썬">
 		<input type="submit">
     </form>
+    
+    <form action="ShowAnswer" methos="post">
+    
+    
+    </form>
 	<div id="c">학습내용</div>
 	<div id="c">
 	</div>
