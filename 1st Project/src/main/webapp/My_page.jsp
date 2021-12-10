@@ -37,7 +37,7 @@ https://templatemo.com/tm-557-grad-school
    <!--header-->
   <header class="main-header clearfix" role="header">
     <div class="logo">
-      <a href="#"><em>Welcome</em> PSIT</a>
+      <a href="Main.jsp"><em>Welcome</em> PSIT</a>
     </div>
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
@@ -72,52 +72,56 @@ https://templatemo.com/tm-557-grad-school
     </nav>
   </header>
 
-  <section class="section coming-soon" data-section="section3">
+		<!-- Wrapper -->
+			 <section class="section coming-soon" data-section="section3">
     <div class="container">
-      <div id="joinform">
+      <div id="InfoUpdate">
         <div class="col-md-5">
           <div class="right-content">
-            <form id="contact" action="Info_edit" method="post" align="center">
+							<li><h5>회원정보수정</h5></li>
+				<form id="contact" action="InfoService" method="post" align="center">
 					<div class="row">
 						<div class="col-md-12">
-							<fieldset>
-								<h4>Edition</h4>
+						<fieldset>
+								<h4>Information Update</h4>
 							</fieldset>
+							<fieldset>
+								<li>이용자 ID : <%=vo.getM_id()%></li>
+							</fieldset>
+
 						</div>
 						<div class="col-md-12">
 							<fieldset>
-								<input name="pw" type="text" class="form-control" id="pw"
+								<input name="pw" type="password" class="form-control" id="pw"
 									placeholder="패스워드를 입력하세요" required="">
 							</fieldset>
-							
 						</div>
 						<div class="col-md-12">
 							<fieldset>
 								<input name="email" type="text" class="form-control" id="email"
-									placeholder="Email을 수정하세요" required="">
+									placeholder="Email을 입력하세요" required="">
 							</fieldset>
 						</div>
-
+						<div class="col-md-12">
+							<fieldset>
+								<input name="name" type="text" class="form-control" id="name"
+									placeholder="이름을 입력하세요" required="">
+							</fieldset>
+						</div>
 						<div class="col-md-12">
 							<fieldset>
 								<input name="nick" type="text" class="form-control" id="nick"
-									placeholder="닉네임을 수정하세요" required="">
+									placeholder="닉네임을 입력하세요" required="">
 							</fieldset>
 						</div>
-						<div class="col-md-12">
-								남 <input name="gender" type="radio" class="form-control" id="gender" value="M"> 
-								여 <input name="gender" type="radio" class="form-control" id="gender" value="W">
+						<div class="genderinput">
+							남 <input name="gender" type="radio" class="form-control"
+								id="gender" value="M"> 여 <input name="gender"
+								type="radio" class="form-control" id="gender" value="W">
 						</div>
 						<div class="col-md-12">
 							<fieldset>
-								<input name="birthdate" type="date" class="form-control"
-									id="birthdate">
-							</fieldset>
-						</div>
-						<div class="col-md-12">
-							<fieldset>
-								MEMO<br>
-								<br>
+								MEMO<br> <br>
 								<textarea cols="20" rows="5"></textarea>
 							</fieldset>
 						</div>
@@ -129,11 +133,10 @@ https://templatemo.com/tm-557-grad-school
 						</div>
 					</div>
 				</form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
+			</ul>
+					</nav>			
+			</div>
 
   <footer>
     <div class="container">
@@ -164,53 +167,7 @@ https://templatemo.com/tm-557-grad-school
     <script src="assets/js/custom.js"></script>
     <script>
         //according to loftblog tut
-        $('.nav li:first').addClass('active');
-
-        var showSection = function showSection(section, isAnimate) {
-          var
-          direction = section.replace(/#/, ''),
-          reqSection = $('.section').filter('[data-section="' + direction + '"]'),
-          reqSectionPos = reqSection.offset().top - 0;
-
-          if (isAnimate) {
-            $('body, html').animate({
-              scrollTop: reqSectionPos },
-            800);
-          } else {
-            $('body, html').scrollTop(reqSectionPos);
-          }
-
-        };
-
-        var checkSection = function checkSection() {
-          $('.section').each(function () {
-            var
-            $this = $(this),
-            topEdge = $this.offset().top - 80,
-            bottomEdge = topEdge + $this.height(),
-            wScroll = $(window).scrollTop();
-            if (topEdge < wScroll && bottomEdge > wScroll) {
-              var
-              currentId = $this.data('section'),
-              reqLink = $('a').filter('[href*=\\#' + currentId + ']');
-              reqLink.closest('li').addClass('active').
-              siblings().removeClass('active');
-            }
-          });
-        };
-
-        $('.main-menu > nav, .scroll-to-section').on('click', 'a', function (e) {
-            if($(e.target).hasClass('external')) {
-              return;
-            }
-          e.preventDefault();
-          $('#menu').removeClass('active');
-          showSection($(this).attr('href'), true);
-        });
-
-        $(window).scroll(function () {
-          checkSection();
-        });
+       
     </script>
 </body>
 </html>

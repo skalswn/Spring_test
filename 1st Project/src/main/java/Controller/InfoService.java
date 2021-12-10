@@ -11,19 +11,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Model.DAO;
 import Model.MemberVO;
 
 @WebServlet("/Info_edit")
-public class Info_edit extends HttpServlet {
+public class InfoService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
 		request.setCharacterEncoding("euc-kr");
 		
-		String m_id = request.getParameter("id");
+		HttpSession session = request.getSession();
+		MemberVO vo = (MemberVO)session.getAttribute("vo");
+		
+		String m_id = vo.getM_id();
 		String m_pw = request.getParameter("pw");
 		String m_email = request.getParameter("email");
 		String m_name = request.getParameter("name");
@@ -33,29 +37,18 @@ public class Info_edit extends HttpServlet {
 		String m_memo = request.getParameter("memo");
 		
 		DAO dao = new DAO();
-		int cnt = dao.Join(m_id, m_pw, m_email, m_name, m_nick, m_gender, m_birthdate, m_memo);
+		int cnt = dao.Update(m_id, m_pw, m_email, m_name, m_nick, m_gender, m_birthdate, m_memo);
 
-		try {
-		if (cnt > 0) {
-			System.out.println("회원가입 성공");
-
-			MemberVO vo;
-				vo = new MemberVO(m_id, m_pw, m_email, m_name, m_nick, m_gender, m_birthdate, m_memo);
-
-			if (vo != null) {
-				request.setAttribute("vo", vo);
-				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
-				rd.forward(request, response);
-			}
-		} else {
-			System.out.println("회원가입 실패");
-		}
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-	
+		if (cnt > 0) {
+			System.out.println("수정성공");
+			session.setAttribute("vo",new MemberVO(m_pw, m_email, m_name, m_nick, m_gender, m_birthdate,m_memo));
+		
+		} else {
+			 System.out.println("수정 실패");
+		}
+		 response.sendRedirect("Main.jsp");
+				
 	}
 
 }

@@ -10,29 +10,23 @@ public class CodingVO {
 	private String coding_a;
 	private int coding_cnt;
 	private int likes;
-	private Date reg_date;
 	private String m_id;
 	
 	
 	//»ý¼ºÀÚ
-	public CodingVO(int coding_seq, String coding_lang, String coding_q, String coding_a, int coding_cnt, int likes,
-			Date reg_date, String m_id) {
+	public CodingVO(int coding_seq, String coding_lang, String coding_q, String coding_a, int coding_cnt, int likes, String m_id) {
 		this.coding_seq = coding_seq;
 		this.coding_lang = coding_lang;
 		this.coding_q = coding_q;
 		this.coding_a = coding_a;
 		this.coding_cnt = coding_cnt;
 		this.likes = likes;
-		this.reg_date = reg_date;
 		this.m_id = m_id;
 	}
 
 
-	public CodingVO(int coding_seq, String coding_lang, String coding_q, String coding_a) {
-		this.coding_seq = coding_seq;
-		this.coding_lang = coding_lang;
+	public CodingVO(String coding_q) {
 		this.coding_q = coding_q;
-		this.coding_a = coding_a;
 	}
 
 
@@ -111,15 +105,7 @@ public class CodingVO {
 
 
 
-	public Date getReg_date() {
-		return reg_date;
-	}
-
-
-
-	public void setReg_date(Date reg_date) {
-		this.reg_date = reg_date;
-	}
+	
 
 
 

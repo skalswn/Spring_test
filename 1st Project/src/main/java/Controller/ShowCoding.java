@@ -15,29 +15,33 @@ import Model.CodingVO;
 import Model.DAO;
 import Model.MemberVO;
 
-@WebServlet("/ShowStudy")
+@WebServlet("/ShowCoding")
 public class ShowCoding extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-//		HttpSession session = request.getSession();
-//		MemberVO vo = (MemberVO)session.getAttribute("vo");
-//		String id = vo.getM_id();
-		String id = "doflsld";
-//		String lang = request.getParameter("lang");
-		String lang = "파이썬";
+		
+//		언어선택 시 모든 문제 나오게 하기
+		
+		request.setCharacterEncoding("euc-kr");
+		String lang = request.getParameter("lang");
+//		String lang = "파이썬";
 		DAO dao = new DAO();
 				
-//		ArrayList<CodingVO> codingarray = new ArrayList<>();
-				
-		CodingVO vo = dao.Showcoidng_q(id, lang);
+		ArrayList codingarray = dao.ShowAllCoding(lang);
 		
-//		RequestDispatcher rd = request.getRequestDispatcher("CoingStudy.jsp");
-        
-//        request.setAttribute("codingvo", vo);
-        
-//        rd.forward(request, response);
+		if(codingarray!=null) {
+			System.out.println("문제나오기성공");
+			
+			RequestDispatcher rd = request.getRequestDispatcher("CodingStudy.jsp");
+			
+			request.setAttribute("codingarray", codingarray);
+			
+			rd.forward(request, response);
+		}
+		else {
+			System.out.println("문제나오기실패");
+		}
 				
 		}
 

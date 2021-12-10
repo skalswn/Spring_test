@@ -11,6 +11,8 @@ import java.util.Date;
 
 public class DAO {
 	   CommunityVO bo=null;
+	   s_CommunityVO svo =null;
+	   s_Community_commentVO scvo =null;
 	   Connection conn = null;   
 	   PreparedStatement psmt = null;
 	   ResultSet rs = null;
@@ -257,7 +259,7 @@ public class DAO {
 	
 // 자유게시판 글삭제========================================================================================	
 	public int communitydelete(int num) {
-		 connection();  
+		connection();  
 		 	try{
 		 	   String sql0 = "delete from TBL_COMMUNITY_REPLY where article_seq=?";
 			   psmt = conn.prepareStatement(sql0);
@@ -274,7 +276,7 @@ public class DAO {
 			      }finally{
 			        close();
 	     }
-		   return lognum;	   
+		   return lognum;
 	}
 	
 // 자유게시판 댓글쓰기========================================================================================
@@ -373,25 +375,20 @@ public class DAO {
 	}
 
 // 단계별학습 문제 보여주기====================================================================================
-	public ArrayList ShowCoding(String id, String lang) {
+	public ArrayList ShowAllCoding(String lang) {
 		
 		ArrayList<CodingVO> codingarray = new ArrayList<>();
 		
 		try {
-			
 			connection();
 			
-			String sql = "select coding_seq,coding_lang,coding_q,coding_a from tbl_coding where coding_lang = ? m_id = ?";
+			String sql = "select coding_q from tbl_coding where coding_lang = ?";
 			psmt = conn.prepareStatement(sql);
 			
 			psmt.setString(1, lang);
-			psmt.setString(2, id);
 
-			// 5. 실행
-			// select -> executeQuery() -> return ResultSet
-			// insert, delete, update -> executeUpdate() -> return int(몇 행이 성공했는지)
 			rs = psmt.executeQuery();
-
+			
 			while (rs.next() == true) {
 				System.out.println("성공");
 
@@ -399,57 +396,41 @@ public class DAO {
 				String coding_lang = rs.getString(2);
 				String coding_q = rs.getString(3);
 				String coding_a = rs.getString(4);
-//				int coding_cnt = rs.getInt(5);
-//				int likes = rs.getInt(6);
-//				String reg_date = rs.getString(7);
-//				String m_id = rs.getString(8);
+				int coding_cnt = rs.getInt(5);
+				int likes = rs.getInt(6);
+				String m_id = rs.getString(7);
 
-				CodingVO codingvo = new CodingVO(coding_seq, coding_lang, coding_q, coding_a);
-
+				//코딩문제만 다시 vo에 넣기 
+				CodingVO codingvo = new CodingVO(coding_q);
+				
+				//vo를 다시 배열에 넣기
 				codingarray.add(codingvo);
-
-				// rs.next() -> 한칸 내려가라는 뜻 : false(빈칸)이면 안내려간다
-				// 그래서 굳이 break문을 쓸 필요 없다!!
 
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				if (rs != null) {
-					rs.close();
-				}
-				if (psmt != null) {
-					psmt.close();
-				}
-				if (conn != null) {
-					conn.close();
-				}
-			} catch (Exception e) {
-
+				close();
 			}
-		}
-	
 		return codingarray;
 	}
 	
 	
 	
 // ===============================================
-	public CodingVO Showcoidng_q(String id, String lang) {
+/* public CodingVO Showcoding_q(String id, String lang) {
 	try {
 		
 		connection();
 		
-		String sql = "select * from tbl_coding where coding_lang = ? m_id = ?";
+		String sql = "select * from tbl_coding where coding_lang =?";
 		psmt = conn.prepareStatement(sql);
 		
 		psmt.setString(1, lang);
-		psmt.setString(2, id);
 
 		rs = psmt.executeQuery();
 
-		while (rs.next() == true) {
+		if (rs.next() == true) {
 			System.out.println("성공");
 
 			int coding_seq = rs.getInt(1);
@@ -461,7 +442,7 @@ public class DAO {
 			String reg_date = rs.getString(7);
 			String m_id = rs.getString(8);
 
-			codingvo = new CodingVO(coding_seq, coding_lang, coding_q, coding_a);
+			codingvo = new CodingVO(coding_seq, coding_lang, coding_q, coding_a, coding_cnt, likes, reg_date, m_id);
 		}
 		
 	} catch (Exception e) {
@@ -484,11 +465,7 @@ public class DAO {
 
 	return codingvo;
 }
-
-	
-	
-	
-	
+	*/
 	public int community_change(String title, String content, String filename1, String filename2,
 			String filename3, int num) {
 		 connection();  
@@ -514,5 +491,169 @@ public class DAO {
 		   return lognum;
 	   
 	}
-}
+
+	public int Update(String m_id, String m_pw, String m_email, String m_name, String m_nick, String m_gender,
+			String m_birthdate, String m_memo) {
 		
+	    	   Connection conn = null;
+	    	    PreparedStatement psmt = null;
+	    	    int cnt = 0;
+	    	    
+	    	    
+	    	    // try문
+	    	    // JDBC 코드는 문법이 맞더라도, 실행중에 발생하는 오류(런타임 오류) 처리 필요
+	    	    try {
+	    	       
+	    	       // JDBC
+	    	       // 1. 동적로딩
+	    	       Class.forName("oracle.jdbc.driver.OracleDriver");
+	    	       
+	    	       // 2. 연결객체 생성
+	    	       String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	    	       String dbid = "hr";
+	    	       String dbpw = "hr";
+	    	       
+	    	       conn = DriverManager.getConnection(url, dbid, dbpw);
+	    	       
+	    	       // 3. sql문 준비
+	    	       String sql = "update web_member set m_pw = ?, m_email =?, m_name=?,m_nick=?,m_gender=?,m_birthdate=?,m_memo=? where m_id = ?,";
+	    	       psmt = conn.prepareStatement(sql);
+	    	       
+	    	       // 4. 바인드 변수 채우기
+	    	       psmt.setString(1, m_pw);
+	    	       psmt.setString(2, m_email);
+	    	       psmt.setString(3, m_name);
+	    	       psmt.setString(4, m_nick);
+	    	       psmt.setString(5, m_gender);
+	    	       psmt.setString(6, m_birthdate);
+	    	       psmt.setString(7, m_memo);
+	    	       
+	    	       
+	    	       // 5. 실행
+	    	       // select -> executeQuery() --> return ResultSet
+	    	       // insert, delete, update -> executeUpdate() --> return int(몇 행이 성공했는지)
+	    	       cnt = psmt.executeUpdate();
+	    	       
+	    	    }  catch(Exception e){
+	   	         
+	    	       }
+	    	       finally{
+	    	          //jdbc 사용 후에는 닫아줘야함
+	    	          //닫아줄 때는 열었던 순서 반대!
+	    	          //열지 않았을 경우에는 닫을 필요 없음
+	    	          try {
+	    	    	   if(psmt!=null){
+	    	             psmt.close();
+	    	          }
+	    	          if(conn!=null){
+	    	             conn.close();
+	    	          }
+	    	          }catch (Exception e) {
+						// TODO: handle exception
+					}}
+	    	    
+	    	    return cnt;
+	    }
+
+
+	public ArrayList<s_CommunityVO> s_Community() { 
+		ArrayList<s_CommunityVO> arr = new ArrayList<s_CommunityVO>(); 
+		connection();
+		 try{ 
+			 String sql = "select* from TBL_STUDY order by STUDY_SEQ desc";
+			 psmt = conn.prepareStatement(sql);
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("STUDY_SEQ");
+			      String title = rs.getString("STUDY_SUBJECT");
+			      String content = rs.getString("STUDY_CONTENT");
+			      String language = rs.getString("STUDY_LANG");
+			      int c_cnt = rs.getInt("STUDY_CNT");
+			      String date = rs.getString("REG_DATE");
+			      String writer = rs.getString("M_ID");
+			      String file1 = rs.getString("STUDY_FILE1");
+			      s_CommunityVO svo =new s_CommunityVO(c_seq, title, content,language,c_cnt,date,writer,file1);
+			      arr.add(svo);
+			 }
+			
+		 }catch(Exception e){
+			 e.printStackTrace(); 
+		 }finally{ 
+			 close(); 
+			 }
+		return arr;
+	 }
+	public int s_community_write(String title, String language, String writer, String content, String filename1) {
+		connection();  
+	 	try{
+		   String sql = "insert into TBL_STUDY(STUDY_SEQ, STUDY_SUBJECT,STUDY_CONTENT,STUDY_LANG,M_ID,STUDY_FILE1) values(TBL_STUDY_SEQ.NEXTVAL, ?,?,?,?,?)";
+		   psmt = conn.prepareStatement(sql);	 
+		   psmt.setString(1,title);
+		   psmt.setString(2,writer);
+		   psmt.setString(3,language);
+		   psmt.setString(4,content);
+		   psmt.setString(5,filename1);
+		   lognum = psmt.executeUpdate();
+		   if (lognum>0) {
+			   System.out.println("성공");
+		   }
+		      }catch(Exception e){
+		    	 System.out.println("실패");
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum;
+	}
+	public s_CommunityVO s_communityview(int num) {
+		connection();  
+	 	try{
+		   String sql = "select * from TBL_STUDY where STUDY_SEQ=?";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   rs = psmt.executeQuery();
+		   if(rs.next() == true) {
+			   int c_seq = rs.getInt("STUDY_SEQ");
+			   String title = rs.getString("STUDY_SUBJECT");
+			   String content = rs.getString("STUDY_CONTENT");
+			   String language = rs.getString("STUDY_LANG");
+			   int cnt = rs.getInt("STUDY_CNT");
+			   String date = rs.getString("REG_DATE");
+			   String writer = rs.getString("M_ID");
+			   String filename1 = rs.getString("STUDY_FILE1");
+		       svo = new s_CommunityVO(c_seq,title,content,language,cnt,date,writer,filename1);
+		      }
+		   String sql_seq = "update TBL_STUDY set STUDY_CNT = TBL_STUDY_COMMUNITY_CNT.NEXTVAL where STUDY_SEQ=?";
+		   psmt = conn.prepareStatement(sql_seq);
+		   psmt.setInt(1,num);
+		   lognum = psmt.executeUpdate();
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return svo;
+	}
+	public int s_communitydelete(int num) {
+		connection();  
+	 	try{
+	 	   String sql0 = "delete from TBL_STUDY_COMMENT where STUDY_SEQ=?";
+		   psmt = conn.prepareStatement(sql0);
+			   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   lognum = psmt.executeUpdate();
+		   String sql = "delete from TBL_STUDY where STUDY_SEQ=?";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   lognum = psmt.executeUpdate();
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum;	   
+
+}
+}

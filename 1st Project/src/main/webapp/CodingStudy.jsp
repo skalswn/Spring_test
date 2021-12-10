@@ -26,29 +26,35 @@
 </head>
 <body>
 <%
- ArrayList<CodingVO> codingarray = (ArrayList<CodingVO>)request.getAttribute("codingarray"); 
-CodingVO vo = (CodingVO)request.getAttribute("codingvo");
+ ArrayList<CodingVO> codingarray = (ArrayList<CodingVO>)request.getAttribute("codingarray");
+CodingVO vo = null;
 %>
-
-
-	<form action="ShowCoding">
-		파이썬<input type="radio" name="lang", value="PYTHON">
-		자바<input type="radio" name="lang", value="JAVA">
-		HTML<input type="radio" name="lang", value="HTML">
+	<form action="ShowCoding" method="post">
+		파이썬<input type="radio" name="lang" value="파이썬">
+		<input type="submit">
     </form>
 	<div id="c">학습내용</div>
 	<div id="c">
+	</div>
+    <div id="q">모든 문제 나오는 곳</div>
+    
+ 	<!-- 언어 선택에 따라 모든 문제가 나오게 하기 -->
+	<%if(codingarray!=null){ %>
+		<%for(int i=0; i<codingarray.size(); i++){%>
+				<%vo=codingarray.get(i); %>
+				<p><%= vo.getCoding_q() %></p>
+		<%} %>
+	<%}else{ %>
+		언어를 선택해주세요.
+	<%} %>
 	
 	</div>
-    <div id="q">문제</div>
-    <div id="q">
-	<%-- <%for(int i=0; i<codingarray.size(); i++){%>
-	<%CodingVO codingvo = codingarray.get(i); }%> --%>
-	<% vo.getCoding_q();%>
-	</div>
     <div id="a">풀이</div>
+    
+    
+    
+    
     <div id="a">
-    <%-- <%=codingvo.getCoding_a() %> --%>
     </div>
 </body>
 </html>
