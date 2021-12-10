@@ -27,13 +27,20 @@
 			userID = (String)session.getAttribute("userID");
 		}	
 %>
-				<form action="s_c_Communitywrite" method="post" enctype="multipart/form-data" >
+				<form action="u_c_Communitywrite" method="post" enctype="multipart/form-data" >
 				
 				<table id="list">
 					<tr>
-					<td><select name="language"><option value="자바">자바</option><option value="자바스크립트">자바스크립트</option><option value="C++">C++</option><option value="JSP">JSP</option><option value="HTML">HTML</option></select></td>
-					<input type="text" name="title" class="title" placeholder="제목을 입력해주세요" > </td>
+					<td><input type="text" name="title" class="title" placeholder="제목을 입력해주세요"></td>
+					<td>
 					</tr>
+					<tr>
+					<select name="way"><option value="삽니다">삽니다</option><option value="직거래">직거래</option><option value="택배거래">택배거래</option><option value="안전거래">안전거래</option></select>
+					<select name="status"><option value="1">상</option><option value="2">중</option><option value="3">하</option></select>
+					<select name="kinds"><option value="책">책</option><option value="학용품">학용품</option><option value="기타">기타</option></select> 
+					<input type="number" name="price" placeholder="가격을 입력하세요">
+					 </td>
+					 </tr>
 					<tr>
 						<td colspan="2">
 							<textarea name="content"  rows="20" cols="100" style="resize: none;"></textarea>			

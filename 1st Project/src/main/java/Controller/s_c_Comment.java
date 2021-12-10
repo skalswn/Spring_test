@@ -25,7 +25,7 @@ public class s_c_Comment extends HttpServlet {
 		if(session.getAttribute("userID") != null){
 			userID = (String)session.getAttribute("userID");
 		}
-		s_CommunityVO cvo = (s_CommunityVO)session.getAttribute("cvo");
+		s_CommunityVO scvo = (s_CommunityVO)session.getAttribute("scvo");
 		request.setCharacterEncoding("euc-kr");
 		DAO dao=new DAO();
 		int c_seq=Integer.parseInt(request.getParameter("num"));
@@ -34,7 +34,7 @@ public class s_c_Comment extends HttpServlet {
 		int lognum = dao.s_cm_write(c_seq,cm_content,writer);
 		if (lognum>0) {
 			System.out.println("댓글 작성 성공!");
-			response.sendRedirect("c_Study_Communityview.jsp?cvo=cvo");
+			response.sendRedirect("c_Study_Communityview.jsp?scvo=scvo");
 		}else {
 			System.out.println("댓글 작성 실패!");
 			response.sendRedirect("c_Study_Community.jsp");

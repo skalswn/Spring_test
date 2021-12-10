@@ -1,9 +1,10 @@
+<%@page import="java.net.URLDecoder"%>
 <%@page import="Model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ page import="Model.s_CommunityVO"%>
+<%@ page import="Model.u_CommunityVO"%>
 <%@page import="Model.DAO"%> 
-<%@ page import="Model.s_Community_commentVO"%>
+<%@ page import="Model.u_Community_commentVO"%>
 <%@page import="java.util.ArrayList"%> 
 <!DOCTYPE html>
 <html>
@@ -36,45 +37,46 @@
 <%	
 MemberVO vo = null;
 DAO dao = new DAO();
-s_CommunityVO cvo = (s_CommunityVO)session.getAttribute("cvo");
-ArrayList<s_Community_commentVO> cm_arr = dao.s_cm_Community(cvo.getSTUDY_SEQ());
+u_CommunityVO ucvo = (u_CommunityVO)session.getAttribute("ucvo");
+ArrayList<u_Community_commentVO> cm_arr = dao.u_cm_Community(ucvo.getUSED_SEQ());
 if (session.getAttribute("vo") != null){
 	vo = (MemberVO)session.getAttribute("vo");
 }
-ArrayList<s_CommunityVO> arr = dao.s_Community();
-s_Community_commentVO cmvo = (s_Community_commentVO)session.getAttribute("cmvo");
-System.out.print(cm_arr);
+ArrayList<u_CommunityVO> arr = dao.u_Community();
+u_Community_commentVO cmvo = (u_Community_commentVO)session.getAttribute("cmvo");
 %>
 				
 			<div id = "board">
 				<table id="list">
 					<tr>
-						<td>제목 : <%=cvo.getSTUDY_SUBJECT() %></td>
-						<td>언어 : <%=cvo.getSTUDY_LANG() %></td>
+						<td>제목 : <%=ucvo.getUSED_SUBJECT() %></td>
+					</tr>
+					<tr>	
+						<td>종류: <%=ucvo.getUSED_PAY() %> /가격 : <%=ucvo.getUSED_PRICE()%>원 /상태 :<%=ucvo.getUSED_STATUS()%> /거래방법 : <%=ucvo.getUSED_TRADE() %>  </td>
 					</tr>
 					<tr>
-						<td>작성자 : <%=cvo.getM_ID() %></td>
+						<td>작성자 : <%=ucvo.getM_ID() %></td>
 					</tr>
 					<tr>
-						<td colspan="2" class="content"><%=cvo.getSTUDY_CONTENT() %></td>
+						<td colspan="2" class="content"><%=ucvo.getUSED_CONTENT() %></td>
 					</tr>
-					<%if(cvo.getSTUDY_FILE1() !=null) { %>
+					<%if(ucvo.getFILE1() !=null) { %>
 					<tr>
 						<td colspan="2">
-							<img src="./IMAGES/<%=cvo.getSTUDY_FILE1() %>">
+							<img src="./images/<%=URLDecoder.decode(ucvo.getFILE1(), "euc-kr") %>">
 						</td>
 					</tr>
 					<%}%>
 					</table>
-					<form action="s_c_Comment">
-					<input value="<%=cvo.getSTUDY_SEQ()%>" name="num" style="display:none">
+					<form action="u_c_Comment">
+					<input value="<%=ucvo.getUSED_SEQ()%>" name="num" style="display:none">
 					<input type="text" name="C_comment" id="C_comment" >
 					<input type="submit" value="댓글 작성">
 					</form>
 					<%if (cm_arr != null){%>
 						<%for(int i=0;i<cm_arr.size();i++){%>
 						<span><%=cm_arr.get(i).getM_ID()%> : </span>
-						<span><%=cm_arr.get(i).getC_STUDY_CONTENT()%></span>
+						<span><%=cm_arr.get(i).getUM_COMMENT()%></span>
 						<br>
 					</tr> 	
 					<% }%>
@@ -86,11 +88,11 @@ System.out.print(cm_arr);
 						
 					<%-- <%if(vo != null){
 						if (vo.getM_id()==cvo.getWriter()) {%> --%>
-						<a href="s_c_Communitychange?num=<%=cvo.getSTUDY_SEQ()%>"><button>수정하기</button></a></td>
-						<a href="s_c_Communitydelete?num=<%=cvo.getSTUDY_SEQ()%>"><button>삭제하기</button></a></td>
+						<a href="u_c_Communitydelete?num=<%=ucvo.getUSED_SEQ()%>"><button>수정하기</button></a></td>
+						<a href="u_c_Communitydelete?num=<%=ucvo.getUSED_SEQ()%>"><button>삭제하기</button></a></td>
 					<%-- 	<%}
 					}%>--%>
-					<a href="c_Study_Community.jsp"><button>뒤로가기</button></a></td>				
+					<a href="c_Used_Community.jsp"><button>뒤로가기</button></a></td>				
 			</div>
 			<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

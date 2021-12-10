@@ -11,6 +11,28 @@ public class u_CommunityVO {
 	private String REG_DATE;
 	private String M_ID;
 	private String USED_STATUS;
+	private String FILE1;
+	public String getFILE1() {
+		return FILE1;
+	}
+	public void setFILE1(String fILE1) {
+		FILE1 = fILE1;
+	}
+	public u_CommunityVO(int uSED_SEQ, String uSED_SUBJECT, String uSED_CONTENT, int uSED_PRICE, int uSED_CNT,
+			String uSED_TRADE, String uSED_PAY, String rEG_DATE, String m_ID, String uSED_STATUS, String fILE1) {
+		super();
+		USED_SEQ = uSED_SEQ;
+		USED_SUBJECT = uSED_SUBJECT;
+		USED_CONTENT = uSED_CONTENT;
+		USED_PRICE = uSED_PRICE;
+		USED_CNT = uSED_CNT;
+		USED_TRADE = uSED_TRADE;
+		USED_PAY = uSED_PAY;
+		REG_DATE = rEG_DATE;
+		M_ID = m_ID;
+		USED_STATUS = uSED_STATUS;
+		FILE1 = fILE1;
+	}
 	public int getUSED_SEQ() {
 		return USED_SEQ;
 	}

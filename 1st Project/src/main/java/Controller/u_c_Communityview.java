@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Model.DAO;
-import Model.s_CommunityVO;
+import Model.u_CommunityVO;
 @WebServlet("/u_c_Communityview")
 public class u_c_Communityview extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -18,13 +18,13 @@ public class u_c_Communityview extends HttpServlet {
 		request.setCharacterEncoding("euc-kr");
 		int num =  Integer.parseInt(request.getParameter("num"));
 		DAO dao = new DAO();
-		s_CommunityVO cvo = dao.s_communityview(num);
-		if(cvo != null){
-            session.setAttribute("cvo", cvo);
-            response.sendRedirect("c_Study_Communityview.jsp");
+		u_CommunityVO ucvo = dao.u_communityview(num);
+		if(ucvo != null){
+            session.setAttribute("ucvo", ucvo);
+            response.sendRedirect("c_Used_Communityview.jsp");
             System.out.println("접근 성공");
          }else{
-            response.sendRedirect("c_Study_Community.jsp");
+            response.sendRedirect("c_Used_Community.jsp");
             System.out.println("접근 실패");
          } 	  
      }    

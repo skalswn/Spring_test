@@ -25,7 +25,7 @@ public class s_c_Communitywrite extends HttpServlet {
 		
 		  
 	
-		File file = new File("C:\\Users\\smhrd\\OneDrive\\바탕 화면\\Web_Study\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\1st Project\\images"); //상대경로(class파일과 동일한 폴더) 
+		File file = new File("C:/Users/smhrd/git/PSIT/1st Project/src/main/webapp/images"); //상대경로(class파일과 동일한 폴더) 
 		if(file.exists()) {
 			System.out.println("해당 파일 확인");
 		}else{ 
@@ -37,7 +37,7 @@ public class s_c_Communitywrite extends HttpServlet {
 			userID = (String)session.getAttribute("userID");
 		}
 		
-		String savePath = request.getServletContext().getRealPath("IMAGES");
+		String savePath = "C:/Users/smhrd/git/PSIT/1st Project/src/main/webapp/images";
 		int maxSize =5*1024*1024;
 		String encoding = "euc-kr";
 		MultipartRequest multi = new MultipartRequest(request,savePath,maxSize,encoding,new DefaultFileRenamePolicy());
