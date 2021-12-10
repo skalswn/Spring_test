@@ -26,11 +26,15 @@
 <div>
 <%//C:\Users\smhrd\OneDrive\바탕 화면\Web_Study\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps %>
 <%
-		String userID = "doflsld";
-		if(session.getAttribute("userID") != null){
-			userID = (String)session.getAttribute("userID");
-		}	
-		MemberVO vo = null;
+MemberVO vo =null;
+if(session.getAttribute("vo") != null){
+	vo = (MemberVO)session.getAttribute("vo");
+	String userID =vo.getM_id();
+}else{%>
+	Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
+	Response.Write("<script>location.href='Main.jsp';</script>");
+<%}%>
+<%
 		DAO dao = new DAO();
 		CommunityVO cvo = (CommunityVO)session.getAttribute("cvo");
 		ArrayList<Community_commentVO> cm_arr = dao.cm_Community(cvo.getC_seq());

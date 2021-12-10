@@ -16,15 +16,14 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import Model.s_CommunityVO;
 import Model.s_Community_commentVO;
 import Model.DAO;
+import Model.MemberVO;
 @WebServlet("/s_c_Comment")
 public class s_c_Comment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String userID = "doflsld";
-		if(session.getAttribute("userID") != null){
-			userID = (String)session.getAttribute("userID");
-		}
+		MemberVO vo = (MemberVO)session.getAttribute("vo");
+		String userID =vo.getM_id();
 		s_CommunityVO scvo = (s_CommunityVO)session.getAttribute("scvo");
 		request.setCharacterEncoding("euc-kr");
 		DAO dao=new DAO();

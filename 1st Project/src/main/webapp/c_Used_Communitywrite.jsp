@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-
+<%@page import="Model.MemberVO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,11 +22,14 @@
 <div>
 <%//C:\Users\smhrd\OneDrive\바탕 화면\Web_Study\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps %>
 <%
-		String userID = "doflsld";
-		if(session.getAttribute("userID") != null){
-			userID = (String)session.getAttribute("userID");
-		}	
-%>
+MemberVO vo =null;
+if(session.getAttribute("vo") != null){
+	vo = (MemberVO)session.getAttribute("vo");
+	String userID =vo.getM_id();
+}else{%>
+	Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
+	Response.Write("<script>location.href='Main.jsp';</script>");
+<%}%>
 				<form action="u_c_Communitywrite" method="post" enctype="multipart/form-data" >
 				
 				<table id="list">
@@ -36,7 +39,7 @@
 					</tr>
 					<tr>
 					<select name="way"><option value="삽니다">삽니다</option><option value="직거래">직거래</option><option value="택배거래">택배거래</option><option value="안전거래">안전거래</option></select>
-					<select name="status"><option value="1">상</option><option value="2">중</option><option value="3">하</option></select>
+					<select name="status"><option value="1">좋음</option><option value="2">생활감 있음</option><option value="3">좋지 않음</option></select>
 					<select name="kinds"><option value="책">책</option><option value="학용품">학용품</option><option value="기타">기타</option></select> 
 					<input type="number" name="price" placeholder="가격을 입력하세요">
 					 </td>

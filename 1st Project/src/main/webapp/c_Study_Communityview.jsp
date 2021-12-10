@@ -84,12 +84,12 @@ System.out.print(cm_arr);
 						<%}%>
 					<%}%> --%>
 						
-					<%-- <%if(vo != null){
-						if (vo.getM_id()==cvo.getWriter()) {%> --%>
+					<%if(vo != null){
+						if (vo.getM_id()==scvo.getM_ID()) {%>
 						<a href="s_c_Communitychange?num=<%=scvo.getSTUDY_SEQ()%>"><button>수정하기</button></a></td>
 						<a href="s_c_Communitydelete?num=<%=scvo.getSTUDY_SEQ()%>"><button>삭제하기</button></a></td>
-					<%-- 	<%}
-					}%>--%>
+					<%}
+					}%>
 					<a href="c_Study_Community.jsp"><button>뒤로가기</button></a></td>				
 			</div>
 			<!-- Scripts -->

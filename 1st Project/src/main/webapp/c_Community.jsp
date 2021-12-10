@@ -2,7 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ page import="Model.CommunityVO"%>
-<%@page import="Model.DAO"%> 
+<%@page import="Model.DAO"%>
+<%@page import="Model.MemberVO"%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +52,17 @@
 									<!-- Content -->
 
 										<article>
+<%-- <%
+MemberVO vo =null;
+if(session.getAttribute("vo") != null){
+	vo = (MemberVO)session.getAttribute("vo");
+	String userID =vo.getM_id();
+}else{%>
+	Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
+	Response.Write("<script>location.href='Main.jsp';</script>");
+<%}%> --%>										
 <%
+
 CommunityVO cvo = null;
 if(session.getAttribute("cvo") !=null){
 	cvo = (CommunityVO)session.getAttribute("cvo");

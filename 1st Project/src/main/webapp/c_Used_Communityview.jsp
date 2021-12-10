@@ -52,7 +52,15 @@ u_Community_commentVO cmvo = (u_Community_commentVO)session.getAttribute("cmvo")
 						<td>제목 : <%=ucvo.getUSED_SUBJECT() %></td>
 					</tr>
 					<tr>	
-						<td>종류: <%=ucvo.getUSED_PAY() %> /가격 : <%=ucvo.getUSED_PRICE()%>원 /상태 :<%=ucvo.getUSED_STATUS()%> /거래방법 : <%=ucvo.getUSED_TRADE() %>  </td>
+						<td>종류: <%=ucvo.getUSED_PAY() %> /가격 : <%=ucvo.getUSED_PRICE()%>원 
+						/상태 :<%if(ucvo.getUSED_STATUS()=="1"){%>
+									좋음.
+							  <%}else if(ucvo.getUSED_STATUS()=="2"){%>
+							  		생활감 있음.
+							  <%}else{ %>
+							  		좋지 않음.
+							  <%}%>		 
+						/거래방법 : <%=ucvo.getUSED_TRADE() %>  </td>
 					</tr>
 					<tr>
 						<td>작성자 : <%=ucvo.getM_ID() %></td>
@@ -86,12 +94,12 @@ u_Community_commentVO cmvo = (u_Community_commentVO)session.getAttribute("cmvo")
 						<%}%>
 					<%}%> --%>
 						
-					<%-- <%if(vo != null){
-						if (vo.getM_id()==cvo.getWriter()) {%> --%>
+					<%if(vo != null){
+						if (vo.getM_id()==ucvo.getM_ID()) {%>
 						<a href="u_c_Communitydelete?num=<%=ucvo.getUSED_SEQ()%>"><button>수정하기</button></a></td>
 						<a href="u_c_Communitydelete?num=<%=ucvo.getUSED_SEQ()%>"><button>삭제하기</button></a></td>
-					<%-- 	<%}
-					}%>--%>
+					<%}
+					}%>
 					<a href="c_Used_Community.jsp"><button>뒤로가기</button></a></td>				
 			</div>
 			<!-- Scripts -->

@@ -15,6 +15,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import Model.DAO;
+import Model.MemberVO;
 @WebServlet("/u_c_Communitywrite")
 public class u_c_Communitywrite extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,10 +29,8 @@ public class u_c_Communitywrite extends HttpServlet {
 			System.out.println("해당 파일 없음.");
 		}
 		HttpSession session = request.getSession();
-		String userID = "doflsld";
-		if(session.getAttribute("userID") != null){
-			userID = (String)session.getAttribute("userID");
-		}
+		MemberVO vo = (MemberVO)session.getAttribute("vo");
+		String userID =vo.getM_id();
 		String savePath = "C:/Users/smhrd/git/PSIT/1st Project/src/main/webapp/images";
 		System.out.println(request.getServletContext().getRealPath("./"));
 		int maxSize =5*1024*1024;
