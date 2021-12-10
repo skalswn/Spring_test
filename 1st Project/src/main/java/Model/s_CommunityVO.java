@@ -1,16 +1,18 @@
 package Model;
 
 public class s_CommunityVO {
-	private String STUDY_SEQ; 
+	private int STUDY_SEQ; 
 	private String STUDY_SUBJECT;
 	private String STUDY_CONTENT;
 	private String STUDY_LANG;
-	private String STUDY_CNT;
+	private int STUDY_CNT;
 	private String REG_DATE;
-	public String getSTUDY_SEQ() {
+	private String M_ID;
+	private String STUDY_FILE1;
+	public int getSTUDY_SEQ() {
 		return STUDY_SEQ;
 	}
-	public void setSTUDY_SEQ(String sTUDY_SEQ) {
+	public void setSTUDY_SEQ(int sTUDY_SEQ) {
 		STUDY_SEQ = sTUDY_SEQ;
 	}
 	public String getSTUDY_SUBJECT() {
@@ -31,10 +33,10 @@ public class s_CommunityVO {
 	public void setSTUDY_LANG(String sTUDY_LANG) {
 		STUDY_LANG = sTUDY_LANG;
 	}
-	public String getSTUDY_CNT() {
+	public int getSTUDY_CNT() {
 		return STUDY_CNT;
 	}
-	public void setSTUDY_CNT(String sTUDY_CNT) {
+	public void setSTUDY_CNT(int sTUDY_CNT) {
 		STUDY_CNT = sTUDY_CNT;
 	}
 	public String getREG_DATE() {
@@ -55,8 +57,8 @@ public class s_CommunityVO {
 	public void setSTUDY_FILE1(String sTUDY_FILE1) {
 		STUDY_FILE1 = sTUDY_FILE1;
 	}
-	public s_CommunityVO(String sTUDY_SEQ, String sTUDY_SUBJECT, String sTUDY_CONTENT, String sTUDY_LANG,
-			String sTUDY_CNT, String rEG_DATE, String m_ID, String sTUDY_FILE1) {
+	public s_CommunityVO(int sTUDY_SEQ, String sTUDY_SUBJECT, String sTUDY_CONTENT, String sTUDY_LANG, int sTUDY_CNT,
+			String rEG_DATE, String m_ID, String sTUDY_FILE1) {
 		super();
 		STUDY_SEQ = sTUDY_SEQ;
 		STUDY_SUBJECT = sTUDY_SUBJECT;
@@ -67,6 +69,4 @@ public class s_CommunityVO {
 		M_ID = m_ID;
 		STUDY_FILE1 = sTUDY_FILE1;
 	}
-	private String M_ID;
-	private String STUDY_FILE1;
 }

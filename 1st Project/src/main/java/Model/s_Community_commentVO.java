@@ -1,13 +1,12 @@
 package Model;
 
 public class s_Community_commentVO {
-	private String C_STUDY_SEQ;
-	private String STUDY_SEQ;
+	private int C_STUDY_SEQ;
+	private int STUDY_SEQ;
 	private String C_STUDY_CONTENT;
 	private String REG_DATE;
 	private String M_ID;
-	public s_Community_commentVO(String c_STUDY_SEQ, String sTUDY_SEQ, String c_STUDY_CONTENT, String rEG_DATE,
-			String m_ID) {
+	public s_Community_commentVO(int c_STUDY_SEQ, int sTUDY_SEQ, String c_STUDY_CONTENT, String rEG_DATE, String m_ID) {
 		super();
 		C_STUDY_SEQ = c_STUDY_SEQ;
 		STUDY_SEQ = sTUDY_SEQ;
@@ -15,16 +14,16 @@ public class s_Community_commentVO {
 		REG_DATE = rEG_DATE;
 		M_ID = m_ID;
 	}
-	public String getC_STUDY_SEQ() {
+	public int getC_STUDY_SEQ() {
 		return C_STUDY_SEQ;
 	}
-	public void setC_STUDY_SEQ(String c_STUDY_SEQ) {
+	public void setC_STUDY_SEQ(int c_STUDY_SEQ) {
 		C_STUDY_SEQ = c_STUDY_SEQ;
 	}
-	public String getSTUDY_SEQ() {
+	public int getSTUDY_SEQ() {
 		return STUDY_SEQ;
 	}
-	public void setSTUDY_SEQ(String sTUDY_SEQ) {
+	public void setSTUDY_SEQ(int sTUDY_SEQ) {
 		STUDY_SEQ = sTUDY_SEQ;
 	}
 	public String getC_STUDY_CONTENT() {
@@ -45,4 +44,5 @@ public class s_Community_commentVO {
 	public void setM_ID(String m_ID) {
 		M_ID = m_ID;
 	}
+	
 }

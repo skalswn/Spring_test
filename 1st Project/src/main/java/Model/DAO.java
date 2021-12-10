@@ -12,6 +12,8 @@ import java.util.Date;
 public class DAO {
 	 MemberVO vo = null;
 	   CommunityVO bo=null;
+	   s_CommunityVO svo =null;
+	   s_Community_commentVO scvo =null;
 	   Connection conn = null;   
 	   PreparedStatement psmt = null;
 	   ResultSet rs = null;
@@ -333,4 +335,83 @@ public class DAO {
 		   return lognum;
 	   
 	}
+	public ArrayList<s_CommunityVO> s_Community() { 
+		ArrayList<s_CommunityVO> arr = new ArrayList<s_CommunityVO>(); 
+		connection();
+		 try{ 
+			 String sql = "select* from TBL_STUDY order by STUDY_SEQ desc";
+			 psmt = conn.prepareStatement(sql);
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("STUDY_SEQ");
+			      String title = rs.getString("STUDY_SUBJECT");
+			      String content = rs.getString("STUDY_CONTENT");
+			      String language = rs.getString("STUDY_LANG");
+			      int c_cnt = rs.getInt("STUDY_CNT");
+			      String date = rs.getString("REG_DATE");
+			      String writer = rs.getString("M_ID");
+			      String file1 = rs.getString("STUDY_FILE1");
+			      s_CommunityVO svo =new s_CommunityVO(c_seq, title, content,language,c_cnt,date,writer,file1);
+			      arr.add(svo);
+			 }
+			
+		 }catch(Exception e){
+			 e.printStackTrace(); 
+		 }finally{ 
+			 close(); 
+			 }
+		return arr;
+	 }
+	public int s_community_write(String title, String language, String writer, String content, String filename1) {
+		connection();  
+	 	try{
+		   String sql = "insert into TBL_STUDY(STUDY_SEQ, STUDY_SUBJECT,STUDY_CONTENT,STUDY_LANG,M_ID,STUDY_FILE1) values(TBL_STUDY_SEQ.NEXTVAL, ?,?,?,?,?)";
+		   psmt = conn.prepareStatement(sql);	 
+		   psmt.setString(1,title);
+		   psmt.setString(2,writer);
+		   psmt.setString(3,language);
+		   psmt.setString(4,content);
+		   psmt.setString(5,filename1);
+		   lognum = psmt.executeUpdate();
+		   if (lognum>0) {
+			   System.out.println("성공");
+		   }
+		      }catch(Exception e){
+		    	 System.out.println("실패");
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum;
+	}
+	public s_CommunityVO s_communityview(int num) {
+		connection();  
+	 	try{
+		   String sql = "select * from TBL_STUDY where STUDY_SEQ=?";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   rs = psmt.executeQuery();
+		   if(rs.next() == true) {
+			   int c_seq = rs.getInt("STUDY_SEQ");
+			   String title = rs.getString("STUDY_SUBJECT");
+			   String content = rs.getString("STUDY_CONTENT");
+			   String language = rs.getString("STUDY_LANG");
+			   int cnt = rs.getInt("STUDY_CNT");
+			   String date = rs.getString("REG_DATE");
+			   String writer = rs.getString("M_ID");
+			   String filename1 = rs.getString("STUDY_FILE1");
+		       svo = new s_CommunityVO(c_seq,title,content,language,cnt,date,writer,filename1);
+		      }
+		   String sql_seq = "update TBL_STUDY set STUDY_CNT = TBL_STUDY_COMMUNITY_CNT.NEXTVAL where STUDY_SEQ=?";
+		   psmt = conn.prepareStatement(sql_seq);
+		   psmt.setInt(1,num);
+		   lognum = psmt.executeUpdate();
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return svo;
+	} 
 }
