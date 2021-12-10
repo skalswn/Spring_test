@@ -6,10 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class DAO {
-	 MemberVO vo = null;
 	   CommunityVO bo=null;
 	   Connection conn = null;   
 	   PreparedStatement psmt = null;
@@ -55,7 +55,7 @@ public class DAO {
 		   }
 	
 // 회원가입========================================================================================	
-	public int Join(String id, String pw, String email, String name, String nick, String gender, String birthdate, String memo) {
+	public int Join(String id, String pw, String email, String name, String nick, String gender, String memo) {
 		
 		int cnt = 0;
 		Connection conn = null;
@@ -395,9 +395,9 @@ public class DAO {
 //				String reg_date = rs.getString(7);
 //				String m_id = rs.getString(8);
 
-				vo = new MemberVO(coding_seq, coding_lang, coding_q, coding_a);
+				CodingVO codingvo = new CodingVO(coding_seq, coding_lang, coding_q, coding_a);
 
-				arraylist.add(vo);
+				codingarray.add(codingvo);
 
 				// rs.next() -> 한칸 내려가라는 뜻 : false(빈칸)이면 안내려간다
 				// 그래서 굳이 break문을 쓸 필요 없다!!
@@ -423,4 +423,6 @@ public class DAO {
 	
 		return codingarray;
 	}
+	
+}
 		

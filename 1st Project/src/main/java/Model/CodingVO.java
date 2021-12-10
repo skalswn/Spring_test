@@ -27,6 +27,15 @@ public class CodingVO {
 		this.m_id = m_id;
 	}
 
+
+	public CodingVO(int coding_seq, String coding_lang, String coding_q, String coding_a) {
+		this.coding_seq = coding_seq;
+		this.coding_lang = coding_lang;
+		this.coding_q = coding_q;
+		this.coding_a = coding_a;
+	}
+
+
 	//get,set
 	
 
