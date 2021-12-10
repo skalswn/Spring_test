@@ -42,11 +42,12 @@ public class InfoService extends HttpServlet {
 		if (cnt > 0) {
 			System.out.println("수정성공");
 			session.setAttribute("vo",new MemberVO(m_id, m_pw, m_email, m_name, m_nick, m_gender,m_memo));
-		
+			response.sendRedirect("UpdateSuccess.jsp");
 		} else {
 			 System.out.println("수정 실패");
+			 response.sendRedirect("Main.jsp");
 		}
-		 response.sendRedirect("Main.jsp");
+		 
 				
 	}
 

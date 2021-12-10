@@ -478,6 +478,7 @@ public class DAO {
 	    	       psmt.setString(4, m_nick);
 	    	       psmt.setString(5, m_gender);
 	    	       psmt.setString(6, m_memo);
+	    	       psmt.setString(7, m_id);
 	    	       
 	    	       
 	    	       // 5. ½ÇÇà
@@ -502,7 +503,7 @@ public class DAO {
 	    	          }catch (Exception e) {
 						// TODO: handle exception
 					}}
-	    	    
+	    	    System.out.println(cnt);
 	    	    return cnt;
 	    }
 

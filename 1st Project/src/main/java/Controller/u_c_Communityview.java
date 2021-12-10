@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import Model.DAO;
 import Model.s_CommunityVO;
-@WebServlet("/u_c_Comment")
+@WebServlet("/u_c_Communityview")
 public class u_c_Communityview extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
