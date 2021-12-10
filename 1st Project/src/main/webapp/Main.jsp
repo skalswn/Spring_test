@@ -61,7 +61,7 @@ out.print(vo);
      <% if(vo!=null){%>
         <li><a href="#">직무탐색</a></li>
         <!-- <li><a href="#section5">Video</a></li> -->
-        <li><a href="#section6">단계별학습</a></li>
+        <li><a href="CodingStudy.jsp">단계별학습</a></li>
         <li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
         <li><a href="My_page.jsp" class="external">마이페이지</a></li>
         <li><a href="Main.jsp" class="external">로그아웃</a></li>
