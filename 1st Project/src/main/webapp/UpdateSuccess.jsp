@@ -72,8 +72,9 @@ https://templatemo.com/tm-557-grad-school
     </nav>
   </header>
 	<div>
+	<br><br><br><br><br><br>
 		<h1>회원정보 수정 성공</h1>
-		<button onclick="My_page.jsp">다시 수정하러 가기</button>
+		<a href="My_page.jsp">다시 수정하러 가기</a>
 
 	</div>
 	<footer>

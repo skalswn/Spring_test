@@ -43,13 +43,14 @@ https://templatemo.com/tm-557-grad-school
     <nav id="menu" class="main-nav" role="navigation">
       <ul class="main-menu">
         <li><a href="Main.jsp">Home</a></li>
-				 <li class="has-submenu"><a href="">About IT</a>
+				<!-- 굳이 보여줄 필요X -->
+				<!--  <li class="has-submenu"><a href="">About IT</a>
 					<ul class="sub-menu">
-						<li><a href="#section2">IT란?</a></li>
+						<li><a href="Main.jsp#section2">IT란?</a></li>
 						<li><a href="#section4">IT직무</a></li>
 						<li><a href="#section3">IT전망</a></li>
 						<li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li>
-					</ul></li>
+					</ul></li> -->
 				<%
 				if (vo != null) {
 				%>
@@ -81,7 +82,9 @@ https://templatemo.com/tm-557-grad-school
       <div id="InfoUpdate">
         <div class="col-md-5">
           <div class="right-content">
-							<li><h5>회원정보수정</h5></li>
+							<div>
+							<h5>회원정보수정</h5>
+							</div>
 				<form id="contact" action="InfoService" method="post" align="center">
 					<div class="row">
 						<div class="col-md-12">
@@ -118,14 +121,15 @@ https://templatemo.com/tm-557-grad-school
 							</fieldset>
 						</div>
 						<div class="genderinput">
-							남 <input name="gender" type="radio" class="form-control"
-								id="gender" value="M"> 여 <input name="gender"
+							남 <input name="gender" type="radio" class="form-control" <% if(vo.getM_gender().equals("M")){%>checked="checked"<%} %>
+								id="gender" value="M"> 
+							여 <input name="gender" <% if(vo.getM_gender().equals("W")){%>checked="checked"<%} %>
 								type="radio" class="form-control" id="gender" value="W">
 						</div>
 						<div class="col-md-12">
 							<fieldset>
 								MEMO<br> <br>
-								<textarea cols="20" rows="5" placeholder = "메모 : <%=vo.getM_memo() %>"></textarea>
+								<textarea name = "memo" cols="20" rows="5" placeholder = "메모 : <%=vo.getM_memo() %>"></textarea>
 							</fieldset>
 						</div>
 						<div class="col-md-12">

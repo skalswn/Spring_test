@@ -38,9 +38,8 @@ public class InfoService extends HttpServlet {
 		DAO dao = new DAO();
 		int cnt = dao.Update(m_id, m_pw, m_email, m_name, m_nick, m_gender, m_memo);
 
-		
 		if (cnt > 0) {
-			System.out.println("수정성공");
+			System.out.println("수정 성공");
 			session.setAttribute("vo",new MemberVO(m_id, m_pw, m_email, m_name, m_nick, m_gender,m_memo));
 			response.sendRedirect("UpdateSuccess.jsp");
 		} else {
