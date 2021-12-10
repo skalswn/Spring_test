@@ -36,7 +36,7 @@ https://templatemo.com/tm-557-grad-school
   <!--header-->
   <header class="main-header clearfix" role="header">
     <div class="logo">
-      <a href="#"><em>Grad</em> School</a>
+      <a href="Main.jsp"><em>PS</em>IT</a>
     </div>
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
@@ -58,24 +58,24 @@ https://templatemo.com/tm-557-grad-school
     </nav>
   </header>
 
-  <section class="section coming-soon" data-section="section3">
-    <div class="container">
-      <div id="joinform">
-        <div class="col-md-5">
-          <div class="right-content">
-            <form id="contact" action="LoginService" method="post" align="center">
-					<div class="row">
+ <section class="section coming-soon" data-section="section3">
+		<div>
+			<div>
+				<div class="col-md-5">
+					<form id="contact" action="LoginService" method="post"
+						align="center">
+						<div class="row">
 						<div class="col-md-12">
 							<fieldset>
 								<h4>Sign In</h4>
 							</fieldset>
 							<fieldset>
-								<input name = "id" type="text"  placeholder="아이디" id = "id">
+								<input name = "id" type="text"  placeholder="아이디" id = "id" required="">
 							</fieldset>
 						</div>
 						<div class="col-md-12">
 							<fieldset>
-								<input name = "pw" type="password"  placeholder="패스워드" id = "pw">
+								<input name = "pw" type="password"  placeholder="패스워드" id = "pw" required="">
 							</fieldset>
 						</div>
 						<div class="col-md-12">

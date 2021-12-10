@@ -43,14 +43,13 @@ https://templatemo.com/tm-557-grad-school
     <nav id="menu" class="main-nav" role="navigation">
       <ul class="main-menu">
         <li><a href="Main.jsp">Home</a></li>
-				<!-- 굳이 보여줄 필요X -->
-				<!--  <li class="has-submenu"><a href="">About IT</a>
+				 <li class="has-submenu"><a href="">About IT</a>
 					<ul class="sub-menu">
-						<li><a href="Main.jsp#section2">IT란?</a></li>
+						<li><a href="#section2">IT란?</a></li>
 						<li><a href="#section4">IT직무</a></li>
 						<li><a href="#section3">IT전망</a></li>
 						<li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li>
-					</ul></li> -->
+					</ul></li>
 				<%
 				if (vo != null) {
 				%>
@@ -72,80 +71,13 @@ https://templatemo.com/tm-557-grad-school
       </ul>
     </nav>
   </header>
-  
-  <br>  <br>  <br>  <br> 
-	<h4 align = "center"><%=vo.getM_id() %>(<%=vo.getM_name() %>)님 안녕하세요</h4>
+	<div>
+	<br><br><br><br><br><br>
+		<h1>회원정보 수정 성공</h1>
+		<a href="My_page.jsp">다시 수정하러 가기</a>
 
-		<!-- Wrapper -->
-			 <section class="section coming-soon" data-section="section3">
-    <div class="container">
-      <div id="InfoUpdate">
-        <div class="col-md-5">
-          <div class="right-content">
-							<div>
-							<h5>회원정보수정</h5>
-							</div>
-				<form id="contact" action="InfoService" method="post" align="center">
-					<div class="row">
-						<div class="col-md-12">
-						<fieldset>
-								<h4>Information Update</h4>
-							</fieldset>
-							<fieldset>
-								<li>이용자 ID : <%=vo.getM_id()%></li>
-							</fieldset>
-
-						</div>
-						<div class="col-md-12">
-							<fieldset>
-								<input name="pw" type="password" class="form-control" id="pw"
-									placeholder="수정할 패스워드를 입력하세요" required="">
-							</fieldset>
-						</div>
-						<div class="col-md-12">
-							<fieldset>
-								<input name="email" type="text" class="form-control" id="email"
-									placeholder="현재 이메일주소 : <%=vo.getM_email() %>" required="">
-							</fieldset>
-						</div>
-						<div class="col-md-12">
-							<fieldset>
-								<input name="name" type="text" class="form-control" id="name"
-									placeholder="현재 이름 : <%=vo.getM_name() %>" required="">
-							</fieldset>
-						</div>
-						<div class="col-md-12">
-							<fieldset>
-								<input name="nick" type="text" class="form-control" id="nick"
-									placeholder="현재 닉네임 : <%=vo.getM_nick() %>" required="">
-							</fieldset>
-						</div>
-						<div class="genderinput">
-							남 <input name="gender" type="radio" class="form-control" <% if(vo.getM_gender().equals("M")){%>checked="checked"<%} %>
-								id="gender" value="M"> 
-							여 <input name="gender" <% if(vo.getM_gender().equals("W")){%>checked="checked"<%} %>
-								type="radio" class="form-control" id="gender" value="W">
-						</div>
-						<div class="col-md-12">
-							<fieldset>
-								MEMO<br> <br>
-								<textarea name = "memo" cols="20" rows="5" placeholder = "메모 : <%=vo.getM_memo() %>"></textarea>
-							</fieldset>
-						</div>
-						<div class="col-md-12">
-							<fieldset>
-								<input type="reset" value="초기화"> <input type="submit"
-									value="완료">
-							</fieldset>
-						</div>
-					</div>
-				</form>
-
-			</ul>
-					</nav>			
-			</div>
-
-  <footer>
+	</div>
+	<footer>
     <div class="container">
       <div class="row">
         <div class="col-md-12">

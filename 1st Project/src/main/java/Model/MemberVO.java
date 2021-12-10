@@ -13,13 +13,13 @@ public class MemberVO {
 	private String m_name;
 	private String m_nick;
 	private String m_gender;
-	private String m_birthdate;
+	private Date m_birthdate;
 	private String m_memo;
 	private Date m_joindate;
 	private String admin_yn;
 	
 	public MemberVO(String m_id, String m_pw, String m_email, String m_name, String m_nick, String m_gender,
-			String m_birthdate, String m_memo, Date m_joindate, String admin_yn) {
+			Date m_birthdate, String m_memo, Date m_joindate, String admin_yn) {
 		this.m_id = m_id;
 		this.m_pw = m_pw;
 		this.m_email = m_email;
@@ -78,10 +78,10 @@ public class MemberVO {
 	public void setM_gender(String m_gender) {
 		this.m_gender = m_gender;
 	}
-	public String getM_birthdate() {
+	public Date getM_birthdate() {
 		return m_birthdate;
 	}
-	public void setM_birthdate(String m_birthdate) {
+	public void setM_birthdate(Date m_birthdate) {
 		this.m_birthdate = m_birthdate;
 	}
 	public String getM_memo() {
