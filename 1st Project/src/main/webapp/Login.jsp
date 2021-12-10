@@ -62,7 +62,7 @@ https://templatemo.com/tm-557-grad-school
 		<div>
 			<div>
 				<div class="col-md-5">
-					<form id="contact" action="JoinService" method="post"
+					<form id="contact" action="LoginService" method="post"
 						align="center">
 						<div class="row">
 						<div class="col-md-12">
