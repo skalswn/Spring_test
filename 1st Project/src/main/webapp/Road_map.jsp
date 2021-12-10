@@ -43,7 +43,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
 			<ul class="main-menu">
-				<li><a href="#section1">Home</a></li>
+				<li><a href="Main.jsp">Home</a></li>
 				<!-- <li class="has-submenu"><a href="">About IT</a>
 					<ul class="sub-menu">
 						<li><a href="#section2">IT¶õ?</a></li>

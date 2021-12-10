@@ -34,7 +34,7 @@ public class ShowAllCodingService extends HttpServlet {
 
 		System.out.println("문제나오기성공");
 
-		RequestDispatcher rd = request.getRequestDispatcher("CodingStudy.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("StudyPage.jsp");
 
 		request.setAttribute("codingarray", codingarray);
 		rd.forward(request, response);

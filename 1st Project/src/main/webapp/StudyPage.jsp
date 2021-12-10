@@ -1,24 +1,161 @@
+<%@page import="Model.CodingVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link
+	href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900"
+	rel="stylesheet">
+
+<title>PSIT.com - Study</title>
+
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="assets/css/fontawesome.css">
+<link rel="stylesheet" href="assets/css/templatemo-grad-school.css">
+<link rel="stylesheet" href="assets/css/owl.css">
+<link rel="stylesheet" href="assets/css/lightbox.css">
+<!--
+    
+TemplateMo 557 Grad School
+
+https://templatemo.com/tm-557-grad-school
+
+-->
+<style>
+body {
+	height: 100vh;
+}
+
+#c {
+	height: 15%;
+	border
+}
+
+#q {
+	height: 15%;
+}
+
+#a {
+	height: 15%;
+}
+</style>
 </head>
 <body>
+<% 
+	MemberVO vo = (MemberVO)session.getAttribute("vo");
+	ArrayList<CodingVO> codingarray=(ArrayList<CodingVO>)request.getAttribute("codingarray");
+%>
+
+	<!--header-->
+	<header class="main-header clearfix" role="header">
+		<div class="logo">
+			<a href="Main.jsp"><em>Welcome</em> PSIT</a>
+		</div>
+		<a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+		<nav id="menu" class="main-nav" role="navigation">
+			<ul class="main-menu">
+				<li><a href="Main.jsp">Home</a></li>
+				<!-- 굳이 보여줄 필요X -->
+				<!--  <li class="has-submenu"><a href="">About IT</a>
+					<ul class="sub-menu">
+						<li><a href="Main.jsp#section2">IT란?</a></li>
+						<li><a href="#section4">IT직무</a></li>
+						<li><a href="#section3">IT전망</a></li>
+						<li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li>
+					</ul></li> -->
+				<%
+				if (vo != null) {
+				%>
+				<li><a href="#">직무탐색</a></li>
+				<!-- <li><a href="#section5">Video</a></li> -->
+				<li><a href="#section6">단계별학습</a></li>
+				<li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
+				<li><a href="My_page.jsp" class="external">마이페이지</a></li>
+				<li><a href="LogoutService">로그아웃</a></li>
+
+				<%
+				} else {
+				%>
+				<li><a href="Login.jsp">Login</a></li>
+				<li><a href="Join.jsp">Join</a></li>
+				<%
+				}
+				%>
+			</ul>
+		</nav>
+	</header>
 	
-	<div id="lang">언어선택</div>
-		<ul>
-			<li name=><a href="#">파이썬</a></li>
-			<li><a href="#">자바</a></li>
-			<li><a href="#">HTML</a></li>
-			<li><a href="#">CSS</a></li>
-		</ul>
-	<div id="now">나의 학습진행상황</div>
-	<div id="phase">단계</div>
+	<br><br><br><br><br><br>
+	<form action="ShowAllCodingService" method="post">
+		파이썬<input type="radio" name="lang" value="파이썬"> 
+		자바<input type="radio" name="lang" value="자바"> 
+		<input type="submit">
+	</form>
 	
-	
-	
+	<form action="ShowAnswer" methos="post"></form>
+	<div id="c">학습내용</div>
+	<div id="c"></div>
+	<div id="q">모든 문제 나오는 곳</div>
+	<!-- 언어 선택에 따라 모든 문제가 나오게 하기 -->
+	<%if(codingarray!=null){ %>
+		<%for(int i=0; i<codingarray.size(); i++){%>
+			<%CodingVO codingvo=codingarray.get(i); %>
+			<p><%=codingvo.getCoding_q()%></p>
+			<a href="MyStudyPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a>
+		<%} %>
+	<%}else{ %>
+		언어를 선택해주세요.
+	<%} %>
+
+	</div>
+	<div id="a">풀이</div>
+
+	<div id="a"></div>
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p>
+						<i class="fa fa-copyright"></i> Copyright 2021 by PSIT | Design: <a
+							href="https://templatemo.com" rel="sponsored" target="_parent">TemplateMo</a><br>
+						Distributed By: <a href="https://themewagon.com" rel="sponsored"
+							target="_blank">ThemeWagon</a>
+
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<script src="assets/js/isotope.min.js"></script>
+	<script src="assets/js/owl-carousel.js"></script>
+	<script src="assets/js/lightbox.js"></script>
+	<script src="assets/js/tabs.js"></script>
+	<script src="assets/js/video.js"></script>
+	<script src="assets/js/slick-slider.js"></script>
+	<script src="assets/js/custom.js"></script>
+	<script>
+        //according to loftblog tut
+       
+    </script>
 </body>
 </html>
