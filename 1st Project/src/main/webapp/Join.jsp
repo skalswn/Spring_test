@@ -106,7 +106,7 @@ https://templatemo.com/tm-557-grad-school
 							<fieldset>
 								MEMO<br>
 								<br>
-								<textarea cols="20" rows="5"></textarea>
+								<textarea cols="20" rows="5" name = "memo"></textarea>
 							</fieldset>
 						</div>
 						<div class="col-md-12">

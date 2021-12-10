@@ -81,7 +81,9 @@ https://templatemo.com/tm-557-grad-school
       <div id="InfoUpdate">
         <div class="col-md-5">
           <div class="right-content">
-							<li><h5>회원정보수정</h5></li>
+							<div>
+							<h5>회원정보수정</h5>
+							</div>
 				<form id="contact" action="InfoService" method="post" align="center">
 					<div class="row">
 						<div class="col-md-12">
