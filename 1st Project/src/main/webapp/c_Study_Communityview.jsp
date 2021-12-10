@@ -1,7 +1,7 @@
 <%@page import="Model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ page import="Model.CommunityVO"%>
+<%@ page import="Model.s_CommunityVO"%>
 <%@page import="Model.DAO"%> 
 <%@ page import="Model.Community_commentVO"%>
 <%@page import="java.util.ArrayList"%> 
@@ -36,12 +36,12 @@
 <%	
 MemberVO vo = null;
 DAO dao = new DAO();
-CommunityVO cvo = (CommunityVO)session.getAttribute("cvo");
-ArrayList<Community_commentVO> cm_arr = dao.cm_Community(cvo.getC_seq());
+s_CommunityVO cvo = (s_CommunityVO)session.getAttribute("cvo");
+ArrayList<Community_commentVO> cm_arr = dao.cm_Community(cvo.getSTUDY_SEQ());
 if (session.getAttribute("vo") != null){
 	vo = (MemberVO)session.getAttribute("vo");
 }
-ArrayList<CommunityVO> arr = dao.Community();
+ArrayList<s_CommunityVO> arr = dao.s_Community();
 Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 System.out.print(cm_arr);
 %>
@@ -49,40 +49,25 @@ System.out.print(cm_arr);
 			<div id = "board">
 				<table id="list">
 					<tr>
-						<td>제목 : <%=cvo.getTitle() %></td>
+						<td>제목 : <%=cvo.getSTUDY_SUBJECT() %></td>
+						<td>언어 : <%=cvo.getSTUDY_LANG() %></td>
 					</tr>
 					<tr>
-						<td>작성자 : <%=cvo.getWriter() %></td>
+						<td>작성자 : <%=cvo.getM_ID() %></td>
 					</tr>
 					<tr>
-						<td colspan="2" class="content"><%=cvo.getContent() %></td>
+						<td colspan="2" class="content"><%=cvo.getSTUDY_CONTENT() %></td>
 					</tr>
-					<%if(cvo.getFile1() !=null && cvo.getFile2() !=null && cvo.getFile3() !=null) { %>
-					<tr>
-						<td colspan="2">
-							<img src="./images/<%=cvo.getFile1() %>">
-							<img src="./images/<%=cvo.getFile2() %>">
-							<img src="./images/<%=cvo.getFile3() %>">
-						</td>
-					</tr>
-					<%}else if(cvo.getFile1() !=null && cvo.getFile2() !=null){ %>
+					<%if(cvo.getSTUDY_FILE1() !=null) { %>
 					<tr>
 						<td colspan="2">
-							<img src="./images/<%=cvo.getFile1() %>">
-							<img src="./images/<%=cvo.getFile2() %>">
-						</td>
-					</tr>
-					<%}else if(cvo.getFile1() !=null){ %>
-					<tr>
-						<td colspan="2">
-							<img src="images/<%=cvo.getFile1() %>">
+							<img src="./images/<%=cvo.getSTUDY_FILE1() %>">
 						</td>
 					</tr>
 					<%}%>
 					</table>
-					
-					<form action="c_Comment">
-					<input value="<%=cvo.getC_seq()%>" name="num" style="display:none">
+					<form action="s_c_Comment">
+					<input value="<%=cvo.getSTUDY_SEQ()%>" name="num" style="display:none">
 					<input type="text" name="C_comment" id="C_comment" >
 					<input type="submit" value="댓글 작성">
 					</form>
@@ -101,11 +86,11 @@ System.out.print(cm_arr);
 						
 					<%-- <%if(vo != null){
 						if (vo.getM_id()==cvo.getWriter()) {%> --%>
-						<a href="c_Communitychange?num=<%=cvo.getC_seq()%>"><button>수정하기</button></a></td>
-						<a href="c_Communitydelete?num=<%=cvo.getC_seq()%>"><button>삭제하기</button></a></td>
+						<a href="s_c_Communitychange?num=<%=cvo.getSTUDY_SEQ()%>"><button>수정하기</button></a></td>
+						<a href="s_c_Communitydelete?num=<%=cvo.getSTUDY_SEQ()%>"><button>삭제하기</button></a></td>
 					<%-- 	<%}
 					}%>--%>
-					<a href="c_Community.jsp"><button>뒤로가기</button></a></td>				
+					<a href="c_Study_Community.jsp"><button>뒤로가기</button></a></td>				
 			</div>
 			<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

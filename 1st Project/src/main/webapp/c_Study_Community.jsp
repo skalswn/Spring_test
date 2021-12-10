@@ -1,7 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ page import="Model.CommunityVO"%>
+<%@ page import="Model.s_CommunityVO"%>
 <%@page import="Model.DAO"%> 
 <!DOCTYPE html>
 <html>
@@ -52,28 +52,30 @@
 
 										<article>
 <%
-CommunityVO cvo = (CommunityVO)session.getAttribute("cvo");
+s_CommunityVO cvo = (s_CommunityVO)session.getAttribute("cvo");
 DAO dao = new DAO();
-ArrayList<CommunityVO> arr = dao.Community();
+ArrayList<s_CommunityVO> arr = dao.s_Community();
 %>										
 			<div id="board">
-			<h1>자유게시판</h1>
+			<h1>스터디게시판</h1>
 				<table>
 					<tr id="head_tr" class="cm_tr">
 						<td class="cm_td">번호</td>
 						<td class="cm_td">제목</td>
+						<td class="cm_td">분류</td>
 						<td class="cm_td">작성자</td>
 						<td class="cm_td">시간</td>
 						<td class="cm_td">조회수</td>
 					</tr>
 					<%for(int i=0;i<arr.size();i++){%>
-					<%String result = arr.get(i).getDay().substring(5,11);%>
+					<%String result = arr.get(i).getREG_DATE().substring(5,11);%>
 					<tr class="main_tr">
-						<td class="main_td"><a class="main_a" href="c_Communityview?num=<%=arr.get(i).getC_seq()%>"><%=arr.get(i).getC_seq()%></a></td>
-						<td class="main_td"><a class="main_a" href="c_Communityview?num=<%=arr.get(i).getC_seq()%>"><%=arr.get(i).getTitle()%></a></td>
-						<td class="main_td"><a class="main_a" href="c_Communityview?num=<%=arr.get(i).getC_seq()%>"><%=arr.get(i).getWriter()%></a></td>
-						<td class="main_td"><a class="main_a" href="c_Communityview?num=<%=arr.get(i).getC_seq()%>"><%=result%></a></td>
-						<td class="main_td"><a class="main_a" href="c_Communityview?num=<%=arr.get(i).getC_seq()%>"><%=arr.get(i).getC_cnt()%></a></td>
+						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i).getSTUDY_SEQ()%>"><%=arr.get(i).getSTUDY_SEQ()%></a></td>
+						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i).getSTUDY_SEQ()%>"><%=arr.get(i).getSTUDY_SUBJECT()%></a></td>
+						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i).getSTUDY_SEQ()%>"><%=arr.get(i).getSTUDY_LANG()%></a></td>
+						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i).getSTUDY_SEQ()%>"><%=arr.get(i).getM_ID()%></a></td>
+						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i).getSTUDY_SEQ()%>"><%=result%></a></td>
+						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i).getSTUDY_SEQ()%>"><%=arr.get(i).getSTUDY_CNT()%></a></td>
 					</tr> 	
 					<% }%>
 				</table>
@@ -83,10 +85,10 @@ ArrayList<CommunityVO> arr = dao.Community();
 		<%} if (bbsDAO.nextPage(pageNumber + 1)) {%>
 			<a href="bbs.jsp?pageNumber=<%=pageNumber + 1%>" class="btn btn-success btn-arrow-left">다음</a>
 		<%}%> --%>
-				<form action="search_community">
+				<form action="search_s_community">
 				<select><option value="제목">제목</option><option value="내용">내용</option><option value="작성자">작성자</option></select>
 				<input type="text"><input class="search_button" type="button" value="검색하기">
-				<a href="c_Communitywrite.jsp">작성하러가기</a>
+				<a href="c_Study_Communitywrite.jsp">작성하러가기</a>
 				</form>
 			</div>
 			<!-- Scripts -->

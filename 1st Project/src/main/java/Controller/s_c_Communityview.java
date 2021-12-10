@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import Model.CommunityVO;
 import Model.CommunityVO;
 import Model.DAO;
+import Model.s_CommunityVO;
 @WebServlet("/s_c_Communityview")
 public class s_c_Communityview extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -18,13 +19,13 @@ public class s_c_Communityview extends HttpServlet {
 		request.setCharacterEncoding("euc-kr");
 		int num =  Integer.parseInt(request.getParameter("num"));
 		DAO dao = new DAO();
-		CommunityVO cvo = dao.communityview(num);
+		s_CommunityVO cvo = dao.s_communityview(num);
 		if(cvo != null){
             session.setAttribute("cvo", cvo);
-            response.sendRedirect("c_Communityview.jsp");
+            response.sendRedirect("c_Study_Communityview.jsp");
             System.out.println("접근 성공");
          }else{
-            response.sendRedirect("hi.jsp");
+            response.sendRedirect("c_Study_Community.jsp");
             System.out.println("접근 실패");
          } 	  
      }    
