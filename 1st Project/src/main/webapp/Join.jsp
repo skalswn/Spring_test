@@ -36,7 +36,6 @@ https://templatemo.com/tm-557-grad-school
 <body>
 
 
-<<<<<<< HEAD
   <section class="section coming-soon" data-section="section3">
     <div class="container">
       <div id="joinform">
