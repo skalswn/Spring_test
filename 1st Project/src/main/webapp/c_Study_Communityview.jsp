@@ -61,7 +61,7 @@ System.out.print(cm_arr);
 					<%if(cvo.getSTUDY_FILE1() !=null) { %>
 					<tr>
 						<td colspan="2">
-							<img src="./images/<%=cvo.getSTUDY_FILE1() %>">
+							<img src="./IMAGES/<%=cvo.getSTUDY_FILE1() %>">
 						</td>
 					</tr>
 					<%}%>

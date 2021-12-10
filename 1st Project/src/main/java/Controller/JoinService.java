@@ -34,13 +34,11 @@ public class JoinService extends HttpServlet {
 		
 		DAO dao = new DAO();
 		int cnt = 0;
+		
+		
 		try {
 			cnt = dao.Join(m_id, m_pw, m_email, m_name, m_nick, m_gender, m_memo);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		 
 		
 		if (cnt > 0) {
 			System.out.println("회원가입 성공");
@@ -62,6 +60,12 @@ public class JoinService extends HttpServlet {
 		} else {
 			System.out.println("회원가입 실패");
 		}
+		
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	
 	}
 

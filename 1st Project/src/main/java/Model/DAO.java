@@ -10,7 +10,6 @@ import java.util.Date;
 
 
 public class DAO {
-	 MemberVO vo = null;
 	   CommunityVO bo=null;
 	   s_CommunityVO svo =null;
 	   s_Community_commentVO scvo =null;
@@ -18,6 +17,10 @@ public class DAO {
 	   PreparedStatement psmt = null;
 	   ResultSet rs = null;
 	   int lognum=0;
+	   int cnt = 0;
+	   CodingVO codingvo = null;
+	   
+// DB연결========================================================================================
 	 public void connection() {
 		      try {
 		         // 1. 동적 로딩
@@ -32,6 +35,8 @@ public class DAO {
 
 		      }
 		   }
+	
+// DB종료========================================================================================
 	public void close() {
 		      // jdbc 사용 이후 닫아주기
 		      // 닫아줄때는 열었던 순서의 반대
@@ -52,7 +57,8 @@ public class DAO {
 
 		   }
 	
-	public int Join(String id, String pw, String email, String name, String nick, String gender, String memo) throws ParseException {
+// 회원가입========================================================================================	
+	public int Join(String id, String pw, String email, String name, String nick, String gender, String memo) {
 		
 		int cnt = 0;
 		Connection conn = null;
@@ -101,6 +107,7 @@ public class DAO {
 		return cnt;
 	}
 
+// 로그인========================================================================================
 	public MemberVO Login(String m_id, String m_pw) {
 
 		Connection conn = null;
@@ -160,7 +167,8 @@ public class DAO {
 		}
 		return vo;
 	}
-	
+
+// 자유게시판 전체게시판보기===============================================================================	
 	public ArrayList<CommunityVO> Community() { 
 		ArrayList<CommunityVO> arr = new ArrayList<CommunityVO>(); 
 		connection();
@@ -190,6 +198,7 @@ public class DAO {
 		return arr;
 	 }
 	
+// 자유게시판 자기글 보기========================================================================================
 	public CommunityVO communityview(int num) {
 		connection();  
 	 	try{
@@ -221,6 +230,8 @@ public class DAO {
      }
 	   return bo;
 } 
+	
+// 자유게시판 글쓰기========================================================================================
 	public int community_write(String title, String writer, String content, String file1,String file2,String file3) {
 		
 		 connection();  
@@ -245,6 +256,8 @@ public class DAO {
 	     }
 		   return lognum; 
 	}
+	
+// 자유게시판 글삭제========================================================================================	
 	public int communitydelete(int num) {
 		connection();  
 		 	try{
@@ -263,8 +276,10 @@ public class DAO {
 			      }finally{
 			        close();
 	     }
-		   return lognum;	   
-	} 
+		   return lognum;
+	}
+	
+// 자유게시판 댓글쓰기========================================================================================
 	public int cm_write(int c_seq, String cm_content, String writer) {
 		connection();  
 	 	try{
@@ -285,31 +300,172 @@ public class DAO {
      }
 	   return lognum; 
   }
+
+// 단계별학습 문제 넣기==========================================================================================
+	public int insertCoding(String coding_lang, String coding_q, String coding_a, int coding_cnt, int likes, String id) {
+		
+		try {
+			connection();
+
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			String url = "jdbc:oracle:thin:@172.30.1.19:1521:xe";
+			String dbid = "hr";
+			String dbpw = "hr";
+
+			conn = DriverManager.getConnection(url, dbid, dbpw);
+
+			String sql = "insert into tbl_coding values(tbl_coding_seq.nextval,?,?,?,?,?,sysdate,?)";
+
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setString(1, coding_lang);
+			psmt.setString(2, coding_q);
+			psmt.setString(3, coding_a);
+			psmt.setInt(4, coding_cnt);
+			psmt.setInt(5, likes);
+			psmt.setString(6, id);
+			
+			cnt = psmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (psmt != null) {
+					psmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+				if (cnt == 0) {
+					conn.close();
+				}
+			} catch (Exception e) {
+			}
+		}
+		return cnt;
+	}
+
+//자유게시판 댓글달기
 	public ArrayList<Community_commentVO> cm_Community(int c_seq) { 
 		ArrayList<Community_commentVO> arr = new ArrayList<Community_commentVO>(); 
 		connection();
-		 try{ 
-			 String sql = "select* from tbl_community_reply WHERE ARTICLE_SEQ=? order by REG_DATE desc";
-			 psmt = conn.prepareStatement(sql);
-			 psmt.setInt(1,c_seq);
-			 rs =  psmt.executeQuery();
-			 while(rs.next()) {
-				  int cm_seq = rs.getInt("COMM_REPLY_SEQ");
-			      c_seq = rs.getInt("ARTICLE_SEQ");
-			      String content = rs.getString("COMM_REPLY_CONTENT");
-			      String day = rs.getString("REG_DATE");
-			      String writer = rs.getString("M_ID");
-			      Community_commentVO vo =new Community_commentVO(cm_seq, c_seq, content, day, writer);
-			      arr.add(vo);
-			 }
+		try{ 
+			String sql = "select* from tbl_community_reply WHERE ARTICLE_SEQ=? order by REG_DATE desc";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1,c_seq);
+			rs =  psmt.executeQuery();
+			while(rs.next()) {
+				int cm_seq = rs.getInt("COMM_REPLY_SEQ");
+				c_seq = rs.getInt("ARTICLE_SEQ");
+				String content = rs.getString("COMM_REPLY_CONTENT");
+				String day = rs.getString("REG_DATE");
+				String writer = rs.getString("M_ID");
+				Community_commentVO vo =new Community_commentVO(cm_seq, c_seq, content, day, writer);
+				arr.add(vo);
+			}
 			
-		 }catch(Exception e){
-			 e.printStackTrace(); 
-		 }finally{ 
-			 close(); 
-			 }
+		}catch(Exception e){
+			e.printStackTrace(); 
+		}finally{ 
+			close(); 
+		}
 		return arr;
-	 }
+	}
+
+// 단계별학습 문제 보여주기====================================================================================
+	public ArrayList ShowAllCoding(String lang) {
+		
+		ArrayList<CodingVO> codingarray = new ArrayList<>();
+		
+		try {
+			connection();
+			
+			String sql = "select coding_q from tbl_coding where coding_lang = ?";
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, lang);
+
+			rs = psmt.executeQuery();
+			
+			while (rs.next() == true) {
+				System.out.println("성공");
+
+				int coding_seq = rs.getInt(1);
+				String coding_lang = rs.getString(2);
+				String coding_q = rs.getString(3);
+				String coding_a = rs.getString(4);
+				int coding_cnt = rs.getInt(5);
+				int likes = rs.getInt(6);
+				String m_id = rs.getString(7);
+
+				//코딩문제만 다시 vo에 넣기 
+				CodingVO codingvo = new CodingVO(coding_q);
+				
+				//vo를 다시 배열에 넣기
+				codingarray.add(codingvo);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+				close();
+			}
+		return codingarray;
+	}
+	
+	
+	
+// ===============================================
+/* public CodingVO Showcoding_q(String id, String lang) {
+	try {
+		
+		connection();
+		
+		String sql = "select * from tbl_coding where coding_lang =?";
+		psmt = conn.prepareStatement(sql);
+		
+		psmt.setString(1, lang);
+
+		rs = psmt.executeQuery();
+
+		if (rs.next() == true) {
+			System.out.println("성공");
+
+			int coding_seq = rs.getInt(1);
+			String coding_lang = rs.getString(2);
+			String coding_q = rs.getString(3);
+			String coding_a = rs.getString(4);
+			int coding_cnt = rs.getInt(5);
+			int likes = rs.getInt(6);
+			String reg_date = rs.getString(7);
+			String m_id = rs.getString(8);
+
+			codingvo = new CodingVO(coding_seq, coding_lang, coding_q, coding_a, coding_cnt, likes, reg_date, m_id);
+		}
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			if (rs != null) {
+				rs.close();
+			}
+			if (psmt != null) {
+				psmt.close();
+			}
+			if (conn != null) {
+				conn.close();
+			}
+		} catch (Exception e) {
+
+		}
+	}
+
+	return codingvo;
+}
+	*/
 	public int community_change(String title, String content, String filename1, String filename2,
 			String filename3, int num) {
 		 connection();  
@@ -433,9 +589,9 @@ public class DAO {
 		   String sql = "insert into TBL_STUDY(STUDY_SEQ, STUDY_SUBJECT,STUDY_CONTENT,STUDY_LANG,M_ID,STUDY_FILE1) values(TBL_STUDY_SEQ.NEXTVAL, ?,?,?,?,?)";
 		   psmt = conn.prepareStatement(sql);	 
 		   psmt.setString(1,title);
-		   psmt.setString(2,writer);
+		   psmt.setString(2,content);
 		   psmt.setString(3,language);
-		   psmt.setString(4,content);
+		   psmt.setString(4,writer);
 		   psmt.setString(5,filename1);
 		   lognum = psmt.executeUpdate();
 		   if (lognum>0) {
@@ -498,9 +654,7 @@ public class DAO {
 		        close();
      }
 	   return lognum;	   
-
-
-	}
+}
 
 	
 	public ArrayList<s_Community_commentVO> s_cm_Community(int c_seq) { 
