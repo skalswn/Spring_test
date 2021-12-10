@@ -21,22 +21,24 @@ public class ShowCoding extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		HttpSession session = request.getSession();
-		CodingVO vo = (CodingVO)session.getAttribute("vo");
-		String id = vo.getM_id();
-		String lang = request.getParameter("lang");
-		
+//		HttpSession session = request.getSession();
+//		MemberVO vo = (MemberVO)session.getAttribute("vo");
+//		String id = vo.getM_id();
+		String id = "doflsld";
+//		String lang = request.getParameter("lang");
+		String lang = "ÆÄÀÌ½ã";
 		DAO dao = new DAO();
 				
-		ArrayList<CodingVO> codingarray = new ArrayList<>();
+//		ArrayList<CodingVO> codingarray = new ArrayList<>();
 				
-		codingarray = dao.ShowCoding(id, lang);
+		CodingVO vo = dao.Showcoidng_q(id, lang);
+		
+//		RequestDispatcher rd = request.getRequestDispatcher("CoingStudy.jsp");
+        
+//        request.setAttribute("codingvo", vo);
+        
+//        rd.forward(request, response);
 				
-		RequestDispatcher rd = request.getRequestDispatcher("CdoingStudy.jsp");
-		request.setAttribute("codingarray", codingarray);
-		rd.forward(request, response);
-				
-				
-			}
+		}
 
 }

@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.CodingVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -24,11 +26,8 @@
 </head>
 <body>
 <%
-
-	
-
-
-
+ ArrayList<CodingVO> codingarray = (ArrayList<CodingVO>)request.getAttribute("codingarray"); 
+CodingVO vo = (CodingVO)request.getAttribute("codingvo");
 %>
 
 
@@ -38,10 +37,18 @@
 		HTML<input type="radio" name="lang", value="HTML">
     </form>
 	<div id="c">학습내용</div>
-	<div id="c">내용나올곳</div>
+	<div id="c">
+	
+	</div>
     <div id="q">문제</div>
-    <div id="q">내용나올곳</div>
+    <div id="q">
+	<%-- <%for(int i=0; i<codingarray.size(); i++){%>
+	<%CodingVO codingvo = codingarray.get(i); }%> --%>
+	<% vo.getCoding_q();%>
+	</div>
     <div id="a">풀이</div>
-    <div id="a">내용나올곳</div>
+    <div id="a">
+    <%-- <%=codingvo.getCoding_a() %> --%>
+    </div>
 </body>
 </html>
