@@ -28,17 +28,14 @@
 <body>
 <%
 ArrayList<CodingVO> codingarray=(ArrayList<CodingVO>)request.getAttribute("codingarray"); 
-DAO dao = new DAO();
-/* ArrayList<CodingVO> codingarray = dao.ShowAllCoding(); */
-CodingVO vo=null;
 %>
-	<form action="ShowCoding" method="post">
+	<form action="ShowAllCodingService" method="post">
 		파이썬<input type="radio" name="lang" value="파이썬">
+		자바<input type="radio" name="lang" value="자바">
 		<input type="submit">
     </form>
     
     <form action="ShowAnswer" methos="post">
-    
     
     </form>
 	<div id="c">학습내용</div>
@@ -49,8 +46,9 @@ CodingVO vo=null;
  	<!-- 언어 선택에 따라 모든 문제가 나오게 하기 -->
 	<%if(codingarray!=null){ %>
 		<%for(int i=0; i<codingarray.size(); i++){%>
-				<%vo=codingarray.get(i); %>
-				<p><%= vo.getCoding_q() %></p>
+				<%CodingVO vo=codingarray.get(i); %>
+					<p><%=vo.getCoding_q()%></p>
+					<a href="ShowStudyCoding.jsp?seq=<%=vo.getCoding_seq()%>">학습하러가기!</a>
 		<%} %>
 	<%}else{ %>
 		언어를 선택해주세요.

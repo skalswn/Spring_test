@@ -22,8 +22,6 @@ public class InsertCodingService extends HttpServlet {
 	String lang = request.getParameter("lang");
 	String coding_q = request.getParameter("coding_q");
 	String coding_a = request.getParameter("coding_a");
-	int coding_cnt = 0;
-	int likes = 0;
 
 	String id = request.getParameter("id");
 	
@@ -33,7 +31,7 @@ public class InsertCodingService extends HttpServlet {
 	
 	
 	DAO dao =new DAO();
-	int cnt = dao.insertCoding(lang, coding_q, coding_a, coding_cnt, likes, id);
+	int cnt = dao.insertCoding(lang, coding_q, coding_a, id);
 	
 		if(cnt>0) {
 			System.out.println("문제넣기 성공");

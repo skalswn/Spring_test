@@ -294,7 +294,7 @@ public class DAO {
   }
 
 // 단계별학습 문제 넣기==========================================================================================
-	public int insertCoding(String coding_lang, String coding_q, String coding_a, int coding_cnt, int likes, String id) {
+	public int insertCoding(String coding_lang, String coding_q, String coding_a, String id) {
 		
 		try {
 			connection();
@@ -307,16 +307,14 @@ public class DAO {
 
 			conn = DriverManager.getConnection(url, dbid, dbpw);
 
-			String sql = "insert into tbl_coding values(tbl_coding_seq.nextval,?,?,?,?,?,sysdate,?)";
+			String sql = "insert into tbl_coding values(tbl_coding_seq.nextval,?,?,?,?)";
 
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, coding_lang);
 			psmt.setString(2, coding_q);
 			psmt.setString(3, coding_a);
-			psmt.setInt(4, coding_cnt);
-			psmt.setInt(5, likes);
-			psmt.setString(6, id);
+			psmt.setString(4, id);
 			
 			cnt = psmt.executeUpdate();
 
@@ -367,14 +365,14 @@ public class DAO {
 	}
 
 // 단계별학습 문제 보여주기====================================================================================
-	public ArrayList<CodingVO> ShowAllCoding(String lang) {
+	public ArrayList ShowAllCoding(String lang) {
 		
-		ArrayList<CodingVO> codingarray = new ArrayList<CodingVO>();
+		ArrayList<CodingVO> codingarray = new ArrayList<>();
 		
 		try {
 			connection();
 			
-			String sql = "select coding_q from tbl_coding where coding_lang = ?";
+			String sql = "select * from tbl_coding where coding_lang = ?";
 			psmt = conn.prepareStatement(sql);
 			
 			psmt.setString(1, lang);
@@ -382,18 +380,15 @@ public class DAO {
 			rs = psmt.executeQuery();
 			
 			while (rs.next() == true) {
-				System.out.println("성공");
 
 				int coding_seq = rs.getInt(1);
 				String coding_lang = rs.getString(2);
 				String coding_q = rs.getString(3);
 				String coding_a = rs.getString(4);
-				int coding_cnt = rs.getInt(5);
-				int likes = rs.getInt(6);
-				String m_id = rs.getString(7);
+				String m_id = rs.getString(5);
 
 				//코딩문제만 다시 vo에 넣기 
-				CodingVO codingvo = new CodingVO(coding_q);
+				CodingVO codingvo = new CodingVO(coding_seq, coding_lang, coding_q, coding_a, m_id );
 				
 				//vo를 다시 배열에 넣기
 				codingarray.add(codingvo);
@@ -406,7 +401,41 @@ public class DAO {
 		return codingarray;
 	}
 	
-// =====================================================================================================
+// 단계별 학습 문제 클릭 후 문제및 해설 보여주기=====================================================================================================
+	public CodingVO ShowStudyCoding(int seq) {
+
+		try {
+			connection();
+
+			String sql = "select * from tbl_coding where coding_seq=?";
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setInt(1, seq);
+			
+			rs = psmt.executeQuery();
+
+			if (rs.next() == true) {
+				
+				int coding_seq = rs.getInt(1);
+				String coding_lang = rs.getString(2);
+				String coding_q = rs.getString(3);
+				String coding_a = rs.getString(4);
+				String m_id = rs.getString(5);
+
+				codingvo = new CodingVO(coding_seq, coding_lang, coding_q, coding_a, m_id); 
+				System.out.println("문제뽑기성공!");
+			} else {
+				System.out.println(codingvo);
+				System.out.println("실패!");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return codingvo;
+	}
 	
 // ===============================================
 	public int community_change(String title, String content, String filename1, String filename2,

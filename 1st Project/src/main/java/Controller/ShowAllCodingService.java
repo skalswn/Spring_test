@@ -15,32 +15,29 @@ import Model.CodingVO;
 import Model.DAO;
 import Model.MemberVO;
 
-@WebServlet("/ShowCoding")
-public class ShowCoding extends HttpServlet {
+@WebServlet("/ShowAllCodingService")
+public class ShowAllCodingService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 //		언어선택 시 모든 문제 나오게 하기
-		
+
 		request.setCharacterEncoding("euc-kr");
 		String lang = request.getParameter("lang");
 		DAO dao = new DAO();
-				
-		ArrayList<CodingVO> codingarray = dao.ShowAllCoding(lang);
-		
-		if(codingarray!=null) {
-			System.out.println("문제나오기성공");
-			
-			RequestDispatcher rd = request.getRequestDispatcher("CodingStudy.jsp");
-			
-			request.setAttribute("codingarray", codingarray); 
-			rd.forward(request, response);
-		}
-		else {
-			System.out.println("문제나오기실패");
-		}
-				
-		}
+
+		ArrayList<CodingVO> codingarray = new ArrayList<>();
+
+		codingarray = dao.ShowAllCoding(lang);
+
+		System.out.println("문제나오기성공");
+
+		RequestDispatcher rd = request.getRequestDispatcher("CodingStudy.jsp");
+
+		request.setAttribute("codingarray", codingarray);
+		rd.forward(request, response);
+	}
 
 }

@@ -8,19 +8,15 @@ public class CodingVO {
 	private String coding_lang;
 	private String coding_q;
 	private String coding_a;
-	private int coding_cnt;
-	private int likes;
 	private String m_id;
 	
 	
 	//»ý¼ºÀÚ
-	public CodingVO(int coding_seq, String coding_lang, String coding_q, String coding_a, int coding_cnt, int likes, String m_id) {
+	public CodingVO(int coding_seq, String coding_lang, String coding_q, String coding_a, String m_id) {
 		this.coding_seq = coding_seq;
 		this.coding_lang = coding_lang;
 		this.coding_q = coding_q;
 		this.coding_a = coding_a;
-		this.coding_cnt = coding_cnt;
-		this.likes = likes;
 		this.m_id = m_id;
 	}
 
@@ -78,35 +74,6 @@ public class CodingVO {
 	public void setCoding_a(String coding_a) {
 		this.coding_a = coding_a;
 	}
-
-
-
-	public int getCoding_cnt() {
-		return coding_cnt;
-	}
-
-
-
-	public void setCoding_cnt(int coding_cnt) {
-		this.coding_cnt = coding_cnt;
-	}
-
-
-
-	public int getLikes() {
-		return likes;
-	}
-
-
-
-	public void setLikes(int likes) {
-		this.likes = likes;
-	}
-
-
-
-	
-
 
 
 	public String getM_id() {
