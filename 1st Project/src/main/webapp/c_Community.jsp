@@ -52,15 +52,7 @@
 									<!-- Content -->
 
 										<article>
-<%-- <%
-MemberVO vo =null;
-if(session.getAttribute("vo") != null){
-	vo = (MemberVO)session.getAttribute("vo");
-	String userID =vo.getM_id();
-}else{%>
-	Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
-	Response.Write("<script>location.href='Main.jsp';</script>");
-<%}%> --%>										
+								
 <%
 
 CommunityVO cvo = null;
