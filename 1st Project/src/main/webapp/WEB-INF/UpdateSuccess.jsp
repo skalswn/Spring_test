@@ -3,14 +3,16 @@
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
+
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-    <title>PSIT.com - Road_map</title>
+    <title>PSIT.com - My_page<</title>
     
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -30,27 +32,24 @@ https://templatemo.com/tm-557-grad-school
   </head>
 
 <body>
-
-<%
-// 로그인 안되어있을 때 메뉴바 다르게 하기 위해 vo가져오기
-MemberVO vo = (MemberVO)session.getAttribute("vo");
-%>
-
-   <header class="main-header clearfix" role="header">
+<% MemberVO vo = (MemberVO)session.getAttribute("vo");%>
+   
+   <!--header-->
+  <header class="main-header clearfix" role="header">
     <div class="logo">
-      <a href="Main.jsp"><em>Welcome</em> PSIT</a> 
+      <a href="Main.jsp"><em>Welcome</em> PSIT</a>
     </div>
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
-			<ul class="main-menu">
-				<li><a href="#section1">Home</a></li>
-				<!-- <li class="has-submenu"><a href="">About IT</a>
+      <ul class="main-menu">
+        <li><a href="Main.jsp">Home</a></li>
+				 <li class="has-submenu"><a href="">About IT</a>
 					<ul class="sub-menu">
 						<li><a href="#section2">IT란?</a></li>
 						<li><a href="#section4">IT직무</a></li>
 						<li><a href="#section3">IT전망</a></li>
 						<li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li>
-					</ul></li> -->
+					</ul></li>
 				<%
 				if (vo != null) {
 				%>
@@ -69,32 +68,29 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 				<%
 				}
 				%>
-			</ul>
-		</nav>
+      </ul>
+    </nav>
   </header>
-  <div>
-    <nav>
-    <br><br><br><br><br><br><br><br><br><br>
-    <%String num=request.getParameter("num");%>
-        <%if(num.equals("1")){%>
-        	<p>로드맵1</p>
-        <%}else if(num.equals("2")) {%>
-        	<p>로드맵2</p>
-        <%}else if(num.equals("3")) {%>
-        	<p>로드맵3</p>
-        <%}else if(num.equals("4")) {%>
-    		<p>로드맵4</p>
-   		<%}else if(num.equals("5")) {%>
-			<p>로드맵5</p>
-		<%}else if(num.equals("6")) {%>
-			<p>로드맵6</p>
-		<%}else{%>
-			<p>로드맵7</p>
-		<%}%>
-		
-		</nav>
-   
+	<div>
+		<h1>회원정보 수정 성공</h1>
+		<button onclick="My_page.jsp">다시 수정하러 가기</button>
+
+	</div>
+	<footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p><i class="fa fa-copyright"></i> Copyright 2021 by PSIT
+          
+           | Design: <a href="https://templatemo.com" rel="sponsored" target="_parent">TemplateMo</a><br>
+           Distributed By: <a href="https://themewagon.com" rel="sponsored" target="_blank">ThemeWagon</a>
+          
+          </p>
+        </div>
+      </div>
     </div>
+  </footer>
+
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -107,7 +103,9 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
     <script src="assets/js/video.js"></script>
     <script src="assets/js/slick-slider.js"></script>
     <script src="assets/js/custom.js"></script>
-   
+    <script>
+        //according to loftblog tut
        
+    </script>
 </body>
 </html>

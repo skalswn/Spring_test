@@ -27,12 +27,11 @@
 			userID = (String)session.getAttribute("userID");
 		}	
 %>
-				<form action="s_c_Communitywrite" method="post" enctype="multipart/form-data" >
+				<form action="c_Communitywrite" method="post" enctype="multipart/form-data" >
 				
 				<table id="list">
 					<tr>
-					<td><select name="language"><option value="자바">자바</option><option value="자바스크립트">자바스크립트</option><option value="C++">C++</option><option value="JSP">JSP</option><option value="HTML">HTML</option></select></td>
-					<input type="text" name="title" class="title" placeholder="제목을 입력해주세요" > </td>
+						<td><input type="text" name="title" class="title" placeholder="제목을 입력해주세요" > </td>
 					</tr>
 					<tr>
 						<td colspan="2">
@@ -42,6 +41,8 @@
 					<tr>
 					<td colspan="2">
 					<input name="file1" type="file">
+					<input name="file2" type="file">
+					<input name="file3" type="file">
 					</td>
 					</tr>
 					<tr>

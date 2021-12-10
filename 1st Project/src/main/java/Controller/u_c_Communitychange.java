@@ -14,50 +14,51 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-
-
-
 import Model.DAO;
-@WebServlet("/s_c_Communitywrite")
-public class s_c_Communitywrite extends HttpServlet {
+@WebServlet("/u_c_Communitychange")
+public class u_c_Communitychange extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		  
-	
-		File file = new File("C:\\Users\\smhrd\\OneDrive\\바탕 화면\\Web_Study\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\1st Project\\images"); //상대경로(class파일과 동일한 폴더) 
+		System.out.println(request.getServletContext().getRealPath("images"));
+		File file = new File("images"); //상대경로(class파일과 동일한 폴더) 
 		if(file.exists()) {
-			System.out.println("해당 파일 확인");
-		}else{ 
-			file.mkdir(); System.out.println("해당 파일 없음.");
+			System.out.println("getPath : "+file.getPath());//상대경로
+			System.out.println("getAbsolutePath : "+file.getAbsolutePath());//절대경로 
+		}else { 
+			file.mkdir(); System.out.println("해당 파일 없음."); 
 		}
 		HttpSession session = request.getSession();
-		String userID = "doflsld";
-		if(session.getAttribute("userID") != null){
-			userID = (String)session.getAttribute("userID");
-		}
-		
-		String savePath = request.getServletContext().getRealPath("IMAGES");
+		String savePath = request.getServletContext().getRealPath("images");
 		int maxSize =5*1024*1024;
 		String encoding = "euc-kr";
 		MultipartRequest multi = new MultipartRequest(request,savePath,maxSize,encoding,new DefaultFileRenamePolicy());
 		String title = multi.getParameter("title");
-		String language = multi.getParameter("language");
-		String writer= userID;
 		String content = multi.getParameter("content");
 		String filename1 = "none.png";
+		int num = Integer.parseInt(multi.getParameter("num"));
 		try {
 			filename1 = URLEncoder.encode(multi.getFilesystemName("file1"), "euc-kr");
 		} catch (Exception e) {
 		}
+		String filename2 = "none.png";
+		try {
+			filename2 = URLEncoder.encode(multi.getFilesystemName("file2"), "euc-kr");
+		} catch (Exception e) {
+		}
+		String filename3 = "none.png";
+		try {
+			filename3 = URLEncoder.encode(multi.getFilesystemName("file3"), "euc-kr");
+		} catch (Exception e) {
+		}
+		System.out.println(filename1);
 		DAO dao=new DAO();
-		int lognum=dao.s_community_write(title,language,writer,content,filename1);
+		int lognum=dao.community_change(title,content,filename1, filename2, filename3,num);
 		if (lognum>0) {
-			System.out.println("공부게시글 작성 성공!");
-			response.sendRedirect("c_Study_Community.jsp");
+			System.out.println("게시글 수정 성공!");
+			response.sendRedirect("c_Communityview?num="+num);
 		}else {
-			System.out.println("공부게시글 작성 실패!");
-			response.sendRedirect("c_Study_Community.jsp");
+			System.out.println("게시글 수정 실패!");
+			response.sendRedirect("c_Community.jsp");
 		}
 		
 	}

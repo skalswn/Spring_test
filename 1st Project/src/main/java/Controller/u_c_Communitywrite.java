@@ -14,17 +14,12 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-
-
-
 import Model.DAO;
-@WebServlet("/s_c_Communitywrite")
-public class s_c_Communitywrite extends HttpServlet {
+@WebServlet("/u_c_Communitywrite")
+public class u_c_Communitywrite extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		  
-	
+
 		File file = new File("C:\\Users\\smhrd\\OneDrive\\바탕 화면\\Web_Study\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\1st Project\\images"); //상대경로(class파일과 동일한 폴더) 
 		if(file.exists()) {
 			System.out.println("해당 파일 확인");
