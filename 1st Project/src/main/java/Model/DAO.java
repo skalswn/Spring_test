@@ -94,15 +94,7 @@ public class DAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				if (psmt != null) {
-					psmt.close();
-				}
-				if (conn != null) {
-					conn.close();
-				}
-			} catch (Exception e) {
-			}
+			close();
 		}
 		return cnt;
 	}
@@ -142,7 +134,7 @@ public class DAO {
 				String name = rs.getString(4);
 				String nick = rs.getString(5);
 				String gender = rs.getString(6);
-				String birthdate = rs.getString(7);
+				Date birthdate = rs.getDate(7);
 				String memo = rs.getString(8);
 				Date joindate = rs.getDate(9);
 				String admin_yn = rs.getString(10);
