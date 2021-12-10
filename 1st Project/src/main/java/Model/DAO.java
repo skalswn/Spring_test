@@ -333,4 +333,66 @@ public class DAO {
 		   return lognum;
 	   
 	}
+	public int Update(String m_id, String m_pw, String m_email, String m_name, String m_nick, String m_gender,
+			String m_birthdate, String m_memo) {
+		
+	    	   Connection conn = null;
+	    	    PreparedStatement psmt = null;
+	    	    int cnt = 0;
+	    	    
+	    	    
+	    	    // try문
+	    	    // JDBC 코드는 문법이 맞더라도, 실행중에 발생하는 오류(런타임 오류) 처리 필요
+	    	    try {
+	    	       
+	    	       // JDBC
+	    	       // 1. 동적로딩
+	    	       Class.forName("oracle.jdbc.driver.OracleDriver");
+	    	       
+	    	       // 2. 연결객체 생성
+	    	       String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	    	       String dbid = "hr";
+	    	       String dbpw = "hr";
+	    	       
+	    	       conn = DriverManager.getConnection(url, dbid, dbpw);
+	    	       
+	    	       // 3. sql문 준비
+	    	       String sql = "update web_member set m_pw = ?, m_email =?, m_name=?,m_nick=?,m_gender=?,m_birthdate=?,m_memo=? where m_id = ?,";
+	    	       psmt = conn.prepareStatement(sql);
+	    	       
+	    	       // 4. 바인드 변수 채우기
+	    	       psmt.setString(1, m_pw);
+	    	       psmt.setString(2, m_email);
+	    	       psmt.setString(3, m_name);
+	    	       psmt.setString(4, m_nick);
+	    	       psmt.setString(5, m_gender);
+	    	       psmt.setString(6, m_birthdate);
+	    	       psmt.setString(7, m_memo);
+	    	       
+	    	       
+	    	       // 5. 실행
+	    	       // select -> executeQuery() --> return ResultSet
+	    	       // insert, delete, update -> executeUpdate() --> return int(몇 행이 성공했는지)
+	    	       cnt = psmt.executeUpdate();
+	    	       
+	    	    }  catch(Exception e){
+	   	         
+	    	       }
+	    	       finally{
+	    	          //jdbc 사용 후에는 닫아줘야함
+	    	          //닫아줄 때는 열었던 순서 반대!
+	    	          //열지 않았을 경우에는 닫을 필요 없음
+	    	          try {
+	    	    	   if(psmt!=null){
+	    	             psmt.close();
+	    	          }
+	    	          if(conn!=null){
+	    	             conn.close();
+	    	          }
+	    	          }catch (Exception e) {
+						// TODO: handle exception
+					}}
+	    	    
+	    	    return cnt;
+	    }
 }
