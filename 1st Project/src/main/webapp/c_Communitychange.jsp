@@ -1,6 +1,10 @@
+<%@page import="Model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-
+<%@ page import="Model.CommunityVO"%>
+<%@page import="Model.DAO"%> 
+<%@ page import="Model.Community_commentVO"%>
+<%@page import="java.util.ArrayList"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,16 +30,25 @@
 		if(session.getAttribute("userID") != null){
 			userID = (String)session.getAttribute("userID");
 		}	
+		MemberVO vo = null;
+		DAO dao = new DAO();
+		CommunityVO cvo = (CommunityVO)session.getAttribute("cvo");
+		ArrayList<Community_commentVO> cm_arr = dao.cm_Community(cvo.getC_seq());
+		if (session.getAttribute("vo") != null){
+			vo = (MemberVO)session.getAttribute("vo");
+		}
+		ArrayList<CommunityVO> arr = dao.Community();
+		Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 %>
-				<form action="c_Communitywrite" method="post" enctype="multipart/form-data" >
+				<form action="c_Communitychange" method="post" enctype="multipart/form-data" >
 				
 				<table id="list">
 					<tr>
-						<td><input type="text" name="title" class="title" placeholder="제목을 입력해주세요" > </td>
+						<td><input type="text" name="title" class="title" placeholder="제목을 다시 입력해주세요" > </td>
 					</tr>
 					<tr>
 						<td colspan="2">
-							<textarea name="content"  rows="20" cols="100" style="resize: none;"></textarea>			
+							<textarea name="content"  rows="20" cols="100" style="resize: none;"><%=cvo.getContent() %></textarea>			
 						</td>
 					</tr>
 					<tr>
@@ -48,7 +61,8 @@
 					<tr>
 						<td colspan="2">
 							<input type="reset" value="초기화">
-							<input type="submit" value="작성하기">
+							<input value="<%=cvo.getC_seq()%>" name="num" style="display:none">
+							<input type="submit" value="수정하기">
 						</td>
 					</tr>
 				</table>
