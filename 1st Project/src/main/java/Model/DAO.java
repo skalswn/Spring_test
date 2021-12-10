@@ -497,7 +497,11 @@ public class DAO {
 		        close();
      }
 	   return lognum;	   
+
+
 	}
+
+	
 	public ArrayList<s_Community_commentVO> s_cm_Community(int c_seq) { 
 		ArrayList<s_Community_commentVO> arr = new ArrayList<s_Community_commentVO>(); 
 		connection();
@@ -544,4 +548,5 @@ public class DAO {
 	   return lognum; 
   }
 }
+
 
