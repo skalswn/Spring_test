@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Model.DAO;
-@WebServlet("/u_c_Comment")
+@WebServlet("/u_c_Communitydelete")
 public class u_c_Communitydelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
