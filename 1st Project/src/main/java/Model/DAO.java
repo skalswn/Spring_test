@@ -498,6 +498,51 @@ public class DAO {
 		        close();
      }
 	   return lognum;	   
-
+	}
+	public ArrayList<s_Community_commentVO> s_cm_Community(int c_seq) { 
+		ArrayList<s_Community_commentVO> arr = new ArrayList<s_Community_commentVO>(); 
+		connection();
+		 try{ 
+			 String sql = "select* from TBL_STUDY_COMMENT WHERE STUDY_SEQ=? order by REG_DATE desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setInt(1,c_seq);
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int cm_seq = rs.getInt("C_STUDY_SEQ");
+			      c_seq = rs.getInt("STUDY_SEQ");
+			      String content = rs.getString("C_STUDY_CONTENT");
+			      String day = rs.getString("REG_DATE");
+			      String writer = rs.getString("M_ID");
+			      s_Community_commentVO scvo =new s_Community_commentVO(cm_seq, c_seq, content, day, writer);
+			      arr.add(scvo);
+			 }
+			
+		 }catch(Exception e){
+			 e.printStackTrace(); 
+		 }finally{ 
+			 close(); 
+			 }
+		return arr;
+	 }
+	public int s_cm_write(int c_seq, String cm_content, String writer) {
+		connection();  
+	 	try{
+		   String sql = "insert into TBL_STUDY_COMMENT(C_STUDY_SEQ, STUDY_SEQ,C_STUDY_CONTENT,M_ID) values(TBL_STUDY_COMMENT_SEQ.NEXTVAL, ?,?,?)";
+		   psmt = conn.prepareStatement(sql);	 
+		   psmt.setInt(1,c_seq);
+		   psmt.setString(2,cm_content);
+		   psmt.setString(3,writer);
+		   lognum = psmt.executeUpdate();
+		   if (lognum>0) {
+			   System.out.println("성공");
+		   }
+		      }catch(Exception e){
+		    	 System.out.println("실패");
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum; 
+  }
 }
 
