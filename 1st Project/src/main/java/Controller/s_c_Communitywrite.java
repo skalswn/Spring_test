@@ -36,7 +36,8 @@ public class s_c_Communitywrite extends HttpServlet {
 		if(session.getAttribute("userID") != null){
 			userID = (String)session.getAttribute("userID");
 		}
-		String savePath = request.getServletContext().getRealPath("images");
+		
+		String savePath = request.getServletContext().getRealPath("IMAGES");
 		int maxSize =5*1024*1024;
 		String encoding = "euc-kr";
 		MultipartRequest multi = new MultipartRequest(request,savePath,maxSize,encoding,new DefaultFileRenamePolicy());
