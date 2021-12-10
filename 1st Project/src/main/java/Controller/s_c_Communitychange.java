@@ -29,7 +29,7 @@ public class s_c_Communitychange extends HttpServlet {
 			file.mkdir(); System.out.println("해당 파일 없음."); 
 		}
 		HttpSession session = request.getSession();
-		String savePath = request.getServletContext().getRealPath("images");
+		String savePath = request.getServletContext().getRealPath("IMAGES");
 		int maxSize =5*1024*1024;
 		String encoding = "euc-kr";
 		MultipartRequest multi = new MultipartRequest(request,savePath,maxSize,encoding,new DefaultFileRenamePolicy());
