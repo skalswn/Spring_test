@@ -120,14 +120,15 @@ https://templatemo.com/tm-557-grad-school
 							</fieldset>
 						</div>
 						<div class="genderinput">
-							남 <input name="gender" type="radio" class="form-control"
-								id="gender" value="M"> 여 <input name="gender"
+							남 <input name="gender" type="radio" class="form-control" <% if(vo.getM_gender().equals("M")){%>checked="checked"<%} %>
+								id="gender" value="M"> 
+							여 <input name="gender" <% if(vo.getM_gender().equals("W")){%>checked="checked"<%} %>
 								type="radio" class="form-control" id="gender" value="W">
 						</div>
 						<div class="col-md-12">
 							<fieldset>
 								MEMO<br> <br>
-								<textarea cols="20" rows="5" placeholder = "메모 : <%=vo.getM_memo() %>"></textarea>
+								<textarea name = "memo" cols="20" rows="5" placeholder = "메모 : <%=vo.getM_memo() %>"></textarea>
 							</fieldset>
 						</div>
 						<div class="col-md-12">
