@@ -67,7 +67,7 @@ public class DAO {
 			
 			conn = DriverManager.getConnection(url, dbid, dbpw);
 
-			String sql = "insert into tbl_member values(?,?,?,?,?,?,sysdate,?,sysdate,N)";
+			String sql = "insert into tbl_member values(?,?,?,?,?,?,sysdate,?,sysdate,?)";
 
 			psmt = conn.prepareStatement(sql);
 
@@ -78,6 +78,8 @@ public class DAO {
 			psmt.setString(5, nick);
 			psmt.setString(6, gender);
 			psmt.setString(7, memo);
+			psmt.setString(8, "N");
+			
 			
 			cnt = psmt.executeUpdate();
 
@@ -124,7 +126,6 @@ public class DAO {
 			rs = psmt.executeQuery();
 
 			if (rs.next() == true) {
-				System.out.println("로그인 성공");
 				
 				String id = rs.getString(1);
 				String pw = rs.getString(2);
@@ -245,6 +246,11 @@ public class DAO {
 	public int communitydelete(int num) {
 		 connection();  
 		 	try{
+		 	   String sql0 = "delete from TBL_COMMUNITY_REPLY where article_seq=?";
+			   psmt = conn.prepareStatement(sql0);
+				   //5. 바인드 변수 채우기
+			   psmt.setInt(1,num);
+			   lognum = psmt.executeUpdate();
 			   String sql = "delete from tbl_community where article_seq=?";
 			   psmt = conn.prepareStatement(sql);
 			   //5. 바인드 변수 채우기
@@ -302,4 +308,29 @@ public class DAO {
 			 }
 		return arr;
 	 }
+	public int community_change(String title, String content, String filename1, String filename2,
+			String filename3, int num) {
+		 connection();  
+		 	try{
+			   String sql = "update TBL_COMMUNITY set ARTICLE_SUBJECT=?,ARTICLE_CONTENT=?,ARTICLE_FILE1=?,ARTICLE_FILE2=?,ARTICLE_FILE3=? where ARTICLE_SEQ=?";
+			   psmt = conn.prepareStatement(sql);
+			   //5. 바인드 변수 채우기
+			   psmt.setString(1,title);
+			   psmt.setString(2,content);
+			   psmt.setString(3,filename1);
+			   psmt.setString(4,filename2);
+			   psmt.setString(5,filename3);
+			   psmt.setInt(6,num);
+			   lognum = psmt.executeUpdate();
+			   if (lognum>0) {
+				   System.out.println("수정 성공");
+			   }
+			      }catch(Exception e){
+			         e.printStackTrace();
+			      }finally{
+			        close();
+	     }
+		   return lognum;
+	   
+	}
 }

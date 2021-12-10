@@ -35,7 +35,7 @@ https://templatemo.com/tm-557-grad-school
 <%
 // 로그인 안되어있을 때 메뉴바 다르게 하기 위해 vo가져오기
 MemberVO vo = (MemberVO)session.getAttribute("vo");
-
+out.print(vo);
 
 
 
@@ -48,28 +48,35 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
     </div>
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
-      <ul class="main-menu">
-        <li><a href="#section1">Home</a></li>
-        <li class="has-submenu"><a href="">About IT</a>
-          <ul class="sub-menu">
-            <li><a href="#section2">IT란?</a></li>
-            <li><a href="#section4">IT직무</a></li>
-            <li><a href="#section3">IT전망</a></li>
-            <!-- <li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li> -->
-          </ul>
-        </li>
-   	<%--  <% if(vo!=null){%>  --%>
-        <li><a href="#">직무탐색</a></li>
-        <!-- <li><a href="#section5">Video</a></li> -->
-        <li><a href="#section6">단계별학습</a></li>
-        <li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
-        <li><a href="My_page.jsp" class="external">마이페이지</a></li>
-        
-          <li><a href="Login.jsp">Login</a></li>
-          <li><a href="Join.jsp">Join</a></li>
-        <%-- <%} %> --%> 
-        </ul>
-    </nav>
+			<ul class="main-menu">
+				<li><a href="#section1">Home</a></li>
+				<!-- <li class="has-submenu"><a href="">About IT</a>
+					<ul class="sub-menu">
+						<li><a href="#section2">IT란?</a></li>
+						<li><a href="#section4">IT직무</a></li>
+						<li><a href="#section3">IT전망</a></li>
+						<li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li>
+					</ul></li> -->
+				<%
+				if (vo != null) {
+				%>
+				<li><a href="#">직무탐색</a></li>
+				<!-- <li><a href="#section5">Video</a></li> -->
+				<li><a href="#section6">단계별학습</a></li>
+				<li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
+				<li><a href="My_page.jsp" class="external">마이페이지</a></li>
+				<li><a href="LogoutService">로그아웃</a></li>
+
+				<%
+				} else {
+				%>
+				<li><a href="Login.jsp">Login</a></li>
+				<li><a href="Join.jsp">Join</a></li>
+				<%
+				}
+				%>
+			</ul>
+		</nav>
   </header>
 
   <!-- ***** Main Banner Area Start ***** -->
@@ -375,7 +382,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 
         };
 
-        var checkSection = function checkSection() {
+          var checkSection = function checkSection() {
           $('.section').each(function () {
             var
             $this = $(this),
@@ -392,15 +399,16 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
           });
         };
 
-        $('.main-menu, .scroll-to-section').on('click', 'a', function (e) {
+        $('.main-menu > nav, .scroll-to-section').on('click', 'a', function (e) {
           if($(e.target).hasClass('external')) {
             return;
           }
-          e.preventDefault();
-          $('#menu').removeClass('active');
+             e.preventDefault();
+          $('#menu li').removeClass('active');
           showSection($(this).attr('href'), true);
-        });
-
+      });  
+ 
+   
         $(window).scroll(function () {
           checkSection();
         });

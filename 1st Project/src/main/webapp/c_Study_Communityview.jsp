@@ -43,6 +43,7 @@ if (session.getAttribute("vo") != null){
 }
 ArrayList<CommunityVO> arr = dao.Community();
 Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
+System.out.print(cm_arr);
 %>
 				
 			<div id = "board">
@@ -100,7 +101,7 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 						
 					<%-- <%if(vo != null){
 						if (vo.getM_id()==cvo.getWriter()) {%> --%>
-						<a href="c_Communitychange.jsp?num=<%=cvo.getC_seq()%>"><button>수정하기</button></a></td>
+						<a href="c_Communitychange?num=<%=cvo.getC_seq()%>"><button>수정하기</button></a></td>
 						<a href="c_Communitydelete?num=<%=cvo.getC_seq()%>"><button>삭제하기</button></a></td>
 					<%-- 	<%}
 					}%>--%>
