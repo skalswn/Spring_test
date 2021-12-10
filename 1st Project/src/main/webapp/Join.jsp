@@ -178,7 +178,7 @@ https://templatemo.com/tm-557-grad-school
 							<div class="col-md-12">
 								<fieldset color="white">
 									<h5 style="color: white;">MEMO</h5>
-									<textarea class="textarea" rows="5"></textarea>
+									<textarea class="textarea" rows="5" name = "memo"></textarea>
 								</fieldset>
 							</div>
 							<div class="col-md-12">
