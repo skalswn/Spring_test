@@ -77,9 +77,9 @@ https://templatemo.com/tm-557-grad-school
 	<h4 align = "center"><%=vo.getM_id()%>(<%=vo.getM_name() %>)¥‘ æ»≥Á«œººø‰</h4>
 
 		<!-- Wrapper -->
- <section class="section coming-soon" data-section="section3">
-    <div class="container">
-      <div id="InfoUpdate">
+<section class="section coming-soon" data-section="section3">
+		<div style="text-align : center;">
+			<div style="display: inline-block;width: 30%;">
         <div class="col-md-5">
           <div class="right-content">
 							<div>
