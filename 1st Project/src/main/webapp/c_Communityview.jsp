@@ -35,10 +35,11 @@
 <body>
 <%	
 MemberVO vo =null;
-String userID="skalswn";
+String userID= null;
 if (session.getAttribute("vo") != null){
 	vo = (MemberVO)session.getAttribute("vo");
 	userID = vo.getM_id();
+	System.out.print(userID);
 }
 DAO dao = new DAO();
 CommunityVO cvo = (CommunityVO)session.getAttribute("cvo");

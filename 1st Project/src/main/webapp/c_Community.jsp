@@ -121,7 +121,8 @@ ArrayList<CommunityVO> arr = dao.Community();
 						<td class="cm_td">시간</td>
 						<td class="cm_td">조회수</td>
 					</tr>
-						<%if(arr.size()>=(pageno)*5){%>
+						
+						<%if(arr.size()>(pageno)*5){%>
 							<%for(int i=0;i<5;i++){%>
 							<tr class="main_tr">
 							<%String result = arr.get(i+(pageno-1)*5).getDay().substring(5,11);%>
@@ -132,7 +133,7 @@ ArrayList<CommunityVO> arr = dao.Community();
 							<td class="main_td"><a class="main_a" href="c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getC_seq()%>"><%=arr.get(i+(pageno-1)*5).getC_cnt()%></a></td>
 							</tr>
 							<%}%>
-						<%}else{%>
+						<%}else if(arr.size()<(pageno)*5) {%>
 							<%for(int i=0;i<(pageno)*5-arr.size();i++){%>
 							<tr class="main_tr">
 							<%String result = arr.get(i+(pageno-1)*5).getDay().substring(5,11);%>
@@ -141,14 +142,15 @@ ArrayList<CommunityVO> arr = dao.Community();
 							<td class="main_td"><a class="main_a" href="c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getC_seq()%>"><%=arr.get(i+(pageno-1)*5).getWriter()%></a></td>
 							<td class="main_td"><a class="main_a" href="c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getC_seq()%>"><%=result%></a></td>
 							<td class="main_td"><a class="main_a" href="c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getC_seq()%>"><%=arr.get(i+(pageno-1)*5).getC_cnt()%></a></td>
-							</tr>		
-							<%}%>
-						<%}%>	
-					
+							</tr>
+							<%}%>		
+						<%}else{%>
+							
+						<%}%>
 					</table>
 <%-- <a href="c_Community.jsp?pageno=1">[맨앞으로]</a>
 <a href="c_Community.jsp?pageno=<%=prev_pageno%>">[이전]</a>  --%>
-<%for(int i =page_sno;i<=page_eno;i++){%>
+<%for(int i =page_sno;i<page_eno;i++){%>
 	<a href="c_Community.jsp?pageno=<%=i %>">
 		<%if(pageno == i){ %>
 			<span id="cho"><%=i %></span>
@@ -156,7 +158,7 @@ ArrayList<CommunityVO> arr = dao.Community();
 			<%=i %>
 		<%} %>
 	</a> 
-	<%if(i<page_eno){ %>
+	<%if(i<page_eno-1){ %>
 		,
 	<%} %>
 <%} %>

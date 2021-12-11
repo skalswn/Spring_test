@@ -407,7 +407,6 @@ out.print(vo);
           showSection($(this).attr('href'), true);
       });  
  
-   
         $(window).scroll(function () {
           checkSection();
         });
