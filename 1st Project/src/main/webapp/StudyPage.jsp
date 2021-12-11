@@ -115,15 +115,16 @@ body {
 		<input type="submit">
 	</form>
 	<form action="ShowAnswer" methos="post"></form>
-	<div id="q">모든 문제 나오는 곳</div>
+	<p>모든 문제 나오는 곳</p>
 	<!-- 언어 선택에 따라 모든 문제가 나오게 하기 -->
+	<div>
 	<%if(codingarray!=null){ %>
 		<%for(int i=0; i<codingarray.size(); i++){%>
 			<%CodingVO codingvo=codingarray.get(i); %>
 			<p><%=codingvo.getCoding_q()%></p>
-			<a href="MyStudyPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a>
+			<p><a href="MyStudyPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a></p>
 			<%if(vo.getM_id().equals("admin")){ %>
-				<button onclick="location.href='DeleteCodingService?seq=<%= codingvo.getCoding_seq() %>';">>문제삭제</button>
+				<button onclick="location.href='DeleteCodingService?seq=<%= codingvo.getCoding_seq() %>';">문제삭제</button>
 			<%} %>
 		<%} %>
 	<%}else{ %>
