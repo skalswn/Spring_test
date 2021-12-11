@@ -33,6 +33,8 @@ public class P_PSit extends HttpServlet {
 		int ISTJ = 0;
 		int ISTP = 0;
 		
+		String result = "";
+		
 		
 			
 		for(int i =0 ; i<26; i++ ) {
@@ -179,7 +181,43 @@ public class P_PSit extends HttpServlet {
 			}
 		}
 		
-		System.out.println(array[29]);
+			if(array[29]==array[0]) {
+				result = result +"ENFJ";
+			}if(array[29]==array[1]) {
+				result = result +"ENFP";
+			}if(array[29]==array[2]) {
+				result = result +"ENTJ";
+			}if(array[29]==array[3]) {
+				result = result +"ENTP";
+			}if(array[29]==array[4]) {
+				result = result +"ESFJ";
+			}if(array[29]==array[5]) {
+				result = result +"ESFP";
+			}if(array[29]==array[6]) {
+				result = result +"ISTJ";
+			}if(array[29]==array[7]) {
+				result = result +"ISTP";
+			}if(array[29]==array[8]) {
+				result = result +"INFJ";
+			}if(array[29]==array[9]) {
+				result = result +"INFP";
+			}if(array[29]==array[10]) {
+				result = result +"INTJ";
+			}if(array[29]==array[11]) {
+				result = result +"INTP";
+			}if(array[29]==array[12]) {
+				result = result +"ISFJ";
+			}if(array[29]==array[13]) {
+				result = result +"ISFP";
+			}if(array[29]==array[14]) {
+				result = result +"ISTJ";
+			}if(array[29]==array[15]) {
+				result = result +"ISTP";
+			}
+		
+		
+		
+		System.out.println((result) +(array[29]));
 		
 		
 		
