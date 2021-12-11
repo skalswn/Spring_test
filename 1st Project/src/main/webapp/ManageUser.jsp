@@ -98,7 +98,7 @@ https://templatemo.com/tm-557-grad-school
 											<td> <%= vo.getM_email() %> </td>
 											<td> <%= vo.getM_name() %> </td>
 											<td> <%= vo.getM_gender() %> </td>
-											<td><button style="width: 30% !important; margin: 10px !important;" type="button" onclick="location.href='DeleteService?email=<%= vo.getM_email() %>';">삭제</button></td>
+											<td><button style="width: 30% !important; margin: 10px !important;" type="button" onclick="location.href='DeleteMember?m_email=<%= vo.getM_email() %>';">삭제</button></td>
 										</tr>
 										<% } %>
 									</table>
@@ -131,7 +131,6 @@ https://templatemo.com/tm-557-grad-school
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 	<script src="assets/js/isotope.min.js"></script>
 	<script src="assets/js/owl-carousel.js"></script>
 	<script src="assets/js/lightbox.js"></script>

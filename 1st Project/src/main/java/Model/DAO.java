@@ -152,6 +152,40 @@ public class DAO {
 		return list;
 	}
 
+// 회원삭제========================================================================================
+	
+public int Delete(String m_email) {
+		
+		int cnt = 0;
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		
+		try {
+
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			String url = "jdbc:oracle:thin:@172.30.1.19:1521:xe";
+			String dbid = "hr";
+			String dbpw = "hr";
+
+			conn = DriverManager.getConnection(url, dbid, dbpw);
+
+			String sql = "delete from tbl_member where m_email = ?";
+
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setString(1, m_email);
+			
+			cnt = psmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
 // 로그인========================================================================================
 	public MemberVO Login(String m_id, String m_pw) {
 
