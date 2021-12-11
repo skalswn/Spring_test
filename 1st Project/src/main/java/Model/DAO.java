@@ -489,6 +489,27 @@ public class DAO {
 		}
 		return codingvo;
 	}
+// 문제 삭제하기====================================================================================
+	
+	public int deleteCoding(int seq) {
+
+		try{
+			connection();  
+			String sql = "delete from tbl_coding where coding_seq=?";
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setInt(1,seq);
+
+			cnt = psmt.executeUpdate();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			close();
+		}
+		return cnt;	   
+	}
+	
 	
 // ===============================================
 	public int community_change(String title, String content, String filename1, String filename2,
