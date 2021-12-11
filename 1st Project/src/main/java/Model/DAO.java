@@ -118,7 +118,7 @@ public class DAO {
 
 			conn = DriverManager.getConnection(url, dbid, dbpw);
 
-			String sql = "select * from web_member";
+			String sql = "select * from tbl_member";
 
 			psmt = conn.prepareStatement(sql);
 

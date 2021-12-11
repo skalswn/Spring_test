@@ -632,7 +632,7 @@ section.coming-soon {
 	border : 1px;
 	font-size: 14px;
     color: #fff;
-    background-color: rgba(250,250,250,0.2);
+    /* background-color: rgba(250,250,250,0.2); */
     padding: 40px;
     text-align: center;
     line-height: 24px;
@@ -1670,4 +1670,3 @@ footer p a:hover {
 	    margin-bottom: 20px;
 	    letter-spacing: 0.5px;
 	}
-	

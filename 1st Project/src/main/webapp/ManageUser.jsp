@@ -1,3 +1,4 @@
+<%@page import="Model.DAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -37,7 +38,10 @@ https://templatemo.com/tm-557-grad-school
 
 <body>
 <%	MemberVO vo = (MemberVO)session.getAttribute("vo");
-	ArrayList<MemberVO> list = (ArrayList<MemberVO>)request.getAttribute("list"); %>
+	DAO dao = new DAO();
+	ArrayList<MemberVO> list = new ArrayList<MemberVO>();
+	list = dao.SelectAll();
+	%>
 	<!--header-->
   <header class="main-header clearfix" role="header">
     <div class="logo">
@@ -80,25 +84,23 @@ https://templatemo.com/tm-557-grad-school
 								<fieldset>
 									<h4>MEMBER LIST</h4>
 									<table id="memberlist">
-										<tr>
+										<tr style = "height : 40px;">
 											<th> 아이디 </th>
 											<th> 이메일 </th>
 											<th> 이름 </th>
 											<th> 성별 </th>
-											<th> 회원가입일자 </th>
 											<th> 회원삭제 </th>
 										</tr>
-										<%-- <% for (int i = 0; i < list.size(); i++){ %>
+										<% for (int i = 0; i < list.size(); i++){ %>
 										<% vo = list.get(i); %>										
-										<tr>
+										<tr style = "background-color: rgba(250,250,250,0.2)!important;">
 											<td> <%= vo.getM_id() %> </td>
 											<td> <%= vo.getM_email() %> </td>
 											<td> <%= vo.getM_name() %> </td>
 											<td> <%= vo.getM_gender() %> </td>
-											<td> <%= vo.getM_joindate() %> </td>
-											<td><button type="button" onclick="location.href='DeleteService?email=<%= vo.getM_email() %>';">삭제</button></td>
+											<td><button style="width: 30% !important; margin: 10px !important;" type="button" onclick="location.href='DeleteService?email=<%= vo.getM_email() %>';">삭제</button></td>
 										</tr>
-										<% } %> --%>
+										<% } %>
 									</table>
 								</fieldset>
 							</div>
