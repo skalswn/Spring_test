@@ -74,12 +74,12 @@ https://templatemo.com/tm-557-grad-school
   </header>
   
   <br>  <br>  <br>  <br> 
-	<h4 align = "center"><%=vo.getM_id() %>(<%=vo.getM_name() %>)¥‘ æ»≥Á«œººø‰</h4>
+	<h4 align = "center"><%=vo.getM_id()%>(<%=vo.getM_name() %>)¥‘ æ»≥Á«œººø‰</h4>
 
 		<!-- Wrapper -->
-			 <section class="section coming-soon" data-section="section3">
-    <div class="container">
-      <div id="InfoUpdate">
+<section class="section coming-soon" data-section="section3">
+		<div style="text-align : center;">
+			<div style="display: inline-block;width: 30%;">
         <div class="col-md-5">
           <div class="right-content">
 							<div>
@@ -131,7 +131,7 @@ https://templatemo.com/tm-557-grad-school
 						<div class="col-md-12">
 							<fieldset>
 								MEMO<br> <br>
-								<textarea name = "memo" cols="20" rows="5" placeholder = "∏ﬁ∏ : <%=vo.getM_memo() %>"></textarea>
+								<textarea class="textarea" name = "memo" rows="5" placeholder = "∏ﬁ∏ : <%=vo.getM_memo() %>"></textarea>
 							</fieldset>
 						</div>
 						<div class="col-md-12">

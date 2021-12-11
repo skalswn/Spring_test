@@ -83,7 +83,11 @@ body {
 				<!-- <li><a href="#section5">Video</a></li> -->
 				<li><a href="#section6">단계별학습</a></li>
 				<li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
-				<li><a href="My_page.jsp" class="external">마이페이지</a></li>
+					<%if(vo.getM_id().equals("admin")){ %>
+						<li><a href="ManageUser.jsp" class="external">회원관리</a></li>
+					<%}else{ %>						
+						<li><a href="My_page.jsp" class="external">마이페이지</a></li>
+					<%} %>
 				<li><a href="LogoutService">로그아웃</a></li>
 
 				<%
@@ -99,15 +103,17 @@ body {
 	</header>
 	
 	<br><br><br><br><br><br>
+		<%if(vo.getM_id().equals("admin")){ %>
+			<a href="InsertCoding.jsp"><button>문제추가</button></a>
+		<%} %>
 	<form action="ShowAllCodingService" method="post">
 		파이썬<input type="radio" name="lang" value="파이썬"> 
 		자바<input type="radio" name="lang" value="자바"> 
+		HTML/CSS/자바스크립트<input type="radio" name="lang" value="HTML"> 
 		<input type="submit">
 	</form>
 	
 	<form action="ShowAnswer" methos="post"></form>
-	<div id="c">학습내용</div>
-	<div id="c"></div>
 	<div id="q">모든 문제 나오는 곳</div>
 	<!-- 언어 선택에 따라 모든 문제가 나오게 하기 -->
 	<%if(codingarray!=null){ %>

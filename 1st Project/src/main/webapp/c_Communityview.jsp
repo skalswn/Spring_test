@@ -60,7 +60,7 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 						<td>ÀÛ¼ºÀÚ : <%=cvo.getWriter() %></td>
 					</tr>
 					<tr>
-						<td colspan="2" class="content"><%=cvo.getContent() %></td>
+						<td colspan="2" class="content" style="white-space: pre-line;"><%=cvo.getContent() %></td>
 					</tr>
 					<%if(cvo.getFile1() !=null && cvo.getFile2() !=null && cvo.getFile3() !=null) { %>
 					<tr>
