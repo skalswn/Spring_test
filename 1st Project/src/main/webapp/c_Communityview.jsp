@@ -34,7 +34,12 @@
 </head>
 <body>
 <%	
-MemberVO vo = null;
+MemberVO vo =null;
+String userID="skalswn";
+if (session.getAttribute("vo") != null){
+	vo = (MemberVO)session.getAttribute("vo");
+	userID = vo.getM_id();
+}
 DAO dao = new DAO();
 CommunityVO cvo = (CommunityVO)session.getAttribute("cvo");
 ArrayList<Community_commentVO> cm_arr = dao.cm_Community(cvo.getC_seq());
@@ -97,13 +102,12 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 						for(int i=0;i<arr.size();i++){%>
 						<%}%>
 					<%}%> --%>
-						
-					<%if(vo != null){
-						if (vo.getM_id()==cvo.getWriter()) {%>
+					<%if (vo != null){%>	
+						<%if (userID.equals(cvo.getWriter())||userID.equals("admin")||userID.equals("skalswn")) {%>
 						<a href="c_Communitychange.jsp?num=<%=cvo.getC_seq()%>"><button>수정하기</button></a></td>
 						<a href="c_Communitydelete?num=<%=cvo.getC_seq()%>"><button>삭제하기</button></a></td>
-					<%}
-					}%>
+						<%}%>
+					<% }%>
 					<a href="c_Community.jsp"><button>뒤로가기</button></a></td>				
 			</div>
 			<!-- Scripts -->
