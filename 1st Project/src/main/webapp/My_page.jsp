@@ -54,7 +54,7 @@ https://templatemo.com/tm-557-grad-school
 				<%
 				if (vo != null) {
 				%>
-				<li><a href="#">직무탐색</a></li>
+				<li><a href="P_Psit.jsp">직무탐색</a></li>
 				<!-- <li><a href="#section5">Video</a></li> -->
 				<li><a href="#section6">단계별학습</a></li>
 				<li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
@@ -120,11 +120,13 @@ https://templatemo.com/tm-557-grad-school
 									placeholder="현재 닉네임 : <%=vo.getM_nick() %>" required="">
 							</fieldset>
 						</div>
-						<div class="genderinput">
-							남 <input name="gender" type="radio" class="form-control" <% if(vo.getM_gender().equals("M")){%>checked="checked"<%} %>
-								id="gender" value="M"> 
-							여 <input name="gender" <% if(vo.getM_gender().equals("W")){%>checked="checked"<%} %>
-								type="radio" class="form-control" id="gender" value="W">
+						<div class="col-md-12" style="color: white;">
+							<div id="gender">
+							남 <input class="gender" id="gender" name="gender" type="radio" class="form-control" <% if(vo.getM_gender().equals("M")){%>checked="checked"<%} %>
+								 value="M"> 
+							여 <input class="gender" id="gender" name="gender" <% if(vo.getM_gender().equals("W")){%>checked="checked"<%} %>
+								type="radio" class="form-control" value="W">
+							</div>
 						</div>
 						<div class="col-md-12">
 							<fieldset>
