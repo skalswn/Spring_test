@@ -69,8 +69,9 @@ https://templatemo.com/tm-557-grad-school
   </header>
 
 	<section class="section coming-soon" data-section="section3">
-		<div>
-			<div>
+		<div style="text-align : center;">
+		
+			<div style="display: inline-block;width: 30%;">
 				<div class="col-md-5">
 					<form id="contact" action="JoinService" method="post"
 						align="center">
