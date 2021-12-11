@@ -91,7 +91,6 @@ out.print(vo);
               </div>
               <% if(vo!=null){%>
 				<div align = "right"><span><h2>학습진행률</h2></span></div>
-				
 			  <%} %>
 		
 			</div>
