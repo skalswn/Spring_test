@@ -4,10 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
-
 
 public class DAO {
 	   CommunityVO bo=null;
@@ -99,6 +97,59 @@ public class DAO {
 			close();
 		}
 		return cnt;
+	}
+	
+// Memberlist==================================================================================
+	public ArrayList<MemberVO> SelectAll() {
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		MemberVO vo = null;
+		ArrayList<MemberVO> list = new ArrayList<>();
+		
+		try {
+
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			String url = "jdbc:oracle:thin:@172.30.1.19:1521:xe";
+			String dbid = "hr";
+			String dbpw = "hr";
+
+			conn = DriverManager.getConnection(url, dbid, dbpw);
+
+			String sql = "select * from web_member";
+
+			psmt = conn.prepareStatement(sql);
+
+			rs = psmt.executeQuery();
+
+			while (rs.next() == true) {
+				String m_id = rs.getString(1);
+				String m_pw = rs.getString(2);
+				String m_email = rs.getString(3);
+				String m_name = rs.getString(4);
+				String m_nick = rs.getString(5);
+				String m_gender = rs.getString(6);
+				String m_memo = rs.getString(7);
+
+				vo = new MemberVO(m_id, m_pw, m_email, m_name, m_nick, m_gender, m_memo);
+				list.add(vo);
+			}
+
+		} catch (Exception e) {
+		} finally {
+			try {
+				if (psmt != null) {
+					psmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e) {
+			}
+		}
+		return list;
 	}
 
 // ·Î±×ÀÎ========================================================================================

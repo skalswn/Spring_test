@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="Model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
@@ -35,7 +36,8 @@ https://templatemo.com/tm-557-grad-school
 </head>
 
 <body>
-<%MemberVO vo = (MemberVO)session.getAttribute("vo"); %>
+<%	MemberVO vo = (MemberVO)session.getAttribute("vo");
+	ArrayList<MemberVO> list = (ArrayList<MemberVO>)request.getAttribute("list"); %>
 	<!--header-->
   <header class="main-header clearfix" role="header">
     <div class="logo">
@@ -58,7 +60,6 @@ https://templatemo.com/tm-557-grad-school
         <!-- <li><a href="#section5">Video</a></li> -->
         <li><a href="CodingStudy.jsp">단계별학습</a></li>
         <li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
-        <li><a href="My_page.jsp" class="external">마이페이지</a></li>
         <li><a href="Main.jsp" class="external">로그아웃</a></li>
      <%} else {%>
         <li><a href="Login.jsp">Login</a></li>
@@ -71,7 +72,7 @@ https://templatemo.com/tm-557-grad-school
 	<section class="section coming-soon" data-section="section3">
 		<div>
 			<div>
-				<div class="col-md-5">
+				<div>
 					<form id="contact" action="" method="post"
 						align="center">
 						<div class="row">
@@ -85,10 +86,19 @@ https://templatemo.com/tm-557-grad-school
 											<th> 이름 </th>
 											<th> 성별 </th>
 											<th> 회원가입일자 </th>
+											<th> 회원삭제 </th>
 										</tr>
+										<%-- <% for (int i = 0; i < list.size(); i++){ %>
+										<% vo = list.get(i); %>										
 										<tr>
-											<td></td>
+											<td> <%= vo.getM_id() %> </td>
+											<td> <%= vo.getM_email() %> </td>
+											<td> <%= vo.getM_name() %> </td>
+											<td> <%= vo.getM_gender() %> </td>
+											<td> <%= vo.getM_joindate() %> </td>
+											<td><button type="button" onclick="location.href='DeleteService?email=<%= vo.getM_email() %>';">삭제</button></td>
 										</tr>
+										<% } %> --%>
 									</table>
 								</fieldset>
 							</div>
