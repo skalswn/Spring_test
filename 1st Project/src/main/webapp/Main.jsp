@@ -62,7 +62,11 @@ out.print(vo);
         <!-- <li><a href="#section5">Video</a></li> -->
         <li><a href="StudyPage.jsp">단계별학습</a></li>
         <li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
+        <%if(vo.getM_id().equals("admin")){ %>
+	        <li><a href="ManageUser.jsp" class="external">회원관리</a></li>
+        <%}else{ %>
         <li><a href="My_page.jsp" class="external">마이페이지</a></li>
+        <%} %>
         <li><a href="LogoutService" class="external">로그아웃</a></li>
      <%} else {%>
         <li><a href="Login.jsp">Login</a></li>
