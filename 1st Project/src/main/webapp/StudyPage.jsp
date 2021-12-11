@@ -114,8 +114,6 @@ body {
 	</form>
 	
 	<form action="ShowAnswer" methos="post"></form>
-	<div id="c">학습내용</div>
-	<div id="c"></div>
 	<div id="q">모든 문제 나오는 곳</div>
 	<!-- 언어 선택에 따라 모든 문제가 나오게 하기 -->
 	<%if(codingarray!=null){ %>
