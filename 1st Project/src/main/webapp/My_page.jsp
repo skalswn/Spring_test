@@ -80,7 +80,7 @@ https://templatemo.com/tm-557-grad-school
 <section class="section coming-soon" data-section="section3">
 		<div style="text-align : center;">
 			<div style="display: inline-block;width: 30%;">
-        <div class="col-md-5">
+				<div class="col-md-5" style="flex: 100%; max-width: 100%;">
           <div class="right-content">
 							<div>
 							<h5>회원정보수정</h5>

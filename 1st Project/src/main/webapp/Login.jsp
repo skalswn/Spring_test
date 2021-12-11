@@ -72,10 +72,10 @@ out.print(vo);
     
   </header>
 
- <section class="section coming-soon" data-section="section3">
+<section class="section coming-soon" data-section="section3">
 		<div style="text-align : center;">
 			<div style="display: inline-block;width: 30%;">
-				<div class="col-md-5">
+				<div class="col-md-5" style="flex: 100%; max-width: 100%;">
 					<form id="contact" action="LoginService" method="post"
 						align="center">
 						<div class="row">

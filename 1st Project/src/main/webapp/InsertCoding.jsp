@@ -14,10 +14,12 @@
 	 		<option value="자바">자바</option>
 	  		<option value="HTML">HTML/CSS/자바스크립트</option>
 		</select>
-		<input name="id" type="text", placeholder="id입력">
-		<textarea rows="8" cols="80" name="coding_q">문제 넣기</textarea>
-		<textarea rows="8" cols="80" name="coding_a">해설 넣기</textarea>
-		<input type="submit" value="넣기">
+		<div>
+			<div><input name="id" type="text", placeholder="id입력" value="admin"></div>
+			<div><textarea rows="20" cols="100" name="coding_q">문제 넣기</textarea></div>
+			<div><textarea rows="20" cols="100" name="coding_a">해설 넣기</textarea></div>
+			<div><input type="submit" value="넣기">
+		</div>
 	</form>
 
 </body>

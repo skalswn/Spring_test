@@ -194,9 +194,9 @@ public class P_PSit extends HttpServlet {
 			}if(array[29]==array[5]) {
 				result = result +"ESFP";
 			}if(array[29]==array[6]) {
-				result = result +"ISTJ";
+				result = result +"ESTJ";
 			}if(array[29]==array[7]) {
-				result = result +"ISTP";
+				result = result +"ESTP";
 			}if(array[29]==array[8]) {
 				result = result +"INFJ";
 			}if(array[29]==array[9]) {
@@ -218,6 +218,8 @@ public class P_PSit extends HttpServlet {
 		
 		
 		System.out.println((result) +(array[29]));
+		 String sample = result + array[29];
+		response.sendRedirect("Psit_Result.jsp?sample="+sample);
 		
 		
 		

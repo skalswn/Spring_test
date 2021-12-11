@@ -1,3 +1,4 @@
+<%@page import="Model.DAO"%>
 <%@page import="Model.CodingVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.MemberVO"%>
@@ -57,6 +58,7 @@ body {
 <% 
 	MemberVO vo = (MemberVO)session.getAttribute("vo");
 	ArrayList<CodingVO> codingarray=(ArrayList<CodingVO>)request.getAttribute("codingarray");
+	DAO dao = new DAO();
 %>
 
 	<!--header-->
@@ -103,8 +105,8 @@ body {
 	</header>
 	
 	<br><br><br><br><br><br>
-		<%if(vo.getM_id().equals("admin")){ %>
-			<a href="InsertCoding.jsp"><button>문제추가</button></a>
+	<%if(vo.getM_id().equals("admin")){ %>
+		<a href="InsertCoding.jsp"><button>문제추가</button></a>
 		<%} %>
 	<form action="ShowAllCodingService" method="post">
 		파이썬<input type="radio" name="lang" value="파이썬"> 
@@ -112,7 +114,6 @@ body {
 		HTML/CSS/자바스크립트<input type="radio" name="lang" value="HTML"> 
 		<input type="submit">
 	</form>
-	
 	<form action="ShowAnswer" methos="post"></form>
 	<div id="q">모든 문제 나오는 곳</div>
 	<!-- 언어 선택에 따라 모든 문제가 나오게 하기 -->
@@ -121,6 +122,9 @@ body {
 			<%CodingVO codingvo=codingarray.get(i); %>
 			<p><%=codingvo.getCoding_q()%></p>
 			<a href="MyStudyPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a>
+			<%if(vo.getM_id().equals("admin")){ %>
+				<button onclick="location.href='DeleteCodingService?seq=<%= codingvo.getCoding_seq() %>';">>문제삭제</button>
+			<%} %>
 		<%} %>
 	<%}else{ %>
 		언어를 선택해주세요.
