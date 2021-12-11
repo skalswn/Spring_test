@@ -54,7 +54,7 @@ https://templatemo.com/tm-557-grad-school
           </ul> -->
         </li>
      <% if(vo!=null){%>
-        <li><a href="#">직무탐색</a></li>
+        <li><a href="P_Psit.jsp">직무탐색</a></li>
         <!-- <li><a href="#section5">Video</a></li> -->
         <li><a href="CodingStudy.jsp">단계별학습</a></li>
         <li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
@@ -111,7 +111,8 @@ https://templatemo.com/tm-557-grad-school
 							<div class="col-md-12" style="color: white;">
 								<div id="gender">
 									남 <input class="gender" name="gender" type="radio"
-										class="form-control" id="gender" value="M"> 여 <input
+										class="form-control" id="gender" value="M"> 
+									여 <input
 										class="gender" name="gender" type="radio" class="form-control"
 										id="gender" value="W">
 								</div>

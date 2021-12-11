@@ -58,7 +58,7 @@ out.print(vo);
           </ul> -->
         </li>
      <% if(vo!=null){%>
-        <li><a href="#">직무탐색</a></li>
+        <li><a href="P_Psit.jsp">직무탐색</a></li>
         <!-- <li><a href="#section5">Video</a></li> -->
         <li><a href="StudyPage.jsp">단계별학습</a></li>
         <li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
@@ -406,7 +406,6 @@ out.print(vo);
           showSection($(this).attr('href'), true);
       });  
  
-   
         $(window).scroll(function () {
           checkSection();
         });
