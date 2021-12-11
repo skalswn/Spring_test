@@ -123,7 +123,7 @@ body {
 			<p><%=codingvo.getCoding_q()%></p>
 			<a href="MyStudyPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a>
 			<%if(vo.getM_id().equals("admin")){ %>
-				<button onclick="location.href='DeleteCodingService?seq=<%= codingvo.getCoding_seq() %>';">>문제삭제</button>
+				<button onclick="location.href='DeleteCodingService?seq=<%= codingvo.getCoding_seq() %>';">문제삭제</button>
 			<%} %>
 		<%} %>
 	<%}else{ %>
