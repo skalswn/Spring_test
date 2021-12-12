@@ -40,7 +40,11 @@ if (session.getAttribute("vo") != null){
 	vo = (MemberVO)session.getAttribute("vo");
 	userID = vo.getM_id();
 	System.out.print(userID);
-}
+}else{%>
+Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
+Response.Write("<script>location.href='Main.jsp';</script>");
+<%}%>
+<% 
 DAO dao = new DAO();
 CommunityVO cvo = (CommunityVO)session.getAttribute("cvo");
 ArrayList<Community_commentVO> cm_arr = dao.cm_Community(cvo.getC_seq());
@@ -96,9 +100,10 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 						<span><%=cm_arr.get(i).getC_writer()%> : </span>
 						<span><%=cm_arr.get(i).getContent()%></span>
 						<br>
-					</tr> 	
-					<% }%>
+					</tr>
+						<% }%>
 					<%}%>
+					
 					<%-- <%if (cmvo !=null){
 						for(int i=0;i<arr.size();i++){%>
 						<%}%>
