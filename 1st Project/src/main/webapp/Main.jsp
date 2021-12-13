@@ -57,7 +57,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
         </li>
      <% if(vo!=null){%>
         <li><a href="P_Psit.jsp">직무탐색</a></li>
-        <!-- <li><a href="#section5">Video</a></li> -->
+        <!-- <li><a h\ref="#section5">Video</a></li> -->
         <li><a href="StudyPage.jsp">단계별학습</a></li>
         <li><a href="c_Community.jsp" class="external">커뮤니티</a>
           <ul class="sub-menu">
