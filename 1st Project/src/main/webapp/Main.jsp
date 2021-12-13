@@ -56,7 +56,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
           </ul> -->
         </li>
      <% if(vo!=null){%>
-        <li><a href="P_Psit.jsp">流公沤祸</a>
+        <li><a href="#">流公沤祸</a>
         	<ul class="sub-menu">
             <li><a href="P_Psit.jsp">PSIT 八荤</a></li>
             <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
