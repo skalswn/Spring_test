@@ -35,7 +35,6 @@ https://templatemo.com/tm-557-grad-school
 <%
 // 로그인 안되어있을 때 메뉴바 다르게 하기 위해 vo가져오기
 MemberVO vo = (MemberVO)session.getAttribute("vo");
-out.print(vo);
 
 
 %>
@@ -163,25 +162,22 @@ out.print(vo);
           </div>
         </div>
         <div class="col-md-12">
+        <img src="assets/images/001.png" style = "width : 100% ">
           <div id='tabs'>
-            <ul>
+           <!--  <ul>
               <li><a href='#tabs-1'>내용(필요없으면 지우기)</a></li>
               <li><a href='#tabs-2'>내용(필요없으면 지우기)</a></li>
               <li><a href='#tabs-3'>내용(필요없으면 지우기)</a></li>
-            </ul>
+            </ul> -->
             <section class='tabs-content'>
               <article id='tabs-1'>
                 <div class="row">
-                  <div class="col-md-6">
-                    <img src="assets/images/choose-us-image-01.png" alt="">
-                  </div>
-                  <div class="col-md-6">
-                    <h4>IT관련 사진넣고 제목</h4>
-                    <p>IT관련 내용</p>
+                  <div class="col-md-6" >
+                   <!--  <img src="assets/images/001.png" alt=""> -->
                   </div>
                 </div>
               </article>
-              <article id='tabs-2'>
+              <!-- <article id='tabs-2'>
                 <div class="row">
                   <div class="col-md-6">
                     <img src="assets/images/choose-us-image-02.png" alt="">
@@ -195,13 +191,13 @@ out.print(vo);
               </article>
               <article id='tabs-3'>
                 <div class="row">
-                  <div class="col-md-6">
-                    <img src="assets/images/choose-us-image-03.png" alt="">
+                  <div class="col-md-6">/choose-us-image-03.png" alt="">
                   </div>
+                    <img src="assets/images
                   <div class="col-md-6">
                     <h4>Quality Meeting</h4>
                     <p>You are NOT allowed to redistribute this template ZIP file on any template collection website. However, you can use this template to convert into a specific theme for any kind of CMS platform such as WordPress. For more information, you shall <a rel="nofollow" href="https://templatemo.com/contact" target="_parent">contact TemplateMo</a> now.</p>
-                  </div>
+                  </div> -->
                 </div>
               </article>
             </section>
