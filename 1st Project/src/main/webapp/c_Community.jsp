@@ -61,30 +61,19 @@ if(session.getAttribute("cvo") !=null){
 DAO dao = new DAO();
 ArrayList<CommunityVO> arr = dao.Community();
 %>
-<<<<<<< HEAD
-<%-- <%
-=======
-	<%
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-Bigdata-7/PSIT.git
+<%	
 MemberVO vo =null;
-if(session.getAttribute("vo") != null){
+String userID= null;
+if (session.getAttribute("vo") != null){
 	vo = (MemberVO)session.getAttribute("vo");
-	String userID =vo.getM_id();
+	userID = vo.getM_id();
+	System.out.print(userID);
 }else{%>
-<<<<<<< HEAD
-	Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
-	Response.Write("<script>location.href='Main.jsp';</script>");
-<%}%> --%>
+Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
+Response.Write("<script>location.href='Main.jsp';</script>");
+<%}%>
+
 <%!
-=======
-	Response.Write("
-	<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>
-	"); Response.Write("
-	<script>location.href='Main.jsp';</script>
-	");
-	<%}%>
-	<%!
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-Bigdata-7/PSIT.git
 	public Integer toInt(String x){
 		int a = 0;
 		try{
