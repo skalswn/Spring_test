@@ -21,7 +21,7 @@
 </head>
 <body>
 <div>
-<%//C:\Users\smhrd\OneDrive\¹ÙÅÁ È­¸é\Web_Study\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps %>
+<%//C:\U¤·sers\smhrd\OneDrive\¹ÙÅÁ È­¸é\Web_Study\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps %>
 <%
 MemberVO vo =null;
 if(session.getAttribute("vo") != null){
