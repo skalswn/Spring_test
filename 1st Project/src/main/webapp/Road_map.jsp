@@ -38,7 +38,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 
    <header class="main-header clearfix" role="header">
     <div class="logo">
-      <a href="Main.jsp"><em>Welcome</em> PSIT</a> 
+		<a href="Main.jsp"><em>PSIT</em> <span style = "font-size: x-large;">Personal IT</span></a>  
     </div>
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
@@ -56,7 +56,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 				%>
 				<li><a href="P_Psit.jsp">직무탐색</a></li>
 				<!-- <li><a href="#section5">Video</a></li> -->
-				<li><a href="#section6">단계별학습</a></li>
+				<li><a href="StudyPage.jsp">단계별학습</a></li>
 				<li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
 				<li><a href="My_page.jsp" class="external">마이페이지</a></li>
 				<li><a href="LogoutService">로그아웃</a></li>

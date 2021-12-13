@@ -80,6 +80,11 @@ System.out.print(cm_arr);
 						<%for(int i=0;i<cm_arr.size();i++){%>
 						<span><%=cm_arr.get(i).getM_ID()%> : </span>
 						<span><%=cm_arr.get(i).getC_STUDY_CONTENT()%></span>
+						<%if (vo != null){%>	
+						<%if (userID.equals(cm_arr.get(i).getM_ID())||userID.equals("admin")||userID.equals("skalswn")) {%>
+						<a href="s_c_Commentdelete?num=<%=cm_arr.get(i).getC_STUDY_SEQ()%>"><button>삭제하기</button></a></td>
+						<%}%>
+						<%}%>	
 						<br>
 					</tr> 	
 					<% }%>
