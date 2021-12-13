@@ -1072,6 +1072,26 @@ public int Delete(String m_email) {
 	   return lognum;	   
 }
 
+	public int psit(String sample,String job_no, String m_ID) {
+		connection();  
+	 	try{
+		   String sql = "insert into TBL_PSIT(PSIT_SEQ, PSIT_TYPE,PSIT_JOB,M_ID) values(TBL_MBTIT_SEQ.NEXTVAL,?,?,?)";
+		   psmt = conn.prepareStatement(sql);	 
+		   psmt.setString(1,sample);
+		   psmt.setString(2,job_no);
+		   psmt.setString(3,m_ID);
+		   lognum = psmt.executeUpdate();
+		   if (lognum>0) {
+			   System.out.println("성공");
+		   }
+		      }catch(Exception e){
+		    	 System.out.println("실패");
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum; 
+  }
 
 }
 
