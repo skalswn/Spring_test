@@ -56,10 +56,6 @@ https://templatemo.com/tm-557-grad-school
 				%>
 				<li><a href="P_Psit.jsp">직무탐색</a></li>
 				<!-- <li><a href="#section5">Video</a></li> -->
-<<<<<<< HEAD
-				<li><a href="StudyPage.jsp">단계별학습</a></li>
-				<li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
-=======
 				<li><a href="#section6">단계별학습</a></li>
 				<li><a href="c_Community.jsp" class="external">커뮤니티</a>
          			<ul class="sub-menu">
@@ -67,7 +63,6 @@ https://templatemo.com/tm-557-grad-school
        				   <li><a href="c_Study_Community.jsp">스터디 게시판</a></li>
             	       <li><a href="c_Used_Community.jsp">중고거래 게시판</a></li>
          			</ul></li>
->>>>>>> refs/remotes/origin/master
 				<li><a href="My_page.jsp" class="external">마이페이지</a></li>
 				<li><a href="LogoutService">로그아웃</a></li>
 
