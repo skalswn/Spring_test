@@ -47,6 +47,15 @@ if(session.getAttribute("cvo") !=null){
 DAO dao = new DAO();
 ArrayList<CommunityVO> arr = dao.Community();
 %>
+<%
+MemberVO vo =null;
+if(session.getAttribute("vo") != null){
+	vo = (MemberVO)session.getAttribute("vo");
+	String userID =vo.getM_id();
+}else{%>
+	Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
+	Response.Write("<script>location.href='Main.jsp';</script>");
+<%}%>
 <%!
 	public Integer toInt(String x){
 		int a = 0;
@@ -63,7 +72,7 @@ ArrayList<CommunityVO> arr = dao.Community();
 	}
 	int total_record = arr.size();
 	int page_per_record_cnt = 5;  
-	int group_per_page_cnt =5;     											
+	int group_per_page_cnt =99;     											
 	int record_end_no = pageno*page_per_record_cnt;				
 	int record_start_no = record_end_no-(page_per_record_cnt-1);
 	if(record_end_no>total_record){
@@ -150,7 +159,7 @@ ArrayList<CommunityVO> arr = dao.Community();
 					</table>
 <%-- <a href="c_Community.jsp?pageno=1">[맨앞으로]</a>
 <a href="c_Community.jsp?pageno=<%=prev_pageno%>">[이전]</a>  --%>
-<%for(int i =page_sno;i<=page_eno;i++){%>
+<%for(int i =1;i<=page_eno;i++){%>
 	<a href="c_Community.jsp?pageno=<%=i %>">
 		<%if(pageno == i){ %>
 			<span id="cho"><%=i %></span>
