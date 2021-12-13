@@ -56,10 +56,14 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
           </ul> -->
         </li>
      <% if(vo!=null){%>
-        <li><a href="P_Psit.jsp">직무탐색</a></li>
+        <li><a href="P_Psit.jsp">직무탐색</a>
+        	<ul class="sub-menu">
+            <li><a href="P_Psit.jsp">PSIT 검사</a></li>
+            <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
+          	</ul></li>
         <!-- <li><a h\ref="#section5">Video</a></li> -->
         <li><a href="StudyPage.jsp">단계별학습</a></li>
-        <li><a href="c_Community.jsp" class="external">커뮤니티</a>
+        <li><a href="#" class="external">커뮤니티</a>
           <ul class="sub-menu">
             <li><a href="c_Community.jsp">자유게시판</a></li>
             <li><a href="c_Study_Community.jsp">스터디 게시판</a></li>
@@ -115,7 +119,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
               <div class="content-hide">
                 <p>IT란?</p>
                 <p class="hidden-sm">Curabitur id eros vehicula, tincidunt libero eu, lobortis mi. In mollis eros a posuere imperdiet.</p>
-                <div class="scroll-to-section"><a href="#section2">More Info.</a></div>
+                <div class="scroll-to-section"><a href="#section2">More</a></div>
             </div>
             </div>
           </div>
@@ -124,12 +128,12 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
           <div class="features-post second-features">
             <div class="features-content">
               <div class="content-show">
-                <h4><i class="fa fa-graduation-cap"></i>IT직무</h4>
+                <h4><i class="fa fa-graduation-cap"></i>IT직군</h4>
               </div>
               <div class="content-hide">
                 <p>IT 직군 보러가기</p>
                 <p class="hidden-sm">Curabitur id eros vehicula, tincidunt libero eu, lobortis mi. In mollis eros a posuere imperdiet.</p>
-                <div class="scroll-to-section"><a href="#section4">Details</a></div>
+                <div class="scroll-to-section"><a href="#section4">More</a></div>
             </div>
             </div>
           </div>
@@ -141,9 +145,9 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
                 <h4><i class="fa fa-book"></i>IT 전망</h4>
               </div>
               <div class="content-hide">
-                <p>IT전망</p>
+                <p>IT전망에 대하여</p>
                 <p class="hidden-sm">Curabitur id eros vehicula, tincidunt libero eu, lobortis mi. In mollis eros a posuere imperdiet.</p>
-                <div class="scroll-to-section"><a href="#section3">Read More</a></div>
+                <div class="scroll-to-section"><a href="#section3">More</a></div>
             </div>
             </div>
           </div>
@@ -155,7 +159,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
   <section class="section why-us" data-section="section2">
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" style="text-align : center;">
           <div class="section-heading">
             <h2>What is IT?</h2>
           </div>
@@ -209,7 +213,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 <section class="section courses" data-section="section4">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" style="text-align : center;">
           <div class="section-heading">
             <h2>IT직군</h2>
           </div>
@@ -283,20 +287,17 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
     </div>
   </section>
 <!--IT전망부분---------------------------------------------------------------------------------------------------------------------------------------->
-  <section class="section coming-soon" data-section="section3">
+    <section class="section coming-soon" data-section="section3">
     <div class="container">
       <div class="row">
-        <div class="col-md-7 col-xs-12">
-          <div class="continer centerIt">
-            <div>
-              <h4>IT 직군 전망에 대해서</h4>
-            </div>
+      	<div class="col-md-12" style="text-align : center;">
+            <div class="section-heading">
+            <h2>IT 전망</h2>
           </div>
-        </div>
+          </div>
         <div class="col-md-5">
-          <div class="right-content">
-            <div class="top-content">
-            </div>
+         <img src="assets/images/002.png" style = "width : 100% ">
+
  <!-------------- form태그에 로드맵 바로가기 CSS붙여져있는듯 ----------------------------------------------->
            <!--  <form id="contact" action="" method="get">
               <div class="row">
