@@ -215,7 +215,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
       <div class="row">
         <div class="col-md-12" style="text-align : center;">
           <div class="section-heading">
-            <h2>IT직군</h2>
+            <h2>IT 직군</h2>
           </div>
         </div>
         <div class="owl-carousel owl-theme">
