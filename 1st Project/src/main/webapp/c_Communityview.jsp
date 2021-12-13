@@ -99,6 +99,14 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 						<%for(int i=0;i<cm_arr.size();i++){%>
 						<span><%=cm_arr.get(i).getC_writer()%> : </span>
 						<span><%=cm_arr.get(i).getContent()%></span>
+						<%if (vo != null){%>	
+						<%if (userID.equals(cvo.getWriter())||userID.equals("admin")||userID.equals("skalswn")) {%>
+						<a href="c_Commentdelete?num=<%=cm_arr.get(i).getCm_seq()%>"><button>삭제하기</button></a></td>
+						<%}%>
+						<%}%>	
+						<span><% if(cm_arr.get(i).getC_writer().equals(vo.getM_id())){%></span>
+						
+							<% }%>
 						<br>
 					</tr>
 						<% }%>
