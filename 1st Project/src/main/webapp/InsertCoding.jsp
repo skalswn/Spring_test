@@ -16,6 +16,8 @@
 		</select>
 		<div>
 			<div><input name="id" type="text", placeholder="id입력" value="admin"></div>
+			<div><textarea rows="20" cols="100" name="coding_explain1">개념 넣기</textarea></div>
+			<div><textarea rows="20" cols="100" name="coding_explain2">개념 넣기</textarea></div>
 			<div><textarea rows="20" cols="100" name="coding_q">문제 넣기</textarea></div>
 			<div><textarea rows="20" cols="100" name="coding_a">해설 넣기</textarea></div>
 			<div><input type="submit" value="넣기">
