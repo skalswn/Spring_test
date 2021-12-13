@@ -70,14 +70,13 @@ body {
 		<nav id="menu" class="main-nav" role="navigation">
 			<ul class="main-menu">
 				<li><a href="Main.jsp">Home</a></li>
-				<!-- 굳이 보여줄 필요X -->
-				<!--  <li class="has-submenu"><a href="">About IT</a>
+				 <!-- <li class="has-submenu"><a href="">About IT</a>
 					<ul class="sub-menu">
 						<li><a href="Main.jsp#section2">IT란?</a></li>
 						<li><a href="#section4">IT직무</a></li>
 						<li><a href="#section3">IT전망</a></li>
 						<li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li>
-					</ul></li> -->
+					</ul></li>  -->
 				<%
 				if (vo != null) {
 				%>
@@ -114,15 +113,16 @@ body {
 		HTML/CSS/자바스크립트<input type="radio" name="lang" value="HTML"> 
 		<input type="submit">
 	</form>
-	<form action="ShowAnswer" methos="post"></form>
 	<p>모든 문제 나오는 곳</p>
 	<!-- 언어 선택에 따라 모든 문제가 나오게 하기 -->
 	<div>
 	<%if(codingarray!=null){ %>
 		<%for(int i=0; i<codingarray.size(); i++){%>
 			<%CodingVO codingvo=codingarray.get(i); %>
-			<p><%=codingvo.getCoding_q()%></p>
-			<p><a href="MyStudyPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a></p>
+			<p><%=codingvo.getCoding_seq()%>단계</p>
+			<%System.out.println(codingvo.getCoding_seq()); %>
+			<p><a href="StudyExplainService?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a></p>
+			<%-- <button onclick="location.href='StudyExplainService?seq=<%= codingvo.getCoding_seq() %>';">학습하러가기</button> --%>
 			<%if(vo.getM_id().equals("admin")){ %>
 				<button onclick="location.href='DeleteCodingService?seq=<%= codingvo.getCoding_seq() %>';">문제삭제</button>
 			<%} %>

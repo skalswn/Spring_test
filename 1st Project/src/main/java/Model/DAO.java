@@ -19,6 +19,7 @@ public class DAO {
 	   int lognum=0;
 	   int cnt = 0;
 	   CodingVO codingvo = null;
+	   CodingExplainVO codingexplainvo = null;
 	   
 // DB연결========================================================================================
 	 public void connection() {
@@ -424,6 +425,50 @@ public int Delete(String m_email) {
 		return cnt;
 	}
 
+// 단계별학습 개념 넣기
+	public int insertExplain(String coding_lang, String coding_explain1, String coding_explain2, String id) {
+		
+		try {
+			connection();
+
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			String url = "jdbc:oracle:thin:@172.30.1.19:1521:xe";
+			String dbid = "hr";
+			String dbpw = "hr";
+
+			conn = DriverManager.getConnection(url, dbid, dbpw);
+
+			String sql = "insert into tbl_coding_explain values(tbl_coding_ex_seq.nextval,?,?,?,?)";
+
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setString(1, coding_lang);
+			psmt.setString(2, coding_explain1);
+			psmt.setString(3, coding_explain2);
+			psmt.setString(4, id);
+			
+			cnt = psmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (psmt != null) {
+					psmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+				if (cnt == 0) {
+					conn.close();
+				}
+			} catch (Exception e) {
+			}
+		}
+		return cnt;
+	}
+
 //자유게시판 댓글달기
 	public ArrayList<Community_commentVO> cm_Community(int c_seq) { 
 		ArrayList<Community_commentVO> arr = new ArrayList<Community_commentVO>(); 
@@ -542,6 +587,46 @@ public int Delete(String m_email) {
 			close();
 		}
 		return cnt;	   
+	}
+	
+// 문제 개념 나오게 하기=================================================================
+	public CodingExplainVO CodingExplain(int seq) {
+		
+		try {
+			connection();
+		
+			
+			String sql = "select * from tbl_coding_explain where coding_ex_seq=?";
+			
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setInt(1, seq);
+			
+			rs = psmt.executeQuery();
+
+			if (rs.next() == true) {
+				int coding_ex_seq = rs.getInt(1);
+				String coding_lang = rs.getString(2);
+				String coding_explain1 = rs.getString(3);
+				String coding_explain2 = rs.getString(4);
+				String m_id = rs.getString(5);
+
+				codingexplainvo = new CodingExplainVO( coding_ex_seq, coding_lang, coding_explain1, coding_explain2, m_id); 
+				System.out.println("개념뽑기성공!");
+			} else {
+				System.out.println("실패!");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			
+			close();
+		}
+		
+		return codingexplainvo;
+		
 	}
 	
 	

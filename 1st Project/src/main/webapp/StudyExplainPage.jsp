@@ -1,3 +1,4 @@
+<%@page import="Model.CodingExplainVO"%>
 <%@page import="Model.MemberVO"%>
 <%@page import="Model.DAO"%>
 <%@page import="Model.CodingVO"%>
@@ -37,9 +38,8 @@ https://templatemo.com/tm-557-grad-school
 MemberVO vo = (MemberVO)session.getAttribute("vo");
 out.print(vo);
 
-int seq = Integer.parseInt(request.getParameter("seq"));
-DAO dao = new DAO();
-CodingVO codingvo = dao.ShowStudyCoding(seq);
+CodingExplainVO codingexplainvo = (CodingExplainVO)request.getAttribute("codingexplainvo");
+
 %>
 
 <!--header-->
@@ -83,18 +83,13 @@ CodingVO codingvo = dao.ShowStudyCoding(seq);
 	</div>
 	
 	<div>
-		<p>선택한 문제 나올 곳</p>
-		<%if(seq==codingvo.getCoding_seq()){ %>
-			<p><%=codingvo.getCoding_q()%></p>
+		<%if(codingexplainvo.getCoding_explain2()!=null){ %>
+			<p><%=codingexplainvo.getCoding_explain1() %></p>
+			<p><%=codingexplainvo.getCoding_explain2() %></p>
+		<%}else{ %>
+			<p><%=codingexplainvo.getCoding_explain1() %></p>
 		<%} %>
-	</div>
-	
-	<div>
-		<p>선택한 문제 해설(클릭 시)나올 곳</p>
-		<%if(seq==codingvo.getCoding_seq()) {%>
-			<% System.out.println("해설보기 성공..");%>
-			<p><%=codingvo.getCoding_a() %></p>
-		<%} %>
+		<a href="StudyCoding.jsp?seq=<%=codingexplainvo.getCoding_ex_seq()%>">문제풀어보기</a>
 	</div>
 	
 	<footer>
