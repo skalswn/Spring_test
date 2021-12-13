@@ -90,6 +90,11 @@ u_Community_commentVO cmvo = (u_Community_commentVO)session.getAttribute("cmvo")
 						<%for(int i=0;i<cm_arr.size();i++){%>
 						<span><%=cm_arr.get(i).getM_ID()%> : </span>
 						<span><%=cm_arr.get(i).getUM_COMMENT()%></span>
+						<%if (vo != null){%>	
+						<%if (userID.equals(cm_arr.get(i).getM_ID())||userID.equals("admin")||userID.equals("skalswn")) {%>
+						<a href="u_c_Commentdelete?num=<%=cm_arr.get(i).getUM_SEQ()%>"><button>삭제하기</button></a></td>
+						<%}%>
+						<%}%>	
 						<br>
 					</tr> 	
 					<% }%>

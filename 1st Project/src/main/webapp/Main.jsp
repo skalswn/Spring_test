@@ -35,20 +35,18 @@ https://templatemo.com/tm-557-grad-school
 <%
 // 로그인 안되어있을 때 메뉴바 다르게 하기 위해 vo가져오기
 MemberVO vo = (MemberVO)session.getAttribute("vo");
-out.print(vo);
-
 
 %>
    
   <!--header-->
   <header class="main-header clearfix" role="header">
     <div class="logo">
-      <a href="#"><em>Welcome</em> PSIT</a> 
+            <a href="Main.jsp"><em>PSIT</em> <span style = "font-size: x-large;">Personal IT</span></a>  
     </div>
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
       <ul class="main-menu">
-        <li><a href="#section1">Home</a></li>
+        <li><a href="#top">Home</a></li>
         <!-- <li class="has-submenu"><a href="">About IT</a>
           <ul class="sub-menu">
             <li><a href="#section2">IT란?</a></li>
@@ -61,7 +59,12 @@ out.print(vo);
         <li><a href="P_Psit.jsp">직무탐색</a></li>
         <!-- <li><a href="#section5">Video</a></li> -->
         <li><a href="StudyPage.jsp">단계별학습</a></li>
-        <li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
+        <li><a href="c_Community.jsp" class="external">커뮤니티</a>
+          <ul class="sub-menu">
+            <li><a href="c_Community.jsp">자유게시판</a></li>
+            <li><a href="c_Study_Community.jsp">스터디 게시판</a></li>
+            <li><a href="c_Used_Community.jsp">중고거래 게시판</a></li>
+          </ul></li>
         <%if(vo.getM_id().equals("admin")){ %>
 	        <li><a href="ManageUser.jsp" class="external">회원관리</a></li>
         <%}else{ %>
@@ -158,25 +161,22 @@ out.print(vo);
           </div>
         </div>
         <div class="col-md-12">
+        <img src="assets/images/001.png" style = "width : 100% ">
           <div id='tabs'>
-            <ul>
+           <!--  <ul>
               <li><a href='#tabs-1'>내용(필요없으면 지우기)</a></li>
               <li><a href='#tabs-2'>내용(필요없으면 지우기)</a></li>
               <li><a href='#tabs-3'>내용(필요없으면 지우기)</a></li>
-            </ul>
+            </ul> -->
             <section class='tabs-content'>
               <article id='tabs-1'>
                 <div class="row">
-                  <div class="col-md-6">
-                    <img src="assets/images/choose-us-image-01.png" alt="">
-                  </div>
-                  <div class="col-md-6">
-                    <h4>IT관련 사진넣고 제목</h4>
-                    <p>IT관련 내용</p>
+                  <div class="col-md-6" >
+                   <!--  <img src="assets/images/001.png" alt=""> -->
                   </div>
                 </div>
               </article>
-              <article id='tabs-2'>
+              <!-- <article id='tabs-2'>
                 <div class="row">
                   <div class="col-md-6">
                     <img src="assets/images/choose-us-image-02.png" alt="">
@@ -190,13 +190,13 @@ out.print(vo);
               </article>
               <article id='tabs-3'>
                 <div class="row">
-                  <div class="col-md-6">
-                    <img src="assets/images/choose-us-image-03.png" alt="">
+                  <div class="col-md-6">/choose-us-image-03.png" alt="">
                   </div>
+                    <img src="assets/images
                   <div class="col-md-6">
                     <h4>Quality Meeting</h4>
                     <p>You are NOT allowed to redistribute this template ZIP file on any template collection website. However, you can use this template to convert into a specific theme for any kind of CMS platform such as WordPress. For more information, you shall <a rel="nofollow" href="https://templatemo.com/contact" target="_parent">contact TemplateMo</a> now.</p>
-                  </div>
+                  </div> -->
                 </div>
               </article>
             </section>
@@ -334,11 +334,11 @@ out.print(vo);
               <h6>IT직무전망 내용</h6>
             </div>
  <!-------------- form태그에 로드맵 바로가기 CSS붙여져있는듯 ----------------------------------------------->
-            <form id="contact" action="" method="get">
+           <!--  <form id="contact" action="" method="get">
               <div class="row">
                   <fieldset>
-                    <button type="submit" id="form-submit" class="button"></button>
-                  </fieldset>
+                    <button type="submit" id="form-submit" class="button"></button> 
+                  </fieldset>-->
                 </div>
               </div>
             </form>
@@ -353,7 +353,6 @@ out.print(vo);
   <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <script src="assets/js/isotope.min.js"></script>
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/lightbox.js"></script>

@@ -523,6 +523,27 @@ public int Delete(String m_email) {
 		}
 		return codingvo;
 	}
+// 문제 삭제하기====================================================================================
+	
+	public int deleteCoding(int seq) {
+
+		try{
+			connection();  
+			String sql = "delete from tbl_coding where coding_seq=?";
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setInt(1,seq);
+
+			cnt = psmt.executeUpdate();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			close();
+		}
+		return cnt;	   
+	}
+	
 	
 // ===============================================
 	public int community_change(String title, String content, String filename1, String filename2,
@@ -918,6 +939,54 @@ public int Delete(String m_email) {
      }
 	   return lognum;	   
 }
+
+	public int c_Commentdelete(int num) {
+		connection();  
+	 	try{
+	 	   String sql = "delete from TBL_COMMUNITY_REPLY where COMM_REPLY_SEQ=?";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   lognum = psmt.executeUpdate();
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum;	   
+}
+	public int s_c_Commentdelete(int num) {
+		connection();  
+	 	try{
+	 	   String sql = "delete from TBL_STUDY_COMMENT where C_STUDY_SEQ=?";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   lognum = psmt.executeUpdate();
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum;	   
+}
+
+	public int u_c_Commentdelete(int num) {
+		connection();  
+	 	try{
+	 	   String sql = "delete from TBL_MARKET_REPLY where UM_SEQ=?";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   lognum = psmt.executeUpdate();
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum;	   
+}
+
 
 }
 

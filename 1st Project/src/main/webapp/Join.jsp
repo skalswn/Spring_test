@@ -15,7 +15,7 @@
 	href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900"
 	rel="stylesheet">
 
-<title>Grad School HTML5 Template</title>
+<title>PSIT.com - Join</title>
 
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +39,7 @@ https://templatemo.com/tm-557-grad-school
 	<!--header-->VBNH
   <header class="main-header clearfix" role="header">
     <div class="logo">
-      <a href="Main.jsp"><em>Welcome</em> PSIT</a> 
+		<a href="Main.jsp"><em>PSIT</em> <span style = "font-size: x-large;">Personal IT</span></a> 
     </div>
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
@@ -70,9 +70,8 @@ https://templatemo.com/tm-557-grad-school
 
 	<section class="section coming-soon" data-section="section3">
 		<div style="text-align : center;">
-		
 			<div style="display: inline-block;width: 30%;">
-				<div class="col-md-5">
+				<div class="col-md-5" style="flex: 100%; max-width: 100%;">
 					<form id="contact" action="JoinService" method="post"
 						align="center">
 						<div class="row">
