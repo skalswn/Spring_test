@@ -69,7 +69,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
   </header>
 
 	<section class="section coming-soon" data-section="section3">
-		<div style="text-align : center; height: 550px">
+		<div style="text-align : center; height: 700px">
 			<div style="display: inline-block;width: 30%;">
 				<div class="col-md-5" style="flex: 100%; max-width: 100%;">
 					<form id="contact" action="LoginService" method="post"
