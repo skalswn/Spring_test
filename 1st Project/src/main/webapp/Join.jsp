@@ -36,7 +36,7 @@ https://templatemo.com/tm-557-grad-school
 
 <body>
 <%MemberVO vo = (MemberVO)session.getAttribute("vo"); %>
-	<!--header-->
+	<!--header-->VBNH
   <header class="main-header clearfix" role="header">
     <div class="logo">
       <a href="Main.jsp"><em>Welcome</em> PSIT</a> 

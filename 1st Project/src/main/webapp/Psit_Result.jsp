@@ -1,3 +1,4 @@
+<%@page import="Model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -9,11 +10,17 @@
 <body>
 <% String sample = request.getParameter("sample");
 %>
+<%
+MemberVO vo =null;
+if (session.getAttribute("vo") != null){
+	vo=(MemberVO)session.getAttribute("vo");
+}
+
+%>
 <!-- 파라미터?? -->
 <%if(sample.contains("ENFJ")){%>
 	 <P><img src="images/DATAENGGINER.png" alt=""/></P>
 	 <p>ENFJ</p>
-	
 <% }%><%if(sample.contains("ENFP")){%>
 	 <P><img src="images/DATAENGGINER.png" alt=""/></P>
 	 <p>ENFP</p>
@@ -64,6 +71,10 @@
 	 <P><img src="images/DATAENGGINER.png" alt=""/></P>
 	<p>ISTP</p>
 <% }%>
-
+<%if (vo != null){%>
+	<a href="c_Psit?sample=<%=sample%>">A태그</a>
+<% }else{%>
+	<a href="http://localhost:8081/1st_Project/Road_map.jsp?num=1">해당 직무 설명보러가기</a>
+<%} %>
 </body>
 </html>
