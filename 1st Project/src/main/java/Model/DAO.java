@@ -299,7 +299,7 @@ public int Delete(String m_email) {
 			   String filename3 = rs.getString("ARTICLE_FILE3");
 		       bo = new CommunityVO(c_seq,title,content,date,cnt,writer,filename1,filename2,filename3);
 		      }
-		   String sql_seq = "update tbl_community set ARTICLE_CNT = tbl_community_cnt.NEXTVAL where ARTICLE_SEQ=?";
+		   String sql_seq = "update tbl_community set ARTICLE_CNT = ARTICLE_CNT+1 where ARTICLE_SEQ=?";
 		   psmt = conn.prepareStatement(sql_seq);
 		   psmt.setInt(1,num);
 		   lognum = psmt.executeUpdate();
@@ -789,7 +789,7 @@ public int Delete(String m_email) {
 			   String filename1 = rs.getString("STUDY_FILE1");
 		       svo = new s_CommunityVO(c_seq,title,content,language,cnt,date,writer,filename1);
 		      }
-		   String sql_seq = "update TBL_STUDY set STUDY_CNT = TBL_STUDY_COMMUNITY_CNT.NEXTVAL where STUDY_SEQ=?";
+		   String sql_seq = "update TBL_STUDY set STUDY_CNT =  STUDY_CNT+1 where STUDY_SEQ=?";
 		   psmt = conn.prepareStatement(sql_seq);
 		   psmt.setInt(1,num);
 		   lognum = psmt.executeUpdate();
@@ -946,7 +946,7 @@ public int Delete(String m_email) {
 			   String filename1 = rs.getString("FILE1");
 		       vo = new u_CommunityVO(c_seq,title,content,price,cnt,way,kinds,date,writer,status,filename1);
 		      }
-		   String sql_seq = "update TBL_USED_MARKET set USED_CNT = TBL_USED_MARKET_cnt_SEQ.NEXTVAL where USED_SEQ=?";
+		   String sql_seq = "update TBL_USED_MARKET set USED_CNT = USED_CNT+1 where USED_SEQ=?";
 		   psmt = conn.prepareStatement(sql_seq);
 		   psmt.setInt(1,num);
 		   lognum = psmt.executeUpdate();
@@ -1092,6 +1092,119 @@ public int Delete(String m_email) {
      }
 	   return lognum; 
   }
+
+	public int c_past_page(int num) {
+		connection();  
+	 	try{
+		   String sql = "select * from (select ARTICLE_SEQ, Lag(ARTICLE_SEQ,1) OVER(ORDER BY ARTICLE_SEQ) PREV_ARTICLE_SEQ FROM tbl_community)WHERE ARTICLE_SEQ = ?";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   rs = psmt.executeQuery();
+		   if(rs.next() == true) {
+			  lognum = rs.getInt("PREV_ARTICLE_SEQ");
+		      }
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum;
+	}
+
+	public int c_next_page(int num) {
+		connection();  
+	 	try{
+		   String sql = "select * from (select ARTICLE_SEQ, LEAD(ARTICLE_SEQ,1) OVER(ORDER BY ARTICLE_SEQ) NEXT_ARTICLE_SEQ FROM tbl_community)WHERE ARTICLE_SEQ = ?";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   rs = psmt.executeQuery();
+		   if(rs.next() == true) {
+			  lognum = rs.getInt("NEXT_ARTICLE_SEQ");
+		      }
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum;
+	}
+
+	public int s_next_page(int num) {
+		connection();  
+	 	try{
+		   String sql = "select * from (select STUDY_SEQ, LEAD(STUDY_SEQ,1) OVER(ORDER BY STUDY_SEQ) NEXT_STUDY_SEQ FROM TBL_STUDY)WHERE STUDY_SEQ = ?";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   rs = psmt.executeQuery();
+		   if(rs.next() == true) {
+			  lognum = rs.getInt("NEXT_STUDY_SEQ");
+		      }
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum;
+	}
+	public int s_past_page(int num) {
+		connection();  
+	 	try{
+		   String sql = "select * from (select STUDY_SEQ, Lag(STUDY_SEQ,1) OVER(ORDER BY STUDY_SEQ) PAST_STUDY_SEQ FROM TBL_STUDY)WHERE STUDY_SEQ = ?";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   rs = psmt.executeQuery();
+		   if(rs.next() == true) {
+			  lognum = rs.getInt("PAST_STUDY_SEQ");
+		      }
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum;
+	}
+	public int u_next_page(int num) {
+		connection();  
+	 	try{
+		   String sql = "select * from (select USED_SEQ, LEAD(USED_SEQ,1) OVER(ORDER BY USED_SEQ) NEXT_USED_SEQ FROM TBL_USED_MARKET)WHERE USED_SEQ = ?";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   rs = psmt.executeQuery();
+		   if(rs.next() == true) {
+			  lognum = rs.getInt("NEXT_USED_SEQ");
+		      }
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum;
+	}
+	public int u_past_page(int num) {
+		connection();  
+	 	try{
+		   String sql = "select * from (select USED_SEQ, Lag(USED_SEQ,1) OVER(ORDER BY USED_SEQ) PAST_USED_SEQ FROM TBL_USED_MARKET)WHERE USED_SEQ = ?";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setInt(1,num);
+		   rs = psmt.executeQuery();
+		   if(rs.next() == true) {
+			  lognum = rs.getInt("PAST_USED_SEQ");
+		      }
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum;
+	}
+	
+	
 
 }
 

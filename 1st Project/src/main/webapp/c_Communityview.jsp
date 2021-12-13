@@ -118,11 +118,13 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 					<%}%> --%>
 					<%if (vo != null){%>	
 						<%if (userID.equals(cvo.getWriter())||userID.equals("admin")||userID.equals("skalswn")) {%>
-						<a href="c_Communitychange.jsp?num=<%=cvo.getC_seq()%>"><button>수정하기</button></a></td>
-						<a href="c_Communitydelete?num=<%=cvo.getC_seq()%>"><button>삭제하기</button></a></td>
+						<a href="c_Communitychange.jsp?num=<%=cvo.getC_seq()%>"><button>수정하기</button></a>
+						<a href="c_Communitydelete?num=<%=cvo.getC_seq()%>"><button>삭제하기</button></a>
 						<%}%>
 					<% }%>
-					<a href="c_Community.jsp"><button>뒤로가기</button></a></td>				
+					<a href="c_Community.jsp"><button>뒤로가기</button></a>
+					<br>
+					<a href="past_c?num=<%=cvo.getC_seq()%>"><button>이전 글</button></a><a href="next_c?num=<%=cvo.getC_seq()%>"><button>다음 글</button></a>			
 			</div>
 			<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

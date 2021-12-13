@@ -48,7 +48,6 @@ if (session.getAttribute("vo") != null){
 }
 ArrayList<s_CommunityVO> arr = dao.s_Community();
 s_Community_commentVO cmvo = (s_Community_commentVO)session.getAttribute("cmvo");
-System.out.print(cm_arr);
 %>
 				
 			<div id = "board">
@@ -99,7 +98,9 @@ System.out.print(cm_arr);
 						<a href="s_c_Communitydelete?num=<%=scvo.getSTUDY_SEQ()%>"><button>삭제하기</button></a></td>
 						<%}%>
 					<% }%>
-					<a href="c_Study_Community.jsp"><button>뒤로가기</button></a></td>				
+					<a href="c_Study_Community.jsp"><button>뒤로가기</button></a></td>
+					<br>	
+					<a href="past_s?num=<%=scvo.getSTUDY_SEQ()%>"><button>이전 글</button></a><a href="next_s?num=<%=scvo.getSTUDY_SEQ()%>"><button>다음 글</button></a>			
 			</div>
 			<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

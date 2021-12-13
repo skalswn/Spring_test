@@ -72,7 +72,6 @@ if (session.getAttribute("vo") != null){
 Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
 Response.Write("<script>location.href='Main.jsp';</script>");
 <%}%>
-
 <%!
 	public Integer toInt(String x){
 		int a = 0;
@@ -88,8 +87,9 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 		pageno = 1;
 	}
 	int total_record = arr.size();
+	System.out.print(arr.size());
 	int page_per_record_cnt = 5;  
-	int group_per_page_cnt =99;     											
+	int group_per_page_cnt =5;     											
 	int record_end_no = pageno*page_per_record_cnt;				
 	int record_start_no = record_end_no-(page_per_record_cnt-1);
 	if(record_end_no>total_record){
@@ -179,7 +179,7 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 								<td class="cm_td">날짜</td>
 								<td class="cm_td">조회수</td>
 							</tr>
-							<%if (arr.size() > (pageno) * 5) {%>
+							<%if (arr.size() >= (pageno) * 5) {%>
 							<%for (int i = 0; i < 5; i++) {%>
 							<tr class="main_tr" style = "height: 35px">
 								<%String result = arr.get(i + (pageno - 1) * 5).getDay().substring(5, 11);%>
@@ -213,11 +213,13 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 							<%}	%><%} else {%><%}%>
 						</table>
 						<br>
-						<%for (int i = 1; i <= page_eno; i++) {%>
+						<a href="c_Community.jsp?pageno=<%=prev_pageno%>">[이전]</a>
+						<%for (int i = page_sno; i <= page_eno; i++) {%>
 						<a href="c_Community.jsp?pageno=<%=i%>"> <%if (pageno == i) {%>
 							<span id="cho"><%=i%></span> <%} else {%> <%=i%> <%}%>
 						</a>
 						<%if (i < page_eno) {%>,<%}	%><%}%>
+						<a href="c_Community.jsp?pageno=<%=next_pageno%>" >[다음]</a>
 						</div>
 						</table>
 						

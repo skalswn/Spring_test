@@ -3,6 +3,7 @@
     pageEncoding="EUC-KR"%>
 <%@ page import="Model.s_CommunityVO"%>
 <%@page import="Model.DAO"%> 
+<%@page import="Model.MemberVO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +52,17 @@
 									<!-- Content -->
 
 										<article>
-										
+<%	
+MemberVO vo =null;
+String userID= null;
+if (session.getAttribute("vo") != null){
+	vo = (MemberVO)session.getAttribute("vo");
+	userID = vo.getM_id();
+	System.out.print(userID);
+}else{%>
+Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
+Response.Write("<script>location.href='Main.jsp';</script>");
+<%}%>																			
 <%
 s_CommunityVO scvo = null;
 if(session.getAttribute("cvo") !=null){
@@ -76,7 +87,7 @@ ArrayList<s_CommunityVO> arr = dao.s_Community();
 	}
 	int total_record = arr.size();
 	int page_per_record_cnt = 5;  
-	int group_per_page_cnt =99;     											
+	int group_per_page_cnt =5;     											
 	int record_end_no = pageno*page_per_record_cnt;				
 	int record_start_no = record_end_no-(page_per_record_cnt-1);
 	if(record_end_no>total_record){
@@ -104,7 +115,8 @@ ArrayList<s_CommunityVO> arr = dao.s_Community();
 	
 	}
 
-%>										
+%>
+				
 			<div id="board">
 			<h1>스터디게시판</h1>
 				<table>
@@ -116,48 +128,45 @@ ArrayList<s_CommunityVO> arr = dao.s_Community();
 						<td class="cm_td">시간</td>
 						<td class="cm_td">조회수</td>
 					</tr>
-					<%if(arr.size()>(pageno)*5){%>
+					<%if(arr.size()>=(pageno)*5){%>
 					<%for(int i=0;i<5;i++){%>	
 					<%String result = arr.get(i+(pageno-1)*5).getREG_DATE().substring(5,11);%>		
 					<tr class="main_tr">
-						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i).getSTUDY_SEQ()%></a></td>
-						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i).getSTUDY_SUBJECT()%></a></td>
-						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i).getSTUDY_LANG()%></a></td>
-						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i).getM_ID()%></a></td>
+						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%></a></td>
+						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i+(pageno-1)*5).getSTUDY_SUBJECT()%></a></td>
+						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i+(pageno-1)*5).getSTUDY_LANG()%></a></td>
+						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i+(pageno-1)*5).getM_ID()%></a></td>
 						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=result%></a></td>
-						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i).getSTUDY_CNT()%></a></td>
+						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i+(pageno-1)*5).getSTUDY_CNT()%></a></td>
 					</tr>
 					<%}%> 	
 					<% }else if(arr.size()<(pageno)*5) {%>
 							<%for(int i=0;i<(pageno)*5-arr.size();i++){%>
 							<%String result = arr.get(i+(pageno-1)*5).getREG_DATE().substring(5,11);%>		
 						<tr class="main_tr">
-						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i).getSTUDY_SEQ()%></a></td>
-						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i).getSTUDY_SUBJECT()%></a></td>
-						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i).getSTUDY_LANG()%></a></td>
-						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i).getM_ID()%></a></td>
+						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%></a></td>
+						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i+(pageno-1)*5).getSTUDY_SUBJECT()%></a></td>
+						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i+(pageno-1)*5).getSTUDY_LANG()%></a></td>
+						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i+(pageno-1)*5).getM_ID()%></a></td>
 						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=result%></a></td>
-						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i).getSTUDY_CNT()%></a></td>
+						<td class="main_td"><a class="main_a" href="s_c_Communityview?num=<%=arr.get(i+(pageno-1)*5).getSTUDY_SEQ()%>"><%=arr.get(i+(pageno-1)*5).getSTUDY_CNT()%></a></td>
 						</tr> 	
 							<%}%>		
 						<%}else{%>
 							
 						<%}%>
 				</table>
-				<%-- <a href="c_Community.jsp?pageno=1">[맨앞으로]</a>
-<a href="c_Community.jsp?pageno=<%=prev_pageno%>">[이전]</a>  --%>
-<%for(int i =1;i<=page_eno;i++){%>
-	<a href="c_Study_Community.jsp?pageno=<%=i %>">
-		<%if(pageno == i){ %>
-			<span id="cho"><%=i %></span>
-		<%}else{ %>
-			<%=i %>
-		<%} %>
-	</a> 
-	<%if(i<page_eno){ %>
-		,
-	<%} %>
-<%} %>
+						<a href="c_Study_Community.jsp?pageno=<%=prev_pageno%>">[이전]</a>
+						<%for (int i = page_sno; i <= page_eno; i++) {%>
+							<a href="c_Study_Community.jsp?pageno=<%=i%>"> 
+						<%if (pageno == i) {%>
+							<span id="cho"><%=i%></span> 
+						<%} else {%> 
+							<%=i%> 
+						<%}%>
+						</a>
+						<%if (i < page_eno) {%>,<%}	%><%}%>
+						<a href="c_Study_Community.jsp?pageno=<%=next_pageno%>" >[다음]</a>
 				<form action="search_s_community">
 				<select><option value="제목">제목</option><option value="내용">내용</option><option value="작성자">작성자</option></select>
 				<input type="text"><input class="search_button" type="button" value="검색하기">
