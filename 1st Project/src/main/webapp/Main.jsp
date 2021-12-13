@@ -110,10 +110,10 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
           <div class="features-post">
             <div class="features-content">
               <div class="content-show">
-                <h4><i class="fa fa-pencil"></i>IT란?</h4>
+                <h4><i class="fa fa-pencil"></i>What is IT?</h4>
               </div>
               <div class="content-hide">
-                <p>IT란에 대한 작은 내용</p>
+                <p>IT란?</p>
                 <p class="hidden-sm">Curabitur id eros vehicula, tincidunt libero eu, lobortis mi. In mollis eros a posuere imperdiet.</p>
                 <div class="scroll-to-section"><a href="#section2">More Info.</a></div>
             </div>
@@ -127,7 +127,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
                 <h4><i class="fa fa-graduation-cap"></i>IT직무</h4>
               </div>
               <div class="content-hide">
-                <p>IT직무에 내한 작은 내용</p>
+                <p>IT 직군 보러가기</p>
                 <p class="hidden-sm">Curabitur id eros vehicula, tincidunt libero eu, lobortis mi. In mollis eros a posuere imperdiet.</p>
                 <div class="scroll-to-section"><a href="#section4">Details</a></div>
             </div>
@@ -138,10 +138,10 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
           <div class="features-post third-features">
             <div class="features-content">
               <div class="content-show">
-                <h4><i class="fa fa-book"></i>IT전망</h4>
+                <h4><i class="fa fa-book"></i>IT 전망</h4>
               </div>
               <div class="content-hide">
-                <p>IT전망에 대한 간단한 내용</p>
+                <p>IT전망</p>
                 <p class="hidden-sm">Curabitur id eros vehicula, tincidunt libero eu, lobortis mi. In mollis eros a posuere imperdiet.</p>
                 <div class="scroll-to-section"><a href="#section3">Read More</a></div>
             </div>
@@ -157,7 +157,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
       <div class="row">
         <div class="col-md-12">
           <div class="section-heading">
-            <h2>IT란 무엇인가?</h2>
+            <h2>What is IT?</h2>
           </div>
         </div>
         <div class="col-md-12">
@@ -211,46 +211,31 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
       <div class="row">
         <div class="col-md-12">
           <div class="section-heading">
-            <h2>IT직무</h2>
+            <h2>IT직군</h2>
           </div>
         </div>
         <div class="owl-carousel owl-theme">
-          <div class="item">
-            <img src="assets/images/courses-01.jpg" alt="Course #1">
+          <div class="item" >
+            <img src="assets/images/j_001.png" alt="Course #1" >
             <div class="down-content">
-              <h4>직무1</h4>
-              <p>직무1에대한 내용</p>
-              <div class="author-image">
-                <img src="assets/images/author-01.png" alt="Author 1">
-              </div>
-              <div class="text-button-pay">
+              <div class="text-button-pay" >
               <%String a ="1"; %>
-                <a href="Road_map.jsp?num=<%=a%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
+                <a href="Road_map.jsp?num=<%=a%>" >로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
           <div class="item">
-            <img src="assets/images/courses-02.jpg" alt="Course #2">
+            <img src="assets/images/j_003.png" alt="Course #2">
             <div class="down-content">
-              <h4>직무2</h4>
-              <p>직무2에대한 내용</p>
-              <div class="author-image">
-                <img src="assets/images/author-02.png" alt="Author 2">
-              </div>
-              <div class="text-button-free">
+              <div class="text-button-pay">
               <%String b ="2"; %>
                 <a href="Road_map.jsp?num=<%=b%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
           <div class="item">
-            <img src="assets/images/courses-03.jpg" alt="Course #3">
+            <img src="assets/images/j_005.png" alt="Course #3">
             <div class="down-content">
-              <h4>직무3</h4>
-			  <p>직무3에대한 내용</p>
-              <div class="author-image">
-                <img src="assets/images/author-03.png" alt="Author 3">
-              </div>
               <div class="text-button-pay">
              	<%String c ="3"; %>
                 <a href="Road_map.jsp?num=<%=c%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
@@ -258,27 +243,17 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
             </div>
           </div>
           <div class="item">
-            <img src="assets/images/courses-04.jpg" alt="Course #4">
+            <img src="assets/images/j_007.png" alt="Course #4">
             <div class="down-content">
-              <h4>직무4</h4>
-			  <p>직무4에대한 내용</p>
-              <div class="author-image">
-                <img src="assets/images/author-04.png" alt="Author 4">
-              </div>
-              <div class="text-button-free">
+              <div class="text-button-pay">
                 <%String d ="4"; %>
                 <a href="Road_map.jsp?num=<%=d%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
           <div class="item">
-            <img src="assets/images/courses-05.jpg" alt="">
+            <img src="assets/images/j_009.png" alt="">
             <div class="down-content">
-              <h4>직무5</h4>
-			  <p>직무5에대한 내용</p>
-              <div class="author-image">
-                <img src="assets/images/author-05.png" alt="">
-              </div>
               <div class="text-button-pay">
                <%String e ="5"; %>
                 <a href="Road_map.jsp?num=<%=e%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
@@ -286,28 +261,18 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
             </div>
           </div>
           <div class="item">
-            <img src="assets/images/courses-01.jpg" alt="">
+            <img src="assets/images/j_011.png" alt="">
             <div class="down-content">
-              <h4>직무6</h4>
-			  <p>직무6에대한 내용</p>
-              <div class="author-image">
-                <img src="assets/images/author-01.png" alt="">
-              </div>
-              <div class="text-button-free">
+              <div class="text-button-pay">
                 <%String f ="6"; %>
                 <a href="Road_map.jsp?num=<%=f%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
           <div class="item">
-            <img src="assets/images/courses-02.jpg" alt="">
+            <img src="assets/images/j_013.png" alt="">
             <div class="down-content">
-              <h4>직무7</h4>
-			  <p>직무7에대한 내용</p>
-              <div class="author-image">
-                <img src="assets/images/author-02.png" alt="">
-              </div>
-              <div class="text-button-free">
+              <div class="text-button-pay">
                <%String g ="7"; %>
                 <a href="Road_map.jsp?num=<%=g%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
@@ -324,14 +289,13 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
         <div class="col-md-7 col-xs-12">
           <div class="continer centerIt">
             <div>
-              <h4>IT직무전망 제목 및 내용</h4>
+              <h4>IT 직군 전망에 대해서</h4>
             </div>
           </div>
         </div>
         <div class="col-md-5">
           <div class="right-content">
             <div class="top-content">
-              <h6>IT직무전망 내용</h6>
             </div>
  <!-------------- form태그에 로드맵 바로가기 CSS붙여져있는듯 ----------------------------------------------->
            <!--  <form id="contact" action="" method="get">
