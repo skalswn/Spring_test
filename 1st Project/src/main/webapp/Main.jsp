@@ -48,7 +48,7 @@ out.print(vo);
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
       <ul class="main-menu">
-        <li><a href="#section1">Home</a></li>
+        <li><a href="#top">Home</a></li>
         <!-- <li class="has-submenu"><a href="">About IT</a>
           <ul class="sub-menu">
             <li><a href="#section2">IT란?</a></li>
@@ -61,7 +61,12 @@ out.print(vo);
         <li><a href="P_Psit.jsp">직무탐색</a></li>
         <!-- <li><a href="#section5">Video</a></li> -->
         <li><a href="StudyPage.jsp">단계별학습</a></li>
-        <li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
+        <li><a href="c_Community.jsp" class="external">커뮤니티</a>
+          <ul class="sub-menu">
+            <li><a href="c_Community.jsp">자유게시판</a></li>
+            <li><a href="c_Study_Community.jsp">스터디 게시판</a></li>
+            <li><a href="c_Used_Community.jsp">중고거래 게시판</a></li>
+          </ul></li>
         <%if(vo.getM_id().equals("admin")){ %>
 	        <li><a href="ManageUser.jsp" class="external">회원관리</a></li>
         <%}else{ %>
@@ -334,11 +339,11 @@ out.print(vo);
               <h6>IT직무전망 내용</h6>
             </div>
  <!-------------- form태그에 로드맵 바로가기 CSS붙여져있는듯 ----------------------------------------------->
-            <form id="contact" action="" method="get">
+           <!--  <form id="contact" action="" method="get">
               <div class="row">
                   <fieldset>
-                    <button type="submit" id="form-submit" class="button"></button>
-                  </fieldset>
+                    <button type="submit" id="form-submit" class="button"></button> 
+                  </fieldset>-->
                 </div>
               </div>
             </form>
@@ -353,7 +358,6 @@ out.print(vo);
   <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <script src="assets/js/isotope.min.js"></script>
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/lightbox.js"></script>
