@@ -37,7 +37,7 @@ https://templatemo.com/tm-557-grad-school
    <!--header-->
   <header class="main-header clearfix" role="header">
     <div class="logo">
-      <a href="Main.jsp"><em>Welcome</em> PSIT</a>
+      <a href="Main.jsp"><em>PSIT</em> <span style = "font-size: x-large;">Personal IT</span></a> 
     </div>
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
