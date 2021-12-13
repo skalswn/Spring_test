@@ -36,9 +36,13 @@ https://templatemo.com/tm-557-grad-school
 
 <body>
 <%MemberVO vo = (MemberVO)session.getAttribute("vo"); %>
+<<<<<<< HEAD
+	<!--header-->VBNH
+=======
 
 
 	<!--header-->
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-Bigdata-7/PSIT.git
   <header class="main-header clearfix" role="header">
     <div class="logo">
 		<a href="Main.jsp"><em>PSIT</em> <span style = "font-size: x-large;">Personal IT</span></a> 
