@@ -116,13 +116,6 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 						Design: <a href="https://templatemo.com" rel="sponsored"
 							target="_parent">TemplateMo</a><br> Distributed By: <a
 							href="https://themewagon.com" rel="sponsored" target="_blank">ThemeWagon</a>
-
-<<<<<<< HEAD
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-    
-   
-=======
 					</p>
 				</div>
 			</div>
@@ -142,6 +135,5 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 	<script src="assets/js/slick-slider.js"></script>
 	<script src="assets/js/custom.js"></script>
 	
->>>>>>> refs/remotes/origin/master
 </body>
 </html>

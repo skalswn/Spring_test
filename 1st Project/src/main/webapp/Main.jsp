@@ -88,22 +88,43 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
       <video autoplay muted loop id="bg-video">
           <source src="assets/images/course-video.mp4" type="video/mp4" />
       </video>
-
-      <div class="video-overlay header-text">
-          <div class="caption" align = "left">
-              <h6>PSIT사진넣을곳</h6>
-              <span><h2><em>PSIT</em> PSIT</h2></span>
-              <div class="main-button">
-                  <div class="scroll-to-section"></div>
-                  <a href="P_Psit.jsp">검사하러가기</a>
-              </div>
-              <% if(vo!=null){%>
-				<div align = "right"><span><h2>학습진행률</h2></span></div>
-			  <%} %>
 		
+		<% if(vo!=null){%>
+		<div class="video-overlay header-text">
+			<div class="caption">
+				<div style="float: left; width: 50%; margin: 10%;">
+					<h2>
+						<em>PSIT</em> : Personal IT
+					</h2>
+					<h4 style="font-size: 30px; color:white; font-weight: 700"> PSIT : Personal IT</h4>
+					<h4 style="font-size: 20px; color:white;"> PSIT란 자신의 성향 분석을 통해 IT직무를 추천받는 서비스 입니다.</h4>
+					<div class="main-button">
+						<div class="scroll-to-section"></div>
+						<a href="P_Psit.jsp">검사하러가기</a>
+					</div>
+				</div>
+				<div>
+					<div align="right" style="float: right; width: 30%; height: 600px; background-color: rgba(250,250,250,0.1); text-align: center;">
+						<h4 style = "margin : 5%; font-size: 40px; text-transform: uppercase; font-weight: 800; color: #fff; letter-spacing: 1px;">학습진행현황</h4>
+					</div>
+				</div>
 			</div>
-      </div>
-  </section>
+		</div>
+		<%}else{ %>
+		<div class="video-overlay header-text">
+			<div class="caption">
+				<div>
+					<h2>
+						<em>PSIT</em> PSIT
+					</h2>
+					<div class="main-button">
+						<div class="scroll-to-section"></div>
+						<a href="P_Psit.jsp">검사하러가기</a>
+					</div>
+				</div>
+			</div>
+		</div><%} %>
+	</section>
   <!-- ***** Main Banner Area End ***** -->
 
 
@@ -117,7 +138,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
                 <h4><i class="fa fa-pencil"></i>What is IT?</h4>
               </div>
               <div class="content-hide">
-                <p>IT란?</p>
+                <p>IT 란?</p>
                 <p class="hidden-sm">Curabitur id eros vehicula, tincidunt libero eu, lobortis mi. In mollis eros a posuere imperdiet.</p>
                 <div class="scroll-to-section"><a href="#section2">More</a></div>
             </div>
@@ -128,7 +149,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
           <div class="features-post second-features">
             <div class="features-content">
               <div class="content-show">
-                <h4><i class="fa fa-graduation-cap"></i>IT직군</h4>
+                <h4><i class="fa fa-graduation-cap"></i>IT 직군</h4>
               </div>
               <div class="content-hide">
                 <p>IT 직군 보러가기</p>
@@ -145,7 +166,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
                 <h4><i class="fa fa-book"></i>IT 전망</h4>
               </div>
               <div class="content-hide">
-                <p>IT전망에 대하여</p>
+                <p>IT 전망에 대하여</p>
                 <p class="hidden-sm">Curabitur id eros vehicula, tincidunt libero eu, lobortis mi. In mollis eros a posuere imperdiet.</p>
                 <div class="scroll-to-section"><a href="#section3">More</a></div>
             </div>
@@ -313,7 +334,20 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
     </div>
   </section>
   
-  
+  	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p>
+						<i class="fa fa-copyright"></i> Copyright 2020 by Grad School |
+						Design: <a href="https://templatemo.com" rel="sponsored"
+							target="_parent">TemplateMo</a><br> Distributed By: <a
+							href="https://themewagon.com" rel="sponsored" target="_blank">ThemeWagon</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
   <!-- Scripts 지우면안됨------------------------------------------------------------------------------------------------------------------>
   <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>

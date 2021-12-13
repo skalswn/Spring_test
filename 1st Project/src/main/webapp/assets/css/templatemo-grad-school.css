@@ -16,7 +16,7 @@ body {
 /* Basic */
 
 a {
-	color: #3CF;
+	color: #FFF;
     text-decoration: none;
 }
 
@@ -74,13 +74,14 @@ p {
 .main-button a {
     background-color: #f5a425;
     color: #fff;
-    font-size: 13px;
+    font-size: 30px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-weight: 700;
-    padding: 12px 20px;
+    padding: 20px 30px;
     display: inline-block;
     outline: none;
+    letter-spacing : 1px;
 }
 
 a.menu-link { display: none; }

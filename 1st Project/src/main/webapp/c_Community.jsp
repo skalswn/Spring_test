@@ -47,7 +47,7 @@ table{
 		color : white;
 	}
 	#cho{
-		color: red;
+		color: #f5a425;
 		font-size: 20px;
 	}
 </style>
@@ -157,37 +157,41 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 
 	<section style="color : white; height : 900px; text-align : center;" class="section coming-soon" data-section="section3">
 		
-		<div class="col-8  col-12-narrower imp-narrower" style = "max-width : 90%!important; display : inline-block">
-			<div id="content">
+		<div class="col-8  col-12-narrower imp-narrower" style = "max-width : 90%!important; display : inline-block; height: 100%;">
+			<div id="content" style = "height: 100%">
 
 				<!-- Content -->
 
-				<article>
-					<div id="board" style="background-color : rgba(250,250,250,0.2);">
-						<h2>자유게시판</h2>
-						<div>
+				<article style = "height: 100%">
+					<div id="board" style="background-color : rgba(250,250,250,0.2); height: 100%">
+						<h2 style = "padding : 3%">자유게시판</h2>
+						<!-- <div style = "height: 100%"> -->
+								<div align =right style="margin-right :10px">
+								<button type="button" style="background-color:#f5a425;color: white;width: 100px;height: 40px;border-radius: 0px;border: none;outline: none;font-size: 13px;letter-spacing: 0.5px;" onclick="location.href='c_Communitywrite.jsp';" >새 글 작성</button>
+								<!-- <a href="c_Communitywrite.jsp" ></a> -->
+								</div>
+								<br>
 						<table>
-							<tr id="head_tr" class="cm_tr">
+							<tr id="head_tr" class="cm_tr" style = "height: 35px">
 								<td class="cm_td">번호</td>
 								<td class="cm_td">제목</td>
 								<td class="cm_td">작성자</td>
-								<td class="cm_td">시간</td>
+								<td class="cm_td">날짜</td>
 								<td class="cm_td">조회수</td>
 							</tr>
-
 							<%if (arr.size() > (pageno) * 5) {%>
 							<%for (int i = 0; i < 5; i++) {%>
-							<tr class="main_tr">
+							<tr class="main_tr" style = "height: 35px">
 								<%String result = arr.get(i + (pageno - 1) * 5).getDay().substring(5, 11);%>
-								<td class="main_td"><a class="main_a"
+								<td class="main_td" style="width : 100px"><a class="main_a"
 									href="c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getC_seq()%>"><%=arr.get(i + (pageno - 1) * 5).getC_seq()%></a></td>
-								<td class="main_td"><a class="main_a"
+								<td class="main_td" style="width : 1200px"><a class="main_a"
 									href="c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getC_seq()%>"><%=arr.get(i + (pageno - 1) * 5).getTitle()%></a></td>
-								<td class="main_td"><a class="main_a"
+								<td class="main_td" style="width : 300px"><a class="main_a"
 									href="c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getC_seq()%>"><%=arr.get(i + (pageno - 1) * 5).getWriter()%></a></td>
-								<td class="main_td"><a class="main_a"
+								<td class="main_td" style="width : 100px"><a class="main_a"
 									href="c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getC_seq()%>"><%=result%></a></td>
-								<td class="main_td"><a class="main_a"
+								<td class="main_td" style="width : 200px"><a class="main_a"
 									href="c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getC_seq()%>"><%=arr.get(i + (pageno - 1) * 5).getC_cnt()%></a></td>
 							</tr>
 							<%}%><%} else if (arr.size() < (pageno) * 5) {%><%for (int i = 0; i < (pageno) * 5 - arr.size(); i++) {	%>
@@ -195,34 +199,34 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 								<%
 								String result = arr.get(i + (pageno - 1) * 5).getDay().substring(5, 11);
 								%>
-								<td class="main_td"><a class="main_a"
+								<td class="main_td" style="width : 100px"><a class="main_a"
 									href="c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getC_seq()%>"><%=arr.get(i + (pageno - 1) * 5).getC_seq()%></a></td>
-								<td class="main_td"><a class="main_a"
+								<td class="main_td" style="width : 1200px"><a class="main_a"
 									href="c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getC_seq()%>"><%=arr.get(i + (pageno - 1) * 5).getTitle()%></a></td>
-								<td class="main_td"><a class="main_a"
+								<td class="main_td" style="width : 300px"><a class="main_a"
 									href="c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getC_seq()%>"><%=arr.get(i + (pageno - 1) * 5).getWriter()%></a></td>
-								<td class="main_td"><a class="main_a"
+								<td class="main_td" style="width : 100px"><a class="main_a"
 									href="c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getC_seq()%>"><%=result%></a></td>
-								<td class="main_td"><a class="main_a"
+								<td class="main_td" style="width : 200px"><a class="main_a"
 									href="c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getC_seq()%>"><%=arr.get(i + (pageno - 1) * 5).getC_cnt()%></a></td>
 							</tr>
 							<%}	%><%} else {%><%}%>
 						</table>
-						</div>
+						<br>
 						<%for (int i = 1; i <= page_eno; i++) {%>
 						<a href="c_Community.jsp?pageno=<%=i%>"> <%if (pageno == i) {%>
 							<span id="cho"><%=i%></span> <%} else {%> <%=i%> <%}%>
 						</a>
 						<%if (i < page_eno) {%>,<%}	%><%}%>
+						</div>
 						</table>
+						
 						<form style = "padding: 20px 20px" action="search_community">
 							<select style=" height: 40px; text-align: center; letter-spacing: 0.5px;"><option value="제목">제목</option>
 								<option value="내용">내용</option>
 								<option value="작성자">작성자</option></select> 
 								<input style = "width : 30%;" type="text">
-								<input style = "width : 10%;" class="search_button" type="button" value="검색">
-								<br> 
-								<a href="c_Communitywrite.jsp">작성하러가기</a>
+								<input style = "width : 10%; font-size: 16px" class="search_button" type="button" value="검색">
 						</form>
 					</div>
 					<!-- Scripts -->
