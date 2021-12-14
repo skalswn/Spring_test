@@ -20,7 +20,11 @@ public class DAO {
 	   int cnt = 0;
 	   CodingVO codingvo = null;
 	   CodingExplainVO codingexplainvo = null;
+	 
+	   PsitVO PS =null;
+	   
 	   CheckVO chvo = null;
+	  
 	   
 // DB연결========================================================================================
 	 public void connection() {
@@ -1319,9 +1323,65 @@ public int Delete(String m_email) {
 			 close(); 
 			 }
 		return arr;
-	 }	
 }
+
+	public String check_answer(String answer, int seq) {
+		String ans=null;
+		connection();
+		 try{ 
+			 /////아직 아무것도 안했음 여기서부터
+			 String sql = "select CODING_A from TBL_CODING where CODING_SEQ=?";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setInt(1,seq);
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+			      String r_answer = rs.getString("CODING_A");
+			      if(answer.equals(r_answer)) {
+			    	  ans="wright";
+			      }else {
+			    	  ans="wrong";
+			      }
+			 }
+			
+		 }catch(Exception e){
+			 e.printStackTrace(); 
+		 }finally{ 
+			 close(); 
+			 }
+		return ans;
+	}	
 	
+
+
+	 
+
+	public PsitVO PSTORE(String m_ID) {
+		connection();  
+	 	try{
+		   String sql = "select * from TBL_PSIT where M_ID=? order by PSIT_SEQ DESC";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setString(1,m_ID);
+		   rs = psmt.executeQuery();
+		   if(rs.next() == true) {
+			   int c_seq = rs.getInt("PSIT_SEQ");
+			   String PSIT_TYPE = rs.getString("PSIT_TYPE");
+			   String PSIT_JOB = rs.getString("PSIT_JOB");
+			   String REG_DATE = rs.getString("REG_DATE");
+			   String M_ID = rs.getString("M_ID");
+		       PS = new PsitVO(c_seq,PSIT_TYPE,PSIT_JOB,REG_DATE,M_ID);
+		      }
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return PS;
+	}
+}	
+
+
+
 
 
 

@@ -125,7 +125,8 @@ body {
 	<form action="ShowAllCodingService" method="post">
 		파이썬<input type="radio" name="lang" value="파이썬"> 
 		자바<input type="radio" name="lang" value="자바"> 
-		HTML/CSS/자바스크립트<input type="radio" name="lang" value="HTML"> 
+		HTML/CSS<input type="radio" name="lang" value="HTML">
+		자바스크립트<input type="radio" name="lang" value="자바스크립트"> 
 		<input type="submit" value="문제보기">
 	</form>
 	

@@ -2,7 +2,7 @@ package Model;
 
 public class PsitVO {
 	// 성격 순번
-	private String PSIT_SEQ;
+	private int PSIT_SEQ;
 	
 	// 나의 성격
 	private String PSIT_TYPE;
@@ -16,7 +16,7 @@ public class PsitVO {
 	// 등록아이디
 	private String M_ID;
 
-	public PsitVO(String pSIT_SEQ, String pSIT_TYPE, String pSIT_JOB, String rEG_DATA, String m_ID) {
+	public PsitVO(int pSIT_SEQ, String pSIT_TYPE, String pSIT_JOB, String rEG_DATA, String m_ID) {
 		super();
 		PSIT_SEQ = pSIT_SEQ;
 		PSIT_TYPE = pSIT_TYPE;
@@ -25,11 +25,11 @@ public class PsitVO {
 		M_ID = m_ID;
 	}
 
-	public String getPSIT_SEQ() {
+	public int getPSIT_SEQ() {
 		return PSIT_SEQ;
 	}
 
-	public void setPSIT_SEQ(String pSIT_SEQ) {
+	public void setPSIT_SEQ(int pSIT_SEQ) {
 		PSIT_SEQ = pSIT_SEQ;
 	}
 
