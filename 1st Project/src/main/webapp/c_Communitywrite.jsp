@@ -101,24 +101,22 @@ if(session.getAttribute("vo") != null){
 			<script src="assets/js/main.js"></script>
 			</article>
 	</div>
-	
 </div>
 	</section>
-	<footer>
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<p>
-								<i class="fa fa-copyright"></i> Copyright 2021 by PSIT | Design:
-								<a href="https://templatemo.com" rel="sponsored"
-									target="_parent">TemplateMo</a><br> Distributed By: <a
-									href="https://themewagon.com" rel="sponsored" target="_blank">ThemeWagon</a>
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<p>
+							<i class="fa fa-copyright"></i> Copyright 2021 by PSIT | Design:
+							<a href="https://templatemo.com" rel="sponsored" target="_parent">TemplateMo</a><br>
+							Distributed By: <a href="https://themewagon.com" rel="sponsored"
+								target="_blank">ThemeWagon</a>
 
-							</p>
-						</div>
+						</p>
 					</div>
 				</div>
-			</footer></body>
-</html>
+			</div>
+		</footer>
 </body>
 </html>

@@ -222,7 +222,6 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 						Design: <a href="https://templatemo.com" rel="sponsored"
 							target="_parent">TemplateMo</a><br> Distributed By: <a
 							href="https://themewagon.com" rel="sponsored" target="_blank">ThemeWagon</a>
-
 					</p>
 				</div>
 			</div>
