@@ -23,24 +23,27 @@
 <%//C:\Users\smhrd\OneDrive\바탕 화면\Web_Study\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps %>
 <%
 MemberVO vo =null;
+String userID = null;
+int num=Integer.parseInt(request.getParameter("num"));
 if(session.getAttribute("vo") != null){
 	vo = (MemberVO)session.getAttribute("vo");
-	String userID =vo.getM_id();
+	userID =vo.getM_id();
 }else{%>
 	Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
 	Response.Write("<script>location.href='Main.jsp';</script>");
 <%}%>
-<%
-		String userID = "doflsld";
+<%-- <%
+		String userID = null;
 		if(session.getAttribute("userID") != null){
 			userID = (String)session.getAttribute("userID");
-		}	
-%>
+		}
+%> --%>
 				<form action="c_Communitywrite" method="post" enctype="multipart/form-data" >
 				
 				<table id="list">
 					<tr>
-						<td><input type="text" name="title" class="title" placeholder="제목을 입력해주세요" > </td>
+					<select name="language"><option value="자바">자바</option><option value="자바스크립트">자바스크립트</option><option value="C++">C++</option><option value="JSP">JSP</option><option value="HTML">HTML</option></select>
+					<input type="text" name="title" class="title" placeholder="제목을 입력해주세요" >
 					</tr>
 					<tr>
 						<td colspan="2">
@@ -50,18 +53,18 @@ if(session.getAttribute("vo") != null){
 					<tr>
 					<td colspan="2">
 					<input name="file1" type="file">
-					<input name="file2" type="file">
-					<input name="file3" type="file">
 					</td>
 					</tr>
 					<tr>
 						<td colspan="2">
+						<input value="<%=num%>" name="num" style="display:none">
+						<input value="<%=vo.getM_id()%>" name="m_id" style="display:none">
 							<input type="reset" value="초기화">
 							<input type="submit" value="작성하기">
 						</td>
 					</tr>
 				</table>
-				</form>
+				</form>	
 			</div>
 			<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

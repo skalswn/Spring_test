@@ -47,6 +47,7 @@ public class check_answer extends HttpServlet {
 		}else {
 			System.out.println("¿À´ä");
 			response.sendRedirect("StudyExplainPage.jsp?seq="+seq);
+			
 		}
 //		HttpSession session = request.getSession();
 //		MemberVO vo = (MemberVO)session.getAttribute("vo");
