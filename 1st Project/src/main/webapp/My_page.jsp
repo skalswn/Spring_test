@@ -83,81 +83,91 @@ https://templatemo.com/tm-557-grad-school
   </header>
 
 		<!-- Wrapper -->
-<section class="section coming-soon" data-section="section3">
-  <div>
-	<h4 style = "color : white; " align = "center"><%=vo.getM_id()%>(<%=vo.getM_name() %>)님 안녕하세요!</h4>
-  </div>
-		<div style="text-align : center;">
-			<div style="display: inline-block;width: 30%;">
+	<section class="section coming-soon" data-section="section3">
+		<div>
+			<h4 style="color: white;" align="center"><%=vo.getM_id()%>(<%=vo.getM_name()%>)님
+				안녕하세요!
+			</h4>
+		</div>
+		<div style="text-align: center;">
+			<div style="display: inline-block; width: 30%;">
 				<div class="col-md-5" style="flex: 100%; max-width: 100%;">
-          <div class="right-content">
-							<div>
+					<div class="right-content">
+						<div>
 							<h5>회원정보수정</h5>
-							</div>
-				<form id="contact" action="InfoService" method="post" align="center">
-					<div class="row">
-						<div class="col-md-12">
-						<fieldset>
-								<h4>Information Update</h4>
-							</fieldset>
-							<fieldset>
-								<li style="margin-bottom: 20px; color: white; font-size: 15px; height: 40px; letter-spacing: 0.5px; text-align: left; 
-								display: block; padding: 0.75rem 0.75rem;">이용자 ID : <%=vo.getM_id()%></li>
-							</fieldset>
+						</div>
+						<form id="contact" action="InfoService" method="post"
+							align="center">
+							<div class="row">
+								<div class="col-md-12">
+									<fieldset>
+										<h4>Information Update</h4>
+									</fieldset>
+									<fieldset>
+										<li style="margin-bottom: 20px; color: white; font-size: 15px; height: 40px; letter-spacing: 0.5px; text-align: left; display: block; padding: 0.75rem 0.75rem;">이용자
+											ID : <%=vo.getM_id()%></li>
+									</fieldset>
 
-						</div>
-						<div class="col-md-12">
-							<fieldset>
-								<input name="pw" type="password" class="form-control" id="pw"
-									placeholder="수정할 패스워드를 입력하세요" required="">
-							</fieldset>
-						</div>
-						<div class="col-md-12">
-							<fieldset>
-								<input name="email" type="text" class="form-control" id="email"
-									placeholder="현재 이메일주소 : <%=vo.getM_email() %>" required="">
-							</fieldset>
-						</div>
-						<div class="col-md-12">
-							<fieldset>
-								<input name="name" type="text" class="form-control" id="name"
-									placeholder="현재 이름 : <%=vo.getM_name() %>" required="">
-							</fieldset>
-						</div>
-						<div class="col-md-12">
-							<fieldset>
-								<input name="nick" type="text" class="form-control" id="nick"
-									placeholder="현재 닉네임 : <%=vo.getM_nick() %>" required="">
-							</fieldset>
-						</div>
-						<div class="col-md-12" style="color: white;">
-							<div id="gender">
-							남 <input class="gender" id="gender" name="gender" type="radio" class="form-control" <% if(vo.getM_gender().equals("M")){%>checked="checked"<%} %>
-								 value="M"> 
-							여 <input class="gender" id="gender" name="gender" <% if(vo.getM_gender().equals("W")){%>checked="checked"<%} %>
-								type="radio" class="form-control" value="W">
+								</div>
+								<div class="col-md-12">
+									<fieldset>
+										<input name="pw" type="password" class="form-control" id="pw"
+											placeholder="수정할 패스워드를 입력하세요" required="">
+									</fieldset>
+								</div>
+								<div class="col-md-12">
+									<fieldset>
+										<input name="email" type="text" class="form-control"
+											id="email" placeholder="현재 이메일주소 : <%=vo.getM_email()%>"
+											required="">
+									</fieldset>
+								</div>
+								<div class="col-md-12">
+									<fieldset>
+										<input name="name" type="text" class="form-control" id="name"
+											placeholder="현재 이름 : <%=vo.getM_name()%>" required="">
+									</fieldset>
+								</div>
+								<div class="col-md-12">
+									<fieldset>
+										<input name="nick" type="text" class="form-control" id="nick"
+											placeholder="현재 닉네임 : <%=vo.getM_nick()%>" required="">
+									</fieldset>
+								</div>
+								<div class="col-md-12" style="color: white;">
+									<div id="gender">
+										남 <input class="gender" id="gender" name="gender" type="radio"
+											class="form-control" <%if (vo.getM_gender().equals("M")) {%>
+											checked="checked" <%}%> value="M"> 여 <input
+											class="gender" id="gender" name="gender"
+											<%if (vo.getM_gender().equals("W")) {%> checked="checked"
+											<%}%> type="radio" class="form-control" value="W">
+									</div>
+								</div>
+								<div class="col-md-12">
+									<fieldset>
+										<h5 style="color: white;">MEMO</h5>
+										<textarea class="textarea" name="memo" rows="5"
+											placeholder="메모 <%if (vo.getM_memo() != null) {%><%=vo.getM_memo()%><%}%>"></textarea>
+									</fieldset>
+								</div>
+								<div class="col-md-12">
+									<fieldset>
+										<input style="background-color: #f5a425" type="reset"
+											value="초기화"> <input style="background-color: #f5a425"
+											type="submit" value="완료">
+									</fieldset>
+								</div>
 							</div>
-						</div>
-						<div class="col-md-12">
-							<fieldset>
-								<h5 style="color: white;">MEMO</h5>
-								<textarea class="textarea" name = "memo" rows="5" placeholder = "메모 <%if(vo.getM_memo() != null){%><%=vo.getM_memo() %><%}%>"></textarea>
-							</fieldset>
-						</div>
-						<div class="col-md-12">
-							<fieldset>
-								<input style = "background-color: #f5a425" type="reset" value="초기화"> <input style = "background-color: #f5a425" type="submit"
-									value="완료">
-							</fieldset>
-						</div>
+						</form>
+
 					</div>
-				</form>
-
-			</ul>
-					</nav>			
+				</div>
 			</div>
+		</div>
+	</section>
 
-  <footer>
+	<footer>
     <div class="container">
       <div class="row">
         <div class="col-md-12">
