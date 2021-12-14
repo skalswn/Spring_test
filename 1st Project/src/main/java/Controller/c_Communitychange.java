@@ -15,29 +15,30 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import Model.DAO;
+import Model.MemberVO;
 
 @WebServlet("/c_Communitychange")
 public class c_Communitychange extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println(request.getServletContext().getRealPath("IMAGES"));
-		File file = new File("IMAGES"); //상대경로(class파일과 동일한 폴더) 
+	
+		File file = new File("C:/Users/smhrd/git/PSIT/1st Project/src/main/webapp/images");
 		if(file.exists()) {
-			System.out.println("getPath : "+file.getPath());//상대경로
-			System.out.println("getAbsolutePath : "+file.getAbsolutePath());//절대경로 
+			System.out.println("해당 파일 확인");
 		}else { 
 			file.mkdir(); System.out.println("해당 파일 없음."); 
 		}
 		HttpSession session = request.getSession();
-		String savePath = request.getServletContext().getRealPath("IMAGES");
+		MemberVO vo = (MemberVO)session.getAttribute("vo");
+		String userID =vo.getM_id();
+		String savePath = "C:/Users/smhrd/git/PSIT/1st Project/src/main/webapp/images";
 		int maxSize =5*1024*1024;
 		String encoding = "euc-kr";
 		MultipartRequest multi = new MultipartRequest(request,savePath,maxSize,encoding,new DefaultFileRenamePolicy());
 		String title = multi.getParameter("title");
+		String writer= userID;
 		String content = multi.getParameter("content");
 		String filename1 = "none.png";
-		int num = Integer.parseInt(multi.getParameter("num"));
 		try {
 			filename1 = URLEncoder.encode(multi.getFilesystemName("file1"), "euc-kr");
 		} catch (Exception e) {
@@ -52,7 +53,7 @@ public class c_Communitychange extends HttpServlet {
 			filename3 = URLEncoder.encode(multi.getFilesystemName("file3"), "euc-kr");
 		} catch (Exception e) {
 		}
-		System.out.println(filename1);
+		int num = Integer.parseInt(multi.getParameter("num"));
 		DAO dao=new DAO();
 		int lognum=dao.community_change(title,content,filename1, filename2, filename3,num);
 		if (lognum>0) {
