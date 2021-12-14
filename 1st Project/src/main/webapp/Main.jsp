@@ -32,6 +32,7 @@ https://templatemo.com/tm-557-grad-school
 -->
   </head>
 
+
 <body>
 <%
 // 로그인 안되어있을 때 메뉴바 다르게 하기 위해 vo가져오기
