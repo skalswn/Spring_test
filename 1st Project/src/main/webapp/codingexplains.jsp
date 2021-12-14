@@ -34,12 +34,8 @@ https://templatemo.com/tm-557-grad-school
   </head>
 <body>
 <%
-
 MemberVO vo = (MemberVO)session.getAttribute("vo");
-out.print(vo);
-
 CodingExplainVO codingexplainvo = (CodingExplainVO)request.getAttribute("codingexplainvo");
-
 %>
 
 <!--header-->
@@ -60,11 +56,7 @@ CodingExplainVO codingexplainvo = (CodingExplainVO)request.getAttribute("codinge
           </ul> -->
         </li>
      <% if(vo!=null){%>
-        <li><a href="#">직무탐색</a>
-              <ul class="sub-menu">
-               <li><a href="P_Psit.jsp">PSIT 검사</a></li>
-               <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
-        </ul></li>
+        <li><a href="P_Psit.jsp">직무탐색</a></li>
         <!-- <li><a href="#section5">Video</a></li> -->
         <li><a href="StudyPage.jsp">단계별학습</a></li>
         <li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
@@ -86,20 +78,17 @@ CodingExplainVO codingexplainvo = (CodingExplainVO)request.getAttribute("codinge
 		<p>선택한 문제의 기초개념 나올 곳</p> 
 	</div>
 	
+	<div>
 	<table>
-		<tr>
-		<%if(codingexplainvo.getCoding_explain2()!=null){ %>
-			<td style="white-space: pre-line;"><%=codingexplainvo.getCoding_explain1() %></td>
-			<td style="white-space: pre-line;"><%=codingexplainvo.getCoding_explain2() %></td>
-		</tr>
-		<%}else{ %>
-		<td style="white-space: pre-line;">
-			<%=codingexplainvo.getCoding_explain1() %>
-		<%} %>
-		</td>
+	<tr>
+	<td>주제 :<%=codingexplainvo.getCoding_explain1() %></td>
+	</tr>
+	<tr>
+    <td colspan="2" class="content" style="white-space: pre-line;"><%=codingexplainvo.getCoding_explain2() %></td>
+	</tr>
 	</table>
-	
 		<a href="StudyCoding.jsp?seq=<%=codingexplainvo.getCoding_ex_seq()%>">문제풀어보기</a>
+	</div>
 	
 	<footer>
 		<div class="container">

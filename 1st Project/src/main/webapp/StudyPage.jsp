@@ -115,7 +115,7 @@ body {
 		파이썬<input type="radio" name="lang" value="파이썬"> 
 		자바<input type="radio" name="lang" value="자바"> 
 		HTML/CSS/자바스크립트<input type="radio" name="lang" value="HTML"> 
-		<input type="submit">
+		<input type="submit" value="문제보기">
 	</form>
 	<!-- 언어 선택에 따라 모든 문제가 나오게 하기 -->
 	<div>
@@ -124,6 +124,7 @@ body {
 			<%CodingVO codingvo=codingarray.get(i); %>
 			<br>
 			<%=i+1%>단계/시퀀스:<%=codingvo.getCoding_seq() %>
+		<%-- 	<%if() %> --%>
 			<p><a href="StudyExplainService?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a></p>
 			<%if(vo.getM_id().equals("admin")){ %>
 				<p><button onclick="location.href='DeleteCodingService?seq=<%= codingvo.getCoding_seq() %>';">문제삭제</button></p>

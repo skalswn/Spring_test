@@ -16,7 +16,7 @@ body {
 /* Basic */
 
 a {
-	color: #3CF;
+	color: #FFF;
     text-decoration: none;
 }
 
@@ -36,13 +36,13 @@ p {
     line-height: 22px;
 }
 
-
 .section-heading {
-    text-align: center;
     margin-bottom: 70px;
+    display : inline-block;
 }
 
 .section-heading h2:before {
+	
     width: 1px;
     height: 100px;
     background-color: rgba(250,250,250,0.1);
@@ -50,10 +50,12 @@ p {
     top: -102px;
     content: '';
     left: 50%;
-    transform: translate(-50%);
+    transform: translate(0%);
 }
 
 .section-heading h2 {
+	
+	text-align : center;
     margin-top: 100px;
     position: relative;
     font-size: 18px;
@@ -63,6 +65,7 @@ p {
     display: inline-block;
     padding: 15px 20px;
     border: 2px solid rgba(250,250,250,0.1);
+    
 }
 
 
@@ -71,13 +74,14 @@ p {
 .main-button a {
     background-color: #f5a425;
     color: #fff;
-    font-size: 13px;
+    font-size: 30px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-weight: 700;
-    padding: 12px 20px;
+    padding: 20px 30px;
     display: inline-block;
     outline: none;
+    letter-spacing : 1px;
 }
 
 a.menu-link { display: none; }
@@ -857,9 +861,10 @@ section.courses .item .down-content {
     background-color: #fff;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
+    text-align : center;
 }
 
-section.courses .item .down-content h4 {
+/* section.courses .item .down-content h4 {
     font-size: 16px;
     text-transform: uppercase;
     color: #1e1e1e;
@@ -879,20 +884,23 @@ section.courses .item .down-content img {
     border-radius: 50%;
     text-align: left;
     display: inline-block;
-}
+} */
 
 section.courses .item .down-content .text-button-pay {
-    float: right;
+    /* float: right; */
     display: inline-block;
-    margin-top: -30px;
+    margin-top: -20px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 section.courses .item .down-content .text-button-pay a {
     color: #f5a425;
-    font-size: 13px;
+    font-size: 18px;
+    font-weight: 700;
 }
 
-section.courses .item .down-content .text-button-free {
+/* section.courses .item .down-content .text-button-free {
     float: right;
     display: inline-block;
     margin-top: -30px;
@@ -901,7 +909,7 @@ section.courses .item .down-content .text-button-free {
 section.courses .item .down-content .text-button-free a {
     color: #7a7a7a;
     font-size: 13px;
-}
+} */
 
 section.courses .owl-carousel .owl-nav {
     display: none;

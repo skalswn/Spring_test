@@ -110,7 +110,9 @@ u_Community_commentVO cmvo = (u_Community_commentVO)session.getAttribute("cmvo")
 						<a href="u_c_Communitydelete?num=<%=ucvo.getUSED_SEQ()%>"><button>삭제하기</button></a></td>
 						<%}%>
 					<% }%>	
-					<a href="c_Used_Community.jsp"><button>뒤로가기</button></a></td>				
+					<a href="c_Used_Community.jsp"><button>뒤로가기</button></a></td>
+					<br>	
+					<a href="past_u?num=<%=ucvo.getUSED_SEQ()%>"><button>이전 글</button></a><a href="next_u?num=<%=ucvo.getUSED_SEQ()%>"><button>다음 글</button></a>							
 			</div>
 			<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

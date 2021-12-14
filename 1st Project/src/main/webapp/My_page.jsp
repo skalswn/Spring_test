@@ -54,10 +54,17 @@ https://templatemo.com/tm-557-grad-school
 				<%
 				if (vo != null) {
 				%>
-				<li><a href="P_Psit.jsp">직무탐색</a></li>
+				<li><a href="#">직무탐색</a>
+	        	<ul class="sub-menu">
+	            <li><a href="P_Psit.jsp">PSIT 검사</a></li>
+	            <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
+	          	</ul></li>
 				<!-- <li><a href="#section5">Video</a></li> -->
+<<<<<<< HEAD
 				<li><a href="StudyPage.jsp">단계별학습</a></li>
 				<li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
+=======
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-Bigdata-7/PSIT.git
 				<li><a href="#section6">단계별학습</a></li>
 				<li><a href="c_Community.jsp" class="external">커뮤니티</a>
          			<ul class="sub-menu">
@@ -79,13 +86,18 @@ https://templatemo.com/tm-557-grad-school
       </ul>
     </nav>
   </header>
-  
-  <br>  <br>  <br>  <br> 
-	<h4 align = "center"><%=vo.getM_id()%>(<%=vo.getM_name() %>)님 안녕하세요</h4>
 
 		<!-- Wrapper -->
+<<<<<<< HEAD
 		<section class="section coming-soon" data-section="section3">
 			<div style="text-align : center;">
+=======
+<section class="section coming-soon" data-section="section3">
+  <div>
+	<h4 style = "color : white; " align = "center"><%=vo.getM_id()%>(<%=vo.getM_name() %>)님 안녕하세요!</h4>
+  </div>
+		<div style="text-align : center;">
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-Bigdata-7/PSIT.git
 			<div style="display: inline-block;width: 30%;">
 			<div class="col-md-5" style="flex: 100%; max-width: 100%;">
          	<div class="right-content">
@@ -99,7 +111,8 @@ https://templatemo.com/tm-557-grad-school
 								<h4>Information Update</h4>
 							</fieldset>
 							<fieldset>
-								<li>이용자 ID : <%=vo.getM_id()%></li>
+								<li style="margin-bottom: 20px; color: white; font-size: 15px; height: 40px; letter-spacing: 0.5px; text-align: left; 
+								display: block; padding: 0.75rem 0.75rem;">이용자 ID : <%=vo.getM_id()%></li>
 							</fieldset>
 
 						</div>
@@ -137,13 +150,13 @@ https://templatemo.com/tm-557-grad-school
 						</div>
 						<div class="col-md-12">
 							<fieldset>
-								MEMO<br> <br>
-								<textarea class="textarea" name = "memo" rows="5" placeholder = "메모 : <%=vo.getM_memo() %>"></textarea>
+								<h5 style="color: white;">MEMO</h5>
+								<textarea class="textarea" name = "memo" rows="5" placeholder = "메모 <%if(vo.getM_memo() != null){%><%=vo.getM_memo() %><%}%>"></textarea>
 							</fieldset>
 						</div>
 						<div class="col-md-12">
 							<fieldset>
-								<input type="reset" value="초기화"> <input type="submit"
+								<input style = "background-color: #f5a425" type="reset" value="초기화"> <input style = "background-color: #f5a425" type="submit"
 									value="완료">
 							</fieldset>
 						</div>

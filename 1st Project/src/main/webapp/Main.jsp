@@ -56,10 +56,14 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
           </ul> -->
         </li>
      <% if(vo!=null){%>
-        <li><a href="P_Psit.jsp">직무탐색</a></li>
+        <li><a href="#">직무탐색</a>
+        	<ul class="sub-menu">
+            <li><a href="P_Psit.jsp">PSIT 검사</a></li>
+            <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
+          	</ul></li>
         <!-- <li><a h\ref="#section5">Video</a></li> -->
         <li><a href="StudyPage.jsp">단계별학습</a></li>
-        <li><a href="c_Community.jsp" class="external">커뮤니티</a>
+        <li><a href="#" class="external">커뮤니티</a>
           <ul class="sub-menu">
             <li><a href="c_Community.jsp">자유게시판</a></li>
             <li><a href="c_Study_Community.jsp">스터디 게시판</a></li>
@@ -84,22 +88,43 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
       <video autoplay muted loop id="bg-video">
           <source src="assets/images/course-video.mp4" type="video/mp4" />
       </video>
-
-      <div class="video-overlay header-text">
-          <div class="caption" align = "left">
-              <h6>PSIT사진넣을곳</h6>
-              <span><h2><em>PSIT</em> PSIT</h2></span>
-              <div class="main-button">
-                  <div class="scroll-to-section"></div>
-                  <a href="P_Psit.jsp">검사하러가기</a>
-              </div>
-              <% if(vo!=null){%>
-				<div align = "right"><span><h2>학습진행률</h2></span></div>
-			  <%} %>
 		
+		<% if(vo!=null){%>
+		<div class="video-overlay header-text">
+			<div class="caption">
+				<div style="float: left; width: 50%; margin: 10%;">
+					<h2>
+						<em>PSIT</em> : Personal IT
+					</h2>
+					<h4 style="font-size: 30px; color:white; font-weight: 700"> PSIT : Personal IT</h4>
+					<h4 style="font-size: 20px; color:white;"> PSIT란 자신의 성향 분석을 통해 IT직무를 추천받는 서비스 입니다.</h4>
+					<div class="main-button">
+						<div class="scroll-to-section"></div>
+						<a href="P_Psit.jsp">검사하러가기</a>
+					</div>
+				</div>
+				<div>
+					<div align="right" style="float: right; width: 30%; height: 600px; background-color: rgba(250,250,250,0.1); text-align: center;">
+						<h4 style = "margin : 5%; font-size: 40px; text-transform: uppercase; font-weight: 800; color: #fff; letter-spacing: 1px;">학습진행현황</h4>
+					</div>
+				</div>
 			</div>
-      </div>
-  </section>
+		</div>
+		<%}else{ %>
+		<div class="video-overlay header-text">
+			<div class="caption">
+				<div>
+					<h2>
+						<em>PSIT</em> PSIT
+					</h2>
+					<div class="main-button">
+						<div class="scroll-to-section"></div>
+						<a href="P_Psit.jsp">검사하러가기</a>
+					</div>
+				</div>
+			</div>
+		</div><%} %>
+	</section>
   <!-- ***** Main Banner Area End ***** -->
 
 
@@ -110,12 +135,12 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
           <div class="features-post">
             <div class="features-content">
               <div class="content-show">
-                <h4><i class="fa fa-pencil"></i>IT란?</h4>
+                <h4><i class="fa fa-pencil"></i>What is IT?</h4>
               </div>
               <div class="content-hide">
-                <p>IT란에 대한 작은 내용</p>
+                <p>IT 란?</p>
                 <p class="hidden-sm">Curabitur id eros vehicula, tincidunt libero eu, lobortis mi. In mollis eros a posuere imperdiet.</p>
-                <div class="scroll-to-section"><a href="#section2">More Info.</a></div>
+                <div class="scroll-to-section"><a href="#section2">More</a></div>
             </div>
             </div>
           </div>
@@ -124,12 +149,12 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
           <div class="features-post second-features">
             <div class="features-content">
               <div class="content-show">
-                <h4><i class="fa fa-graduation-cap"></i>IT직무</h4>
+                <h4><i class="fa fa-graduation-cap"></i>IT 직군</h4>
               </div>
               <div class="content-hide">
-                <p>IT직무에 내한 작은 내용</p>
+                <p>IT 직군 보러가기</p>
                 <p class="hidden-sm">Curabitur id eros vehicula, tincidunt libero eu, lobortis mi. In mollis eros a posuere imperdiet.</p>
-                <div class="scroll-to-section"><a href="#section4">Details</a></div>
+                <div class="scroll-to-section"><a href="#section4">More</a></div>
             </div>
             </div>
           </div>
@@ -138,12 +163,12 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
           <div class="features-post third-features">
             <div class="features-content">
               <div class="content-show">
-                <h4><i class="fa fa-book"></i>IT전망</h4>
+                <h4><i class="fa fa-book"></i>IT 전망</h4>
               </div>
               <div class="content-hide">
-                <p>IT전망에 대한 간단한 내용</p>
+                <p>IT 전망에 대하여</p>
                 <p class="hidden-sm">Curabitur id eros vehicula, tincidunt libero eu, lobortis mi. In mollis eros a posuere imperdiet.</p>
-                <div class="scroll-to-section"><a href="#section3">Read More</a></div>
+                <div class="scroll-to-section"><a href="#section3">More</a></div>
             </div>
             </div>
           </div>
@@ -155,9 +180,9 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
   <section class="section why-us" data-section="section2">
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" style="text-align : center;">
           <div class="section-heading">
-            <h2>IT란 무엇인가?</h2>
+            <h2>What is IT?</h2>
           </div>
         </div>
         <div class="col-md-12">
@@ -209,48 +234,33 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 <section class="section courses" data-section="section4">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" style="text-align : center;">
           <div class="section-heading">
-            <h2>IT직무</h2>
+            <h2>IT 직군</h2>
           </div>
         </div>
         <div class="owl-carousel owl-theme">
-          <div class="item">
-            <img src="assets/images/courses-01.jpg" alt="Course #1">
+          <div class="item" >
+            <img src="assets/images/j_001.png" alt="Course #1" >
             <div class="down-content">
-              <h4>직무1</h4>
-              <p>직무1에대한 내용</p>
-              <div class="author-image">
-                <img src="assets/images/author-01.png" alt="Author 1">
-              </div>
-              <div class="text-button-pay">
+              <div class="text-button-pay" >
               <%String a ="1"; %>
-                <a href="Road_map.jsp?num=<%=a%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
+                <a href="Road_map.jsp?num=<%=a%>" >로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
           <div class="item">
-            <img src="assets/images/courses-02.jpg" alt="Course #2">
+            <img src="assets/images/j_003.png" alt="Course #2">
             <div class="down-content">
-              <h4>직무2</h4>
-              <p>직무2에대한 내용</p>
-              <div class="author-image">
-                <img src="assets/images/author-02.png" alt="Author 2">
-              </div>
-              <div class="text-button-free">
+              <div class="text-button-pay">
               <%String b ="2"; %>
                 <a href="Road_map.jsp?num=<%=b%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
           <div class="item">
-            <img src="assets/images/courses-03.jpg" alt="Course #3">
+            <img src="assets/images/j_005.png" alt="Course #3">
             <div class="down-content">
-              <h4>직무3</h4>
-			  <p>직무3에대한 내용</p>
-              <div class="author-image">
-                <img src="assets/images/author-03.png" alt="Author 3">
-              </div>
               <div class="text-button-pay">
              	<%String c ="3"; %>
                 <a href="Road_map.jsp?num=<%=c%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
@@ -258,27 +268,17 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
             </div>
           </div>
           <div class="item">
-            <img src="assets/images/courses-04.jpg" alt="Course #4">
+            <img src="assets/images/j_007.png" alt="Course #4">
             <div class="down-content">
-              <h4>직무4</h4>
-			  <p>직무4에대한 내용</p>
-              <div class="author-image">
-                <img src="assets/images/author-04.png" alt="Author 4">
-              </div>
-              <div class="text-button-free">
+              <div class="text-button-pay">
                 <%String d ="4"; %>
                 <a href="Road_map.jsp?num=<%=d%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
           <div class="item">
-            <img src="assets/images/courses-05.jpg" alt="">
+            <img src="assets/images/j_009.png" alt="">
             <div class="down-content">
-              <h4>직무5</h4>
-			  <p>직무5에대한 내용</p>
-              <div class="author-image">
-                <img src="assets/images/author-05.png" alt="">
-              </div>
               <div class="text-button-pay">
                <%String e ="5"; %>
                 <a href="Road_map.jsp?num=<%=e%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
@@ -286,28 +286,18 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
             </div>
           </div>
           <div class="item">
-            <img src="assets/images/courses-01.jpg" alt="">
+            <img src="assets/images/j_011.png" alt="">
             <div class="down-content">
-              <h4>직무6</h4>
-			  <p>직무6에대한 내용</p>
-              <div class="author-image">
-                <img src="assets/images/author-01.png" alt="">
-              </div>
-              <div class="text-button-free">
+              <div class="text-button-pay">
                 <%String f ="6"; %>
                 <a href="Road_map.jsp?num=<%=f%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
           <div class="item">
-            <img src="assets/images/courses-02.jpg" alt="">
+            <img src="assets/images/j_013.png" alt="">
             <div class="down-content">
-              <h4>직무7</h4>
-			  <p>직무7에대한 내용</p>
-              <div class="author-image">
-                <img src="assets/images/author-02.png" alt="">
-              </div>
-              <div class="text-button-free">
+              <div class="text-button-pay">
                <%String g ="7"; %>
                 <a href="Road_map.jsp?num=<%=g%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
@@ -318,21 +308,17 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
     </div>
   </section>
 <!--IT전망부분---------------------------------------------------------------------------------------------------------------------------------------->
-  <section class="section coming-soon" data-section="section3">
+    <section class="section coming-soon" data-section="section3">
     <div class="container">
       <div class="row">
-        <div class="col-md-7 col-xs-12">
-          <div class="continer centerIt">
-            <div>
-              <h4>IT직무전망 제목 및 내용</h4>
-            </div>
+      	<div class="col-md-12" style="text-align : center;">
+            <div class="section-heading">
+            <h2>IT 전망</h2>
           </div>
-        </div>
+          </div>
         <div class="col-md-5">
-          <div class="right-content">
-            <div class="top-content">
-              <h6>IT직무전망 내용</h6>
-            </div>
+         <img src="assets/images/002.png" style = "width : 100% ">
+
  <!-------------- form태그에 로드맵 바로가기 CSS붙여져있는듯 ----------------------------------------------->
            <!--  <form id="contact" action="" method="get">
               <div class="row">
@@ -348,7 +334,20 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
     </div>
   </section>
   
-  
+  	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p>
+						<i class="fa fa-copyright"></i> Copyright 2020 by Grad School |
+						Design: <a href="https://templatemo.com" rel="sponsored"
+							target="_parent">TemplateMo</a><br> Distributed By: <a
+							href="https://themewagon.com" rel="sponsored" target="_blank">ThemeWagon</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
   <!-- Scripts 지우면안됨------------------------------------------------------------------------------------------------------------------>
   <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
