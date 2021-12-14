@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class DAO {
 	   CommunityVO bo=null;
@@ -160,7 +161,7 @@ public class DAO {
 
 // 회원삭제========================================================================================
 	
-public int Delete(String m_email) {
+	public int Delete(String m_email) {
 		
 		int cnt = 0;
 		Connection conn = null;
@@ -472,8 +473,8 @@ public int Delete(String m_email) {
 		}
 		return cnt;
 	}
-
-//자유게시판 댓글달기
+	
+//자유게시판 댓글달기====================================================================================
 	public ArrayList<Community_commentVO> cm_Community(int c_seq) { 
 		ArrayList<Community_commentVO> arr = new ArrayList<Community_commentVO>(); 
 		connection();
@@ -603,7 +604,6 @@ public int Delete(String m_email) {
 	}
 	
 // 문제 삭제하기====================================================================================
-	
 	public int deleteCoding(int seq) {
 
 		try{
@@ -660,7 +660,7 @@ public int Delete(String m_email) {
 		
 		return codingexplainvo;
 	}
-// ===============================================
+// 커뮤니티===============================================
 	public int community_change(String title, String content, String filename1, String filename2,
 			String filename3, int num) {
 		 connection();  
@@ -685,7 +685,7 @@ public int Delete(String m_email) {
 	     }
 		   return lognum;
 	}
-//학습단계저장하기 update문써봄======================================================================================
+//학습단계저장하기 update문======================================================================================
 	public int CheckPhase(int seq, String m_id, String lang) {
 		
 		try {
@@ -708,48 +708,105 @@ public int Delete(String m_email) {
 		return cnt;
 	}
 	
-//	학습단계 불러오기===========================================
-//public CheckVO SelectPhase(int seq, String m_id, String lang) {
-//		CheckVO chvo= null;
-//		
-//		try {
-//			connection();
-//		
-//			String sql = "select * from tbl_coding_plan where tbl_coding_plan_seq=? and plan_lang=? and m_id=?";
-//			
-//			psmt = conn.prepareStatement(sql);
-//			
-//			psmt.setInt(1, seq);
-//			psmt.setString(2, lang);
-//			psmt.setString(3, m_id);
-//			
-//			rs = psmt.executeQuery();
-//
-//			if (rs.next() == true) {
-//				int tbl_coding_plan_seq = rs.getInt(1);
-//				String plan_lang = rs.getString(2);
-//				int plan_step = rs.getInt(3);
-//				String id = rs.getString(4);
-//
-//				chvo = new CheckVO(tbl_coding_plan_seq, plan_lang, plan_step, id); 
-//				System.out.println("단계뽑기성공!");
-//			} else {
-//				System.out.println("단계뽑기실패!");
-//			}
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			
-//		}finally {
-//			
-//			close();
-//		}
-//		
-//		return chvo;
-//	}
-	
-	
+// 문제개념 보여주기================================================================================
+	  public ArrayList<CodingExplainVO> codingexplain_view(int num) { 
+		  ArrayList<CodingExplainVO> arr = new ArrayList<CodingExplainVO>(); 
+		  connection();
+		  try{ 
+			  String sql = "select* from TBL_CODING_EXPLAIN where CODING_SEQ=?";
+			  psmt = conn.prepareStatement(sql);
+			  psmt.setInt(1,num);
+			  rs =  psmt.executeQuery();
+			  while(rs.next()) {
+				  int ex_seq = rs.getInt("CODING_EX_SEQ");
+				  String lang = rs.getString("CODING_LANG");
+				  String title = rs.getString("CODING_EXPLAIN1");
+				  String content = rs.getString("CODING_EXPLAIN2");
+				  String M_ID = rs.getString("M_ID");
+				  int q_seq = rs.getInt("CODING_SEQ");
+				  CodingExplainVO vo =new CodingExplainVO(ex_seq, lang, title,content,M_ID,q_seq);
+				  arr.add(vo);
+				  System.out.println(content);
+			  }
+			  
+		  }catch(Exception e){
+			  e.printStackTrace(); 
+		  }finally{ 
+			  close(); 
+		  }
+		  return arr;
+	  }
+	  
+//문제 해답 맞추기==================================================================================
+	  public String check_answer(String answer, int seq) {
+		  String ans=null;
+		  try{ 
+			  connection();
+			  /////아직 아무것도 안했음 여기서부터
+			  String sql = "select CODING_A from TBL_CODING where CODING_SEQ=?";
+			  psmt = conn.prepareStatement(sql);
+			  psmt.setInt(1,seq);
+			  rs =  psmt.executeQuery();
+			  while(rs.next()) {
+				  String r_answer = rs.getString("CODING_A");
+				  if(answer.equals(r_answer)) {
+					  ans="wright";
+				  }else {
+					  ans="wrong";
+				  }
+			  }
 
+		  }catch(Exception e){
+			  e.printStackTrace(); 
+		  }finally{ 
+			  close(); 
+		  }
+		  return ans;
+	  }	
+
+// 회원가입 시 단계별학습에 언어 끼워넣는 메소드
+	public void Insertlang(String id) {
+		
+		try {
+			connection();
+
+			String sql = "insert into TBL_CODING_PLAN values(TBL_CODING_PLAN_SEQ.NEXTVAL, ? , 1, ?)";
+				
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, "파이썬");
+			psmt.setString(2, id);
+			psmt.addBatch();
+			
+			psmt.setString(1, "자바");
+			psmt.setString(2, id);
+			psmt.addBatch();
+			
+			psmt.setString(1, "HTML");
+			psmt.setString(2, id);
+			psmt.addBatch();
+
+			psmt.setString(1, "자바스크립트");
+			psmt.setString(2, id);
+			psmt.addBatch();
+			
+			int cnt[] = psmt.executeBatch();
+			
+			if (cnt != null) {
+				System.out.println("언어추가성공");
+			}
+			else {
+			
+				System.out.println("언어추가실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+	}
+
+// 회원수정 메소드==============================================================================================	
 	public int Update(String m_id, String m_pw, String m_email, String m_name, String m_nick, String m_gender,
 		String m_memo) {
 		
@@ -812,7 +869,6 @@ public int Delete(String m_email) {
 	    	    System.out.println(cnt);
 	    	    return cnt;
 	    }
-
 
 	public ArrayList<s_CommunityVO> s_Community() { 
 		ArrayList<s_CommunityVO> arr = new ArrayList<s_CommunityVO>(); 
@@ -916,6 +972,7 @@ public int Delete(String m_email) {
 
 	
 	public ArrayList<s_Community_commentVO> s_cm_Community(int c_seq) { 
+
 		ArrayList<s_Community_commentVO> arr = new ArrayList<s_Community_commentVO>(); 
 		connection();
 		 try{ 
@@ -940,6 +997,7 @@ public int Delete(String m_email) {
 			 }
 		return arr;
 	 }
+	
 	public int s_cm_write(int c_seq, String cm_content, String writer) {
 		connection();  
 	 	try{
@@ -960,6 +1018,7 @@ public int Delete(String m_email) {
      }
 	   return lognum; 
   }
+	
 	public ArrayList<u_CommunityVO> u_Community() { 
 		ArrayList<u_CommunityVO> arr = new ArrayList<u_CommunityVO>(); 
 		connection();
@@ -1017,6 +1076,7 @@ public int Delete(String m_email) {
      }
 	   return lognum;
 	}
+	
 	public u_CommunityVO u_communityview(int num) {
 		connection();  
 	 	try{
@@ -1050,6 +1110,7 @@ public int Delete(String m_email) {
      }
 	   return vo;
 	}
+	
 	public ArrayList<u_Community_commentVO> u_cm_Community(int c_seq) { 
 		ArrayList<u_Community_commentVO> arr = new ArrayList<u_Community_commentVO>(); 
 		connection();
@@ -1133,6 +1194,7 @@ public int Delete(String m_email) {
      }
 	   return lognum;	   
 }
+	
 	public int s_c_Commentdelete(int num) {
 		connection();  
 	 	try{
@@ -1242,6 +1304,7 @@ public int Delete(String m_email) {
      }
 	   return lognum;
 	}
+	
 	public int s_past_page(int num) {
 		connection();  
 	 	try{
@@ -1260,6 +1323,7 @@ public int Delete(String m_email) {
      }
 	   return lognum;
 	}
+	
 	public int u_next_page(int num) {
 		connection();  
 	 	try{
@@ -1278,6 +1342,7 @@ public int Delete(String m_email) {
      }
 	   return lognum;
 	}
+	
 	public int u_past_page(int num) {
 		connection();  
 	 	try{
@@ -1296,62 +1361,7 @@ public int Delete(String m_email) {
      }
 	   return lognum;
 	}
-////////////////////////////////개념 보기
-	public ArrayList<CodingExplainVO> codingexplain_view(int num) { 
-		ArrayList<CodingExplainVO> arr = new ArrayList<CodingExplainVO>(); 
-		connection();
-		 try{ 
-			 String sql = "select* from TBL_CODING_EXPLAIN where CODING_SEQ=?";
-			 psmt = conn.prepareStatement(sql);
-			 psmt.setInt(1,num);
-			 rs =  psmt.executeQuery();
-			 while(rs.next()) {
-				  int ex_seq = rs.getInt("CODING_EX_SEQ");
-			      String lang = rs.getString("CODING_LANG");
-			      String title = rs.getString("CODING_EXPLAIN1");
-			      String content = rs.getString("CODING_EXPLAIN2");
-			      String M_ID = rs.getString("M_ID");
-			      int q_seq = rs.getInt("CODING_SEQ");
-			      CodingExplainVO vo =new CodingExplainVO(ex_seq, lang, title,content,M_ID,q_seq);
-			      arr.add(vo);
-			      System.out.println(content);
-			 }
-			
-		 }catch(Exception e){
-			 e.printStackTrace(); 
-		 }finally{ 
-			 close(); 
-			 }
-		return arr;
-}
-
-	public String check_answer(String answer, int seq) {
-		String ans=null;
-		 try{ 
-			 connection();
-			 /////아직 아무것도 안했음 여기서부터
-			 String sql = "select CODING_A from TBL_CODING where CODING_SEQ=?";
-			 psmt = conn.prepareStatement(sql);
-			 psmt.setInt(1,seq);
-			 rs =  psmt.executeQuery();
-			 while(rs.next()) {
-			      String r_answer = rs.getString("CODING_A");
-			      if(answer.equals(r_answer)) {
-			    	  ans="wright";
-			      }else {
-			    	  ans="wrong";
-			      }
-			 }
-			
-		 }catch(Exception e){
-			 e.printStackTrace(); 
-		 }finally{ 
-			 close(); 
-			 }
-		return ans;
-	}	
 	
-	 
 
 	public PsitVO PSTORE(String m_ID) {
 		connection();  
