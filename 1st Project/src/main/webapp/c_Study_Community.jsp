@@ -188,7 +188,7 @@ table{
 				<div id="board" style="background-color: rgba(250, 250, 250, 0.2); height: 100%">
 					<h2 style="padding: 3%">스터디게시판</h2>
 					<div align =right style="margin-right :10px">
-					<button type="button" style="background-color:#f5a425;color: white;width: 100px;height: 40px;border-radius: 0px;border: none;outline: none;font-size: 13px;letter-spacing: 0.5px;" onclick="location.href='c_Communitywrite.jsp';" >새 글 작성</button>
+					<button type="button" style="background-color:#f5a425;color: white;width: 100px;height: 40px;border-radius: 0px;border: none;outline: none;font-size: 13px;letter-spacing: 0.5px;" onclick="location.href='c_Study_Communitywrite.jsp';" >새 글 작성</button>
 					</div>
 					<br>
 					
