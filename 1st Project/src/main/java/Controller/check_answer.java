@@ -29,6 +29,7 @@ public class check_answer extends HttpServlet {
 		DAO dao = new DAO();
 		String check = dao.check_answer(answer,seq);
 		ArrayList<CodingVO> codingarray = dao.ShowAllCoding(lang);
+		
 		//여기까지 
 //		if (check.equals("wright") ) {
 //			 System.out.println("정답"); 

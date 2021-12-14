@@ -30,7 +30,6 @@ public class ShowAllCodingService extends HttpServlet {
 		}else {
 			lang = request.getParameter("lang");
 		}
-		System.out.println(lang);
 		DAO dao = new DAO();
 		ArrayList<CodingVO> codingarray = new ArrayList<>();
 		

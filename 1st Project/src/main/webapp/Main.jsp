@@ -132,6 +132,27 @@ int amount_python=dao.amount_python();
 										</tr>
 								<%} %>
 							</table>
+						<table>
+							<tr>
+								<td>파이썬</td>
+								<td>파이썬</td>
+							</tr>
+							
+							<tr>
+								<td>자바</td>
+								<td>자바</td>
+							</tr>
+							
+							<tr>
+								<td>HTML</td>
+								<td>HTML</td>
+							</tr>
+							
+							<tr>
+								<td>자바스크립트</td>
+								<td>자바스크립트</td>
+							</tr>
+						</table>
 					</div>					
 				</div>
 			</div>

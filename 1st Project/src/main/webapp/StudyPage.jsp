@@ -65,7 +65,7 @@ body {
  	CheckVO chvo = null;
 	if(request.getAttribute("chvo") != null){
 		chvo=(CheckVO)request.getAttribute("chvo");
-	} 
+	}
 	System.out.println(chvo); 
 	/* System.out.println(chvo.getStep()); */
 	out.print(chvo);
