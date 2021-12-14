@@ -63,6 +63,7 @@ public class c_Psit extends HttpServlet {
 		System.out.println(job_no);
 		DAO dao = new DAO();
 		int psitnum = dao.psit(sample,job_no,M_ID);
+		PsitVO PS = dao.PSTORE(M_ID);
 	if (psitnum > 0) { 
 		System.out.println("저장 성공"); 
 	}else { 
