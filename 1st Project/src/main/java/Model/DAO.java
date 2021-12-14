@@ -610,16 +610,15 @@ public class DAO {
 	
 	
 // 문제 풀면 checkvo에 저장시키기
-	public CheckVO getPhase(int seq, String m_id, String lang ) {
+	public CheckVO getPhase(String m_id, String lang ) {
 		
 		try {
 			connection();
 
-			String sql = "select * from tbl_coding_plan where plan_step=? and plan_lang=? and m_id=?";
+			String sql = "select * from tbl_coding_plan where plan_lang=? and m_id=?";
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, seq);
-			psmt.setString(2, lang);
-			psmt.setString(3, m_id);
+			psmt.setString(1, lang);
+			psmt.setString(2, m_id);
 			rs = psmt.executeQuery();
 			if (rs.next() == true) {
 //				int PLAN_SEQ = rs.getInt("PLAN_SEQ");
@@ -727,15 +726,27 @@ public class DAO {
 		
 		try {
 			connection();
+			int past_seq=0;
+			String sql1 = "select plan_step from tbl_coding_plan where m_id=? ";
 			
-			String sql = "update tbl_coding_plan set plan_step=? where m_id=? and plan_lang=?";
+			psmt = conn.prepareStatement(sql1);
+			psmt.setString(1, m_id);
 			
-			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, seq);
-			psmt.setString(2, m_id);
-			psmt.setString(3, lang);
+			rs = psmt.executeQuery();
+			if(rs.next()==true) {
+				past_seq=rs.getInt("plan_step");
+			}
+			if (seq>past_seq) {
+				String sql = "update tbl_coding_plan set plan_step=? where m_id=? and plan_lang=?";
+				psmt = conn.prepareStatement(sql);
+				psmt.setInt(1, seq);
+				psmt.setString(2, m_id);
+				psmt.setString(3, lang);
+				cnt = psmt.executeUpdate();
+			}else {
+				cnt=0;
+			}
 			
-			cnt = psmt.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();

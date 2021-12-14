@@ -24,7 +24,6 @@ public class CheckPhase extends HttpServlet {
 		DAO dao = new DAO();
 		request.setCharacterEncoding("euc-kr");
 //		//파라미터 seq수집
-//		int seq = Integer.parseInt(request.getParameter("seq"));
 		int seq = (int) request.getAttribute("seq");
 		//세션에서 id값 가져오기
 		HttpSession	session = request.getSession();
@@ -34,23 +33,19 @@ public class CheckPhase extends HttpServlet {
 		
 		CodingVO codingvo = dao.ShowStudyCoding(seq);
 		String lang = codingvo.getCoding_lang();
-//		
-//		
+		
 		int cnt = dao.CheckPhase(seq, m_id, lang);
 		
 		if(cnt>0) {
 			System.out.println("단계저장성공");
-//			response.sendRedirect("StudyPage.jsp");
-//			System.out.println("학습페이지로이동성공");
 		}
 		else {
 			System.out.println("단계저장실패");
 		}
 //		===================================================
-		CheckVO chvo = dao.getPhase(seq, m_id, lang);
+		CheckVO chvo = dao.getPhase(m_id, lang);
 
 		if(chvo!=null) {
-			session.setAttribute("chvo", chvo);
 			System.out.println("chvo보내기성공!");
 			request.setAttribute("chvo", chvo);
 			RequestDispatcher rd = request.getRequestDispatcher("ShowAllCodingService");
