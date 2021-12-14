@@ -59,7 +59,7 @@ CheckVO chvo = (CheckVO)request.getAttribute("chvo");
         <li><a href="#">직무탐색</a>
         	<ul class="sub-menu">
             <li><a href="P_Psit.jsp">PSIT 검사</a></li>
-            <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
+            <li><a href="P_Psit_store.jsp">My PSIT</a></li>
           	</ul></li>
         <!-- <li><a h\ref="#section5">Video</a></li> -->
         <li><a href="StudyPage.jsp">단계별학습</a></li>
