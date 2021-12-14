@@ -119,7 +119,7 @@ body {
 	<%if(codingarray!=null){ %>
 		<%for(int i=0; i<codingarray.size(); i++){%>
 			<%CodingVO codingvo=codingarray.get(i); %>
-			<p><%=codingvo.getCoding_seq()%>단계</p>
+			<p><%=i+1%>단계/<%=codingvo.getCoding_seq()%>번</p>
 			<%System.out.println(codingvo.getCoding_seq()); %>
 			<p><a href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a></p>
 			<%-- <button onclick="location.href='StudyExplainService?seq=<%= codingvo.getCoding_seq() %>';">학습하러가기</button> --%>

@@ -503,7 +503,7 @@ public int Delete(String m_email) {
 		try {
 			connection();
 			
-			String sql = "select * from tbl_coding where coding_lang = ?";
+			String sql = "select * from tbl_coding where coding_lang = ? order by CODING_SEQ";
 			psmt = conn.prepareStatement(sql);
 			
 			psmt.setString(1, lang);
@@ -1207,7 +1207,7 @@ public int Delete(String m_email) {
 		ArrayList<CodingExplainVO> arr = new ArrayList<CodingExplainVO>(); 
 		connection();
 		 try{ 
-			 String sql = "select* from TBL_CODING_EXPLAIN where CODING_SEQ=? order by CODING_EX_SEQ";
+			 String sql = "select* from TBL_CODING_EXPLAIN where CODING_SEQ=?";
 			 psmt = conn.prepareStatement(sql);
 			 psmt.setInt(1,num);
 			 rs =  psmt.executeQuery();
@@ -1229,6 +1229,7 @@ public int Delete(String m_email) {
 			 }
 		return arr;
 	 }	
+	
 }
 
 

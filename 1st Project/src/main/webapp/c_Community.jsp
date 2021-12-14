@@ -194,7 +194,7 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 								<td class="main_td" style="width : 200px"><a class="main_a"
 									href="c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getC_seq()%>"><%=arr.get(i + (pageno - 1) * 5).getC_cnt()%></a></td>
 							</tr>
-							<%}%><%} else if (arr.size() < (pageno) * 5) {%><%for (int i = 0; i < (pageno) * 5 - arr.size(); i++) {	%>
+							<%}%><%} else if (arr.size() < (pageno) * 5) {%><%for (int i = 0; i < 5-((pageno) * 5 - arr.size()); i++) {	%>
 							<tr class="main_tr">
 								<%
 								String result = arr.get(i + (pageno - 1) * 5).getDay().substring(5, 11);

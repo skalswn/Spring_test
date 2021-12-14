@@ -36,6 +36,7 @@ https://templatemo.com/tm-557-grad-school
 <body>
 <%
 int seq=1;
+String lang=null;
 MemberVO vo = (MemberVO)session.getAttribute("vo");
 out.print(vo);
 //CodingExplainVO codingexplainvo = (CodingExplainVO)request.getAttribute("codingexplainvo");
@@ -43,7 +44,6 @@ DAO dao = new DAO();
 if(request.getParameter("seq") != null){
 	seq=Integer.parseInt(request.getParameter("seq"));
 }
-System.out.print(seq);
 ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
 %>
 
@@ -83,9 +83,6 @@ ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
     
   </header>
   <br><br><br><br><br><br>
-	<div>
-		<p>선택한 문제의 기초개념 나올 곳</p> 
-	</div>
 	<%for(int i=0;i<arr.size();i++){ %>
 	<div style="white-space:pre;">
 			<h2>주제: <%=arr.get(i).getCoding_explain1() %></h2>
