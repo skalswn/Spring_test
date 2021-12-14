@@ -4,6 +4,7 @@
 <%@page import="Model.CodingVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@page import="java.util.*" %>    
 <!DOCTYPE html>
 <html>
  <head>
@@ -34,12 +35,16 @@ https://templatemo.com/tm-557-grad-school
   </head>
 <body>
 <%
-
+int seq=1;
 MemberVO vo = (MemberVO)session.getAttribute("vo");
 out.print(vo);
-
-CodingExplainVO codingexplainvo = (CodingExplainVO)request.getAttribute("codingexplainvo");
-
+//CodingExplainVO codingexplainvo = (CodingExplainVO)request.getAttribute("codingexplainvo");
+DAO dao = new DAO();
+if(request.getParameter("seq") != null){
+	seq=Integer.parseInt(request.getParameter("seq"));
+}
+System.out.print(seq);
+ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
 %>
 
 <!--header-->
@@ -85,10 +90,10 @@ CodingExplainVO codingexplainvo = (CodingExplainVO)request.getAttribute("codinge
 	<div>
 		<p>선택한 문제의 기초개념 나올 곳</p> 
 	</div>
-	
+<%-- 
 	<table>
 		<tr>
-		<%if(codingexplainvo.getCoding_explain2()!=null){ %>
+		<%if(arr.getCoding_explain2()!=null){ %>
 			<td style="white-space: pre-line;"><%=codingexplainvo.getCoding_explain1() %></td>
 			<td style="white-space: pre-line;"><%=codingexplainvo.getCoding_explain2() %></td>
 		</tr>
@@ -100,7 +105,14 @@ CodingExplainVO codingexplainvo = (CodingExplainVO)request.getAttribute("codinge
 	</table>
 	
 		<a href="StudyCoding.jsp?seq=<%=codingexplainvo.getCoding_ex_seq()%>">문제풀어보기</a>
-	
+ --%>	
+	<%for(int i=0;i<arr.size();i++){ %>
+	<div style="white-space:pre;">
+			<h2>주제: <%=arr.get(i).getCoding_explain1() %></h2>
+			<p><%=arr.get(i).getCoding_explain2() %></p>
+	<%}%>
+	<a href="StudyCoding.jsp?seq=<%=seq%>">문제풀어보기</a>
+	</div>
 	<footer>
 		<div class="container">
 			<div class="row">

@@ -608,8 +608,8 @@ public int Delete(String m_email) {
 				String coding_explain1 = rs.getString(3);
 				String coding_explain2 = rs.getString(4);
 				String m_id = rs.getString(5);
-
-				codingexplainvo = new CodingExplainVO( coding_ex_seq, coding_lang, coding_explain1, coding_explain2, m_id); 
+				int coding_q_seq = rs.getInt(6);
+				codingexplainvo = new CodingExplainVO(coding_ex_seq, coding_lang, coding_explain1, coding_explain2, m_id,coding_q_seq); 
 				System.out.println("개념뽑기성공!");
 			} else {
 				System.out.println("실패!");
@@ -674,30 +674,32 @@ public int Delete(String m_email) {
 	}
 	
 //	학습단계 불러오기===========================================
-//public CodingExplainVO SelectPhase(int seq, String m_id, String lang) {
+//public CheckVO SelectPhase(int seq, String m_id, String lang) {
+//		CheckVO chvo= null;
 //		
 //		try {
 //			connection();
 //		
-//			String sql = "select * from tbl_coding_explain where coding_ex_seq=?";
+//			String sql = "select * from tbl_coding_plan where tbl_coding_plan_seq=? and plan_lang=? and m_id=?";
 //			
 //			psmt = conn.prepareStatement(sql);
 //			
 //			psmt.setInt(1, seq);
+//			psmt.setString(2, lang);
+//			psmt.setString(3, m_id);
 //			
 //			rs = psmt.executeQuery();
 //
 //			if (rs.next() == true) {
-//				int coding_ex_seq = rs.getInt(1);
-//				String coding_lang = rs.getString(2);
-//				String coding_explain1 = rs.getString(3);
-//				String coding_explain2 = rs.getString(4);
-//				String m_id = rs.getString(5);
+//				int tbl_coding_plan_seq = rs.getInt(1);
+//				String plan_lang = rs.getString(2);
+//				int plan_step = rs.getInt(3);
+//				String id = rs.getString(4);
 //
-//				codingexplainvo = new CodingExplainVO( coding_ex_seq, coding_lang, coding_explain1, coding_explain2, m_id); 
-//				System.out.println("개념뽑기성공!");
+//				chvo = new CheckVO(tbl_coding_plan_seq, plan_lang, plan_step, id); 
+//				System.out.println("단계뽑기성공!");
 //			} else {
-//				System.out.println("실패!");
+//				System.out.println("단계뽑기실패!");
 //			}
 //			
 //		} catch (Exception e) {
@@ -708,9 +710,9 @@ public int Delete(String m_email) {
 //			close();
 //		}
 //		
-//		return codingexplainvo;
+//		return chvo;
 //	}
-//	
+	
 	
 
 	public int Update(String m_id, String m_pw, String m_email, String m_name, String m_nick, String m_gender,
@@ -1259,10 +1261,33 @@ public int Delete(String m_email) {
      }
 	   return lognum;
 	}
-	
-	
-
-
+////////////////////////////////개념 보기
+	public ArrayList<CodingExplainVO> codingexplain_view(int num) { 
+		ArrayList<CodingExplainVO> arr = new ArrayList<CodingExplainVO>(); 
+		connection();
+		 try{ 
+			 String sql = "select* from TBL_CODING_EXPLAIN where CODING_SEQ=? order by CODING_EX_SEQ";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setInt(1,num);
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int ex_seq = rs.getInt("CODING_EX_SEQ");
+			      String lang = rs.getString("CODING_LANG");
+			      String title = rs.getString("CODING_EXPLAIN1");
+			      String content = rs.getString("CODING_EXPLAIN2");
+			      String M_ID = rs.getString("M_ID");
+			      int q_seq = rs.getInt("CODING_SEQ");
+			      CodingExplainVO vo =new CodingExplainVO(ex_seq, lang, title,content,M_ID,q_seq);
+			      arr.add(vo);
+			      System.out.println(content);
+			 }
+			
+		 }catch(Exception e){
+			 e.printStackTrace(); 
+		 }finally{ 
+			 close(); 
+			 }
+		return arr;
+	 }	
 }
-
 

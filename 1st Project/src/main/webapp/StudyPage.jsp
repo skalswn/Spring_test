@@ -1,3 +1,4 @@
+<%@page import="Model.CheckVO"%>
 <%@page import="Model.DAO"%>
 <%@page import="Model.CodingVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -123,9 +124,11 @@ body {
 		<%for(int i=0; i<codingarray.size(); i++){%>
 			<%CodingVO codingvo=codingarray.get(i); %>
 			<br>
-			<%=i+1%>단계/시퀀스:<%=codingvo.getCoding_seq() %>
-		<%-- 	<%if() %> --%>
-			<p><a href="StudyExplainService?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a></p>
+			<%-- <%=i+1%>단계/시퀀스:<%=codingvo.getCoding_seq() %>
+			<p><a href="StudyExplainService?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a></p> --%>
+			<p><%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%></p>
+			<p><a href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a></p>
+			<%-- <button onclick="location.href='StudyExplainService?seq=<%= codingvo.getCoding_seq() %>';">학습하러가기</button> --%>
 			<%if(vo.getM_id().equals("admin")){ %>
 				<p><button onclick="location.href='DeleteCodingService?seq=<%= codingvo.getCoding_seq() %>';">문제삭제</button></p>
 			<%} %>

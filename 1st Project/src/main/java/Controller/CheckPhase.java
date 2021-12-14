@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import Model.CheckVO;
 import Model.CodingVO;
 import Model.DAO;
 import Model.MemberVO;
@@ -33,8 +34,6 @@ public class CheckPhase extends HttpServlet {
 		String lang = codingvo.getCoding_lang();
 		
 		int cnt = dao.CheckPhase(seq, m_id, lang);
-		
-		
 		
 		if(cnt>0) {
 			System.out.println("단계저장성공");
