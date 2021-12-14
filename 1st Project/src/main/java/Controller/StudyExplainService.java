@@ -25,8 +25,8 @@ public class StudyExplainService extends HttpServlet {
 		if(codingexplainvo != null) {
 			System.out.println("설명출력완료");
 			RequestDispatcher rd = request.getRequestDispatcher("StudyExplainPage.jsp");
-
-			request.setAttribute("codingexplainvo", codingexplainvo);
+			//request.setAttribute("codingexplainvo", codingexplainvo);
+			request.setAttribute("seq", seq);
 			rd.forward(request, response);
 		}
 		else {
