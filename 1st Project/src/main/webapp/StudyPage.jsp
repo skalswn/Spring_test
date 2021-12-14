@@ -80,7 +80,11 @@ body {
 				<%
 				if (vo != null) {
 				%>
-				<li><a href="P_Psit.jsp">직무탐색</a></li>
+				<li><a href="#">직무탐색</a>
+              		<ul class="sub-menu">
+               		<li><a href="P_Psit.jsp">PSIT 검사</a></li>
+               		<li><a href="P_Psit_Result.jsp">My PSIT</a></li>
+                </ul></li>
 				<!-- <li><a href="#section5">Video</a></li> -->
 				<li><a href="#section6">단계별학습</a></li>
 				<li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
@@ -113,18 +117,16 @@ body {
 		HTML/CSS/자바스크립트<input type="radio" name="lang" value="HTML"> 
 		<input type="submit">
 	</form>
-	<p>모든 문제 나오는 곳</p>
 	<!-- 언어 선택에 따라 모든 문제가 나오게 하기 -->
 	<div>
 	<%if(codingarray!=null){ %>
 		<%for(int i=0; i<codingarray.size(); i++){%>
 			<%CodingVO codingvo=codingarray.get(i); %>
-			<p><%=codingvo.getCoding_seq()%>단계</p>
-			<%System.out.println(codingvo.getCoding_seq()); %>
+			<br>
+			<%=i+1%>단계/시퀀스:<%=codingvo.getCoding_seq() %>
 			<p><a href="StudyExplainService?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a></p>
-			<%-- <button onclick="location.href='StudyExplainService?seq=<%= codingvo.getCoding_seq() %>';">학습하러가기</button> --%>
 			<%if(vo.getM_id().equals("admin")){ %>
-				<button onclick="location.href='DeleteCodingService?seq=<%= codingvo.getCoding_seq() %>';">문제삭제</button>
+				<p><button onclick="location.href='DeleteCodingService?seq=<%= codingvo.getCoding_seq() %>';">문제삭제</button></p>
 			<%} %>
 		<%} %>
 	<%}else{ %>
@@ -132,9 +134,6 @@ body {
 	<%} %>
 
 	</div>
-	<div id="a">풀이</div>
-
-	<div id="a"></div>
 
 	<footer>
 		<div class="container">

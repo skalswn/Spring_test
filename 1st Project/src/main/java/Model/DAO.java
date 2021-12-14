@@ -595,7 +595,6 @@ public int Delete(String m_email) {
 		try {
 			connection();
 		
-			
 			String sql = "select * from tbl_coding_explain where coding_ex_seq=?";
 			
 			psmt = conn.prepareStatement(sql);
@@ -626,10 +625,7 @@ public int Delete(String m_email) {
 		}
 		
 		return codingexplainvo;
-		
 	}
-	
-	
 // ===============================================
 	public int community_change(String title, String content, String filename1, String filename2,
 			String filename3, int num) {
@@ -654,8 +650,30 @@ public int Delete(String m_email) {
 			        close();
 	     }
 		   return lognum;
-	   
 	}
+//학습단계저장하기 update문써봄======================================================================================
+	public int CheckPhase1(int seq, String m_id, String lang) {
+		
+		try {
+			connection();
+			
+			String sql = "update tbl_coding_plan set plan_step=? where m_id=? and plan_lang=?";
+			
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+			psmt.setString(2, m_id);
+			psmt.setString(3, lang);
+			
+			cnt = psmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return cnt;
+	}
+	
 
 	public int Update(String m_id, String m_pw, String m_email, String m_name, String m_nick, String m_gender,
 		String m_memo) {
@@ -1071,6 +1089,7 @@ public int Delete(String m_email) {
      }
 	   return lognum;	   
 }
+
 
 
 }

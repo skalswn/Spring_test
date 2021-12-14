@@ -56,10 +56,8 @@ https://templatemo.com/tm-557-grad-school
 				%>
 				<li><a href="P_Psit.jsp">직무탐색</a></li>
 				<!-- <li><a href="#section5">Video</a></li> -->
-<<<<<<< HEAD
 				<li><a href="StudyPage.jsp">단계별학습</a></li>
 				<li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
-=======
 				<li><a href="#section6">단계별학습</a></li>
 				<li><a href="c_Community.jsp" class="external">커뮤니티</a>
          			<ul class="sub-menu">
@@ -67,7 +65,6 @@ https://templatemo.com/tm-557-grad-school
        				   <li><a href="c_Study_Community.jsp">스터디 게시판</a></li>
             	       <li><a href="c_Used_Community.jsp">중고거래 게시판</a></li>
          			</ul></li>
->>>>>>> refs/remotes/origin/master
 				<li><a href="My_page.jsp" class="external">마이페이지</a></li>
 				<li><a href="LogoutService">로그아웃</a></li>
 
@@ -87,11 +84,11 @@ https://templatemo.com/tm-557-grad-school
 	<h4 align = "center"><%=vo.getM_id()%>(<%=vo.getM_name() %>)님 안녕하세요</h4>
 
 		<!-- Wrapper -->
-<section class="section coming-soon" data-section="section3">
-		<div style="text-align : center;">
+		<section class="section coming-soon" data-section="section3">
+			<div style="text-align : center;">
 			<div style="display: inline-block;width: 30%;">
-				<div class="col-md-5" style="flex: 100%; max-width: 100%;">
-          <div class="right-content">
+			<div class="col-md-5" style="flex: 100%; max-width: 100%;">
+         	<div class="right-content">
 							<div>
 							<h5>회원정보수정</h5>
 							</div>
