@@ -102,15 +102,15 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 			
 		<article>
 			<div id="board" style="background-color: rgba(250, 250, 250, 0.2);">
-				<h2 align="center" style="padding: 1%">자유게시판 - <%=cvo.getTitle() %></h2>			
-				<div align="left" style = "margin-left: 550px">
+				<div align="left" style = "padding: 10px;">
 					<a href="c_Community.jsp"><button style="background-color:#f5a425; width : 100px; height : 30px; color :white;">뒤로가기</button></a>
 					</div>
+				<h2 align="center" style="padding: 1%">자유게시판 - <%=cvo.getTitle() %></h2>			
 			<div >
 				<table id="list" style="margin: 1%; display: inline-block; ">
 					<tr>
-						<td rows="30" cols="100" style="text-align: center"><br>작성자</td>
-						<td align= "left"><br><textarea name="title"  rows="1" cols="20" style="resize: none;"><%=cvo.getWriter()%></textarea></td>
+						<td style="text-align: center"><br>작성자</td>
+						<td><br><textarea name="title"  rows="1" cols="20" style="resize: none;"><%=cvo.getWriter()%></textarea></td>
 					</tr>
 					<tr>
 						<td rows="30" cols="100" style="text-align: center">제목</td>
