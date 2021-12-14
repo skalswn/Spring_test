@@ -36,6 +36,7 @@ public class CheckPhase extends HttpServlet {
 		CheckVO chvo = dao.getPhase(seq, m_id, lang);
 		
 		if(chvo!=null) {
+//			session.setAttribute("chvo", chvo);
 			System.out.println("chvo보내기성공!");
 			request.setAttribute("chvo", chvo);
 			RequestDispatcher rd = request.getRequestDispatcher("StudyPage.jsp");
@@ -55,7 +56,7 @@ public class CheckPhase extends HttpServlet {
 		else {
 			System.out.println("단계저장실패");
 		}
-//		System.out.println("CheckPhase"+chvo);
+		System.out.println("CheckPhase"+chvo);
 		
 	}
 }

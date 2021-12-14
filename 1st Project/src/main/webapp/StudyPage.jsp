@@ -58,18 +58,21 @@ body {
 <body>
 <% 
 	MemberVO vo = (MemberVO)session.getAttribute("vo");
+	/* CheckVO chvo = (CheckVO)session.getAttribute("chvo"); */
 	ArrayList<CodingVO> codingarray=(ArrayList<CodingVO>)request.getAttribute("codingarray");
 	DAO dao = new DAO();
-	CheckVO chvo = null;
+	/* CheckVO chvo = (CheckVO)request.getAttribute("chvo"); */
+ 	CheckVO chvo = null;
 	if(request.getAttribute("chvo") != null){
 		chvo=(CheckVO)request.getAttribute("chvo");
-		
-	}
-	System.out.println(chvo);
+	} 
+	System.out.println(chvo); 
+	/* System.out.println(chvo.getStep()); */
+	out.print(chvo);
 %>
-<%if(chvo!=null){ %>
+<%-- <%if(chvo!=null){ %>
 			 	<%System.out.println(chvo.getStep()); %>
-			<%} %>
+			<%} %> --%>
 	<!--header-->
 	<header class="main-header clearfix" role="header">
 		<div class="logo">
@@ -103,7 +106,6 @@ body {
 						<li><a href="My_page.jsp" class="external">마이페이지</a></li>
 					<%} %>
 				<li><a href="LogoutService">로그아웃</a></li>
-
 				<%
 				} else {
 				%>
@@ -126,34 +128,31 @@ body {
 		HTML/CSS/자바스크립트<input type="radio" name="lang" value="HTML"> 
 		<input type="submit" value="문제보기">
 	</form>
-	<!-- 언어 선택에 따라 모든 문제가 나오게 하기 -->
+	
+<!--문제나오는 부분  ---->
 	<div>
 	<%if(codingarray!=null){ %>
 		<%for(int i=0; i<codingarray.size(); i++){%>
 			<%CodingVO codingvo=codingarray.get(i); %>
 			<br>
-			<%-- <%=i+1%>단계/시퀀스:<%=codingvo.getCoding_seq() %>
-			<p><a href="StudyExplainService?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a></p> --%>
 			<p><%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%></p>
-			<p><%=i+1%>단계/<%=codingvo.getCoding_seq()%>번</p>
-			<%-- <%System.out.println(codingvo.getCoding_seq()); %> --%>
-			<p><a id="ch" href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>" onclick="check();">학습하러가기!
-				<img src="./images/nocheckbook.png" width=50px height=50px>
+			<p><a id="ch" href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!
+				<%if(chvo!=null){ %>
+					<%if(chvo.getStep()>=codingvo.getCoding_seq()){%>
+						<img src="./images/checkbook.png" width=50px height=50px>
+					<%}else{ %>
+						<img src="./images/nocheckbook.png" width=50px height=50px>
+					<%} %>
+				<%} %>
 			</a></p>
-
-<!--진행 이미지 넣을 공간 
--> 다른문제 학습하러 가기 단추 누르면 이용자 단계 업데이트 ㅇ //
-   그 단계 업데이트를 VO에 저장 -> VO를 가져와서 비교 -> 뭐랑? -> vo의step이랑 문제 시퀀스 -->			
-
-			<%-- <button onclick="location.href='StudyExplainService?seq=<%= codingvo.getCoding_seq() %>';">학습하러가기</button> --%>
 			<%if(vo.getM_id().equals("admin")){ %>
 				<p><button onclick="location.href='DeleteCodingService?seq=<%= codingvo.getCoding_seq() %>';">문제삭제</button></p>
 			<%} %>
 		<%} %>
+<!--for문 끝  ----->
 	<%}else{ %>
 		언어를 선택해라 요놈아
 	<%} %>
-
 	</div>
 
 	<footer>
@@ -187,15 +186,6 @@ body {
 	<script>
         //according to loftblog tut
        
-    </script>
-    
-    <script>
-    function check(){
-    	if(document.getElementByid.equals("ch")){
-    		document.getElementByid("ch").src="./images/checkboook.png";
-    	}
-    }
-    
     </script>
     
 </body>
