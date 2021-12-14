@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <style>
 	table{
-		width: 50%;
+		width: 80%;
 		height : 50%;
 	
 	}
@@ -98,68 +98,69 @@ if(session.getAttribute("vo") != null){
 				</ul>
 			</nav>
 		</header>
-		
-	<section style="color: white; text-align: center;"
-		class="section coming-soon" data-section="section3">
-		<div class="col-8  col-12-narrower imp-narrower"
-			style="max-width: 90% !important; display: inline-block;">
-			<div id="content">
-			
-		<article>
-			<div id="board"
-				style="background-color: rgba(250, 250, 250, 0.2);">
-				<h2 align="center" style="padding: 1%">자유게시판 - 내가 쓴 글 수정</h2>
-				
-				<form action="c_Communitychange" method="post"
-					enctype="multipart/form-data">
-					<div align="center">
-						<table id="list" style="margin: 1%;" >
-							<tr class="a">
-								<td rows="30" cols="100" style="text-align: center"><br>제목</td>
-								<td><br><textarea name="title" rows="1" cols="90" style="resize: none;"><%=cvo.getTitle()%></textarea></td>
-							</tr>
-							<tr class="a" class="cm_tr" style="height: 10px">
-								<td style="width: 80px; text-align: center">내용</td>
-								<td><textarea name="content" rows="20" cols="90"
-										style="resize: none;"><%=cvo.getContent()%></textarea></td>
-							</tr>
-							<div style="text-align: center">
-								<tr class="a">
-									<td colspan="2" align="right">
-									<br>
-										<input name="file1" type="file" style="width : 300px; height : 30px"> 
-										<input name="file2" type="file" style="width : 300px; height : 30px"> 
-										<input name="file3"	type="file" style="width : 300px; height : 30px">
-									</td>
-								</tr>
-							</div>
-							<td colspan="2" align="right">
-							<br>
-							 <input type="reset" value="초기화" style="background-color:#f5a425; margin-right: 2%; width : 70px; height : 30px;" > 
-							 <input value="<%=cvo.getC_seq()%>" name="num" style="display: none"> 
-							 <input type="submit" value="수정하기" style="background-color:#f5a425; margin-right: 2%; width : 70px; height : 30px;">
-							 
-								</td>
-								
-						</table>
-					</div>
-					<br>
-				</form>
+
+		<section style="color: white; text-align: center;"
+			class="section coming-soon" data-section="section3">
+			<div class="col-8  col-12-narrower imp-narrower"
+				style="max-width: 90% !important; display: inline-block;">
+				<div id="content">
+
+					<article>
+						<div id="board"
+							style="background-color: rgba(250, 250, 250, 0.2);">
+							<h2 align="center" style="padding: 1%">자유게시판 - 내가 쓴 글 수정</h2>
+
+							<form action="c_Communitychange" method="post"
+								enctype="multipart/form-data">
+								<div align="center">
+									<table id="list" style="margin: 1%;">
+										<tr class="a">
+											<td style="text-align: center;"><br>제목</td>
+											<td><br>
+											<textarea class="textarea" name="title"
+													style="resize: none; height: 40px"><%=cvo.getTitle()%></textarea></td>
+										</tr>
+										<tr class="a" class="cm_tr" style="height: 10px">
+											<td style="text-align: center">내용</td>
+											<td><textarea class="textarea" name="content"
+													style="resize: none; height: 500px"><%=cvo.getContent()%></textarea></td>
+										</tr>
+											<tr class="a">
+												<td colspan="2" style="text-align: right;"><br> 
+												<input name="file1" type="file" style="width: 30%; height: 30px;">
+												<input name="file2" type="file"	style="width: 30%; height: 30px"> 
+												<input name="file3" type="file" style="width: 30%; height: 30px">
+												</td>
+											</tr>
+										<tr>
+										<td colspan="2" align="right"><br> <input
+											type="reset" value="초기화"
+											style="background-color: #f5a425; margin-right: 2%; width: 70px; height: 30px;">
+											<input value="<%=cvo.getC_seq()%>" name="num"
+											style="display: none"> <input type="submit"
+											value="수정하기"
+											style="background-color: #f5a425; margin-right: 2%; width: 70px; height: 30px;">
+										</td></tr>
+
+									</table>
+								</div>
+								<br>
+							</form>
+						</div>
+						<!-- Scripts -->
+						<script src="assets/js/jquery.min.js"></script>
+						<script src="assets/js/jquery.scrolly.min.js"></script>
+						<script src="assets/js/jquery.scrollex.min.js"></script>
+						<script src="assets/js/skel.min.js"></script>
+						<script src="assets/js/util.js"></script>
+						<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+						<script src="assets/js/main.js"></script>
+					</article>
+				</div>
+
 			</div>
-			<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-		</article>
-	</div>
-	
-</div>
-	</section>
-	<footer>
+		</section>
+		<footer>
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
@@ -173,5 +174,6 @@ if(session.getAttribute("vo") != null){
 						</div>
 					</div>
 				</div>
-			</footer></body>
+			</footer>
+</body>
 </html>
