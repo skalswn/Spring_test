@@ -609,8 +609,8 @@ public int Delete(String m_email) {
 				String coding_explain1 = rs.getString(3);
 				String coding_explain2 = rs.getString(4);
 				String m_id = rs.getString(5);
-
-				codingexplainvo = new CodingExplainVO( coding_ex_seq, coding_lang, coding_explain1, coding_explain2, m_id); 
+				int coding_q_seq = rs.getInt(6);
+				codingexplainvo = new CodingExplainVO(coding_ex_seq, coding_lang, coding_explain1, coding_explain2, m_id,coding_q_seq); 
 				System.out.println("°³³ä»Ì±â¼º°ø!");
 			} else {
 				System.out.println("½ÇÆÐ!");
@@ -1202,9 +1202,33 @@ public int Delete(String m_email) {
      }
 	   return lognum;
 	}
-	
-	
-
+////////////////////////////////°³³ä º¸±â
+	public ArrayList<CodingExplainVO> codingexplain_view(int num) { 
+		ArrayList<CodingExplainVO> arr = new ArrayList<CodingExplainVO>(); 
+		connection();
+		 try{ 
+			 String sql = "select* from TBL_CODING_EXPLAIN where CODING_SEQ=? order by CODING_EX_SEQ";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setInt(1,num);
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int ex_seq = rs.getInt("CODING_EX_SEQ");
+			      String lang = rs.getString("CODING_LANG");
+			      String title = rs.getString("CODING_EXPLAIN1");
+			      String content = rs.getString("CODING_EXPLAIN2");
+			      String M_ID = rs.getString("M_ID");
+			      int q_seq = rs.getInt("CODING_SEQ");
+			      CodingExplainVO vo =new CodingExplainVO(ex_seq, lang, title,content,M_ID,q_seq);
+			      arr.add(vo);
+			 }
+			
+		 }catch(Exception e){
+			 e.printStackTrace(); 
+		 }finally{ 
+			 close(); 
+			 }
+		return arr;
+	 }	
 }
 
 
