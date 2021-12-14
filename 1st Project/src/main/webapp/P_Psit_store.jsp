@@ -1,6 +1,8 @@
-<%@page import="Model.MemberVO"%>
+<%@page import="Model.PsitVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@page import="Model.DAO"%>
+<%@page import="Model.MemberVO"%>     
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,16 +10,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% String sample = request.getParameter("sample");
-%>
 <%
-MemberVO vo =null;
-if (session.getAttribute("vo") != null){
+MemberVO vo = null;
+if(session.getAttribute("vo") != null){
 	vo=(MemberVO)session.getAttribute("vo");
 }
-String job_no ="";
+DAO dao = new DAO();
+PsitVO pstore=dao.PSTORE(vo.getM_id());
+String sample = pstore.getPSIT_TYPE();
+out.print(sample); 
+String job_no = pstore.getPSIT_JOB();
+out.print(job_no);
 %>
-<!-- 파라미터?? -->
+<!--  직무 MBTI 보여주기  -->
 <%if(sample.contains("ENFJ")){%>
 	 <P><img src="images/DATAENGGINER.png" alt=""/></P>
 	 <p>ENFJ</p>
@@ -83,10 +88,23 @@ String job_no ="";
 	<p>ISTP</p>
 	<%job_no=job_no+"1"; %>
 <% }%>
+<!-- 직무 추천   -->
+
+
+
+
+
+
+
+
+
 <%if (vo != null){%>
-	<a href="c_Psit?sample=<%=sample%>">저장하기</a>
-<% }else{%>
 	<a href="http://localhost:8081/1st_Project/Road_map.jsp?num=1">해당 직무 설명보러가기</a>
-<%} %>
+	<!-- job_no 이용하여 해당  직무 보기 -->
+	
+<% }else{%>
+	<a href="">실패!! 다시시도~!!! </a>
+	
+<%} //job_no 이용하여 해당  직무 보기 %>
 </body>
 </html>

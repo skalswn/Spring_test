@@ -1,3 +1,4 @@
+<%@page import="Model.s_Community_commentVO"%>
 <%@page import="Model.s_CommunityVO"%>
 <%@page import="Model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -188,5 +189,23 @@ s_Community_commentVO cmvo = (s_Community_commentVO)session.getAttribute("cmvo")
 					</div>
 				</div>
 			</footer>
+					<%if (vo != null){%>	
+						<%if (userID.equals(scvo.getM_ID())||userID.equals("admin")||userID.equals("skalswn")) {%>
+						<a href="c_Study_Communitychange.jsp?num=<%=scvo.getSTUDY_SEQ()%>"><button>수정하기</button></a></td>
+						<a href="s_c_Communitydelete?num=<%=scvo.getSTUDY_SEQ()%>"><button>삭제하기</button></a></td>
+						<%}%>
+					<% }%>
+					<a href="c_Study_Community.jsp"><button>뒤로가기</button></a></td>
+					<br>	
+					<a href="past_s?num=<%=scvo.getSTUDY_SEQ()%>"><button>이전 글</button></a><a href="next_s?num=<%=scvo.getSTUDY_SEQ()%>"><button>다음 글</button></a>			
+			</div>
+			<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
 </body>
 </html>

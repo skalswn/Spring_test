@@ -34,8 +34,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 int seq = Integer.parseInt(request.getParameter("seq"));
 DAO dao = new DAO();
 CodingVO codingvo = dao.ShowStudyCoding(seq);
-CodingExplainVO codingexplainvo = dao.CodingExplain(seq);
-
+//CodingExplainVO codingexplainvo = dao.CodingExplain(seq);
 %>
 <!--header-->
   <header class="main-header clearfix" role="header">
@@ -86,16 +85,23 @@ CodingExplainVO codingexplainvo = dao.CodingExplain(seq);
 	</div>
 	
 	<div>
-		<p>선택한 문제 해설(클릭 시)나올 곳</p>
+	<form action="check_answer">
+		<p>선택한 문제 정답 입력할 곳</p>
 		<%if(seq==codingvo.getCoding_seq()) {%>
-			<% System.out.println("해설보기 성공..");%>
-			<p><%=codingvo.getCoding_a() %></p>
-		<%} %>
+			<input type="text" name= "answer">
+			<%-- <% System.out.println("해설보기 성공..");%>
+			<p><%=codingvo.getCoding_a() %></p>--%>
+		<%} %> 
+		<input value="<%=codingvo.getCoding_lang()%>" name="lang" style="display:none">
+		<input value="<%=codingvo.getCoding_seq()%>" name="num"  style="display:none">
+		<input type="submit" value="제출하기">
+	</form>
 	</div>
 	
 	<div>
-		<button onclick="location.href='CheckPhase?seq=<%= codingvo.getCoding_seq() %>';">다른문제 풀기</ button>
+		<a href="StudyPage.jsp"><button onclick="location.href='CheckPhase?seq=<%= codingvo.getCoding_seq() %>';">다른문제 풀기</button></a>
 	</div>
+	<%-- <button onclick="location.href='CheckPhase?seq=<%= codingvo.getCoding_seq() %>';">다른문제 풀기</button> --%>
 
 <footer>
 		<div class="container">

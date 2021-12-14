@@ -21,6 +21,8 @@
 			<div><textarea rows="2" cols="100" name="coding_explain_subject" placeholder="개념 제목 넣기"></textarea></div>
 			<div><textarea rows="20" cols="100" name="coding_explain_content" placeholder="개념 내용 넣기"></textarea></div>
 			<div><input type="submit" value="넣기">
+			<a href="InsertCoding.jsp">문제 넣으러 가기</a>
+			<a href="StudyPage.jsp">문제 확인하러 가기</a>
 		</div>
 	</form>
 </body>
