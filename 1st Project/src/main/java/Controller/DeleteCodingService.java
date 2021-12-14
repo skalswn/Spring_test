@@ -22,6 +22,7 @@ public class DeleteCodingService extends HttpServlet {
 		
 		if(cnt>0) {
 			System.out.println("문제삭제성공");
+			response.sendRedirect("StudyPage.jsp");
 		}
 		else {
 			System.out.println("문제삭제실패");

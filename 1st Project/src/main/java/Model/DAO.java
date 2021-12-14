@@ -20,6 +20,11 @@ public class DAO {
 	   int cnt = 0;
 	   CodingVO codingvo = null;
 	   CodingExplainVO codingexplainvo = null;
+	 
+	   PsitVO PS =null;
+	   
+	   CheckVO chvo = null;
+	  
 	   
 // DB연결========================================================================================
 	 public void connection() {
@@ -546,13 +551,11 @@ public int Delete(String m_email) {
 			rs = psmt.executeQuery();
 
 			if (rs.next() == true) {
-				
 				int coding_seq = rs.getInt(1);
 				String coding_lang = rs.getString(2);
 				String coding_q = rs.getString(3);
 				String coding_a = rs.getString(4);
 				String m_id = rs.getString(5);
-
 				codingvo = new CodingVO(coding_seq, coding_lang, coding_q, coding_a, m_id); 
 				System.out.println("문제뽑기성공!");
 			} else {
@@ -567,6 +570,38 @@ public int Delete(String m_email) {
 		}
 		return codingvo;
 	}
+	
+// 문제 풀면 checkvo에 저장시키기
+	public CheckVO getPhase(int seq, String m_id, String lang ) {
+		
+		try {
+			connection();
+
+			String sql = "select * from tbl_coding_plan where plan_step=? and plan_lang=? and m_id=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+			psmt.setString(2, lang);
+			psmt.setString(3, m_id);
+			rs = psmt.executeQuery();
+			if (rs.next() == true) {
+//				int PLAN_SEQ = rs.getInt("PLAN_SEQ");
+				String coding_lang = rs.getString("PLAN_LANG");
+				int plan_step = rs.getInt("PLAN_STEP");
+				String id = rs.getString("M_ID");
+				chvo = new CheckVO(plan_step, coding_lang, id); 
+				System.out.println("checkvo저장성공!");
+			} else {
+				System.out.println("checkvo저장실패!");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return chvo;
+	}
+	
 // 문제 삭제하기====================================================================================
 	
 	public int deleteCoding(int seq) {
@@ -594,7 +629,6 @@ public int Delete(String m_email) {
 		try {
 			connection();
 		
-			
 			String sql = "select * from tbl_coding_explain where coding_ex_seq=?";
 			
 			psmt = conn.prepareStatement(sql);
@@ -625,10 +659,7 @@ public int Delete(String m_email) {
 		}
 		
 		return codingexplainvo;
-		
 	}
-	
-	
 // ===============================================
 	public int community_change(String title, String content, String filename1, String filename2,
 			String filename3, int num) {
@@ -653,8 +684,71 @@ public int Delete(String m_email) {
 			        close();
 	     }
 		   return lognum;
-	   
 	}
+//학습단계저장하기 update문써봄======================================================================================
+	public int CheckPhase(int seq, String m_id, String lang) {
+		
+		try {
+			connection();
+			
+			String sql = "update tbl_coding_plan set plan_step=? where m_id=? and plan_lang=?";
+			
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+			psmt.setString(2, m_id);
+			psmt.setString(3, lang);
+			
+			cnt = psmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return cnt;
+	}
+	
+//	학습단계 불러오기===========================================
+//public CheckVO SelectPhase(int seq, String m_id, String lang) {
+//		CheckVO chvo= null;
+//		
+//		try {
+//			connection();
+//		
+//			String sql = "select * from tbl_coding_plan where tbl_coding_plan_seq=? and plan_lang=? and m_id=?";
+//			
+//			psmt = conn.prepareStatement(sql);
+//			
+//			psmt.setInt(1, seq);
+//			psmt.setString(2, lang);
+//			psmt.setString(3, m_id);
+//			
+//			rs = psmt.executeQuery();
+//
+//			if (rs.next() == true) {
+//				int tbl_coding_plan_seq = rs.getInt(1);
+//				String plan_lang = rs.getString(2);
+//				int plan_step = rs.getInt(3);
+//				String id = rs.getString(4);
+//
+//				chvo = new CheckVO(tbl_coding_plan_seq, plan_lang, plan_step, id); 
+//				System.out.println("단계뽑기성공!");
+//			} else {
+//				System.out.println("단계뽑기실패!");
+//			}
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			
+//		}finally {
+//			
+//			close();
+//		}
+//		
+//		return chvo;
+//	}
+	
+	
 
 	public int Update(String m_id, String m_pw, String m_email, String m_name, String m_nick, String m_gender,
 		String m_memo) {
@@ -1220,6 +1314,7 @@ public int Delete(String m_email) {
 			      int q_seq = rs.getInt("CODING_SEQ");
 			      CodingExplainVO vo =new CodingExplainVO(ex_seq, lang, title,content,M_ID,q_seq);
 			      arr.add(vo);
+			      System.out.println(content);
 			 }
 			
 		 }catch(Exception e){
@@ -1228,7 +1323,7 @@ public int Delete(String m_email) {
 			 close(); 
 			 }
 		return arr;
-	 }
+}
 
 	public String check_answer(String answer, int seq) {
 		String ans=null;
@@ -1256,6 +1351,37 @@ public int Delete(String m_email) {
 		return ans;
 	}	
 	
-}
+
+
+	 
+
+	public PsitVO PSTORE(String m_ID) {
+		connection();  
+	 	try{
+		   String sql = "select * from TBL_PSIT where M_ID=? order by PSIT_SEQ DESC";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setString(1,m_ID);
+		   rs = psmt.executeQuery();
+		   if(rs.next() == true) {
+			   int c_seq = rs.getInt("PSIT_SEQ");
+			   String PSIT_TYPE = rs.getString("PSIT_TYPE");
+			   String PSIT_JOB = rs.getString("PSIT_JOB");
+			   String REG_DATE = rs.getString("REG_DATE");
+			   String M_ID = rs.getString("M_ID");
+		       PS = new PsitVO(c_seq,PSIT_TYPE,PSIT_JOB,REG_DATE,M_ID);
+		      }
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return PS;
+	}
+}	
+
+
+
+
 
 

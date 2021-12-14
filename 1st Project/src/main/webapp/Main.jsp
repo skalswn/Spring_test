@@ -1,3 +1,4 @@
+<%@page import="Model.CheckVO"%>
 <%@page import="Model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
@@ -10,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?fa\mily=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
     <title>PSIT.com</title>
     
@@ -35,7 +36,7 @@ https://templatemo.com/tm-557-grad-school
 <%
 // 로그인 안되어있을 때 메뉴바 다르게 하기 위해 vo가져오기
 MemberVO vo = (MemberVO)session.getAttribute("vo");
-
+CheckVO chvo = (CheckVO)request.getAttribute("chvo");
 %>
    
   <!--header-->
@@ -54,12 +55,11 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
             <li><a href="#section3">IT전망</a></li>
             <li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li>
           </ul> -->
-        </li>
      <% if(vo!=null){%>
         <li><a href="#">직무탐색</a>
         	<ul class="sub-menu">
             <li><a href="P_Psit.jsp">PSIT 검사</a></li>
-            <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
+            <li><a href="P_Psit_store.jsp">My PSIT</a></li>
           	</ul></li>
         <!-- <li><a h\ref="#section5">Video</a></li> -->
         <li><a href="StudyPage.jsp">단계별학습</a></li>
@@ -80,7 +80,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
         <li><a href="Join.jsp">Join</a></li>        
      <%} %>
         </ul>
-    
+    </nav>
   </header>
 
   <!-- ***** Main Banner Area Start ***** -->
@@ -181,60 +181,30 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
     </div>
   </section>
 
-  <section class="section why-us" data-section="section2">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12" style="text-align : center;">
-          <div class="section-heading">
-            <h2>What is IT?</h2>
-          </div>
-        </div>
-        <div class="col-md-12">
-        <img src="assets/images/001.png" style = "width : 100% ">
-          <div id='tabs'>
-           <!--  <ul>
-              <li><a href='#tabs-1'>내용(필요없으면 지우기)</a></li>
-              <li><a href='#tabs-2'>내용(필요없으면 지우기)</a></li>
-              <li><a href='#tabs-3'>내용(필요없으면 지우기)</a></li>
-            </ul> -->
-            <section class='tabs-content'>
-              <article id='tabs-1'>
-                <div class="row">
-                  <div class="col-md-6" >
-                   <!--  <img src="assets/images/001.png" alt=""> -->
-                  </div>
-                </div>
-              </article>
-              <!-- <article id='tabs-2'>
-                <div class="row">
-                  <div class="col-md-6">
-                    <img src="assets/images/choose-us-image-02.png" alt="">
-                  </div>
-                  <div class="col-md-6">
-                    <h4>Top Level</h4>
-                    <p>You can modify this HTML layout by editing contents and adding more pages as you needed. Since this template has options to add dropdown menus, you can put many HTML pages.</p> 
-                    <p>Suspendisse tincidunt, magna ut finibus rutrum, libero dolor euismod odio, nec interdum quam felis non ante.</p>
-                  </div>
-                </div>
-              </article>
-              <article id='tabs-3'>
-                <div class="row">
-                  <div class="col-md-6">/choose-us-image-03.png" alt="">
-                  </div>
-                    <img src="assets/images
-                  <div class="col-md-6">
-                    <h4>Quality Meeting</h4>
-                    <p>You are NOT allowed to redistribute this template ZIP file on any template collection website. However, you can use this template to convert into a specific theme for any kind of CMS platform such as WordPress. For more information, you shall <a rel="nofollow" href="https://templatemo.com/contact" target="_parent">contact TemplateMo</a> now.</p>
-                  </div> -->
-                </div>
-              </article>
-            </section>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-<!--IT직무내용부분---------------------------------------------------------------------------------------------------------------------------------------->
+	<section class="section why-us" data-section="section2">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12" style="text-align: center;">
+					<div class="section-heading">
+						<h2>What is IT?</h2>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<img src="assets/images/001.png" style="width: 100%">
+				</div>
+				<div id='tabs'>
+					<section class='tabs-content'>
+						<article id='tabs-1'>
+							<div class="row">
+								<div class="col-md-6"></div>
+							</div>
+						</article>
+					</section>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--IT직무내용부분---------------------------------------------------------------------------------------------------------------------------------------->
 <section class="section courses" data-section="section4">
     <div class="container-fluid">
       <div class="row">

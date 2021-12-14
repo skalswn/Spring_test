@@ -45,6 +45,7 @@ if(request.getParameter("seq") != null){
 	seq=Integer.parseInt(request.getParameter("seq"));
 }
 ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
+
 %>
 
 <!--header-->
@@ -65,7 +66,11 @@ ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
           </ul> -->
         </li>
      <% if(vo!=null){%>
-        <li><a href="P_Psit.jsp">직무탐색</a></li>
+        <li><a href="#">직무탐색</a>
+              <ul class="sub-menu">
+               <li><a href="P_Psit.jsp">PSIT 검사</a></li>
+               <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
+        </ul></li>
         <!-- <li><a href="#section5">Video</a></li> -->
         <li><a href="StudyPage.jsp">단계별학습</a></li>
         <li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
@@ -83,6 +88,25 @@ ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
     
   </header>
   <br><br><br><br><br><br>
+	<div>
+		<p>선택한 문제의 기초개념 나올 곳</p> 
+	</div>
+<%-- 
+	<table>
+		<tr>
+		<%if(arr.getCoding_explain2()!=null){ %>
+			<td style="white-space: pre-line;"><%=codingexplainvo.getCoding_explain1() %></td>
+			<td style="white-space: pre-line;"><%=codingexplainvo.getCoding_explain2() %></td>
+		</tr>
+		<%}else{ %>
+		<td style="white-space: pre-line;">
+			<%=codingexplainvo.getCoding_explain1() %>
+		<%} %>
+		</td>
+	</table>
+	
+		<a href="StudyCoding.jsp?seq=<%=codingexplainvo.getCoding_ex_seq()%>">문제풀어보기</a>
+ --%>	
 	<%for(int i=0;i<arr.size();i++){ %>
 	<div style="white-space:pre;">
 			<h2>주제: <%=arr.get(i).getCoding_explain1() %></h2>

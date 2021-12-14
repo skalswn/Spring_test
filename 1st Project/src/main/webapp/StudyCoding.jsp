@@ -54,7 +54,11 @@ CodingVO codingvo = dao.ShowStudyCoding(seq);
           </ul> -->
         </li>
      <% if(vo!=null){%>
-        <li><a href="P_Psit.jsp">직무탐색</a></li>
+        <li><a href="#">직무탐색</a>
+              <ul class="sub-menu">
+               <li><a href="P_Psit.jsp">PSIT 검사</a></li>
+               <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
+        </ul></li>
         <!-- <li><a href="#section5">Video</a></li> -->
         <li><a href="StudyPage.jsp">단계별학습</a></li>
         <li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
@@ -92,6 +96,10 @@ CodingVO codingvo = dao.ShowStudyCoding(seq);
 		<input value="<%=codingvo.getCoding_seq()%>" name="num" style="display:none">
 		<input type="submit" value="제출하기">
 	</form>
+	</div>
+	
+	<div>
+		<button onclick="location.href='CheckPhase?seq=<%= codingvo.getCoding_seq() %>';">다른문제 풀기</ button>
 	</div>
 
 <footer>
