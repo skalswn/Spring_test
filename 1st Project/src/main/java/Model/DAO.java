@@ -1228,7 +1228,33 @@ public int Delete(String m_email) {
 			 close(); 
 			 }
 		return arr;
-	 }	
+	 }
+
+	public String check_answer(String answer, int seq) {
+		String ans=null;
+		connection();
+		 try{ 
+			 /////아직 아무것도 안했음 여기서부터
+			 String sql = "select CODING_A from TBL_CODING where CODING_SEQ=?";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setInt(1,seq);
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+			      String r_answer = rs.getString("CODING_A");
+			      if(answer.equals(r_answer)) {
+			    	  ans="wright";
+			      }else {
+			    	  ans="wrong";
+			      }
+			 }
+			
+		 }catch(Exception e){
+			 e.printStackTrace(); 
+		 }finally{ 
+			 close(); 
+			 }
+		return ans;
+	}	
 	
 }
 
