@@ -88,9 +88,6 @@ ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
     
   </header>
   <br><br><br><br><br><br>
-	<div>
-		<p>선택한 문제의 기초개념 나올 곳</p> 
-	</div>
 <%-- 
 	<table>
 		<tr>
@@ -109,7 +106,7 @@ ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
  --%>	
 	<%for(int i=0;i<arr.size();i++){ %>
 	<div style="white-space:pre;">
-			<h2>주제: <%=arr.get(i).getCoding_explain1() %></h2>
+			<h2><%=arr.get(i).getCoding_explain1() %></h2>
 			<p><%=arr.get(i).getCoding_explain2() %></p>
 	<%}%>
 	<a href="StudyCoding.jsp?seq=<%=seq%>">문제풀어보기</a>
