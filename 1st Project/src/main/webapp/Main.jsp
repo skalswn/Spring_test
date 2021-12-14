@@ -100,6 +100,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 					<h4 style="font-size: 20px; color:white;"> PSIT란 자신의 성향 분석을 통해 IT직무를 추천받는 서비스 입니다.</h4>
 					<div class="main-button">
 						<div class="scroll-to-section"></div>
+						<br><br>
 						<a href="P_Psit.jsp">검사하러가기</a>
 					</div>
 				</div>
@@ -115,11 +116,14 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 			<div class="caption">
 				<div>
 					<h2>
-						<em>PSIT</em> PSIT
+						<em>PSIT</em> : Personal IT
 					</h2>
+					<h4 style="font-size: 30px; color:white; font-weight: 700"> PSIT : Personal IT</h4>
+					<h4 style="font-size: 20px; color:white;"> PSIT란 자신의 성향 분석을 통해 IT직무를 추천받는 서비스 입니다.</h4>
 					<div class="main-button">
 						<div class="scroll-to-section"></div>
-						<a href="P_Psit.jsp">검사하러가기</a>
+						<br><br>
+						<a href="Login.jsp"><span style = "font-size : 25px">로그인하고</span><br>검사하러가기</a>
 					</div>
 				</div>
 			</div>
