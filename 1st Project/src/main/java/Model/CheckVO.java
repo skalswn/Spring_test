@@ -2,28 +2,20 @@ package Model;
 
 public class CheckVO {
 	
-	private int seq;
-	private String lang;
 	private int step;
+	private String lang;
 	private String id;
 	
-	public CheckVO(int seq, String lang, int step, String id) {
-		this.seq = seq;
-		this.lang = lang;
+	public CheckVO(int step, String lang, String id) {
 		this.step = step;
+		this.lang = lang;
 		this.id = id;
-	}
-	public int getSeq() {
-		return seq;
 	}
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
-	}
-	public void setSeq(int seq) {
-		this.seq = seq;
 	}
 	public String getLang() {
 		return lang;

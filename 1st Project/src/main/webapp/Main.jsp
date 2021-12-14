@@ -1,3 +1,4 @@
+<%@page import="Model.CheckVO"%>
 <%@page import="Model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
@@ -10,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?fa\mily=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
     <title>PSIT.com</title>
     
@@ -35,7 +36,7 @@ https://templatemo.com/tm-557-grad-school
 <%
 // 로그인 안되어있을 때 메뉴바 다르게 하기 위해 vo가져오기
 MemberVO vo = (MemberVO)session.getAttribute("vo");
-
+CheckVO chvo = (CheckVO)request.getAttribute("chvo");
 %>
    
   <!--header-->

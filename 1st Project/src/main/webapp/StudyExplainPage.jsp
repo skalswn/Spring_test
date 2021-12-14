@@ -36,6 +36,7 @@ https://templatemo.com/tm-557-grad-school
 <body>
 <%
 int seq=1;
+String lang=null;
 MemberVO vo = (MemberVO)session.getAttribute("vo");
 out.print(vo);
 //CodingExplainVO codingexplainvo = (CodingExplainVO)request.getAttribute("codingexplainvo");
@@ -43,8 +44,8 @@ DAO dao = new DAO();
 if(request.getParameter("seq") != null){
 	seq=Integer.parseInt(request.getParameter("seq"));
 }
-System.out.print(seq);
 ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
+
 %>
 
 <!--header-->

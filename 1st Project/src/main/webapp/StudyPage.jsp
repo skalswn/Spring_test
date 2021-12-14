@@ -60,8 +60,16 @@ body {
 	MemberVO vo = (MemberVO)session.getAttribute("vo");
 	ArrayList<CodingVO> codingarray=(ArrayList<CodingVO>)request.getAttribute("codingarray");
 	DAO dao = new DAO();
+	CheckVO chvo = null;
+	if(request.getAttribute("chvo") != null){
+		chvo=(CheckVO)request.getAttribute("chvo");
+		
+	}
+	System.out.println(chvo);
 %>
-
+<%if(chvo!=null){ %>
+			 	<%System.out.println(chvo.getStep()); %>
+			<%} %>
 	<!--header-->
 	<header class="main-header clearfix" role="header">
 		<div class="logo">
@@ -127,14 +135,23 @@ body {
 			<%-- <%=i+1%>단계/시퀀스:<%=codingvo.getCoding_seq() %>
 			<p><a href="StudyExplainService?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a></p> --%>
 			<p><%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%></p>
-			<p><a href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a></p>
+			<p><%=i+1%>단계/<%=codingvo.getCoding_seq()%>번</p>
+			<%-- <%System.out.println(codingvo.getCoding_seq()); %> --%>
+			<p><a id="ch" href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>" onclick="check();">학습하러가기!
+				<img src="./images/nocheckbook.png" width=50px height=50px>
+			</a></p>
+
+<!--진행 이미지 넣을 공간 
+-> 다른문제 학습하러 가기 단추 누르면 이용자 단계 업데이트 ㅇ //
+   그 단계 업데이트를 VO에 저장 -> VO를 가져와서 비교 -> 뭐랑? -> vo의step이랑 문제 시퀀스 -->			
+
 			<%-- <button onclick="location.href='StudyExplainService?seq=<%= codingvo.getCoding_seq() %>';">학습하러가기</button> --%>
 			<%if(vo.getM_id().equals("admin")){ %>
 				<p><button onclick="location.href='DeleteCodingService?seq=<%= codingvo.getCoding_seq() %>';">문제삭제</button></p>
 			<%} %>
 		<%} %>
 	<%}else{ %>
-		언어를 선택해주세요.
+		언어를 선택해라 요놈아
 	<%} %>
 
 	</div>
@@ -171,5 +188,15 @@ body {
         //according to loftblog tut
        
     </script>
+    
+    <script>
+    function check(){
+    	if(document.getElementByid.equals("ch")){
+    		document.getElementByid("ch").src="./images/checkboook.png";
+    	}
+    }
+    
+    </script>
+    
 </body>
 </html>

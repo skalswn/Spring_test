@@ -33,16 +33,29 @@ public class CheckPhase extends HttpServlet {
 		CodingVO codingvo = dao.ShowStudyCoding(seq);
 		String lang = codingvo.getCoding_lang();
 		
+		CheckVO chvo = dao.getPhase(seq, m_id, lang);
+		
+		if(chvo!=null) {
+			System.out.println("chvo보내기성공!");
+			request.setAttribute("chvo", chvo);
+			RequestDispatcher rd = request.getRequestDispatcher("StudyPage.jsp");
+			rd.forward(request, response);
+		}
+		else {
+			System.out.println("chvo보내기실패");
+		}
+//		===================================================
 		int cnt = dao.CheckPhase(seq, m_id, lang);
 		
 		if(cnt>0) {
 			System.out.println("단계저장성공");
-			response.sendRedirect("StudyPage.jsp");
+//			response.sendRedirect("StudyPage.jsp");
 			System.out.println("학습페이지로이동성공");
 		}
 		else {
 			System.out.println("단계저장실패");
 		}
+//		System.out.println("CheckPhase"+chvo);
 		
 	}
 }

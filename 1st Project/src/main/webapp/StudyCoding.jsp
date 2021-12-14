@@ -94,7 +94,7 @@ CodingExplainVO codingexplainvo = dao.CodingExplain(seq);
 	</div>
 	
 	<div>
-		<button onclick="location.href='CheckPhase?seq=<%= codingvo.getCoding_seq() %>';">다른문제 풀기</button>
+		<button onclick="location.href='CheckPhase?seq=<%= codingvo.getCoding_seq() %>';">다른문제 풀기</ button>
 	</div>
 
 <footer>

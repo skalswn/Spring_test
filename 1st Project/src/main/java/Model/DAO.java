@@ -20,6 +20,7 @@ public class DAO {
 	   int cnt = 0;
 	   CodingVO codingvo = null;
 	   CodingExplainVO codingexplainvo = null;
+	   CheckVO chvo = null;
 	   
 // DB연결========================================================================================
 	 public void connection() {
@@ -503,7 +504,7 @@ public int Delete(String m_email) {
 		try {
 			connection();
 			
-			String sql = "select * from tbl_coding where coding_lang = ?";
+			String sql = "select * from tbl_coding where coding_lang = ? order by CODING_SEQ";
 			psmt = conn.prepareStatement(sql);
 			
 			psmt.setString(1, lang);
@@ -546,13 +547,11 @@ public int Delete(String m_email) {
 			rs = psmt.executeQuery();
 
 			if (rs.next() == true) {
-				
 				int coding_seq = rs.getInt(1);
 				String coding_lang = rs.getString(2);
 				String coding_q = rs.getString(3);
 				String coding_a = rs.getString(4);
 				String m_id = rs.getString(5);
-
 				codingvo = new CodingVO(coding_seq, coding_lang, coding_q, coding_a, m_id); 
 				System.out.println("문제뽑기성공!");
 			} else {
@@ -567,6 +566,38 @@ public int Delete(String m_email) {
 		}
 		return codingvo;
 	}
+	
+// 문제 풀면 checkvo에 저장시키기
+	public CheckVO getPhase(int seq, String m_id, String lang ) {
+		
+		try {
+			connection();
+
+			String sql = "select * from tbl_coding_plan where plan_step=? and plan_lang=? and m_id=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+			psmt.setString(2, lang);
+			psmt.setString(3, m_id);
+			rs = psmt.executeQuery();
+			if (rs.next() == true) {
+//				int PLAN_SEQ = rs.getInt("PLAN_SEQ");
+				String coding_lang = rs.getString("PLAN_LANG");
+				int plan_step = rs.getInt("PLAN_STEP");
+				String id = rs.getString("M_ID");
+				chvo = new CheckVO(plan_step, coding_lang, id); 
+				System.out.println("checkvo저장성공!");
+			} else {
+				System.out.println("checkvo저장실패!");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return chvo;
+	}
+	
 // 문제 삭제하기====================================================================================
 	
 	public int deleteCoding(int seq) {
@@ -1266,7 +1297,7 @@ public int Delete(String m_email) {
 		ArrayList<CodingExplainVO> arr = new ArrayList<CodingExplainVO>(); 
 		connection();
 		 try{ 
-			 String sql = "select* from TBL_CODING_EXPLAIN where CODING_SEQ=? order by CODING_EX_SEQ";
+			 String sql = "select* from TBL_CODING_EXPLAIN where CODING_SEQ=?";
 			 psmt = conn.prepareStatement(sql);
 			 psmt.setInt(1,num);
 			 rs =  psmt.executeQuery();
@@ -1290,4 +1321,7 @@ public int Delete(String m_email) {
 		return arr;
 	 }	
 }
+	
+
+
 
