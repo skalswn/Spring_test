@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="Model.DAO"%>
 <%@page import="Model.CheckVO"%>
 <%@page import="Model.MemberVO"%>
@@ -31,17 +32,25 @@ TemplateMo 557 Grad School
 https://templatemo.com/tm-557-grad-school
 
 -->
-  </head>
+</head>
 
 
 <body>
 <%
 // 로그인 안되어있을 때 메뉴바 다르게 하기 위해 vo가져오기
+
 MemberVO vo = (MemberVO)session.getAttribute("vo");
 DAO dao = new DAO();
-
-
-CheckVO chvo = (CheckVO)request.getAttribute("chvo");
+String id = null;
+ArrayList<CheckVO> chvoarr = null;
+if(vo!=null){
+	id = vo.getM_id();
+	chvoarr = dao.selectPhase(id);
+}
+int amount_java = dao.amount_java();
+int amount_javascript = dao.amount_javascript();
+int amount_html=dao.amount_html();
+int amount_python=dao.amount_python();
 %>
    
   <!--header-->
@@ -113,29 +122,17 @@ CheckVO chvo = (CheckVO)request.getAttribute("chvo");
 					
 					<div align="right" style="float: right; width: 30%; height: 600px; background-color: rgba(250,250,250,0.1); text-align: center;">
 						<h4 style = "margin : 5%; font-size: 40px; text-transform: uppercase; font-weight: 800; color: #fff; letter-spacing: 1px;">학습진행현황</h4>
-						<table>
-							<tr>
-								<td>파이썬</td>
-								<td>파이썬</td>
-							</tr>
-							
-							<tr>
-								<td>자바</td>
-								<td>자바</td>
-							</tr>
-							
-							<tr>
-								<td>HTML</td>
-								<td>HTML</td>
-							</tr>
-							
-							<tr>
-								<td>자바스크립트</td>
-								<td><%=chvo.getStep() %></td>
-							</tr>
-						</table>
+							<table>
+								<%for(int i =0;i<chvoarr.size();i++) { %>
+								<%System.out.println(chvoarr.size()); %>
+								<% CheckVO chvo = chvoarr.get(i); %>
+										<tr>
+										<td class="language_a"><%=chvo.getLang() %> </td>
+										<td><%=chvo.getStep() %>단계 </td>
+										</tr>
+								<%} %>
+							</table>
 					</div>					
-										
 				</div>
 			</div>
 		</div>

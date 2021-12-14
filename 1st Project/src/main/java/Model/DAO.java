@@ -572,6 +572,43 @@ public class DAO {
 		return codingvo;
 	}
 	
+// 단계 출력해주는 메소드===============================================================
+	public ArrayList selectPhase(String id) {
+		
+		ArrayList<CheckVO> chvoarr = new ArrayList<>();
+		
+		try {
+
+			connection();
+
+			String sql = "select * from tbl_coding_plan where m_id = ?";
+
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setString(1, id);
+
+			rs = psmt.executeQuery();
+
+			while (rs.next() == true) {
+				
+				String lang = rs.getString(2);
+				int step = rs.getInt(3);
+				String m_id = rs.getString(4);
+				
+				chvo = new CheckVO(step, lang, id);
+				chvoarr.add(chvo);
+				
+				System.out.println("학습단계가져오기성공");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return chvoarr;
+	}
+	
+	
 // 문제 풀면 checkvo에 저장시키기
 	public CheckVO getPhase(int seq, String m_id, String lang ) {
 		
@@ -1436,6 +1473,78 @@ public class DAO {
      }
 	   return lognum;
 }
+	public int amount_java() {
+		int java = 0;
+		connection();  
+	 	try{
+		   String sql = "select * from TBL_CODING where CODING_LANG='자바'";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   rs = psmt.executeQuery();
+		   while(rs.next() == true) {
+			  java=java+1;
+		      }
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return java;
+	}
+	public int amount_javascript() {
+		int java = 0;
+		connection();  
+	 	try{
+		   String sql = "select * from TBL_CODING where CODING_LANG='자바스크립트'";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   rs = psmt.executeQuery();
+		   while(rs.next() == true) {
+			  java=java+1;
+		      }
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return java;
+	}
+	public int amount_html() {
+		int java = 0;
+		connection();  
+	 	try{
+		   String sql = "select * from TBL_CODING where CODING_LANG='HTML'";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   rs = psmt.executeQuery();
+		   while(rs.next() == true) {
+			  java=java+1;
+		      }
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return java;
+	}
+	public int amount_python() {
+		int java = 0;
+		connection();  
+	 	try{
+		   String sql = "select * from TBL_CODING where CODING_LANG='파이썬'";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   rs = psmt.executeQuery();
+		   while(rs.next() == true) {
+			  java=java+1;
+		      }
+		      }catch(Exception e){
+		        e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return java;
+	}
 }	
 
 
