@@ -65,14 +65,10 @@ body {
  	CheckVO chvo = null;
 	if(request.getAttribute("chvo") != null){
 		chvo=(CheckVO)request.getAttribute("chvo");
-<<<<<<< HEAD
 	}
-=======
-	} 
 	System.out.println(chvo); 
 	/* System.out.println(chvo.getStep()); */
 	out.print(chvo);
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-Bigdata-7/PSIT.git
 %>
 <%-- <%if(chvo!=null){ %>
 			 	<%System.out.println(chvo.getStep()); %>

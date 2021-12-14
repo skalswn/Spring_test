@@ -30,12 +30,9 @@ public class CheckPhase extends HttpServlet {
 		HttpSession	session = request.getSession();
 		MemberVO vo = (MemberVO)session.getAttribute("vo");
 		String m_id = vo.getM_id();
-		
-		
 		CodingVO codingvo = dao.ShowStudyCoding(seq);
 		String lang = codingvo.getCoding_lang();
-//		
-//		
+		System.out.println(lang);
 		int cnt = dao.CheckPhase(seq, m_id, lang);
 		
 		if(cnt>0) {
