@@ -426,7 +426,7 @@ public int Delete(String m_email) {
 	}
 
 // 단계별학습 개념 넣기
-	public int insertExplain(String coding_lang, String coding_explain1, String coding_explain2, String id) {
+	public int insertExplain(String coding_lang, String coding_explain1, String coding_explain2, String id, String seq) {
 		
 		try {
 			connection();
@@ -439,7 +439,7 @@ public int Delete(String m_email) {
 
 			conn = DriverManager.getConnection(url, dbid, dbpw);
 
-			String sql = "insert into tbl_coding_explain values(tbl_coding_ex_seq.nextval,?,?,?,?)";
+			String sql = "insert into tbl_coding_explain values(tbl_coding_ex_seq.nextval,?,?,?,?,?)";
 
 			psmt = conn.prepareStatement(sql);
 
@@ -447,9 +447,8 @@ public int Delete(String m_email) {
 			psmt.setString(2, coding_explain1);
 			psmt.setString(3, coding_explain2);
 			psmt.setString(4, id);
-			
+			psmt.setString(5, seq);
 			cnt = psmt.executeUpdate();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

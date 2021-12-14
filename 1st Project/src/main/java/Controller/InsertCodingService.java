@@ -33,23 +33,16 @@ public class InsertCodingService extends HttpServlet {
 	
 	
 	DAO dao =new DAO();
-//	개념 넣기
-	int cnt = dao.insertExplain(coding_a, coding_explain1, coding_explain2, id);
-	
-		if(cnt>0) {
-			System.out.println("개념넣기 성공");
-		}
-		else {
-			System.out.println("개념넣기 실패 ㅠ");
-		}
 	
 //	문제, 해설 넣기
 	int cnt1 = dao.insertCoding(lang, coding_q, coding_a, id);
 	
 		if(cnt1>0) {
+			response.sendRedirect("insertExplain.jsp");
 			System.out.println("문제넣기 성공");
 		}
 		else {
+			response.sendRedirect("InsertCoding.jsp");
 			System.out.println("문제넣기 실패");
 		}
 	
