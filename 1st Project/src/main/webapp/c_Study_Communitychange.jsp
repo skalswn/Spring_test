@@ -19,7 +19,7 @@
 	href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900"
 	rel="stylesheet">
 
-<title>PSIT.com - Free_Community</title>
+<title>PSIT.com - Study_Community</title>
 
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -109,32 +109,30 @@ if(session.getAttribute("vo") != null){
 			<article>
 			<div id="board"
 				style="background-color: rgba(250, 250, 250, 0.2);">
-				<h2 align="center" style="padding: 1%">자유게시판 - 내가 쓴 글 수정</h2>
+				<h2 align="center" style="padding: 1%">스터디게시판 - 내가 쓴 글 수정</h2>
 			
-				<form action="c_Communitywrite" method="post" enctype="multipart/form-data" >
+				<form action="s_c_Communitychange" method="post" enctype="multipart/form-data" >
 				<div align="center">
 				<table id="list">
 					<tr>
-						<td><input type="text" name="title" class="title" placeholder="제목을 입력해주세요" > </td>
-					</tr><tr>
 						<td rows="30" cols="100" style="text-align: center"><br>작성자</td>
-						<td align= "left"><br><textarea name="title"  rows="1" cols="20" style="resize: none;"><%=scvo.getM_ID()%></textarea></td>
+						<td align= "left"><br><textarea name="m_id"  rows="1" cols="20" style="resize: none;"><%=scvo.getM_ID()%></textarea></td>
 					</tr>
-					<tr>
-						<td rows="30" cols="100" style="text-align: center">제목</td>
-						<td><textarea name="title" rows="1" cols="90" style="resize: none;"><%=scvo.getSTUDY_SUBJECT()%></textarea></td>
+				<tr class="a"><br>
+						<td rows="30" cols="100" style="text-align: center">분류</td>
+						<td><textarea name="language" rows="1" cols="20" style="resize: none;"><%=scvo.getSTUDY_LANG()%></textarea></td>
 					</tr>
-					<tr class="a" class="cm_tr" style="height: 10px">
-						<td style="width: 80px; text-align: center">내용</td>
-						<td><textarea name="content" rows="20" cols="90"
-							 style="resize: none;"><%=scvo.getSTUDY_CONTENT()%></textarea></td>
-					</tr>
+					<tr class="a">
+						<td rows="30" cols="100" style="text-align: center"><br>제목</td>
+						<td><textarea name="title" rows="1" cols="90" style="resize: none;" placeholder="제목을 입력해주세요" ><%=scvo.getSTUDY_SUBJECT()%></textarea></td>
 					
-					<tr>
-						<td colspan="2">
-							<textarea name="content"  rows="20" cols="100" style="resize: none;"></textarea>			
-						</td>
-					</tr>
+						</tr>
+					<tr class="a" class="cm_tr" style="height: 10px">
+								<td style="width: 80px; text-align: center">내용</td>
+								<td><textarea name="content" rows="20" cols="90"
+										style="resize: none;"></textarea><%=scvo.getSTUDY_CONTENT()%></td>
+							</tr>
+									
 					<tr>
 					<td colspan="2">
 							<input name="file1" type="file" style="width : 300px; height : 30px"> 
@@ -144,6 +142,7 @@ if(session.getAttribute("vo") != null){
 					</tr>
 					<tr>
 						<td colspan="2">
+						<input value="<%=request.getParameter("num")%>" name="num" style="display:none">
 							<input type="reset" value="초기화" style="background-color:#f5a425; margin-right: 2%; width : 70px; height : 30px;" > 
 							 <input type="submit" value="수정하기" style="background-color:#f5a425; margin-right: 2%; width : 70px; height : 30px;">
 						</td>
@@ -151,6 +150,7 @@ if(session.getAttribute("vo") != null){
 				</table>
 				
 				</div>
+				
 				</form>
 			</div>
 			<!-- Scripts -->

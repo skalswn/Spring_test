@@ -29,9 +29,7 @@
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <style>
 	table{
-		width: 50%;
 		height : 50%;
-	
 	}
 
 </style>
@@ -93,150 +91,142 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 				</ul>
 			</nav>
 		</header>
-		
+
 	<section style="color: white; text-align: center;"
 		class="section coming-soon" data-section="section3">
 		<div class="col-8  col-12-narrower imp-narrower"
 			style="max-width: 90% !important; display: inline-block;">
 			<div id="content">
-			
-		<article>
-			<div id="board" style="background-color: rgba(250, 250, 250, 0.2);">
-				<h2 align="center" style="padding: 1%">자유게시판 - <%=cvo.getTitle() %></h2>			
-				<div align="left" style = "margin-left: 550px">
-					<a href="c_Community.jsp"><button style="background-color:#f5a425; width : 100px; height : 30px; color :white;">뒤로가기</button></a>
-					</div>
-			<div >
-				<table id="list" style="margin: 1%; display: inline-block; ">
-					<tr>
-						<td rows="30" cols="100" style="text-align: center"><br>작성자</td>
-						<td align= "left"><br><textarea name="title"  rows="1" cols="20" style="resize: none;"><%=cvo.getWriter()%></textarea></td>
-					</tr>
-					<tr>
-						<td rows="30" cols="100" style="text-align: center">제목</td>
-						<td><textarea name="title" rows="1" cols="90" style="resize: none;"><%=cvo.getTitle()%></textarea></td>
-					</tr>
-					<tr class="a" class="cm_tr" style="height: 10px">
-						<td style="width: 80px; text-align: center">내용</td>
-						<td><textarea name="content" rows="20" cols="90"
-							 style="resize: none;"><%=cvo.getContent()%></textarea></td>
-					</tr>
-					<%-- <tr>
-						<td colspan="2" class="content" style="white-space: pre-line;"><%=cvo.getContent() %></td>
-					</tr> --%>
-					
-					<%if(cvo.getFile1() !=null && cvo.getFile2() !=null && cvo.getFile3() !=null) { %>
-					<tr>
-						<td colspan="2">
-							<img src="./images/<%=cvo.getFile1() %>">
-							<img src="./images/<%=cvo.getFile2() %>">
-							<img src="./images/<%=cvo.getFile3() %>">
-						</td>
-					</tr>
-					<%}else if(cvo.getFile1() !=null && cvo.getFile2() !=null){ %>
-					<tr>
-						<td colspan="2">
-							<img src="./images/<%=cvo.getFile1() %>">
-							<img src="./images/<%=cvo.getFile2() %>">
-						</td>
-					</tr>
-					<%}else if(cvo.getFile1() !=null){ %>
-					<tr>
-						<td colspan="2">
-							<img src="./images/<%=cvo.getFile1() %>">
-						</td>
-					</tr>
-					<%}%>
-					</table>
-			</div>		
-					
-				
-					<%if (vo != null){%>	
-						<%if (userID.equals(cvo.getWriter())||userID.equals("admin")||userID.equals("skalswn")) {%>
-							<div align="right" style="margin-right: 500px">
-								<span style="width: 100px; height: 30px;"> <a href="c_Communitychange.jsp?num=<%=cvo.getC_seq()%>">
-										<button style="background-color: #f5a425; color: white">수정하기</button>
-								</a>
-								</span> 
-								<span style="width: 100px; height: 30px;"> <a
-									href="c_Communitydelete?num=<%=cvo.getC_seq()%>">
-										<button style="background-color: #f5a425; color: white">삭제하기</button>
-								</a>
-								</span>
-							</div>
-							<%}%>
-					<% }%>
-					
-					<form action="c_Comment">
-					<table style = "width:80%; text-align:center;">
-						<tr style="display:inline-block;">
-							<td rows = "1" cols="100" ><input type="text" name="C_comment" id="C_comment" ></td>
-							<td rows = "1" cols="20"><input type="submit" value="댓글 작성"></td>
-						</tr>
-					
-					<tr>
-						<td><input value="<%=cvo.getC_seq()%>" name="num" style="display:none">
-					<%if (cm_arr != null){%>
-						<%for(int i=0;i<cm_arr.size();i++){%>
-						<span><%=cm_arr.get(i).getC_writer()%> : </span>
-						<span><%=cm_arr.get(i).getContent()%></span>
-						<%if (vo != null){%>	
-						<%if (userID.equals(cvo.getWriter())||userID.equals("admin")||userID.equals("skalswn")) {%>
-						<span align = "left">
-						<a href="c_Commentdelete?num=<%=cm_arr.get(i).getCm_seq()%>"></span>
-						<button style="background-color:#f5a425; width : 70px; height : 20px; color : white;">삭제하기</button></a></td>
-						<%}%>
-						<%}%>	
-						<span><% if(cm_arr.get(i).getC_writer().equals(vo.getM_id())){%></span>
-						
-							<% }%>
-						</td>
-							
-					</tr>
-					</table>
-					
-					</form>
-						<br>
-					</tr>
-						<% }%>
-					<%}%>
-					
-					<%-- <%if (cmvo !=null){
-						for(int i=0;i<arr.size();i++){%>
-						<%}%>
-					<%}%> --%>
-					
-					<br>
-					<a href="past_c?num=<%=cvo.getC_seq()%>"><button style="background-color:#f5a425; width : 70px; height : 30px; color :white">이전 글</button></a>
-					<a href="next_c?num=<%=cvo.getC_seq()%>"><button style="background-color:#f5a425; width : 70px; height : 30px; color :white;">다음 글</button></a>			
-			</div>
-			<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-			</article>
-	</div>
-	
-</div>
-	</section>
-	<footer>
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<p>
-								<i class="fa fa-copyright"></i> Copyright 2021 by PSIT | Design:
-								<a href="https://templatemo.com" rel="sponsored"
-									target="_parent">TemplateMo</a><br> Distributed By: <a
-									href="https://themewagon.com" rel="sponsored" target="_blank">ThemeWagon</a>
-
-							</p>
+				<article>
+					<div id="board" style="background-color: rgba(250, 250, 250, 0.2);">
+						<div align="left" style="padding: 10px;">
+							<a href="c_Community.jsp"><button
+									style="background-color: #f5a425; width: 10%; height: 40px; color: white;">뒤로가기</button></a>
 						</div>
+						<h2 align="center" style="padding: 1%">
+							자유게시판 -
+							<%=cvo.getTitle() %></h2>
+						<div>
+							<table id="list"
+								style="margin: 1%; display: inline-block; width: 80%">
+								<tr>
+									<td style="text-align: center"><br>작성자</td>
+									<td><br>
+									<textarea class="textarea" name="title" style="resize: none;"><%=cvo.getWriter()%></textarea></td>
+								</tr>
+								<tr>
+									<td style="text-align: center">제목</td>
+									<td><textarea class="textarea" name="title"
+											style="resize: none;"><%=cvo.getTitle()%></textarea></td>
+								</tr>
+								<tr class="a" class="cm_tr" style="height: 10px">
+									<td style="text-align: center">내용</td>
+									<td><textarea class="textarea" class="textarea"
+											name="content" style="resize: none; height: 100%;"><%=cvo.getContent()%></textarea></td>
+								</tr>
+
+								<%if(cvo.getFile1() !=null && cvo.getFile2() !=null && cvo.getFile3() !=null) { %>
+								<tr>
+									<td colspan="2"><img src="./images/<%=cvo.getFile1() %>">
+										<img src="./images/<%=cvo.getFile2() %>"> <img
+										src="./images/<%=cvo.getFile3() %>"></td>
+								</tr>
+								<%}else if(cvo.getFile1() !=null && cvo.getFile2() !=null){ %>
+								<tr>
+									<td colspan="2"><img src="./images/<%=cvo.getFile1() %>">
+										<img src="./images/<%=cvo.getFile2() %>"></td>
+								</tr>
+								<%}else if(cvo.getFile1() !=null){ %>
+								<tr>
+									<td colspan="2"><img src="./images/<%=cvo.getFile1() %>">
+									</td>
+								</tr>
+								<%}%>
+							</table>
+						</div>
+
+
+						<%if (vo != null){%>
+						<%if (userID.equals(cvo.getWriter())||userID.equals("admin")||userID.equals("skalswn")) {%>
+						<div align="right" style="margin-right: 500px">
+							<span style="width: 100px; height: 30px;"> <a
+								href="c_Communitychange.jsp?num=<%=cvo.getC_seq()%>">
+									<button style="background-color: #f5a425; color: white">수정하기</button>
+							</a>
+							</span> <span style="width: 100px; height: 30px;"> <a
+								href="c_Communitydelete?num=<%=cvo.getC_seq()%>">
+									<button style="background-color: #f5a425; color: white">삭제하기</button>
+							</a>
+							</span>
+						</div>
+						<%}%>
+						<% }%>
+
+						<form action="c_Comment">
+							<table style="width: 80%; text-align: center;">
+								<tr style="display: inline-block;">
+									<td rows="1" cols="100"><input type="text"
+										name="C_comment" id="C_comment"></td>
+									<td rows="1" cols="20"><input type="submit" value="댓글 작성"></td>
+								</tr>
+
+								<tr>
+									<td><input value="<%=cvo.getC_seq()%>" name="num"
+										style="display: none"> <%if (cm_arr != null){%> <%for(int i=0;i<cm_arr.size();i++){%>
+										<span><%=cm_arr.get(i).getC_writer()%> : </span> <span><%=cm_arr.get(i).getContent()%></span>
+										<%if (vo != null){%> <%if (userID.equals(cvo.getWriter())||userID.equals("admin")||userID.equals("skalswn")) {%>
+										<span align="left"> <a
+											href="c_Commentdelete?num=<%=cm_arr.get(i).getCm_seq()%>">
+												<button
+													style="background-color: #f5a425; width: 70px; height: 20px; color: white;">삭제하기</button>
+										</a>
+									</span> <%}%> <%}%> <span>
+											<% if(cm_arr.get(i).getC_writer().equals(vo.getM_id())){%>
+									</span> <% }%></td>
+								</tr>
+							</table>
+						</form>
+						<% }%>
+						<%}%>
+						<br>
+
+						<br> <a href="past_c?num=<%=cvo.getC_seq()%>"><button
+								style="background-color: #f5a425; width: 70px; height: 30px; color: white">이전
+								글</button></a> <a href="next_c?num=<%=cvo.getC_seq()%>"><button
+								style="background-color: #f5a425; width: 70px; height: 30px; color: white;">다음
+								글</button></a>
 					</div>
+					<!-- Scripts -->
+						 <script src="vendor/jquery/jquery.min.js"></script>
+						 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+						 <script src="assets/js/isotope.min.js"></script>
+						 <script src="assets/js/owl-carousel.js"></script>
+						 <script src="assets/js/lightbox.js"></script>
+						 <script src="assets/js/tabs.js"></script>
+						 <script src="assets/js/video.js"></script>
+						 <script src="assets/js/slick-slider.js"></script>
+						 <script src="assets/js/custom.js"></script>
+						<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+					<script src="assets/js/main.js"></script>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p>
+						<i class="fa fa-copyright"></i> Copyright 2020 by Grad School |
+						Design: <a href="https://templatemo.com" rel="sponsored"
+							target="_parent">TemplateMo</a><br> Distributed By: <a
+							href="https://themewagon.com" rel="sponsored" target="_blank">ThemeWagon</a>
+
+					</p>
 				</div>
-			</footer>
+			</div>
+		</div>
+	</footer>
 </body>
 </html>

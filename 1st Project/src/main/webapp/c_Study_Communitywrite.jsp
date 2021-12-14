@@ -59,13 +59,18 @@ if(session.getAttribute("vo") != null){
 				style="background-color: rgba(250, 250, 250, 0.2);">
 				<h2 align="center" style="padding: 1%">스터디게시판 - 새 글 작성</h2>
 				
-				<form action="c_Communitywrite" method="post" enctype="multipart/form-data" >
+				<form action="c_Study_Communitywrite" method="post" enctype="multipart/form-data" >
 				<div align="center">
 				<table id="list" style="margin: 1%">
+					<tr class="a"><br>
+						<td rows="30" cols="100" style="text-align: center">분류</td>
+						<td><textarea name="title" rows="1" cols="20" style="resize: none;"></textarea></td>
+					</tr>
 					<tr class="a">
 						<td rows="30" cols="100" style="text-align: center"><br>제목</td>
-						<td><br><textarea name="title" rows="1" cols="90" style="resize: none;" placeholder="제목을 입력해주세요" ></textarea></td>
-					</tr>
+						<td><textarea name="title" rows="1" cols="90" style="resize: none;" placeholder="제목을 입력해주세요" ></textarea></td>
+					
+						</tr>
 					<tr class="a" class="cm_tr" style="height: 10px">
 								<td style="width: 80px; text-align: center">내용</td>
 								<td><textarea name="content" rows="20" cols="90"
