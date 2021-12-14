@@ -9,23 +9,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import Model.CheckVO;
-import Model.CodingExplainVO;
 import Model.CodingVO;
 import Model.DAO;
 import Model.MemberVO;
 
-@WebServlet("/StudyExplainService")
-public class StudyExplainService extends HttpServlet {
+@WebServlet("/CheckPhase")
+public class CheckPhase extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		int seq = Integer.parseInt(request.getParameter("seq"));
 		DAO dao = new DAO();
-		
-		CodingExplainVO codingexplainvo = dao.CodingExplain(seq);
-		
+		request.setCharacterEncoding("euc-kr");
+		//파라미터 seq수집
+		int seq = Integer.parseInt(request.getParameter("seq"));
+		//세션에서 id값 가져오기
 		HttpSession	session = request.getSession();
 		MemberVO vo = (MemberVO)session.getAttribute("vo");
 		String m_id = vo.getM_id();
@@ -33,19 +33,29 @@ public class StudyExplainService extends HttpServlet {
 		CodingVO codingvo = dao.ShowStudyCoding(seq);
 		String lang = codingvo.getCoding_lang();
 		
-		int cnt = dao.CheckPhase(seq, m_id, lang);
+		CheckVO chvo = dao.getPhase(seq, m_id, lang);
 		
-		
-		
-		if(codingexplainvo != null) {
-			System.out.println("설명출력완료");
-			RequestDispatcher rd = request.getRequestDispatcher("StudyExplainPage.jsp");
-			request.setAttribute("seq", seq);
+		if(chvo!=null) {
+			System.out.println("chvo보내기성공!");
+			request.setAttribute("chvo", chvo);
+			RequestDispatcher rd = request.getRequestDispatcher("StudyPage.jsp");
 			rd.forward(request, response);
 		}
 		else {
-			System.out.println("설명출력실패");
+			System.out.println("chvo보내기실패");
 		}
+//		===================================================
+		int cnt = dao.CheckPhase(seq, m_id, lang);
+		
+		if(cnt>0) {
+			System.out.println("단계저장성공");
+//			response.sendRedirect("StudyPage.jsp");
+			System.out.println("학습페이지로이동성공");
+		}
+		else {
+			System.out.println("단계저장실패");
+		}
+//		System.out.println("CheckPhase"+chvo);
+		
 	}
-
 }

@@ -1,3 +1,4 @@
+<%@page import="Model.CheckVO"%>
 <%@page import="Model.DAO"%>
 <%@page import="Model.CodingVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -59,8 +60,16 @@ body {
 	MemberVO vo = (MemberVO)session.getAttribute("vo");
 	ArrayList<CodingVO> codingarray=(ArrayList<CodingVO>)request.getAttribute("codingarray");
 	DAO dao = new DAO();
+	CheckVO chvo = null;
+	if(request.getAttribute("chvo") != null){
+		chvo=(CheckVO)request.getAttribute("chvo");
+		
+	}
+	System.out.println(chvo);
 %>
-
+<%if(chvo!=null){ %>
+			 	<%System.out.println(chvo.getStep()); %>
+			<%} %>
 	<!--header-->
 	<header class="main-header clearfix" role="header">
 		<div class="logo">
@@ -80,7 +89,11 @@ body {
 				<%
 				if (vo != null) {
 				%>
-				<li><a href="P_Psit.jsp">직무탐색</a></li>
+				<li><a href="#">직무탐색</a>
+              		<ul class="sub-menu">
+               		<li><a href="P_Psit.jsp">PSIT 검사</a></li>
+               		<li><a href="P_Psit_Result.jsp">My PSIT</a></li>
+                </ul></li>
 				<!-- <li><a href="#section5">Video</a></li> -->
 				<li><a href="#section6">단계별학습</a></li>
 				<li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
@@ -111,30 +124,37 @@ body {
 		파이썬<input type="radio" name="lang" value="파이썬"> 
 		자바<input type="radio" name="lang" value="자바"> 
 		HTML/CSS/자바스크립트<input type="radio" name="lang" value="HTML"> 
-		<input type="submit">
+		<input type="submit" value="문제보기">
 	</form>
-	<p>모든 문제 나오는 곳</p>
 	<!-- 언어 선택에 따라 모든 문제가 나오게 하기 -->
 	<div>
 	<%if(codingarray!=null){ %>
 		<%for(int i=0; i<codingarray.size(); i++){%>
 			<%CodingVO codingvo=codingarray.get(i); %>
-			<p><%=codingvo.getCoding_seq()%>단계</p>
-			<%System.out.println(codingvo.getCoding_seq()); %>
-			<p><a href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a></p>
+			<br>
+			<%-- <%=i+1%>단계/시퀀스:<%=codingvo.getCoding_seq() %>
+			<p><a href="StudyExplainService?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a></p> --%>
+			<p><%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%></p>
+			<p><%=i+1%>단계/<%=codingvo.getCoding_seq()%>번</p>
+			<%-- <%System.out.println(codingvo.getCoding_seq()); %> --%>
+			<p><a id="ch" href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>" onclick="check();">학습하러가기!
+				<img src="./images/nocheckbook.png" width=50px height=50px>
+			</a></p>
+
+<!--진행 이미지 넣을 공간 
+-> 다른문제 학습하러 가기 단추 누르면 이용자 단계 업데이트 ㅇ //
+   그 단계 업데이트를 VO에 저장 -> VO를 가져와서 비교 -> 뭐랑? -> vo의step이랑 문제 시퀀스 -->			
+
 			<%-- <button onclick="location.href='StudyExplainService?seq=<%= codingvo.getCoding_seq() %>';">학습하러가기</button> --%>
 			<%if(vo.getM_id().equals("admin")){ %>
-				<button onclick="location.href='DeleteCodingService?seq=<%= codingvo.getCoding_seq() %>';">문제삭제</button>
+				<p><button onclick="location.href='DeleteCodingService?seq=<%= codingvo.getCoding_seq() %>';">문제삭제</button></p>
 			<%} %>
 		<%} %>
 	<%}else{ %>
-		언어를 선택해주세요.
+		언어를 선택해라 요놈아
 	<%} %>
 
 	</div>
-	<div id="a">풀이</div>
-
-	<div id="a"></div>
 
 	<footer>
 		<div class="container">
@@ -168,5 +188,15 @@ body {
         //according to loftblog tut
        
     </script>
+    
+    <script>
+    function check(){
+    	if(document.getElementByid.equals("ch")){
+    		document.getElementByid("ch").src="./images/checkboook.png";
+    	}
+    }
+    
+    </script>
+    
 </body>
 </html>

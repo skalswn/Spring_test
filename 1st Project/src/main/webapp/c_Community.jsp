@@ -114,7 +114,6 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 	}
 	if(next_pageno>total_page){	
 		next_pageno=total_page/group_per_page_cnt*group_per_page_cnt+1;
-	
 	}
 
 %>
@@ -196,7 +195,7 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 									href="c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getC_seq()%>"><%=arr.get(i + (pageno - 1) * 5).getC_cnt()%></a></td>
 							</tr>
 							<%}%><%} else if (arr.size() < (pageno) * 5) {%>
-							<%for (int i = 0; i < (pageno) * 5 - arr.size(); i++) {	%>
+							<%for (int i = 0; i < 5-((pageno) * 5 - arr.size()); i++) {	%>
 							<tr class="main_tr">
 								<%
 								String result = arr.get(i + (pageno - 1) * 5).getDay().substring(5, 11);
@@ -212,12 +211,11 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 								<td class="main_td" style="width : 200px"><a class="main_a"
 									href="c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getC_seq()%>"><%=arr.get(i + (pageno - 1) * 5).getC_cnt()%></a></td>
 							</tr>
-							<%}	%>
-							<%} else {%>
 							<%}%>
+							<%}%>
+							
 						</table>
 						<br>
-						
 						<a href="c_Community.jsp?pageno=<%=prev_pageno%>">°Ï ¿Ã¿¸</a>
 						<%for (int i = page_sno; i <= page_eno; i++) {%>
 						<a href="c_Community.jsp?pageno=<%=i%>"> <%if (pageno == i) {%>
