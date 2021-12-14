@@ -93,14 +93,15 @@ CodingVO codingvo = dao.ShowStudyCoding(seq);
 			<p><%=codingvo.getCoding_a() %></p>--%>
 		<%} %> 
 		<input value="<%=codingvo.getCoding_lang()%>" name="lang" style="display:none">
-		<input value="<%=codingvo.getCoding_seq()%>" name="num" style="display:none">
+		<input value="<%=codingvo.getCoding_seq()%>" name="num"  style="display:none">
 		<input type="submit" value="제출하기">
 	</form>
 	</div>
 	
 	<div>
-		<button onclick="location.href='CheckPhase?seq=<%= codingvo.getCoding_seq() %>';">다른문제 풀기</ button>
+		<a href="StudyPage.jsp"><button onclick="location.href='CheckPhase?seq=<%= codingvo.getCoding_seq() %>';">다른문제 풀기</button></a>
 	</div>
+	<%-- <button onclick="location.href='CheckPhase?seq=<%= codingvo.getCoding_seq() %>';">다른문제 풀기</button> --%>
 
 <footer>
 		<div class="container">

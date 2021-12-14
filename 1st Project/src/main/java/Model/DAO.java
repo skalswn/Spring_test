@@ -1327,8 +1327,8 @@ public int Delete(String m_email) {
 
 	public String check_answer(String answer, int seq) {
 		String ans=null;
-		connection();
 		 try{ 
+			 connection();
 			 /////아직 아무것도 안했음 여기서부터
 			 String sql = "select CODING_A from TBL_CODING where CODING_SEQ=?";
 			 psmt = conn.prepareStatement(sql);
@@ -1351,8 +1351,6 @@ public int Delete(String m_email) {
 		return ans;
 	}	
 	
-
-
 	 
 
 	public PsitVO PSTORE(String m_ID) {
