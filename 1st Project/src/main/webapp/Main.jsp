@@ -131,7 +131,7 @@ CheckVO chvo = (CheckVO)request.getAttribute("chvo");
 							
 							<tr>
 								<td>자바스크립트</td>
-								<td><%=chvo.getStep() %></td>
+								<td>자바스크립트</td>
 							</tr>
 						</table>
 					</div>					

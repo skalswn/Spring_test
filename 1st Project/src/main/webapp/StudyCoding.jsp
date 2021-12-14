@@ -76,7 +76,7 @@ CodingVO codingvo = dao.ShowStudyCoding(seq);
     
   </header>
   <br><br><br><br><br><br>
-	<div>
+	<div style="white-space:pre;">
 		<p>선택한 문제 나올 곳</p>
 		<%if(seq==codingvo.getCoding_seq()){ %>
 			<%System.out.println("문제보기 성공!"); %>
