@@ -63,9 +63,7 @@ body {
 	CheckVO chvo = null;
 	if(request.getAttribute("chvo") != null){
 		chvo=(CheckVO)request.getAttribute("chvo");
-		
 	}
-	System.out.println(chvo);
 %>
 <%if(chvo!=null){ %>
 			 	<%System.out.println(chvo.getStep()); %>
