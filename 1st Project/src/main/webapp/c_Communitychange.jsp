@@ -112,16 +112,21 @@ if(session.getAttribute("vo") != null){
 				<form action="c_Communitychange" method="post"
 					enctype="multipart/form-data">
 					<div align="center">
-						<table id="list" style="margin: 1%;" >
-							<tr class="a">
-								<td rows="30" cols="100" style="text-align: center"><br>제목</td>
-								<td><br><textarea name="title" rows="1" cols="90" style="resize: none;"><%=cvo.getTitle()%></textarea></td>
-							</tr>
-							<tr class="a" class="cm_tr" style="height: 10px">
-								<td style="width: 80px; text-align: center">내용</td>
-								<td><textarea name="content" rows="20" cols="90"
-										style="resize: none;"><%=cvo.getContent()%></textarea></td>
-							</tr>
+						<table id="list" style="margin: 1%; display: inline-block; ">
+					<tr>
+						<td rows="30" cols="100" style="text-align: center"><br>작성자</td>
+						<td align= "left"><br><textarea name="title"  rows="1" cols="20" style="resize: none;"><%=cvo.getWriter()%></textarea></td>
+					</tr>
+					<tr>
+						<td rows="30" cols="100" style="text-align: center">제목</td>
+						<td><textarea name="title" rows="1" cols="90" style="resize: none;"><%=cvo.getTitle()%></textarea></td>
+					</tr>
+					<tr class="a" class="cm_tr" style="height: 10px">
+						<td style="width: 80px; text-align: center">내용</td>
+						<td><textarea name="content" rows="20" cols="90"
+							 style="resize: none;"><%=cvo.getContent()%></textarea></td>
+					</tr>
+						
 							<div style="text-align: center">
 								<tr class="a">
 									<td colspan="2" align="right">
