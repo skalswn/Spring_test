@@ -65,7 +65,7 @@ body {
  	CheckVO chvo = null;
 	if(request.getAttribute("chvo") != null){
 		chvo=(CheckVO)request.getAttribute("chvo");
-	} 
+	}
 	System.out.println(chvo); 
 	/* System.out.println(chvo.getStep()); */
 	out.print(chvo);
@@ -137,7 +137,7 @@ body {
 			<%CodingVO codingvo=codingarray.get(i); %>
 			<br>
 			<p><%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%></p>
-			<p><a id="ch" href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!
+			<p><a href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!
 				<%if(chvo!=null){ %>
 					<%if(chvo.getStep()>=codingvo.getCoding_seq()){%>
 						<img src="./images/checkbook.png" width=50px height=50px>

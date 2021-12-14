@@ -98,6 +98,7 @@ if(session.getAttribute("vo") != null){
 				</ul>
 			</nav>
 		</header>
+		
 
 		<section style="color: white; text-align: center;"
 			class="section coming-soon" data-section="section3">

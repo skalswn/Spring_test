@@ -36,7 +36,9 @@ public class s_c_Communitychange extends HttpServlet {
 		String content = multi.getParameter("content");
 		String lang = multi.getParameter("language");
 		String filename1 = "none.png";
+		
 		int num = Integer.parseInt(multi.getParameter("num"));
+		System.out.println(num);
 		try {
 			filename1 = URLEncoder.encode(multi.getFilesystemName("file1"), "euc-kr");
 		} catch (Exception e) {

@@ -64,7 +64,7 @@ if(session.getAttribute("vo") != null){
 				<table id="list" style="margin: 1%">
 					<tr class="a">
 						<td rows="30" cols="100" style="text-align: center"><br>제목</td>
-						<td><br><textarea name="title" rows="2" cols="90" style="resize: none;" placeholder="제목을 입력해주세요" ></textarea></td>
+						<td><br><textarea name="title" rows="1" cols="90" style="resize: none;" placeholder="제목을 입력해주세요" ></textarea></td>
 					</tr>
 					<tr class="a" class="cm_tr" style="height: 10px">
 								<td style="width: 80px; text-align: center">내용</td>
