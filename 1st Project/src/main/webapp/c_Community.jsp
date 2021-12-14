@@ -16,7 +16,7 @@
 	href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900"
 	rel="stylesheet">
 
-<title>PSIT.com</title>
+<title>PSIT.com - Free_Community</title>
 
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -128,7 +128,7 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 		<a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
 		<nav id="menu" class="main-nav" role="navigation">
 			<ul class="main-menu">
-				<li><a href="#top">Home</a></li>
+				<li><a href="Main.jsp">Home</a></li>
 				<% if(vo!=null){%>
 				<li><a href="#">직무탐색</a>
 	        	<ul class="sub-menu">
@@ -141,18 +141,19 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 						<li><a href="c_Community.jsp">자유게시판</a></li>
 						<li><a href="c_Study_Community.jsp">스터디 게시판</a></li>
 						<li><a href="c_Used_Community.jsp">중고거래 게시판</a></li>
-					</ul></li>
-				<%if(vo.getM_id().equals("admin")){ %>
-				<li><a href="ManageUser.jsp" class="external">회원관리</a></li>
-				<%}else{ %>
-				<li><a href="My_page.jsp" class="external">마이페이지</a></li>
-				<%} %>
+						</ul></li>
+						<%if(vo.getM_id().equals("admin")){ %>
+						<li><a href="ManageUser.jsp" class="external">회원관리</a></li>
+						<%}else{ %>
+						<li><a href="My_page.jsp" class="external">마이페이지</a></li>
+						<%} %>
 				<li><a href="LogoutService" class="external">로그아웃</a></li>
 				<%} else {%>
 				<li><a href="Login.jsp">Login</a></li>
 				<li><a href="Join.jsp">Join</a></li>
 				<%} %>
 			</ul>
+			</nav>
 	</header>
 
 	<section style="color : white; height : 900px; text-align : center;" class="section coming-soon" data-section="section3">
@@ -194,7 +195,12 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 								<td class="main_td" style="width : 200px"><a class="main_a"
 									href="c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getC_seq()%>"><%=arr.get(i + (pageno - 1) * 5).getC_cnt()%></a></td>
 							</tr>
+<<<<<<< HEAD
 							<%}%><%} else if (arr.size() < (pageno) * 5) {%><%for (int i = 0; i < 5-((pageno) * 5 - arr.size()); i++) {	%>
+=======
+							<%}%><%} else if (arr.size() < (pageno) * 5) {%>
+							<%for (int i = 0; i < (pageno) * 5 - arr.size(); i++) {	%>
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-Bigdata-7/PSIT.git
 							<tr class="main_tr">
 								<%
 								String result = arr.get(i + (pageno - 1) * 5).getDay().substring(5, 11);
@@ -210,18 +216,20 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 								<td class="main_td" style="width : 200px"><a class="main_a"
 									href="c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getC_seq()%>"><%=arr.get(i + (pageno - 1) * 5).getC_cnt()%></a></td>
 							</tr>
-							<%}	%><%} else {%><%}%>
+							<%}	%>
+							<%} else {%>
+							<%}%>
 						</table>
 						<br>
-						<a href="c_Community.jsp?pageno=<%=prev_pageno%>">[이전]</a>
+						
+						<a href="c_Community.jsp?pageno=<%=prev_pageno%>">≪ 이전</a>
 						<%for (int i = page_sno; i <= page_eno; i++) {%>
 						<a href="c_Community.jsp?pageno=<%=i%>"> <%if (pageno == i) {%>
 							<span id="cho"><%=i%></span> <%} else {%> <%=i%> <%}%>
 						</a>
 						<%if (i < page_eno) {%>,<%}	%><%}%>
-						<a href="c_Community.jsp?pageno=<%=next_pageno%>" >[다음]</a>
-						</div>
-						</table>
+						<a href="c_Community.jsp?pageno=<%=next_pageno%>" >다음 ≫</a>
+						
 						
 						<form style = "padding: 20px 20px" action="search_community">
 							<select style=" height: 40px; text-align: center; letter-spacing: 0.5px;"><option value="제목">제목</option>
@@ -260,11 +268,6 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 			</div>
 		</footer>
 
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.dropotron.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
+
 </body>
 </html>
