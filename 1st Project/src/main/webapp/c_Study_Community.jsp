@@ -220,7 +220,7 @@ table{
 						</tr>
 						<%}%>
 						<%} else if (arr.size() < (pageno) * 5) {%>
-						<%for (int i = 0; i < (pageno) * 5 - arr.size(); i++) {%>
+						<%for (int i = 0; i < 5-((pageno) * 5 - arr.size()); i++) {	%>
 						<%String result = arr.get(i + (pageno - 1) * 5).getREG_DATE().substring(5, 11);%>
 						<tr class="main_tr">
 							<td class="main_td" style="width : 100px"><a class="main_a"
