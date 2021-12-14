@@ -1401,6 +1401,33 @@ public int Delete(String m_email) {
 		     }
 			   return lognum;
 		}
+
+	public int u_community_change(String title, String way, String status, String kinds, int price, String content,
+			String filename1, int num) {
+		connection();  
+	 	try{
+		   String sql = "update TBL_USED_MARKET set USED_SUBJECT=?,USED_CONTENT=?,USED_PRICE=?,USED_TRADE=?,USED_PAY=?,USED_STATUS=?,FILE1=? where USED_SEQ=?";
+		   psmt = conn.prepareStatement(sql);
+		   //5. 바인드 변수 채우기
+		   psmt.setString(1,title);
+		   psmt.setString(2,content);
+		   psmt.setInt(3,price);
+		   psmt.setString(4,way);
+		   psmt.setString(5,kinds);
+		   psmt.setString(6,status);
+		   psmt.setString(7,filename1);
+		   psmt.setInt(8,num);
+		   lognum = psmt.executeUpdate();
+		   if (lognum>0) {
+			   System.out.println("수정 성공");
+		   }
+		      }catch(Exception e){
+		         e.printStackTrace();
+		      }finally{
+		        close();
+     }
+	   return lognum;
+}
 }	
 
 

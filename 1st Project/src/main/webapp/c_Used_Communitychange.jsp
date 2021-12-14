@@ -23,25 +23,29 @@
 <%//C:\Users\smhrd\OneDrive\바탕 화면\Web_Study\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps %>
 <%
 MemberVO vo =null;
+String userID = null;
+int num = Integer.parseInt(request.getParameter("num"));
 if(session.getAttribute("vo") != null){
 	vo = (MemberVO)session.getAttribute("vo");
-	String userID =vo.getM_id();
+	userID =vo.getM_id();
 }else{%>
 	Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
 	Response.Write("<script>location.href='Main.jsp';</script>");
 <%}%>
-<%
-		String userID = "doflsld";
-		if(session.getAttribute("userID") != null){
-			userID = (String)session.getAttribute("userID");
-		}	
-%>
-				<form action="c_Communitywrite" method="post" enctype="multipart/form-data" >
-				
+
+				<form action="u_c_Communitychange" method="post" enctype="multipart/form-data" >				
 				<table id="list">
 					<tr>
-						<td><input type="text" name="title" class="title" placeholder="제목을 입력해주세요" > </td>
+					<td><input type="text" name="title" class="title" placeholder="제목을 다시 입력해주세요"></td>
+					<td>
 					</tr>
+					<tr>
+					<select name="way"><option value="삽니다">삽니다</option><option value="직거래">직거래</option><option value="택배거래">택배거래</option><option value="안전거래">안전거래</option></select>
+					<select name="status"><option value="1">좋음</option><option value="2">생활감 있음</option><option value="3">좋지 않음</option></select>
+					<select name="kinds"><option value="책">책</option><option value="학용품">학용품</option><option value="기타">기타</option></select> 
+					<input type="number" name="price" placeholder="가격을 입력하세요">
+					 </td>
+					 </tr>
 					<tr>
 						<td colspan="2">
 							<textarea name="content"  rows="20" cols="100" style="resize: none;"></textarea>			
@@ -50,14 +54,14 @@ if(session.getAttribute("vo") != null){
 					<tr>
 					<td colspan="2">
 					<input name="file1" type="file">
-					<input name="file2" type="file">
-					<input name="file3" type="file">
 					</td>
 					</tr>
 					<tr>
 						<td colspan="2">
+						<input value="<%=num%>" name="num" style="display:none">
+						<input value="<%=vo.getM_id()%>" name="m_id" style="display:none">
 							<input type="reset" value="초기화">
-							<input type="submit" value="작성하기">
+							<input type="submit" value="수정완료">
 						</td>
 					</tr>
 				</table>

@@ -23,19 +23,21 @@
 <%//C:\Users\smhrd\OneDrive\바탕 화면\Web_Study\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps %>
 <%
 MemberVO vo =null;
+String userID = null;
+int num=Integer.parseInt(request.getParameter("num"));
 if(session.getAttribute("vo") != null){
 	vo = (MemberVO)session.getAttribute("vo");
-	String userID =vo.getM_id();
+	userID =vo.getM_id();
 }else{%>
 	Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
 	Response.Write("<script>location.href='Main.jsp';</script>");
 <%}%>
-<%
-		String userID = "doflsld";
+<%-- <%
+		String userID = null;
 		if(session.getAttribute("userID") != null){
 			userID = (String)session.getAttribute("userID");
-		}	
-%>
+		}
+%> --%>
 				<form action="c_Communitywrite" method="post" enctype="multipart/form-data" >
 				
 				<table id="list">
@@ -55,12 +57,14 @@ if(session.getAttribute("vo") != null){
 					</tr>
 					<tr>
 						<td colspan="2">
+						<input value="<%=num%>" name="num" style="display:none">
+						<input value="<%=vo.getM_id()%>" name="m_id" style="display:none">
 							<input type="reset" value="초기화">
 							<input type="submit" value="작성하기">
 						</td>
 					</tr>
 				</table>
-				</form>
+				</form>	
 			</div>
 			<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

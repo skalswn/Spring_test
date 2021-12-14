@@ -106,7 +106,7 @@ u_Community_commentVO cmvo = (u_Community_commentVO)session.getAttribute("cmvo")
 					
 					<%if (vo != null){%>	
 						<%if (userID.equals(ucvo.getM_ID())||userID.equals("admin")||userID.equals("skalswn")) {%>
-						<a href="u_c_Communitydelete?num=<%=ucvo.getUSED_SEQ()%>"><button>수정하기</button></a></td>
+						<a href="c_Used_Communitychange.jsp?num=<%=ucvo.getUSED_SEQ()%>"><button>수정하기</button></a></td>
 						<a href="u_c_Communitydelete?num=<%=ucvo.getUSED_SEQ()%>"><button>삭제하기</button></a></td>
 						<%}%>
 					<% }%>	

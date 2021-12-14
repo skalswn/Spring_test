@@ -19,20 +19,22 @@ import Model.DAO;
 public class u_c_Communitychange extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getServletContext().getRealPath("images"));
-		File file = new File("images"); //상대경로(class파일과 동일한 폴더) 
+		File file = new File("C:/Users/smhrd/git/PSIT/1st Project/src/main/webapp/images");
 		if(file.exists()) {
-			System.out.println("getPath : "+file.getPath());//상대경로
-			System.out.println("getAbsolutePath : "+file.getAbsolutePath());//절대경로 
+			System.out.println("해당 파일 확인");
 		}else { 
 			file.mkdir(); System.out.println("해당 파일 없음."); 
 		}
 		HttpSession session = request.getSession();
-		String savePath = request.getServletContext().getRealPath("images");
+		String savePath = "C:/Users/smhrd/git/PSIT/1st Project/src/main/webapp/images";
 		int maxSize =5*1024*1024;
 		String encoding = "euc-kr";
 		MultipartRequest multi = new MultipartRequest(request,savePath,maxSize,encoding,new DefaultFileRenamePolicy());
 		String title = multi.getParameter("title");
+		String way = multi.getParameter("way");
+		String status = multi.getParameter("status");
+		String kinds = multi.getParameter("kinds");
+		int price = Integer.parseInt(multi.getParameter("price"));
 		String content = multi.getParameter("content");
 		String filename1 = "none.png";
 		int num = Integer.parseInt(multi.getParameter("num"));
@@ -41,24 +43,14 @@ public class u_c_Communitychange extends HttpServlet {
 		} catch (Exception e) {
 		}
 		String filename2 = "none.png";
-		try {
-			filename2 = URLEncoder.encode(multi.getFilesystemName("file2"), "euc-kr");
-		} catch (Exception e) {
-		}
-		String filename3 = "none.png";
-		try {
-			filename3 = URLEncoder.encode(multi.getFilesystemName("file3"), "euc-kr");
-		} catch (Exception e) {
-		}
-		System.out.println(filename1);
 		DAO dao=new DAO();
-		int lognum=dao.community_change(title,content,filename1, filename2, filename3,num);
+		int lognum=dao.u_community_change(title,way,status, kinds, price,content,filename1,num);
 		if (lognum>0) {
 			System.out.println("게시글 수정 성공!");
-			response.sendRedirect("c_Communityview?num="+num);
+			response.sendRedirect("u_c_Communityview?num="+num);
 		}else {
 			System.out.println("게시글 수정 실패!");
-			response.sendRedirect("c_Community.jsp");
+			response.sendRedirect("u_c_Community.jsp");
 		}
 		
 	}
