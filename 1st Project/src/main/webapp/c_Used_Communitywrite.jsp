@@ -30,8 +30,17 @@
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <style>
 	table{
-		width: 50%;
-		height : 50%;
+		width: 100%;
+		height : 100%;
+		
+	}
+	table#list td.part{
+		width : 20%;
+	}
+	table#list select{
+		width: 26.3%;
+		height: 40px;
+		margin-bottom: 0.7%;
 	}
 </style>
 </head>
@@ -102,22 +111,17 @@ if(session.getAttribute("vo") != null){
 				<h2 align="center" style="padding: 1%">중고거래 게시판 - 새 글 작성</h2>
 				
 				<form action="u_c_Communitywrite" method="post" enctype="multipart/form-data" >
-				
-				<table id="list" style="margin: 1%; display: inline-block;">
+				<div align="center">
+				<table id="list" style="width: 80%;">
 					
 					<tr class="a">
-										<br>
-										<td rows="30" cols="100" style="text-align: center">제목</td>
-										<td align="left"><textarea name="title" rows="1"
-												cols="90" style="resize: none;" placeholder="제목을 입력해주세요"></textarea></td>
+										<td class = "part" style="text-align: center;">제목</td>
+										<td><textarea class="textarea" name="title" style="resize: none; height: 40px; width:80%;" placeholder="제목을 입력해주세요" ></textarea></td>
 									</tr>
-				
-					
 					<tr>
-					<td rows="30" cols="100" style="text-align: center">가격</td>
-										<td align="left"><textarea name="language" rows="1"
-												cols="20" style="resize: none;"></textarea>
-											<select name="way"><option value="삽니다">삽니다</option>
+					<td class = "part" style="text-align: center;">구분</td>
+					<td>
+					<select name="way"><option value="삽니다">삽니다</option>
 												<option value="직거래">직거래</option>
 												<option value="택배거래">택배거래</option>
 												<option value="안전거래">안전거래</option></select> <select name="status"><option
@@ -126,27 +130,32 @@ if(session.getAttribute("vo") != null){
 												<option value="3">좋지 않음</option></select> <select name="kinds"><option
 													value="책">책</option>
 												<option value="학용품">학용품</option>
-												<option value="기타">기타</option></select></td>
+												<option value="기타">기타</option></select>
+					</td>
+					</tr>
+					<tr>
+					<td class = "part" style="text-align: center;">가격</td>
+										<td align="left"><textarea name="price" style="resize: none; height: 40px; width: 26.3%"></textarea>
+											</td>
 					 </tr>
 					<tr class="a" class="cm_tr" >
 										<td style="width: 80px; text-align: center">내용</td>
-										<td><textarea name="content" rows="20" cols="90"
-												style="resize: none;"></textarea></td>
+										<td><textarea class="textarea" name="title" style="resize: none; height: 500px; width:80%;" ></textarea></td>
 									</tr>
 
 									<div style="text-align: center">
 										<tr class="a">
-											<td colspan="2" align="right"><br> <input
-												name="file1" type="file" style="width: 300px; height: 30px">
+											<td colspan="2" align="center"><input
+												name="file1" type="file" style="width: 30%; height: 30px">
 												<input name="file2" type="file"
-												style="width: 300px; height: 30px"> <input
-												name="file3" type="file" style="width: 300px; height: 30px">
+												style="width: 30%; height: 30px"> <input
+												name="file3" type="file" style="width: 30%; height: 30px">
 											</td>
 										</tr>
 									</div>
 
 									<tr>
-										<td colspan="2" align="right"><br> <input
+										<td colspan="2" align="center"><br> <input
 											type="reset" value="초기화"
 											style="background-color: #f5a425; margin-right: 2%; width: 70px; height: 30px;">
 											<input type="submit" value="작성하기"
@@ -155,7 +164,7 @@ if(session.getAttribute("vo") != null){
 									</tr>
 
 								</table>
-				
+				</div>
 				</form>
 				
 			</div>

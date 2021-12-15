@@ -134,7 +134,8 @@ if(session.getAttribute("vo") != null){
 												</td>
 											</tr>
 										<tr>
-										<td colspan="2" align="right"><br> <input
+										<td colspan="2" align="center">
+										<input
 											type="reset" value="ÃÊ±âÈ­"
 											style="background-color: #f5a425; margin-right: 2%; width: 70px; height: 30px;">
 											<input value="<%=cvo.getC_seq()%>" name="num"
