@@ -48,6 +48,43 @@ if(session.getAttribute("vo") != null){
 	Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
 	Response.Write("<script>location.href='Main.jsp';</script>");
 <%}%>
+
+<header class="main-header clearfix" role="header">
+		<div class="logo">
+			<a href="Main.jsp"><em>PSIT</em> <span
+				style="font-size: x-large;">Personal IT</span></a>
+		</div>
+		<a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+		<nav id="menu" class="main-nav" role="navigation">
+			<ul class="main-menu">
+				<li><a href="Main.jsp">Home</a></li>
+				<% if(vo!=null){%>
+				<li><a href="#">직무탐색</a>
+					<ul class="sub-menu">
+						<li><a href="P_Psit.jsp">PSIT 검사</a></li>
+						<li><a href="P_Psit_Result.jsp">My PSIT</a></li>
+					</ul></li>
+				<li><a href="StudyPage.jsp">단계별학습</a></li>
+				<li><a class="external">커뮤니티</a>
+					<ul class="sub-menu">
+						<li><a href="c_Community.jsp">자유게시판</a></li>
+						<li><a href="c_Study_Community.jsp">스터디 게시판</a></li>
+						<li><a href="c_Used_Community.jsp">중고거래 게시판</a></li>
+					</ul></li>
+				<%if(vo.getM_id().equals("admin")) { %>
+				<li><a href="ManageUser.jsp" class="external">회원관리</a></li>
+				<%}else{ %>
+				<li><a href="My_page.jsp" class="external">마이페이지</a></li>
+				<%} %>
+				<li><a href="LogoutService" class="external">로그아웃</a></li>
+				<%} else {%>
+				<li><a href="Login.jsp">Login</a></li>
+				<li><a href="Join.jsp">Join</a></li>
+				<%} %>
+			</ul>
+		</nav>
+	</header>
+	
 <section style="color: white; text-align: center;"
 		class="section coming-soon" data-section="section3">
 		<div class="col-8  col-12-narrower imp-narrower"

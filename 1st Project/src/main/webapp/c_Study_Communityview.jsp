@@ -19,7 +19,7 @@
 	href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900"
 	rel="stylesheet">
 
-<title>PSIT.com - Free_Community</title>
+<title>PSIT.com - Study_Community</title>
 
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -35,11 +35,30 @@ table {
 	height: 50%;
 }
 #com {
-	width: 44%;
-	height: 80%;
-	border : 1px solid #444444;
+	width: 840px;
+	height: 30px;
+	border : 1px dotted #444444;
 	margin-left: 28%;
+
 	}
+.com1 {
+width : 30%;
+border : 1px dashed #444444;
+}
+.com2 {
+width : 67%;
+text-align: left;
+display: block;
+
+}
+.com3 {
+width : 3%;
+margin: 0 auto;
+}
+#com4 {
+font-size: 14px;
+
+}
 </style>
 </head>
 <body>
@@ -106,7 +125,7 @@ s_Community_commentVO cmvo = (s_Community_commentVO)session.getAttribute("cmvo")
 							스터디게시판 -<%=scvo.getSTUDY_SUBJECT()%></h2>
 						<div align="left" style="margin-left: 550px">
 							<a href="c_Study_Community.jsp"><button
-									style="background-color: #f5a425; width: 100px; height: 30px; color: white;">뒤로가기</button></a>
+									style="background-color: #f5a425; width: 100px; height: 30px; color: white; font-size: 14px;">뒤로가기</button></a>
 						</div>
 
 						<div id="board">
@@ -140,11 +159,11 @@ s_Community_commentVO cmvo = (s_Community_commentVO)session.getAttribute("cmvo")
 							<div align="right" style="margin-right: 27%">
 								<span style="width: 100px; height: 30px;"> <a
 									href="c_Study_Communitychange.jsp?num=<%=scvo.getSTUDY_SEQ()%>">
-										<button style="background-color: #f5a425; color: white">수정하기</button>
+										<button style="background-color: #f5a425; color: white; font-size: 14px;">수정하기</button>
 								</a>
 								</span> <span style="width: 100px; height: 30px;"> <a
 									href="s_c_Communitydelete?num=<%=scvo.getSTUDY_SEQ()%>">
-										<button style="background-color: #f5a425; color: white">삭제하기</button>
+										<button style="background-color: #f5a425; color: white; font-size: 14px;">삭제하기</button>
 										<br>
 								</a>
 								</span>
@@ -163,22 +182,29 @@ s_Community_commentVO cmvo = (s_Community_commentVO)session.getAttribute("cmvo")
 								</span>
 							</form>
 
-							<span >
+							<span > <br><span id = "com4">댓글란</span>
 								<%if (cm_arr != null) {%>
 								<%for (int i = 0; i < cm_arr.size(); i++) {%>
 								<table id="com">
-									<tr>
-										<td style ="text-align : center; display :block;">
+									
+									<tr style="background-color: #565e6e;">
+										<td class="com1">
 											<span>작성자 : <%=cm_arr.get(i).getM_ID()%>  </span>
 										</td>
-										<td style ="text-align : left; display :block;" >
-											<span><%=cm_arr.get(i).getC_STUDY_CONTENT()%></span>
-											<a href="s_c_Commentdelete?num=<%=cm_arr.get(i).getSTUDY_SEQ()%>">
-											<button style="background-color: #f5a425; width: 70px; height: 20px; color: white;">삭제하기</button>
+										<td class="com2">
+											<div>
+												<span style="line-height: 30px; margin : 0 auto; ">
+													<span style="vertical-align: middle;text-align: left;"><%=cm_arr.get(i).getC_STUDY_CONTENT()%></span>
+												</span>
+											</div>
+											
 										</td>
-										
-										</a>
-									</span>
+										<td class="com3">
+											<a href="s_c_Commentdelete?num=<%=cm_arr.get(i).getC_STUDY_SEQ()%>">
+											<button style="background-color: #f5a425; width: 30px; height: 30px; color: white;">x</button></a>
+										</td>
+									
+								
 									</tr>
 								</table>
 								<%}%>
@@ -199,13 +225,14 @@ s_Community_commentVO cmvo = (s_Community_commentVO)session.getAttribute("cmvo")
 					
 
 				</article>
+				<br><br>
 				<span style="width: 100px; height: 30px;"> <a
 					href="past_s?num=<%=scvo.getSTUDY_SEQ()%>">
-						<button style="background-color: #f5a425; color: white">이전글</button>
+						<button style="background-color: #f5a425; color: white; font-size: 14px;">이전글</button>
 				</a> </a>
 				</span> <span style="width: 100px; height: 30px;"> <a
 					href="next_s?num=<%=scvo.getSTUDY_SEQ()%>">
-						<button style="background-color: #f5a425; color: white">다음글</button>
+						<button style="background-color: #f5a425; color: white; font-size: 14px;">다음글</button>
 				</a> </a>
 				</span>
 			</div>
