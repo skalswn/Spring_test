@@ -33,7 +33,6 @@ public class CheckPhase extends HttpServlet {
 		String lang = codingvo.getCoding_lang();
 		System.out.println(lang);
 		int cnt = dao.CheckPhase(seq, m_id, lang);
-		
 		if(cnt>0) {
 			System.out.println("단계저장성공");
 		}
@@ -45,7 +44,7 @@ public class CheckPhase extends HttpServlet {
 
 		if(chvo!=null) {
 			System.out.println("chvo보내기성공!");
-			request.setAttribute("chvo", chvo);
+			request.setAttribute("lang", lang);
 			RequestDispatcher rd = request.getRequestDispatcher("ShowAllCodingService");
 			rd.forward(request, response);
 		}
