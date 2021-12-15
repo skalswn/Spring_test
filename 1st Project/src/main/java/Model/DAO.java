@@ -751,17 +751,54 @@ public class DAO {
 			if(rs.next()==true) {
 				past_seq=rs.getInt("plan_step");
 			}
-			if (seq>past_seq) {
-				String sql = "update tbl_coding_plan set plan_step=? where m_id=? and plan_lang=?";
-				psmt = conn.prepareStatement(sql);
-				psmt.setInt(1, seq);
-				psmt.setString(2, m_id);
-				psmt.setString(3, lang);
-				cnt = psmt.executeUpdate();
+			if(lang.equals("자바")) {
+				if (seq>past_seq) {
+					String sql = "update tbl_coding_plan set plan_step=? where m_id=? and plan_lang=?";
+					psmt = conn.prepareStatement(sql);
+					psmt.setInt(1, seq-30);
+					psmt.setString(2, m_id);
+					psmt.setString(3, lang);
+					cnt = psmt.executeUpdate();
+				}else {
+					cnt=0;
+				}
+			}else if(lang.equals("자바스크립트")) {
+				if (seq>past_seq) {
+					String sql = "update tbl_coding_plan set plan_step=? where m_id=? and plan_lang=?";
+					psmt = conn.prepareStatement(sql);
+					psmt.setInt(1, seq);
+					psmt.setString(2, m_id);
+					psmt.setString(3, lang);
+					cnt = psmt.executeUpdate();
+				}else {
+					cnt=0;
+				}
+			}else if(lang.equals("HTML")) {
+				if (seq>past_seq) {
+					String sql = "update tbl_coding_plan set plan_step=? where m_id=? and plan_lang=?";
+					psmt = conn.prepareStatement(sql);
+					psmt.setInt(1, seq-60);
+					psmt.setString(2, m_id);
+					psmt.setString(3, lang);
+					cnt = psmt.executeUpdate();
+				}else {
+					cnt=0;
+				}
+			}else if(lang.equals("파이썬")) {
+				if (seq>past_seq) {
+					String sql = "update tbl_coding_plan set plan_step=? where m_id=? and plan_lang=?";
+					psmt = conn.prepareStatement(sql);
+					psmt.setInt(1, seq-90);
+					psmt.setString(2, m_id);
+					psmt.setString(3, lang);
+					cnt = psmt.executeUpdate();
+				}else {
+					cnt=0;
+				}
 			}else {
 				cnt=0;
 			}
-			
+						
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1589,6 +1626,7 @@ public class DAO {
      }
 		return img;
 	}
+	
 }	
 
 

@@ -32,6 +32,7 @@ TemplateMo 557 Grad School
 https://templatemo.com/tm-557-grad-school
 
 -->
+
 </head>
 
 
@@ -48,16 +49,10 @@ if(vo!=null){
 	chvoarr = dao.selectPhase(id);
 }
 int amount_java = dao.amount_java();
-//int present_java=dao.present_java();
 int amount_javascript = dao.amount_javascript();
-//int present_javascript=dao.present_javascript();
 int amount_html=dao.amount_html();
-//int present_html=dao.present_html();
 int amount_python=dao.amount_python();
-//int present_python=dao.present_python();
-
 %>
-   
   <!--header-->
   <header class="main-header clearfix" role="header">
     <div class="logo">
