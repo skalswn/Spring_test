@@ -124,7 +124,7 @@ int amount_python=dao.amount_python();
 						<h4 style = "margin : 5%; font-size: 40px; text-transform: uppercase; font-weight: 800; color: #fff; letter-spacing: 1px;">학습진행현황</h4>
 							<table>
 								<%for(int i =0;i<chvoarr.size();i++) { %>
-								<%System.out.println(chvoarr.size()); %>
+								<%out.println(chvoarr.size()); %>
 								<% CheckVO chvo = chvoarr.get(i); %>
 										<tr>
 										<td class="language_a"><%=chvo.getLang() %> </td>
