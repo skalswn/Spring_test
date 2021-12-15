@@ -4,6 +4,7 @@
 <%@page import="Model.DAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@page import="java.net.URLDecoder"%>        
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +36,7 @@ int seq = Integer.parseInt(request.getParameter("seq"));
 DAO dao = new DAO();
 CodingVO codingvo = dao.ShowStudyCoding(seq);
 //CodingExplainVO codingexplainvo = dao.CodingExplain(seq);
+String coding_img =dao.ShowimgCoding(seq);
 %>
 <!--header-->
   <header class="main-header clearfix" role="header">
@@ -78,6 +80,9 @@ CodingVO codingvo = dao.ShowStudyCoding(seq);
   <br><br><br><br><br><br>
 	<div style="white-space:pre;">
 		<p>선택한 문제 나올 곳</p>
+		<%if(coding_img !=null){%>
+			<img src="./images/<%=URLDecoder.decode(coding_img, "euc-kr") %>">
+		<%} %>
 		<%if(seq==codingvo.getCoding_seq()){ %>
 			<%System.out.println("문제보기 성공!"); %>
 			<p><%=codingvo.getCoding_q()%></p>
