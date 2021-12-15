@@ -121,103 +121,95 @@ section.coming-soon form{
       </div>
       <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
       <nav id="menu" class="main-nav" role="navigation">
-         <ul class="main-menu">
-            <li><a href="Main.jsp">Home</a></li>
-             <!-- <li class="has-submenu"><a href="">About IT</a>
-               <ul class="sub-menu">
-                  <li><a href="Main.jsp#section2">IT란?</a></li>
-                  <li><a href="#section4">IT직무</a></li>
-                  <li><a href="#section3">IT전망</a></li>
-                  <li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li>
-               </ul></li>  -->
-            <%
-            if (vo != null) {
-            %>
-            <li><a href="#">직무탐색</a>
-                    <ul class="sub-menu">
-                     <li><a href="P_Psit.jsp">PSIT 검사</a></li>
-                     <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
-                </ul></li>
-            <!-- <li><a href="#section5">Video</a></li> -->
-            <li><a href="#section6">단계별학습</a></li>
-            <li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
-               <%if(vo.getM_id().equals("admin")){ %>
-                  <li><a href="ManageUser.jsp" class="external">회원관리</a></li>
-               <%}else{ %>                  
-                  <li><a href="My_page.jsp" class="external">마이페이지</a></li>
-               <%} %>
-            <li><a href="LogoutService">로그아웃</a></li>
-            <%
-            } else {
-            %>
-            <li><a href="Login.jsp">Login</a></li>
-            <li><a href="Join.jsp">Join</a></li>
-            <%
-            }
-            %>
-         </ul>
-      </nav>
+			<ul class="main-menu">
+				<li><a href="Main.jsp">Home</a></li>
+				<% if(vo!=null){%>
+				<li><a href="#">직무탐색</a>
+	        	<ul class="sub-menu">
+	            <li><a href="P_Psit.jsp">PSIT 검사</a></li>
+	            <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
+	          	</ul></li>
+				<li><a href="StudyPage.jsp">단계별학습</a></li>
+				<li><a class="external">커뮤니티</a>
+					<ul class="sub-menu">
+						<li><a href="c_Community.jsp">자유게시판</a></li>
+						<li><a href="c_Study_Community.jsp">스터디 게시판</a></li>
+						<li><a href="c_Used_Community.jsp">중고거래 게시판</a></li>
+						</ul></li>
+						<%if(vo.getM_id().equals("admin")){ %>
+						<li><a href="ManageUser.jsp" class="external">회원관리</a></li>
+						<%}else{ %>
+						<li><a href="My_page.jsp" class="external">마이페이지</a></li>
+						<%} %>
+				<li><a href="LogoutService" class="external">로그아웃</a></li>
+				<%} else {%>
+				<li><a href="Login.jsp">Login</a></li>
+				<li><a href="Join.jsp">Join</a></li>
+				<%} %>
+			</ul>
+			</nav>
    </header>
-   
-   <section style="color: white;"
-		class="section coming-soon" data-section="section3">
+
+	<section style="color: white;" class="section coming-soon"
+		data-section="section3">
 		<div class="col-8  col-12-narrower imp-narrower"
 			style="max-width: 90% !important; height: 100%;">
 			<div id="content" style="height: 100%">
- <table id="tbl">
- <td>
-	  <div id="lang">    
-	   <%if(vo.getM_id().equals("admin")){ %>
-	      <a href="InsertCoding.jsp"><button>문제추가</button></a>
-	      <%} %>
-	   <form action="ShowAllCodingService" method="post" style="text-align: center;">
-	      <div id="aa">
-	         파이썬<input type="radio" name="lang" value="파이썬"> 
-	         <span>자바<input type="radio" name="lang" value="자바"> </span>
-	         <span>HTML/CSS<input type="radio" name="lang" value="HTML"></span>
-	         <span>자바스크립트<input type="radio" name="lang" value="자바스크립트"></span>
-	      </div> 
-	      <input id = "bb" type="submit" value="문제보기">
-	   </form>
-	   </div>
-	</td>
-	<td>
-	<!--문제나오는 부분  ---->
-	   <%if(codingarray!=null){ %>
-	      <%for(int i=0; i<codingarray.size(); i++){%>
-	         <%CodingVO codingvo=codingarray.get(i); %>
-	         <br>
-	   <div id="phase" >
-	   <ul>
-	   
-	         <%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%>
-	         <a id="gostudy" href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a>
-	            <%if(chvo!=null){ %>
-	               <%if(chvo.getStep()>=codingvo.getCoding_seq()){%>
-	                  <img src="./images/checkbook.png" width=50px height=50px>
-	               <%}else{ %>
-	                  <img src="./images/nocheckbook.png" width=50px height=50px>
-	               <%} %>
-	            <%} %>
-	   </ul>
-	   </div>
-	         
-	         <%if(vo.getM_id().equals("admin")){ %>
-	            <button onclick="location.href='DeleteCodingService?seq=<%= codingvo.getCoding_seq() %>';">문제삭제</button>
-	         <%} %>
-	      <%} %>
-	   <%} %>
-	<!--for문 끝  ----->
-	
+				<table id="tbl">
+					<tr>
+						<td>
+							<div id="lang">
+								<%if(vo.getM_id().equals("admin")){ %>
+								<a href="InsertCoding.jsp"><button>문제추가</button></a>
+								<%} %>
+								<form action="ShowAllCodingService" method="post"
+									style="text-align: center;">
+									<div id="aa">
+										파이썬<input type="radio" name="lang" value="파이썬"> <span>자바<input
+											type="radio" name="lang" value="자바">
+										</span> <span>HTML/CSS<input type="radio" name="lang"
+											value="HTML"></span> <span>자바스크립트<input type="radio"
+											name="lang" value="자바스크립트"></span>
+									</div>
+									<input id="bb" type="submit" value="문제보기">
+								</form>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<!--문제나오는 부분  ----> <%if(codingarray!=null){ %> <%for(int i=0; i<codingarray.size(); i++){%>
+							<%CodingVO codingvo=codingarray.get(i); %> <br>
+							<div id="phase">
+								<ul>
+
+									<%=(i+1)%>단계 / 시퀀스 :
+									<%=codingvo.getCoding_seq()%>
+									<a id="gostudy"
+										href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a>
+									<%if(chvo!=null){ %>
+									<%if(chvo.getStep()>=codingvo.getCoding_seq()){%>
+									<img src="./images/checkbook.png" width=50px height=50px>
+									<%}else{ %>
+									<img src="./images/nocheckbook.png" width=50px height=50px>
+									<%} %>
+									<%} %>
+								</ul>
+							</div> <%if(vo.getM_id().equals("admin")){ %>
+							<button
+								onclick="location.href='DeleteCodingService?seq=<%= codingvo.getCoding_seq() %>';">문제삭제</button>
+							<%} %> <%} %> <%} %> <!--for문 끝  ----->
+						</td>
+					</tr>
+				</table>
+
 			</div>
-			</div>
-		
-		</section>
-	</td>
-</table>
+		</div>
+
+	</section>
 
 
-   <footer>
+	<footer>
       <div class="container">
          <div class="row">
             <div class="col-md-12">

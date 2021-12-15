@@ -49,31 +49,33 @@ https://templatemo.com/tm-557-grad-school
     </div>
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
-      <ul class="main-menu">
-        <li><a href="Main.jsp">Home</a></li>
-        <!-- <li class="has-submenu"><a href="">About IT</a>
-          <ul class="sub-menu">
-            <li><a href="#section2">IT란?</a></li>
-            <li><a href="#section4">IT직무</a></li>
-            <li><a href="#section3">IT전망</a></li>
-            <li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li>
-          </ul> -->
-        </li>
-     <% if(vo!=null){%>
-        <li><a href="#">직무탐색</a>
-    	<ul class="sub-menu">
-        <li><a href="P_Psit.jsp">PSIT 검사</a></li>
-        <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
-      	</ul></li>
-        <!-- <li><a href="#section5">Video</a></li> -->
-        <li><a href="CodingStudy.jsp">단계별학습</a></li>
-        <li><a href="c_Community.jsp" class="external">커뮤니티</a></li>
-        <li><a href="Main.jsp" class="external">로그아웃</a></li>
-     <%} else {%>
-        <li><a href="Login.jsp">Login</a></li>
-        <li><a href="Join.jsp">Join</a></li>        
-     <%} %>
-        </ul>
+			<ul class="main-menu">
+				<li><a href="Main.jsp">Home</a></li>
+				<% if(vo!=null){%>
+				<li><a href="#">직무탐색</a>
+	        	<ul class="sub-menu">
+	            <li><a href="P_Psit.jsp">PSIT 검사</a></li>
+	            <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
+	          	</ul></li>
+				<li><a href="StudyPage.jsp">단계별학습</a></li>
+				<li><a class="external">커뮤니티</a>
+					<ul class="sub-menu">
+						<li><a href="c_Community.jsp">자유게시판</a></li>
+						<li><a href="c_Study_Community.jsp">스터디 게시판</a></li>
+						<li><a href="c_Used_Community.jsp">중고거래 게시판</a></li>
+						</ul></li>
+						<%if(vo.getM_id().equals("admin")){ %>
+						<li><a href="ManageUser.jsp" class="external">회원관리</a></li>
+						<%}else{ %>
+						<li><a href="My_page.jsp" class="external">마이페이지</a></li>
+						<%} %>
+				<li><a href="LogoutService" class="external">로그아웃</a></li>
+				<%} else {%>
+				<li><a href="Login.jsp">Login</a></li>
+				<li><a href="Join.jsp">Join</a></li>
+				<%} %>
+			</ul>
+			</nav>
     
   </header>
 

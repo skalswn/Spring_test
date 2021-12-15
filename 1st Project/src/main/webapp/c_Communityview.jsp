@@ -123,15 +123,15 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 								<table id="list">
 									<tr style="height: 40px">
 										<td class = "part" style="text-align: center">작성자</td>
-										<td style="text-align: left"><h6><%=cvo.getWriter()%></h6></td>
+										<td style="text-align: left;"><h6 style="margin-left: 1%;"><%=cvo.getWriter()%></h6></td>
 									</tr>
 									<tr style="height: 40px">
 										<td class = "part" style="text-align: center">제목</td>
-										<td style="text-align: left"><h6><%=cvo.getTitle()%></h6></td>
+										<td style="text-align: left; margin-left: 1%;"><h6 style="margin-left: 1%;"><%=cvo.getTitle()%></h6></td>
 									</tr>
 									<tr class="a" class="cm_tr" style="height: 50%">
 										<td rowspan = "2" class = "part" style="text-align: center;">내용</td>
-										<td style="text-align: left; vertical-align: initial;"><h6><%=cvo.getContent()%></h6></td>
+										<td style="text-align: left; vertical-align: initial; margin-left: 1%;"><h6 style="margin-left: 1%;"><%=cvo.getContent()%></h6></td>
 									</tr>
 
 									<tr style="height: 30%">
