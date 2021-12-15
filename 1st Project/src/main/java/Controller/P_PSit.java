@@ -1,6 +1,8 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,8 +14,39 @@ public class P_PSit extends HttpServlet {
        
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+	
 		request.setCharacterEncoding("euc-kr");
 	
+//	if(request.getParameter("s_psit1")==null) {
+//		response.setContentType("text/html; charset=UTF-8"); 
+//		PrintWriter writer = response.getWriter(); 
+//		writer.println("<script>alert('1번 문항을 체크하지 않았습니다.'); history.back();</script>");
+//		writer.close();
+//	}
+	for(int i=1;i<27;i++) {
+		
+	
+	  if(request.getParameter("s_psit"+i)==null) {
+		response.setContentType("text/html; charset=UTF-8"); 
+		PrintWriter writer = response.getWriter(); 
+		writer.println("<script>alert('"+i+"번 문항을 체크하지 않았습니다.'); history.back();</script>");
+		writer.close();
+	  	}
+	  }
+	
+	 
+    
+    
+    
+    
+    
+	   
+	   
+	   
+	   
+	  
+		
 		String arr[] = new String[30];
 		int array[] = new int[30];
 		int ENFJ = 0;
@@ -35,6 +68,9 @@ public class P_PSit extends HttpServlet {
 		
 		String result = "";
 		
+		
+	
+			
 		
 			
 		for(int i =0 ; i<26; i++ ) {
@@ -220,6 +256,7 @@ public class P_PSit extends HttpServlet {
 		System.out.println((result) +(array[29]));
 		 String sample = result + array[29];
 		response.sendRedirect("Psit_Result.jsp?sample="+sample);
+
 		
 		
 		
@@ -227,4 +264,4 @@ public class P_PSit extends HttpServlet {
 //		Integer.toString(ENFJ);
 		
 	}
-} 
+}        

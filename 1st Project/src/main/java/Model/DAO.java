@@ -400,20 +400,16 @@ public class DAO {
 			String dbpw = "hr";
 
 			conn = DriverManager.getConnection(url, dbid, dbpw);
-
 			String sql = "insert into tbl_coding values(tbl_coding_seq.nextval,?,?,?,?)";
-
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, coding_lang);
 			psmt.setString(2, coding_q);
 			psmt.setString(3, coding_a);
 			psmt.setString(4, id);
 			cnt = psmt.executeUpdate();
-			if(filename1.equals("none.png")) {
-				
-			}else {
-				String sql0="select CODING_SEQ from tbl_coding where=";
-				psmt = conn.prepareStatement(sql);
+			if(filename1 != null) {
+				String sql0="select CODING_SEQ from tbl_coding where CODING_LANG=? and CODING_Q=? and CODING_A=? and M_ID=?";
+				psmt = conn.prepareStatement(sql0);
 				psmt.setString(1, coding_lang);
 				psmt.setString(2, coding_q);
 				psmt.setString(3, coding_a);
@@ -422,14 +418,15 @@ public class DAO {
 				if(rs.next()==true) {
 					seq_img = rs.getInt("CODING_SEQ");
 				}
+				System.out.println(seq_img);
 				String sql1="insert into TBL_CODING_IMG(IMG,CODING_LANG,CODING_Q_I,CODING_SEQ) values(?,?,0,?)";
-				psmt = conn.prepareStatement(sql);
+				psmt = conn.prepareStatement(sql1);
 				psmt.setString(1, filename1);
 				psmt.setString(2, coding_lang);
 				psmt.setInt(3, seq_img);
 				lognum = psmt.executeUpdate();
+				System.out.println(lognum);
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -745,11 +742,11 @@ public class DAO {
 		try {
 			connection();
 			int past_seq=0;
-			String sql1 = "select plan_step from tbl_coding_plan where m_id=? ";
-			
+			String sql1 = "select plan_step from tbl_coding_plan where m_id=? and PLAN_LANG=?";
+			System.out.println(m_id);
 			psmt = conn.prepareStatement(sql1);
 			psmt.setString(1, m_id);
-			
+			psmt.setString(2, lang);
 			rs = psmt.executeQuery();
 			if(rs.next()==true) {
 				past_seq=rs.getInt("plan_step");

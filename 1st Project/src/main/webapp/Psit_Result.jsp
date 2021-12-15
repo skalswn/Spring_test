@@ -1,3 +1,4 @@
+<%@page import="Model.DAO"%>
 <%@page import="Model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
@@ -15,6 +16,13 @@ MemberVO vo =null;
 if (session.getAttribute("vo") != null){
 	vo=(MemberVO)session.getAttribute("vo");
 }
+
+
+else{%>
+Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
+Response.Write("<script>location.href='Main.jsp';</script>");
+<%}
+DAO dao = new DAO();
 String job_no ="";
 %>
 <!-- 파라미터?? -->
@@ -84,7 +92,8 @@ String job_no ="";
 	<%job_no=job_no+"1"; %>
 <% }%>
 <%if (vo != null){%>
-	<a href="c_Psit?sample=<%=sample%>">저장하기</a>
+
+	<a href="c_Psit?sample=<%=sample%>">저장하기 후 직무 확인하기</a>
 <% }else{%>
 	<a href="http://localhost:8081/1st_Project/Road_map.jsp?num=1">해당 직무 설명보러가기</a>
 <%} %>
