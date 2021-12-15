@@ -44,7 +44,7 @@ public class CheckPhase extends HttpServlet {
 
 		if(chvo!=null) {
 			System.out.println("chvo보내기성공!");
-			request.setAttribute("lang", lang);
+			request.setAttribute("chvo", chvo);
 			RequestDispatcher rd = request.getRequestDispatcher("ShowAllCodingService");
 			rd.forward(request, response);
 		}

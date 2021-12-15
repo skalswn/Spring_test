@@ -34,19 +34,23 @@ table {
 	width: 50%;
 	height: 50%;
 }
+table#list {
+    margin: 1%;
+    display: inline-table;
+    width: 80%;
+    height: 600px;
+    text-align: center;
+    border-collapse: separate;
+}
 #com {
-	width: 840px;
-	height: 30px;
-	border : 1px dotted #444444;
-	margin-left: 28%;
-
+	width: 100%;
+	height: 40px;
 	}
 .com1 {
-width : 30%;
-border : 1px dashed #444444;
+
 }
 .com2 {
-width : 67%;
+width : 100%;
 text-align: left;
 display: block;
 
@@ -57,7 +61,14 @@ margin: 0 auto;
 }
 #com4 {
 font-size: 14px;
-
+}
+table#list td{
+	background-color: rgba(250,250,250,0.3);
+}
+table#list td.part{
+	font-size : 20px;
+	letter-spacing: 1px;
+	width: 30%;
 }
 </style>
 </head>
@@ -118,55 +129,51 @@ s_Community_commentVO cmvo = (s_Community_commentVO)session.getAttribute("cmvo")
 		<div class="col-8  col-12-narrower imp-narrower"
 			style="max-width: 90% !important; display: inline-block;">
 			<div id="content">
-
 				<article>
 					<div id="board" style="background-color: rgba(250, 250, 250, 0.2);">
-						<h2 align="center" style="padding: 1%">
-							스터디게시판 </h2>
-						<div align="left" style="margin-left: 550px">
-							<a href="c_Study_Community.jsp"><button
-									style="background-color: #f5a425; width: 100px; height: 30px; color: white; font-size: 14px;">뒤로가기</button></a>
-						</div>
-
-						<div id="board">
-							<table id="list" style="margin: 1%; display: inline-block;">
-								<tr class="a" align="left">
-									<br>
-									<td rows="30" cols="100" style="text-align: center">분류</td>
-									<td><textarea name="title" rows="1" cols="20"
-											style="resize: none;"><%=scvo.getSTUDY_LANG() %></textarea></td>
+					<div align="center">
+						<h2 align="center" style="padding-top: 2%; padding-bottom: 3%">
+							스터디게시판</h2>
+						<table id="list">
+									<tr style="height: 40px">
+									<td class = "part" style="text-align: center">분류</td>
+									<td style="text-align: left; margin-left: 1%;"><h6 style="margin-left: 1%;"> <%=scvo.getSTUDY_LANG() %></h6></td>
 								</tr>
-								<tr class="a">
-									<td rows="30" cols="100" style="text-align: center"><br>제목</td>
-									<td><textarea name="title" rows="1" cols="90"
-											style="resize: none;" placeholder="제목을 입력해주세요"><%=scvo.getSTUDY_SUBJECT() %></textarea></td>
+								<tr style="height: 40px">
+									<td class = "part" style="text-align: center">제목</td>
+									<td style="text-align: left; margin-left: 1%;"><h6 style="margin-left: 1%;"><%=scvo.getSTUDY_SUBJECT() %></h6></td>
 								</tr>
-								<tr class="a" class="cm_tr" style="height: 10px">
-									<td style="width: 80px; text-align: center">내용</td>
-									<td><textarea name="content" rows="20" cols="90"
-											style="resize: none;"><%=scvo.getSTUDY_CONTENT()%></textarea></td>
+								<tr class="a" class="cm_tr" style="height: 50%">
+									<td rowspan = "2" class = "part" style="text-align: center;">내용</td>
+									<td style="text-align: left; vertical-align: initial; margin-left: 1%;"><h6 style="margin-left: 1%;"><%=scvo.getSTUDY_CONTENT()%></h6></td>
 								</tr>
-								<%if(scvo.getSTUDY_FILE1() !=null) { %>
-								<tr>
-									<td colspan="2"><img
+								<tr style="height: 30%">
+								<%if(scvo.getSTUDY_FILE1().equals("none.png")) { %>
+									<td><p>첨부된 이미지가 없습니다.</p></td>
+								<%}else if(scvo.getSTUDY_FILE1() !=null){%>
+									<td><img
 										src="./images/<%=scvo.getSTUDY_FILE1() %>"></td>
+								<%} %>
 								</tr>
-								<%}%>
-
 							</table>
+							<div style="text-align: center;">
+							<div align="left" style="width: 40%; display:inline-block; margin-bottom: 40px;">
+							<a href="c_Study_Community.jsp"><button
+									style="background-color: #f5a425; width: 20%; height: 30px; color: white; border: none;">뒤로가기</button></a>
+							</div>
 							<%if (vo != null) {%>
 							<%if (userID.equals(scvo.getM_ID()) || userID.equals("admin") || userID.equals("skalswn")) {%>
-							<div align="right" style="margin-right: 27%">
-								<span style="width: 100px; height: 30px;"> <a
+							<div align="right" style="width: 40%; display:inline-block; margin-bottom: 40px;">
+							<span style="width: 100px; height: 30px;"> <a
 									href="c_Study_Communitychange.jsp?num=<%=scvo.getSTUDY_SEQ()%>">
-										<button style="background-color: #f5a425; color: white; font-size: 14px;">수정하기</button>
+										<button style="background-color: #f5a425; color: white; border: none; width: 10%; height: 30px;">수정</button>
 								</a>
 								</span> <span style="width: 100px; height: 30px;"> <a
 									href="s_c_Communitydelete?num=<%=scvo.getSTUDY_SEQ()%>">
-										<button style="background-color: #f5a425; color: white; font-size: 14px;">삭제하기</button>
-										<br>
+										<button style="background-color: #f5a425; color: white; border: none; width: 10%; height: 30px;">삭제</button>
 								</a>
 								</span>
+							</div>
 							</div>
 							<%}%>
 							<%}%>
@@ -175,69 +182,54 @@ s_Community_commentVO cmvo = (s_Community_commentVO)session.getAttribute("cmvo")
 								<span> <input value="<%=scvo.getSTUDY_SEQ()%>"
 									name="num" style="display: none"> <input type="text"
 									name="C_comment" id="C_comment"
-									style="display: inline; width: 700px"> <input
+									style="display: inline; width: 70%;"> <input
 									type="submit" value="댓글 작성"
-									style="display: inline; width: 100px">
-
+									style="display: inline; width: 10%;">
 								</span>
-							</form>
 
-							<span > <br><span id = "com4">댓글란</span>
+								<table id="com" style="border:none; width: 80%; display: inline-table;">
+								<tr>
+									<!-- <td colspan="2">댓글란</td> -->
+								</tr>
 								<%if (cm_arr != null) {%>
 								<%for (int i = 0; i < cm_arr.size(); i++) {%>
-								<table id="com">
-									
 									<tr style="background-color: #565e6e;">
-										<td class="com1">
-											<span>작성자 : <%=cm_arr.get(i).getM_ID()%>  </span>
+										<td class="com1" style="text-align: left;">
+											<h5><%=cm_arr.get(i).getM_ID()%><p><%=cm_arr.get(i).getREG_DATE()%></p></h5>
 										</td>
+									</tr>
+									<tr style="background-color: #565e6e;">
 										<td class="com2">
 											<div>
 												<span style="line-height: 30px; margin : 0 auto; ">
 													<span style="vertical-align: middle;text-align: left;"><%=cm_arr.get(i).getC_STUDY_CONTENT()%></span>
 												</span>
 											</div>
-											
 										</td>
-										<td class="com3">
-											<a href="s_c_Commentdelete?num=<%=cm_arr.get(i).getC_STUDY_SEQ()%>">
-											<button style="background-color: #f5a425; width: 30px; height: 30px; color: white;">x</button></a>
+										<td style="text-align: right;">
+											<a href="s_c_Commentdelete?num=<%=cm_arr.get(i).getC_STUDY_SEQ()%>">삭제</a>
 										</td>
-									
-								
 									</tr>
+									<tr><td colspan="2"><hr color = "white"></td></tr>
+								<%}%>
+								<%}%>
 								</table>
-								<%}%>
-								<%}%>
-
-								<br>
-
-
-
-							</span>
+							</form>
+							</div>
 						</div>
-
-
-
-						
-
-					</div>
-					
-
-				</article>
 				<br><br>
 				<span style="width: 100px; height: 30px;"> <a
 					href="past_s?num=<%=scvo.getSTUDY_SEQ()%>">
-						<button style="background-color: #f5a425; color: white; font-size: 14px;">이전글</button>
-				</a> </a>
+						<button	style="background-color: #f5a425; color: white; font-size: 14px; border: none; width: 5%; height: 30px;">이전글</button>
+				</a>
 				</span> <span style="width: 100px; height: 30px;"> <a
 					href="next_s?num=<%=scvo.getSTUDY_SEQ()%>">
-						<button style="background-color: #f5a425; color: white; font-size: 14px;">다음글</button>
-				</a> </a>
+						<button	style="background-color: #f5a425; color: white; font-size: 14px; border: none; width: 5%; height: 30px;">다음글</button>
+				</a>
 				</span>
+				</article>
+				</div>
 			</div>
-		</div>
-
 	</section>
 
 	<!-- Scripts -->
