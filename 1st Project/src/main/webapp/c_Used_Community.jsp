@@ -16,7 +16,7 @@
 	href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900"
 	rel="stylesheet">
 
-<title>PSIT.com - Free_Community</title>
+<title>PSIT.com - Used_Community</title>
 
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -161,6 +161,9 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 							<button type="button"
 								style="background-color: #f5a425; color: white; width: 100px; height: 40px; border-radius: 0px; border: none; outline: none; font-size: 13px; letter-spacing: 0.5px;"
 								onclick="location.href='c_Used_Communitywrite.jsp';">새 글 작성</button>
+						</div>
+						<br>
+						<div>
 							<table>
 								<tr id="head_tr" class="cm_tr" style="height: 35px">
 									<td class="cm_td">번호</td>
@@ -173,7 +176,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 								<%if (arr.size() >= (pageno) * 5) {%>
 								<%for (int i = 0; i < 5; i++) {%>
 								<%String result = arr.get(i + (pageno - 1) * 5).getREG_DATE().substring(5,11);%>
-								<tr class="main_tr">
+								<tr class="main_tr" style="height: 35px">
 									<td class="main_td" style="width: 100px"><a class="main_a"
 										href="u_c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getUSED_SEQ()%>"><%=arr.get(i + (pageno - 1) * 5).getUSED_SEQ()%></a></td>
 									<td class="main_td" style="width: 1200px"><a class="main_a"
@@ -208,6 +211,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 								<% }%>
 								<% }%>
 							</table>
+							
 							<br>
 							<a href="c_Used_Community.jsp?pageno=<%=prev_pageno%>">≪ 이전</a>
 						<%for (int i = page_sno; i <= page_eno; i++) {%>
@@ -227,6 +231,8 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 									class="search_button" type="button" value="검색">
 
 							</form>
+						</div>
+						
 						</div>
 						<!-- Scripts -->
 						<script src="assets/js/jquery.min.js"></script>

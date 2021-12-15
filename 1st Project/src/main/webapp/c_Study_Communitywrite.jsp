@@ -31,7 +31,6 @@
 	table{
 		width: 50%;
 		height : 50%;
-		
 	}
 
 </style>
@@ -84,69 +83,74 @@ if(session.getAttribute("vo") != null){
 			</ul>
 		</nav>
 	</header>
-	
-<section style="color: white; text-align: center;"
-		class="section coming-soon" data-section="section3">
-		<div class="col-8  col-12-narrower imp-narrower"
-			style="max-width: 90% !important; display: inline-block;">
-			<div id="content">
-			
-		<article>
-			<div id="board"
-				style="background-color: rgba(250, 250, 250, 0.2);">
-				<h2 align="center" style="padding: 1%">스터디게시판 - 새 글 작성</h2>
-				
-				<form action="c_Study_Communitywrite" method="post" enctype="multipart/form-data" >
-				<div align="center">
-				<table id="list" style="margin: 1%">
-					<tr class="a"><br>
-						<td rows="30" cols="100" style="text-align: center">분류</td>
-						<td><textarea name="title" rows="1" cols="20" style="resize: none;"></textarea></td>
-					</tr>
-					<tr class="a">
-						<td rows="30" cols="100" style="text-align: center"><br>제목</td>
-						<td><textarea name="title" rows="1" cols="90" style="resize: none;" placeholder="제목을 입력해주세요" ></textarea></td>
-					
-						</tr>
-					<tr class="a" class="cm_tr" style="height: 10px">
-								<td style="width: 80px; text-align: center">내용</td>
-								<td><textarea name="content" rows="20" cols="90"
-										style="resize: none;"></textarea></td>
-							</tr>
-					<div style="text-align: center">
-								<tr class="a">
-									<td colspan="2" align="right">
-									<br>
-										<input name="file1" type="file" style="width : 300px; height : 30px"> 
-										<input name="file2" type="file" style="width : 300px; height : 30px"> 
-										<input name="file3"	type="file" style="width : 300px; height : 30px">
-									</td>
-								</tr>
-							</div>
-							<tr>
-							<td colspan="2" align="right">
-							<br>
-							 <input type="reset" value="초기화" style="background-color:#f5a425; margin-right: 2%; width : 70px; height : 30px;" > 
-							 <input type="submit" value="작성하기" style="background-color:#f5a425; margin-right: 2%; width : 70px; height : 30px;">
-							 </td>
-					</tr>
-				</table>
-				</form>
+
+		<section style="color: white; text-align: center;"
+			class="section coming-soon" data-section="section3">
+			<div class="col-8  col-12-narrower imp-narrower"
+				style="max-width: 90% !important; display: inline-block;">
+				<div id="content">
+
+					<article>
+						<div id="board"
+							style="background-color: rgba(250, 250, 250, 0.2);">
+							<h2 align="center" style="padding: 1%">스터디게시판 - 새 글 작성</h2>
+
+							<form action="c_Study_Communitywrite" method="post"
+								enctype="multipart/form-data">
+								<div align="center">
+									<table id="list" style="margin: 1%">
+										<tr class="a">
+											<br>
+											<td rows="30" cols="100" style="text-align: center">분류</td>
+											<td><textarea name="title" rows="1" cols="20"
+													style="resize: none;"></textarea></td>
+										</tr>
+										<tr class="a">
+											<td rows="30" cols="100" style="text-align: center"><br>제목</td>
+											<td><textarea name="title" rows="1" cols="90"
+													style="resize: none;" placeholder="제목을 입력해주세요"></textarea></td>
+
+										</tr>
+										<tr class="a" class="cm_tr" style="height: 10px">
+											<td style="width: 80px; text-align: center">내용</td>
+											<td><textarea name="content" rows="20" cols="90"
+													style="resize: none;"></textarea></td>
+										</tr>
+										<div style="text-align: center;">
+											<tr class="a">
+												<td colspan="2" align="right"><br> <input
+													name="file1" type="file" style="width: 300px; height: 30px">
+													<input name="file2" type="file"
+													style="width: 300px; height: 30px"> <input
+													name="file3" type="file" style="width: 300px; height: 30px">
+												</td>
+											</tr>
+										</div>
+										<tr>
+											<td colspan="2" align="right"><br> <input
+												type="reset" value="초기화"
+												style="background-color: #f5a425; margin-right: 2%; width: 70px; height: 30px;">
+												<input type="submit" value="작성하기"
+												style="background-color: #f5a425; margin-right: 2%; width: 70px; height: 30px;">
+											</td>
+										</tr>
+									</table>
+							</form>
+						</div>
+						<!-- Scripts -->
+						<script src="assets/js/jquery.min.js"></script>
+						<script src="assets/js/jquery.scrolly.min.js"></script>
+						<script src="assets/js/jquery.scrollex.min.js"></script>
+						<script src="assets/js/skel.min.js"></script>
+						<script src="assets/js/util.js"></script>
+						<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+						<script src="assets/js/main.js"></script>
+					</article>
+				</div>
+
 			</div>
-			<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-			</article>
-	</div>
-	
-</div>
-	</section>
-	<footer>
+		</section>
+		<footer>
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
