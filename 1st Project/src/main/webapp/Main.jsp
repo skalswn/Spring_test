@@ -35,7 +35,7 @@ https://templatemo.com/tm-557-grad-school
 </head>
 
 
-<body style="font-family: 'Montserrat', sans-serif!important;">
+<body>
 <%
 // 로그인 안되어있을 때 메뉴바 다르게 하기 위해 vo가져오기
 
@@ -44,13 +44,18 @@ DAO dao = new DAO();
 String id = null;
 ArrayList<CheckVO> chvoarr = null;
 if(vo!=null){
-   id = vo.getM_id();
-   chvoarr = dao.selectPhase(id);
+	id = vo.getM_id();
+	chvoarr = dao.selectPhase(id);
 }
 int amount_java = dao.amount_java();
+//int present_java=dao.present_java();
 int amount_javascript = dao.amount_javascript();
+//int present_javascript=dao.present_javascript();
 int amount_html=dao.amount_html();
+//int present_html=dao.present_html();
 int amount_python=dao.amount_python();
+//int present_python=dao.present_python();
+
 %>
    
   <!--header-->
@@ -71,10 +76,10 @@ int amount_python=dao.amount_python();
           </ul> -->
      <% if(vo!=null){%>
         <li><a href="#">직무탐색</a>
-           <ul class="sub-menu">
+        	<ul class="sub-menu">
             <li><a href="P_Psit.jsp">PSIT 검사</a></li>
             <li><a href="P_Psit_store.jsp">My PSIT</a></li>
-             </ul></li>
+          	</ul></li>
         <!-- <li><a h\ref="#section5">Video</a></li> -->
         <li><a href="StudyPage.jsp">단계별학습</a></li>
         <li><a href="#" class="external">커뮤니티</a>
@@ -84,7 +89,7 @@ int amount_python=dao.amount_python();
             <li><a href="c_Used_Community.jsp">중고거래 게시판</a></li>
           </ul></li>
         <%if(vo.getM_id().equals("admin")){ %>
-           <li><a href="ManageUser.jsp" class="external">회원관리</a></li>
+	        <li><a href="ManageUser.jsp" class="external">회원관리</a></li>
         <%}else{ %>
         <li><a href="My_page.jsp" class="external">마이페이지</a></li>
         <%} %>
@@ -102,58 +107,58 @@ int amount_python=dao.amount_python();
       <video autoplay muted loop id="bg-video">
           <source src="assets/images/course-video.mp4" type="video/mp4" />
       </video>
-      
-      <% if(vo!=null){%>
-      <div class="video-overlay header-text">
-         <div class="caption">
-            <div style="float: left; width: 50%; margin: 10%;">
-               <h2>
-                  <em>PSIT</em> : Personal IT
-               </h2>
-               <h4 style="font-size: 30px; color:white; font-weight: 700"> PSIT : Personal IT</h4>
-               <h4 style="font-size: 20px; color:white;"> PSIT란 자신의 성향 분석을 통해 IT직무를 추천받는 서비스 입니다.</h4>
-               <div class="main-button">
-                  <div class="scroll-to-section"></div>
-                  <br><br>
-                  <a href="P_Psit.jsp">검사하러가기</a>
-               </div>
-            </div>
-            <div>
-               
-               <div align="right" style="float: right; width: 30%; height: 600px; background-color: rgba(250,250,250,0.1); text-align: center;">
-                  <h4 style = "margin : 5%; font-size: 40px; text-transform: uppercase; font-weight: 800; color: #fff; letter-spacing: 1px;">학습진행현황</h4>
-                     <table>
-                        <%for(int i =0;i<chvoarr.size();i++) { %>
-                        <%System.out.println(chvoarr.size()); %>
-                        <% CheckVO chvo = chvoarr.get(i); %>
-                              <tr>
-                              <td class="language_a"><%=chvo.getLang() %> </td>
-                              <td><%=chvo.getStep() %>단계 </td>
-                              </tr>
-                        <%} %>
-                     </table>
-               </div>               
-            </div>
-         </div>
-      </div>
-      <%}else{ %>
-      <div class="video-overlay header-text">
-         <div class="caption">
-            <div>
-               <h2>
-                  <em>PSIT</em> : Personal IT
-               </h2>
-               <h4 style="font-size: 30px; color:white; font-weight: 700"> PSIT : Personal IT</h4>
-               <h4 style="font-size: 20px; color:white;"> PSIT란 자신의 성향 분석을 통해 IT직무를 추천받는 서비스 입니다.</h4>
-               <div class="main-button">
-                  <div class="scroll-to-section"></div>
-                  <br><br>
-                  <a href="Login.jsp"><span style = "font-size : 25px">로그인하고</span><br>검사하러가기</a>
-               </div>
-            </div>
-         </div>
-      </div><%} %>
-   </section>
+		
+		<% if(vo!=null){%>
+		<div class="video-overlay header-text">
+			<div class="caption">
+				<div style="float: left; width: 50%; margin: 10%;">
+					<h2>
+						<em>PSIT</em> : Personal IT
+					</h2>
+					<h4 style="font-size: 30px; color:white; font-weight: 700"> PSIT : Personal IT</h4>
+					<h4 style="font-size: 20px; color:white;"> PSIT란 자신의 성향 분석을 통해 IT직무를 추천받는 서비스 입니다.</h4>
+					<div class="main-button">
+						<div class="scroll-to-section"></div>
+						<br><br>
+						<a href="P_Psit.jsp">검사하러가기</a>
+					</div>
+				</div>
+				<div>
+					
+					<div align="right" style="float: right; width: 30%; height: 600px; background-color: rgba(250,250,250,0.1); text-align: center;">
+						<h4 style = "margin : 5%; font-size: 40px; text-transform: uppercase; font-weight: 800; color: #fff; letter-spacing: 1px;">학습진행현황</h4>
+							<table>
+								<%for(int i =0;i<chvoarr.size();i++) { %>
+								<%out.println(chvoarr.size()); %>
+								<% CheckVO chvo = chvoarr.get(i); %>
+										<tr>
+										<td class="language_a"><%=chvo.getLang() %> </td>
+										<td><%=chvo.getStep() %>단계 </td>
+										</tr>
+								<%} %>
+							</table>
+					</div>					
+				</div>
+			</div>
+		</div>
+		<%}else{ %>
+		<div class="video-overlay header-text">
+			<div class="caption">
+				<div>
+					<h2>
+						<em>PSIT</em> : Personal IT
+					</h2>
+					<h4 style="font-size: 30px; color:white; font-weight: 700"> PSIT : Personal IT</h4>
+					<h4 style="font-size: 20px; color:white;"> PSIT란 자신의 성향 분석을 통해 IT직무를 추천받는 서비스 입니다.</h4>
+					<div class="main-button">
+						<div class="scroll-to-section"></div>
+						<br><br>
+						<a href="Login.jsp"><span style = "font-size : 25px">로그인하고</span><br>검사하러가기</a>
+					</div>
+				</div>
+			</div>
+		</div><%} %>
+	</section>
   <!-- ***** Main Banner Area End ***** -->
 
 
@@ -206,30 +211,30 @@ int amount_python=dao.amount_python();
     </div>
   </section>
 
-   <section class="section why-us" data-section="section2">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12" style="text-align: center;">
-               <div class="section-heading">
-                  <h2>What is IT?</h2>
-               </div>
-            </div>
-            <div class="col-md-12">
-               <img src="assets/images/001.png" style="width: 100%">
-            </div>
-            <div id='tabs'>
-               <section class='tabs-content'>
-                  <article id='tabs-1'>
-                     <div class="row">
-                        <div class="col-md-6"></div>
-                     </div>
-                  </article>
-               </section>
-            </div>
-         </div>
-      </div>
-   </section>
-   <!--IT직무내용부분---------------------------------------------------------------------------------------------------------------------------------------->
+	<section class="section why-us" data-section="section2">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12" style="text-align: center;">
+					<div class="section-heading">
+						<h2>What is IT?</h2>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<img src="assets/images/001.png" style="width: 100%">
+				</div>
+				<div id='tabs'>
+					<section class='tabs-content'>
+						<article id='tabs-1'>
+							<div class="row">
+								<div class="col-md-6"></div>
+							</div>
+						</article>
+					</section>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--IT직무내용부분---------------------------------------------------------------------------------------------------------------------------------------->
 <section class="section courses" data-section="section4">
     <div class="container-fluid">
       <div class="row">
@@ -261,7 +266,7 @@ int amount_python=dao.amount_python();
             <img src="assets/images/j_005.png" alt="Course #3">
             <div class="down-content">
               <div class="text-button-pay">
-                <%String c ="3"; %>
+             	<%String c ="3"; %>
                 <a href="Road_map.jsp?num=<%=c%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
@@ -310,7 +315,7 @@ int amount_python=dao.amount_python();
     <section class="section coming-soon" data-section="section3">
     <div class="container">
       <div class="row">
-         <div class="col-md-12" style="text-align : center;">
+      	<div class="col-md-12" style="text-align : center;">
             <div class="section-heading">
             <h2>IT 전망</h2>
           </div>
@@ -333,20 +338,20 @@ int amount_python=dao.amount_python();
     </div>
   </section>
   
-     <footer>
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12">
-               <p>
-                  <i class="fa fa-copyright"></i> Copyright 2020 by Grad School |
-                  Design: <a href="https://templatemo.com" rel="sponsored"
-                     target="_parent">TemplateMo</a><br> Distributed By: <a
-                     href="https://themewagon.com" rel="sponsored" target="_blank">ThemeWagon</a>
-               </p>
-            </div>
-         </div>
-      </div>
-   </footer>
+  	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p>
+						<i class="fa fa-copyright"></i> Copyright 2020 by Grad School |
+						Design: <a href="https://templatemo.com" rel="sponsored"
+							target="_parent">TemplateMo</a><br> Distributed By: <a
+							href="https://themewagon.com" rel="sponsored" target="_blank">ThemeWagon</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
   <!-- Scripts 지우면안됨------------------------------------------------------------------------------------------------------------------>
   <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -410,3 +415,6 @@ int amount_python=dao.amount_python();
     </script>
 </body>
 </html>
+
+
+
