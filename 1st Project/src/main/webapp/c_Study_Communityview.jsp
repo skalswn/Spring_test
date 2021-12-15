@@ -122,7 +122,7 @@ s_Community_commentVO cmvo = (s_Community_commentVO)session.getAttribute("cmvo")
 				<article>
 					<div id="board" style="background-color: rgba(250, 250, 250, 0.2);">
 						<h2 align="center" style="padding: 1%">
-							스터디게시판 -<%=scvo.getSTUDY_SUBJECT()%></h2>
+							스터디게시판 </h2>
 						<div align="left" style="margin-left: 550px">
 							<a href="c_Study_Community.jsp"><button
 									style="background-color: #f5a425; width: 100px; height: 30px; color: white; font-size: 14px;">뒤로가기</button></a>
