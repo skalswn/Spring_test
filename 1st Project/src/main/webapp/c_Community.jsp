@@ -226,7 +226,7 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 						
 						
 						<form style = "padding: 20px 20px" action="search_community">
-							<select style=" height: 40px; text-align: center; letter-spacing: 0.5px;"><option value="力格">力格</option>
+							<select style=" height: 40px; text-align: center; letter-spacing: 0.5px;" name="choice"><option value="力格">力格</option>
 								<option value="郴侩">郴侩</option>
 								<option value="累己磊">累己磊</option></select> 
 								<input style = "width : 30%;" type="text">
