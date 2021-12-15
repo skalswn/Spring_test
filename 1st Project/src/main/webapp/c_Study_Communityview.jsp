@@ -134,7 +134,6 @@ s_Community_commentVO cmvo = (s_Community_commentVO)session.getAttribute("cmvo")
 					<div align="center">
 						<h2 align="center" style="padding-top: 2%; padding-bottom: 3%">
 							스터디게시판</h2>
-
 						<table id="list">
 									<tr style="height: 40px">
 									<td class = "part" style="text-align: center">분류</td>

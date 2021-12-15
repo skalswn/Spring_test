@@ -48,9 +48,14 @@ if(vo!=null){
 	chvoarr = dao.selectPhase(id);
 }
 int amount_java = dao.amount_java();
+//int present_java=dao.present_java();
 int amount_javascript = dao.amount_javascript();
+//int present_javascript=dao.present_javascript();
 int amount_html=dao.amount_html();
+//int present_html=dao.present_html();
 int amount_python=dao.amount_python();
+//int present_python=dao.present_python();
+
 %>
    
   <!--header-->
@@ -124,7 +129,7 @@ int amount_python=dao.amount_python();
 						<h4 style = "margin : 5%; font-size: 40px; text-transform: uppercase; font-weight: 800; color: #fff; letter-spacing: 1px;">학습진행현황</h4>
 							<table>
 								<%for(int i =0;i<chvoarr.size();i++) { %>
-								<%System.out.println(chvoarr.size()); %>
+								<%out.println(chvoarr.size()); %>
 								<% CheckVO chvo = chvoarr.get(i); %>
 										<tr>
 										<td class="language_a"><%=chvo.getLang() %> </td>

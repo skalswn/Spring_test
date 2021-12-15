@@ -109,28 +109,28 @@ if(session.getAttribute("vo") != null){
 			<article>
 			<div id="board"
 				style="background-color: rgba(250, 250, 250, 0.2);">
-				<h2 align="center" style="padding: 1%">스터디게시판 - 내가 쓴 글 수정</h2>
+				<h2 align="center" style="padding: 1%">스터디게시판 글 수정</h2>
 			
 				<form action="s_c_Communitychange" method="post" enctype="multipart/form-data" >
 				<div align="center">
 				<table id="list">
 					<tr>
-						<td rows="30" cols="100" style="text-align: center"><br>작성자</td>
-						<td align= "left"><br><textarea name="m_id"  rows="1" cols="20" style="resize: none;"><%=scvo.getM_ID()%></textarea></td>
+						<td rows="30" cols="100" style="text-align: center">작성자</td>
+						<td align= "left"><textarea name="m_id"  rows="1" cols="20" style="resize: none;"><%=scvo.getM_ID()%></textarea></td>
 					</tr>
 				<tr class="a"><br>
 						<td rows="30" cols="100" style="text-align: center">분류</td>
-						<td><textarea name="language" rows="1" cols="20" style="resize: none;"><%=scvo.getSTUDY_LANG()%></textarea></td>
+						<td><select><option value="1">파이썬</option><option value="2">자바</option><option value="3">HTML/CSS</option><option value="4">자바스크립트</option></select></td>
 					</tr>
 					<tr class="a">
-						<td rows="30" cols="100" style="text-align: center"><br>제목</td>
+						<td rows="30" cols="100" style="text-align: center">제목</td>
 						<td><textarea name="title" rows="1" cols="90" style="resize: none;" placeholder="제목을 입력해주세요" ><%=scvo.getSTUDY_SUBJECT()%></textarea></td>
 					
 						</tr>
 					<tr class="a" class="cm_tr" style="height: 10px">
 								<td style="width: 80px; text-align: center">내용</td>
 								<td><textarea name="content" rows="20" cols="90"
-										style="resize: none;"></textarea><%=scvo.getSTUDY_CONTENT()%></td>
+										style="resize: none;"><%=scvo.getSTUDY_CONTENT()%></textarea></td>
 							</tr>
 									
 					<tr>
@@ -141,7 +141,7 @@ if(session.getAttribute("vo") != null){
 					</td>
 					</tr>
 					<tr>
-						<td colspan="2">
+						<td colspan="2" style="text-align:right; ">
 						<input value="<%=request.getParameter("num")%>" name="num" style="display:none">
 							<input type="reset" value="초기화" style="background-color:#f5a425; margin-right: 2%; width : 70px; height : 30px;" > 
 							 <input type="submit" value="수정하기" style="background-color:#f5a425; margin-right: 2%; width : 70px; height : 30px;">
