@@ -43,7 +43,7 @@ public class InsertCodingService extends HttpServlet {
 	String lang = multi.getParameter("lang");
 	String coding_q = multi.getParameter("coding_q");
 	String coding_a = multi.getParameter("coding_a");
-	String filename1 = "none.png";
+	String filename1 = null;
 	try {
 		filename1 = URLEncoder.encode(multi.getFilesystemName("file1"), "euc-kr");
 	} catch (Exception e) {

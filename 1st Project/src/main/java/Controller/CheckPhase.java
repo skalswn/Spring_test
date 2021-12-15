@@ -33,7 +33,6 @@ public class CheckPhase extends HttpServlet {
 		String lang = codingvo.getCoding_lang();
 		System.out.println(lang);
 		int cnt = dao.CheckPhase(seq, m_id, lang);
-		
 		if(cnt>0) {
 			System.out.println("단계저장성공");
 		}
