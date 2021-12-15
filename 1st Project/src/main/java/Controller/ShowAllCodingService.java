@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Model.CheckVO;
 import Model.CodingVO;
 import Model.DAO;
 import Model.MemberVO;
@@ -25,8 +26,9 @@ public class ShowAllCodingService extends HttpServlet {
 //		언어선택 시 모든 문제 나오게 하기
 		String lang =null;
 		request.setCharacterEncoding("euc-kr");
-		if(request.getAttribute("lang") != null) {
-			lang = (String) request.getAttribute("lang");
+		if(request.getAttribute("chvo") != null) {
+			CheckVO chvo =(CheckVO)request.getAttribute("chvo");
+			lang =chvo.getLang();
 		}else {
 			lang = request.getParameter("lang");
 		}
