@@ -388,8 +388,8 @@ public class DAO {
   }
 
 // 단계별학습 문제 넣기==========================================================================================
-	public int insertCoding(String coding_lang, String coding_q, String coding_a, String id) {
-		
+	public int insertCoding(String coding_lang, String coding_q, String coding_a, String id, String filename1) {
+		int seq_img=0;
 		try {
 			connection();
 
@@ -400,18 +400,33 @@ public class DAO {
 			String dbpw = "hr";
 
 			conn = DriverManager.getConnection(url, dbid, dbpw);
-
 			String sql = "insert into tbl_coding values(tbl_coding_seq.nextval,?,?,?,?)";
-
 			psmt = conn.prepareStatement(sql);
-
 			psmt.setString(1, coding_lang);
 			psmt.setString(2, coding_q);
 			psmt.setString(3, coding_a);
 			psmt.setString(4, id);
-			
 			cnt = psmt.executeUpdate();
-
+			if(filename1 != null) {
+				String sql0="select CODING_SEQ from tbl_coding where CODING_LANG=? and CODING_Q=? and CODING_A=? and M_ID=?";
+				psmt = conn.prepareStatement(sql0);
+				psmt.setString(1, coding_lang);
+				psmt.setString(2, coding_q);
+				psmt.setString(3, coding_a);
+				psmt.setString(4, id);
+				rs = psmt.executeQuery();
+				if(rs.next()==true) {
+					seq_img = rs.getInt("CODING_SEQ");
+				}
+				System.out.println(seq_img);
+				String sql1="insert into TBL_CODING_IMG(IMG,CODING_LANG,CODING_Q_I,CODING_SEQ) values(?,?,0,?)";
+				psmt = conn.prepareStatement(sql1);
+				psmt.setString(1, filename1);
+				psmt.setString(2, coding_lang);
+				psmt.setInt(3, seq_img);
+				lognum = psmt.executeUpdate();
+				System.out.println(lognum);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -727,11 +742,11 @@ public class DAO {
 		try {
 			connection();
 			int past_seq=0;
-			String sql1 = "select plan_step from tbl_coding_plan where m_id=? ";
-			
+			String sql1 = "select plan_step from tbl_coding_plan where m_id=? and PLAN_LANG=?";
+			System.out.println(m_id);
 			psmt = conn.prepareStatement(sql1);
 			psmt.setString(1, m_id);
-			
+			psmt.setString(2, lang);
 			rs = psmt.executeQuery();
 			if(rs.next()==true) {
 				past_seq=rs.getInt("plan_step");
@@ -1555,6 +1570,24 @@ public class DAO {
 		        close();
      }
 	   return java;
+	}
+	public String ShowimgCoding(int seq) {
+		String img=null;
+		connection();  
+	 	try{
+		   String sql = "select IMG from TBL_CODING_IMG where CODING_SEQ=? and CODING_Q_I='0'";
+		   psmt = conn.prepareStatement(sql);
+		   psmt.setInt(1, seq);
+		   rs = psmt.executeQuery();
+		   if(rs.next() == true) {
+			  img=rs.getString("IMG");
+		    }
+		}catch(Exception e){
+		   e.printStackTrace();
+		}finally{
+		   close();
+     }
+		return img;
 	}
 }	
 

@@ -32,7 +32,6 @@ public class ShowAllCodingService extends HttpServlet {
 		}
 		DAO dao = new DAO();
 		ArrayList<CodingVO> codingarray = new ArrayList<>();
-		
 		codingarray = dao.ShowAllCoding(lang);
 		System.out.println("문제나오기성공");
 		RequestDispatcher rd = request.getRequestDispatcher("StudyPage.jsp"); 
