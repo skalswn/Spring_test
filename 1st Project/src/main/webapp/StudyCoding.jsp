@@ -91,7 +91,6 @@ String coding_img =dao.ShowimgCoding(seq);
 	
 	<div>
 	<form action="check_answer">
-		<p>선택한 문제 정답 입력할 곳</p>
 		<%if(seq==codingvo.getCoding_seq()) {%>
 			<input type="text" name= "answer">
 			<%-- <% System.out.println("해설보기 성공..");%>

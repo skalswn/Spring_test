@@ -30,35 +30,19 @@
 <link rel="stylesheet" href="assets/css/owl.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <style>
-table {
-	width: 50%;
-	height: 50%;
-}
-#com {
-	width: 840px;
-	height: 30px;
-	border : 1px dotted #444444;
-	margin-left: 28%;
-
+table{
+		width: 100%;
+		height : 100%;
+		
 	}
-.com1 {
-width : 30%;
-border : 1px dashed #444444;
-}
-.com2 {
-width : 67%;
-text-align: left;
-display: block;
-
-}
-.com3 {
-width : 3%;
-margin: 0 auto;
-}
-#com4 {
-font-size: 14px;
-
-}
+	table#list td.part{
+		width : 20%;
+	}
+	table#list select{
+		width: 26.3%;
+		height: 40px;
+		margin-bottom: 0.7%;
+	}
 </style>
 </head>
 <body>
@@ -138,43 +122,45 @@ if(session.getAttribute("vo") != null){
 								enctype="multipart/form-data">
 
 								<div align="center">
-									<table id="list" style="display: inline;">
+									<table id="list" style="width: 80%;">
 
 										<tr class="a">
 											<br>
-											<td rows="30" cols="100" style="text-align: center">제목</td>
-											<td align="left"><textarea name="title" rows="1"
-													cols="90" style="resize: none;"><%=ucvo.getUSED_SUBJECT()%></textarea></td>
+											<td class = "part" style="text-align: center;">제목</td>
+											<td><textarea class="textarea" name="title" style="resize: none; height: 40px; width:80%;"><%=ucvo.getUSED_SUBJECT()%></textarea></td>
 										</tr>
-
 										<tr>
-											<td rows="30" cols="100" style="text-align: center">가격</td>
-											<td align="left"><textarea name="language" rows="1"
-													cols="20" style="resize: none;"><%=ucvo.getUSED_PRICE()%></textarea>
-												<select name="way"><option value="삽니다">삽니다</option>
-													<option value="직거래">직거래</option>
-													<option value="택배거래">택배거래</option>
-													<option value="안전거래">안전거래</option></select> <select name="status"><option
-														value="1">좋음</option>
-													<option value="2">생활감 있음</option>
-													<option value="3">좋지 않음</option></select> <select name="kinds"><option
-														value="책">책</option>
-													<option value="학용품">학용품</option>
-													<option value="기타">기타</option></select></td>
+										<td class = "part" style="text-align: center;">구분</td>
+										<td>
+										<select name="way"><option value="삽니다">삽니다</option>
+																	<option value="직거래">직거래</option>
+																	<option value="택배거래">택배거래</option>
+																	<option value="안전거래">안전거래</option></select> <select name="status"><option
+																		value="1">좋음</option>
+																	<option value="2">생활감 있음</option>
+																	<option value="3">좋지 않음</option></select> <select name="kinds"><option
+																		value="책">책</option>
+																	<option value="학용품">학용품</option>
+																	<option value="기타">기타</option></select>
+										</td>
+										</tr>
+										<tr>
+											<td class = "part" style="text-align: center;">가격</td>
+											<td align="left"><textarea name="price" style="resize: none; height: 40px; width: 26.3%"><%=ucvo.getUSED_PRICE()%></textarea>
+												</td>
 										</tr>
 
 
-										<tr class="a" class="cm_tr" style="height: 10px">
+										<tr class="a" class="cm_tr" >
 											<td style="width: 80px; text-align: center">내용</td>
-											<td><textarea name="content" rows="20" cols="90"
-													style="resize: none;"><%=ucvo.getUSED_CONTENT()%></textarea></td>
+											<td><textarea class="textarea" name="title" style="resize: none; height: 500px; width:80%;" ><%=ucvo.getUSED_CONTENT()%></textarea></td>
 										</tr>
 										<tr>
-											<td colspan="2"><input name="file1" type="file">
+											<td colspan="2" align="center"><input style="width: 30%" name="file1" type="file">
 											</td>
 										</tr>
 										<tr>
-											<td colspan="2" style="text-align: right;"><input
+											<td colspan="2" align="center"><input
 												value="<%=request.getParameter("num")%>" name="num"
 												style="display: none"> <input type="reset"
 												value="초기화"

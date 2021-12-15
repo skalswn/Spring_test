@@ -38,9 +38,9 @@ public class c_Psit extends HttpServlet {
 	}if(sample.contains("ESFP")){
 		job_no=job_no+"5"; 
 	}if(sample.contains("ESTJ")){
-		job_no=job_no+"6"; 
+		job_no=job_no+"백앤드"; 
 	}if(sample.contains("ENTP")){
-		job_no=job_no+"6"; 
+		job_no=job_no+"백앤드"; 
 	}if(sample.contains("INFJ")){
 		job_no=job_no+"7"; 
 	}if(sample.contains("INFP")){
@@ -48,11 +48,11 @@ public class c_Psit extends HttpServlet {
 	}if(sample.contains("INTJ")){
 		job_no=job_no+"1";
 	 }if(sample.contains("INTP")){
-		job_no=job_no+"3";
+		job_no=job_no+"프론트";
 	}if(sample.contains("ISFJ")){
-		job_no=job_no+"5"; 
+		job_no=job_no+"백앤드"; 
 	}if(sample.contains("ISFP")){
-		job_no=job_no+"7"; 
+		job_no=job_no+"빅데이터 엔지니어"; 
 	}if(sample.contains("ISTJ")){
 		job_no=job_no+"1"; 
 	}if(sample.contains("ISTP")){
@@ -65,8 +65,13 @@ public class c_Psit extends HttpServlet {
 		int psitnum = dao.psit(sample,job_no,M_ID);
 		PsitVO PS = dao.PSTORE(M_ID);
 	if (psitnum > 0) { 
-		System.out.println("저장 성공"); 
-	}else { 
+		System.out.println("저장 성공");
+		if(job_no.contains("백앤드")) {
+			
+		
+		response.sendRedirect("http://localhost:8081/1st_Project/Road_map.jsp?num=1");
+		}
+		}else { 
 		System.out.println("저장 실패");
 	 }
 	}

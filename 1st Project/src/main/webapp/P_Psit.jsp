@@ -80,15 +80,19 @@
 MemberVO vo = null;
 if(session.getAttribute("vo") !=null){
 	vo = (MemberVO)session.getAttribute("vo");
-}
+}else{%>
+Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
+Response.Write("<script>location.href='Main.jsp';</script>");
+<%}
 DAO dao = new DAO();
 %>
+
 	<%	
 String userID= null;
 if (session.getAttribute("vo") != null){
 	vo = (MemberVO)session.getAttribute("vo");
 	userID = vo.getM_id();
-	System.out.print(userID);
+	//System.out.print(userID);
 }else{%>
 	Response.Write("
 	<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>
