@@ -53,6 +53,13 @@ body {
 #a {
 	height: 15%;
 }
+#aa{
+
+}
+#bb{
+background-color:orange;
+}
+
 </style>
 </head>
 <body>
@@ -122,12 +129,15 @@ body {
 	<%if(vo.getM_id().equals("admin")){ %>
 		<a href="InsertCoding.jsp"><button>문제추가</button></a>
 		<%} %>
-	<form action="ShowAllCodingService" method="post">
-		파이썬<input type="radio" name="lang" value="파이썬"> 
-		자바<input type="radio" name="lang" value="자바"> 
-		HTML/CSS<input type="radio" name="lang" value="HTML">
-		자바스크립트<input type="radio" name="lang" value="자바스크립트"> 
-		<input type="submit" value="문제보기">
+	<form action="ShowAllCodingService" method="post" style="text-align: center;">
+		<div id="aa">
+		
+			<span>파이썬<input type="radio" name="lang" value="파이썬"> </span>
+			<span>자바<input type="radio" name="lang" value="자바"> </span>
+			<span>HTML/CSS<input type="radio" name="lang" value="HTML"></span>
+			<span>자바스크립트<input type="radio" name="lang" value="자바스크립트"></span>
+		</div> 
+		<input id = "bb" type="submit" value="문제보기">
 	</form>
 	
 <!--문제나오는 부분  ---->
