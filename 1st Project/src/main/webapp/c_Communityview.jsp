@@ -31,6 +31,22 @@
 table {
 	height: 100%;
 }
+table#list {
+    margin: 1%;
+    display: inline-table;
+    width: 80%;
+    height: 600px;
+    text-align: center;
+    border-collapse: separate;
+}
+table#list td{
+	background-color: rgba(250,250,250,0.3);
+}
+table#list td.part{
+	font-size : 20px;
+	letter-spacing: 1px;
+	width: 30%;
+}
 </style>
 </head>
 <body>
@@ -101,34 +117,28 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 			<div id="content">
 				<article>
 					<div id="board" style="background-color: rgba(250, 250, 250, 0.2);">
-						<div align="left" style="padding: 10px;">
-							<a href="c_Community.jsp"><button
-									style="background-color: #f5a425; width: 10%; height: 40px; color: white; border: none;">뒤로가기</button></a>
-							<h2 align="center" style="padding: 1%">
-								자유게시판 -
-								<%=cvo.getTitle()%></h2>
-							<div style="text-align: center;">
-								<table id="list"
-									style="margin: 1%; display: inline-table; width: 80%; height: 600px ; text-align: center;">
+						<div align="center">
+							<h2 align="center" style="padding-top: 2%; padding-bottom: 3%">
+								자유게시판</h2>
+								<table id="list">
 									<tr style="height: 40px">
-										<td style="text-align: center"><br>작성자</td>
-										<td><br><h6><%=cvo.getWriter()%></h6></td>
+										<td class = "part" style="text-align: center">작성자</td>
+										<td style="text-align: left"><h6><%=cvo.getWriter()%></h6></td>
 									</tr>
 									<tr style="height: 40px">
-										<td style="text-align: center">제목</td>
-										<td><h6><%=cvo.getTitle()%></h6></td>
+										<td class = "part" style="text-align: center">제목</td>
+										<td style="text-align: left"><h6><%=cvo.getTitle()%></h6></td>
 									</tr>
 									<tr class="a" class="cm_tr" style="height: 50%">
-										<td style="text-align: center">내용</td>
-										<td><h6><%=cvo.getContent()%></h6></td>
+										<td rowspan = "2" class = "part" style="text-align: center;">내용</td>
+										<td style="text-align: left; vertical-align: initial;"><h6><%=cvo.getContent()%></h6></td>
 									</tr>
 
 									<tr style="height: 30%">
-									<td></td>
 									<%
 									if (cvo.getFile1().equals("none.png") && cvo.getFile2().equals("none.png") && cvo.getFile3().equals("none.png")) {
 									%>
-										<td><p style="font-size">첨부된 이미지가 없습니다.</p></td>
+										<td style="text-align: left;"><p>첨부된 이미지가 없습니다.</p></td>
 									<%
 									} else if (cvo.getFile1() != null && cvo.getFile2().equals("none.png") && cvo.getFile3().equals("none.png")) {
 									%>
@@ -155,6 +165,10 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 									<%}%>
 									</tr>										
 								</table>
+							<div style="text-align: center;">
+							<div align="left" style="width: 40%; display:inline-block; margin-bottom: 40px;">
+							<a href="c_Community.jsp"><button
+									style="background-color: #f5a425; width: 20%; height: 30px; color: white; border: none;">뒤로가기</button></a>
 							</div>
 							<%
 							if (vo != null) {
@@ -162,65 +176,73 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 							<%
 							if (userID.equals(cvo.getWriter()) || userID.equals("admin") || userID.equals("skalswn")) {
 							%>
-							<div style="text-align: center;">
-							<div align="right" style="width: 80%; display:inline-block; margin-bottom: 40px;">
+							<div align="right" style="width: 40%; display:inline-block; margin-bottom: 40px;">
 								<span style="width: 100px; height: 30px;"> <a
 									href="c_Communitychange.jsp?num=<%=cvo.getC_seq()%>">
-										<button style="background-color: #f5a425; color: white; border: none;">수정</button>
+										<button style="background-color: #f5a425; color: white; border: none; width: 10%; height: 30px;">수정</button>
 								</a>
 								</span> <span style="width: 100px; height: 30px;"> <a
 									href="c_Communitydelete?num=<%=cvo.getC_seq()%>">
-										<button style="background-color: #f5a425; color: white; border: none;">삭제</button>
+										<button style="background-color: #f5a425; color: white; border: none; width: 10%; height: 30px;">삭제</button>
 								</a>
 								</span>
 							</div>
 							</div>
-							<%
-							}
-							%>
-							<%
-							}
-							%>
-							<form action="c_Comment" style="padding: 1%">
-								<table style="width: 80%; text-align: center;">
-									<tr style="display: inline-block;">
-										<td rows="1" cols="100"><input type="text"
-											name="C_comment" id="C_comment"></td>
-										<td rows="1" cols="20"><input type="submit" value="댓글 작성"></td>
-									</tr>
+							<%}%>
+							<%}%>
+							<form action="c_Comment">
+								<br> 
+								<span> <input value="<%=cvo.getC_seq()%>"
+									name="num" style="display: none"> <input type="text"
+									name="C_comment" id="C_comment"
+									style="display: inline; width: 70%;"> <input
+									type="submit" value="댓글 작성"
+									style="display: inline; width: 10%;">
+								</span>
 
-									<tr>
-										<td><input value="<%=cvo.getC_seq()%>" name="num"
-											style="display: none"> <%
- if (cm_arr != null) {
- %> <%
- for (int i = 0; i < cm_arr.size(); i++) {
- %> <span><%=cm_arr.get(i).getC_writer()%> : </span> <span><%=cm_arr.get(i).getContent()%></span>
-											<%
-											if (vo != null) {
-											%> <%
- if (userID.equals(cvo.getWriter()) || userID.equals("admin") || userID.equals("skalswn")) {
- %> <span align="left"> <a
-												href="c_Commentdelete?num=<%=cm_arr.get(i).getCm_seq()%>">
-													<button
-														style="background-color: #f5a425; width: 70px; height: 20px; color: white;">삭제하기</button>
-											</a>
-										</span> <%
- }}
- %> <span> <%
- if (cm_arr.get(i).getC_writer().equals(vo.getM_id())) {
- %>
-										</span> <%
- }
- %></td>
+								<table id="com" style="border:none; width: 80%; display: inline-table;">
+								<tr>
+									<!-- <td colspan="2">댓글란</td> -->
+								</tr>
+								<%if (cm_arr != null) {%>
+								<%for (int i = 0; i < cm_arr.size(); i++) {%>
+									<tr style="background-color: #565e6e;">
+										<td class="com1" style="text-align: left;">
+											<h5><%=cm_arr.get(i).getC_writer()%><p><%=cm_arr.get(i).getDay()%></p></h5>
+										</td>
 									</tr>
-									<%
-									}}
-									%>
+									<tr style="background-color: #565e6e;">
+										<td class="com2">
+											<div style="text-align: left;">
+												<span style="line-height: 30px; margin : 0 auto;">
+													<span style="text-align: left;"><%=cm_arr.get(i).getContent()%></span>
+												</span>
+											</div>
+										</td>
+										<%if (vo != null) {if (userID.equals(cvo.getWriter()) || userID.equals("admin") || userID.equals("skalswn")) { %>
+										<td style="text-align: right;">
+											<a href="s_c_Commentdelete?num=<%=cm_arr.get(i).getCm_seq()%>">삭제</a><%}} %>
+										</td>
+									</tr>
+									<tr><td colspan="2"><hr color = "white"></td></tr>
+								<%}%>
+								<%}%>
 								</table>
 							</form>
 						</div>
 					</div>
+					<br><br>
+					<span style="width: 100px; height: 30px;"> <a
+						href="past_c?num=<%=cvo.getC_seq()%>">
+							<button
+								style="background-color: #f5a425; color: white; font-size: 14px; border: none; width: 5%; height: 30px;">이전글</button>
+					</a>
+					</span> <span style="width: 100px; height: 30px;"> <a
+						href="next_c?num=<%=cvo.getC_seq()%>">
+							<button
+								style="background-color: #f5a425; color: white; font-size: 14px; border: none; width: 5%; height: 30px;">다음글</button>
+					</a>
+					</span>
 				</article>
 			</div>
 		</div>
