@@ -28,13 +28,15 @@ public class ShowAllCodingService extends HttpServlet {
 		request.setCharacterEncoding("euc-kr");
 		if(request.getAttribute("lang") != null) {
 			lang =(String)request.getAttribute("lang");
+			System.out.println(lang);
 		}else {
 			lang = request.getParameter("lang");
+			System.out.println(lang);
 		}
 		DAO dao = new DAO();
 		ArrayList<CodingVO> codingarray = new ArrayList<>();
 		codingarray = dao.ShowAllCoding(lang);
-		System.out.println("문제나오기성공");
+		System.out.println(lang);
 		RequestDispatcher rd = request.getRequestDispatcher("StudyPage.jsp"); 
 		request.setAttribute("codingarray", codingarray);
 		rd.forward(request, response); 
