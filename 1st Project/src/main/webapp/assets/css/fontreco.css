@@ -1,0 +1,5 @@
+@charset "EUC-KR";
+@font-face{
+	font-family : 'reco';
+	src : url('assets/fonts/Recipekorearecofont.ttf') format('truetype');
+}
