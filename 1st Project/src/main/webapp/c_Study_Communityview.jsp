@@ -157,12 +157,12 @@ s_Community_commentVO cmvo = (s_Community_commentVO)session.getAttribute("cmvo")
 								</tr>
 							</table>
 							<div style="text-align: center;">
-							<div align="left" style="width: 40%; display:inline-block; margin-bottom: 40px;">
-							<a href="c_Study_Community.jsp"><button
-									style="background-color: #f5a425; width: 20%; height: 30px; color: white; border: none;">뒤로가기</button></a>
-							</div>
 							<%if (vo != null) {%>
 							<%if (userID.equals(scvo.getM_ID()) || userID.equals("admin") || userID.equals("skalswn")) {%>
+							<div align="left" style="width: 40%; display:inline-block; margin-bottom: 40px;">
+							<a href="c_Community.jsp"><button
+									style="background-color: #f5a425; width: 20%; height: 30px; color: white; border: none;">뒤로가기</button></a>
+							</div>
 							<div align="right" style="width: 40%; display:inline-block; margin-bottom: 40px;">
 							<span style="width: 100px; height: 30px;"> <a
 									href="c_Study_Communitychange.jsp?num=<%=scvo.getSTUDY_SEQ()%>">
@@ -175,8 +175,12 @@ s_Community_commentVO cmvo = (s_Community_commentVO)session.getAttribute("cmvo")
 								</span>
 							</div>
 							</div>
-							<%}%>
-							<%}%>
+							<%}else{%>
+							<div align="center" style="width: 100%; display:inline-block; margin-bottom: 40px;">
+							<a href="c_Community.jsp"><button
+									style="background-color: #f5a425; width: 10%; height: 30px; color: white; border: none;">뒤로가기</button></a>
+							</div>
+							<%}}%>
 							<form action="s_c_Comment">
 								<br> 
 								<span> <input value="<%=scvo.getSTUDY_SEQ()%>"
@@ -206,8 +210,9 @@ s_Community_commentVO cmvo = (s_Community_commentVO)session.getAttribute("cmvo")
 												</span>
 											</div>
 										</td>
+										<%if (vo != null) {if (userID.equals(scvo.getM_ID()) || userID.equals("admin") || userID.equals("skalswn")) { %>
 										<td style="text-align: right;">
-											<a href="s_c_Commentdelete?num=<%=cm_arr.get(i).getC_STUDY_SEQ()%>">삭제</a>
+											<a href="s_c_Commentdelete?num=<%=cm_arr.get(i).getC_STUDY_SEQ()%>">삭제</a><%}} %>
 										</td>
 									</tr>
 									<tr><td colspan="2"><hr color = "white"></td></tr>

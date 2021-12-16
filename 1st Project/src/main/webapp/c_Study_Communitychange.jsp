@@ -31,9 +31,12 @@
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <style>
 	table{
-		width: 50%;
-		height : 50%;
-	
+		width: 100%;
+		height : 100%;
+		
+	}
+	table#list td.part{
+		width : 20%;
 	}
 
 </style>
@@ -113,35 +116,35 @@ if(session.getAttribute("vo") != null){
 			
 				<form action="s_c_Communitychange" method="post" enctype="multipart/form-data" >
 				<div align="center">
-				<table id="list">
-					<tr>
-						<td rows="30" cols="100" style="text-align: center">작성자</td>
-						<td align= "left"><textarea name="m_id"  rows="1" cols="20" style="resize: none;"><%=scvo.getM_ID()%></textarea></td>
-					</tr>
-				<tr class="a"><br>
-						<td rows="30" cols="100" style="text-align: center">분류</td>
-						<td><select><option value="1">파이썬</option><option value="2">자바</option><option value="3">HTML/CSS</option><option value="4">자바스크립트</option></select></td>
+				<table id="list" style="width:80%">
+					<tr class="a" style="height: 40px">
+						<td class = "part" style="text-align: center;">작성자</td>
+						<td align= "left"><h6><%=scvo.getM_ID()%></h6></td>
 					</tr>
 					<tr class="a">
-						<td rows="30" cols="100" style="text-align: center">제목</td>
-						<td><textarea name="title" rows="1" cols="90" style="resize: none;" placeholder="제목을 입력해주세요" ><%=scvo.getSTUDY_SUBJECT()%></textarea></td>
+						<td class = "part" style="text-align: center;">제목</td>
+						<td><textarea class="textarea" name="title" style="resize: none; height: 40px; width:80%;"><%=scvo.getSTUDY_SUBJECT()%></textarea></td>
 					
 						</tr>
+					<tr class="a">
+						<td class = "part" style="text-align: center;">분류</td>
+						<td><select style="height: 40px" name="language"><option value="1">파이썬</option><option value="2">자바</option><option value="3">HTML/CSS</option><option value="4">자바스크립트</option></select></td>
+					</tr>
 					<tr class="a" class="cm_tr" style="height: 10px">
 								<td style="width: 80px; text-align: center">내용</td>
-								<td><textarea name="content" rows="20" cols="90"
-										style="resize: none;"><%=scvo.getSTUDY_CONTENT()%></textarea></td>
+								<td><textarea class="textarea" name="content" style="resize: none; height: 500px; width:80%;" ><%=scvo.getSTUDY_CONTENT()%></textarea></td>
 							</tr>
 									
 					<tr>
-					<td colspan="2">
-							<input name="file1" type="file" style="width : 300px; height : 30px"> 
-							<input name="file2" type="file" style="width : 300px; height : 30px"> 
-						    <input name="file3"	type="file" style="width : 300px; height : 30px">
-					</td>
+					<td colspan="2" align="center"><input
+													name="file1" type="file" style="width: 30%; height: 30px">
+													<input name="file2" type="file"
+													style="width: 300px; height: 30px"> <input
+													name="file3" type="file" style="width: 30%; height: 30px">
+												</td>
 					</tr>
 					<tr>
-						<td colspan="2" style="text-align:right; ">
+						<td colspan="2" style="text-align:center; ">
 						<input value="<%=request.getParameter("num")%>" name="num" style="display:none">
 							<input type="reset" value="초기화" style="background-color:#f5a425; margin-right: 2%; width : 70px; height : 30px;" > 
 							 <input type="submit" value="수정하기" style="background-color:#f5a425; margin-right: 2%; width : 70px; height : 30px;">

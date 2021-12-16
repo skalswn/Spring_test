@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="EUC-KR">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
@@ -64,7 +64,7 @@ if (session.getAttribute("vo") != null){
 	<script>location.href='Main.jsp';</script>
 	");
 	<%}%>
-	<% 
+<% 
 DAO dao = new DAO();
 CommunityVO cvo = (CommunityVO)session.getAttribute("cvo");
 ArrayList<Community_commentVO> cm_arr = dao.cm_Community(cvo.getC_seq());
@@ -166,18 +166,14 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 									</tr>										
 								</table>
 							<div style="text-align: center;">
+							<%if (vo != null) {%>
+							<%if (userID.equals(cvo.getWriter()) || userID.equals("admin") || userID.equals("skalswn")) {%>
 							<div align="left" style="width: 40%; display:inline-block; margin-bottom: 40px;">
 							<a href="c_Community.jsp"><button
 									style="background-color: #f5a425; width: 20%; height: 30px; color: white; border: none;">뒤로가기</button></a>
 							</div>
-							<%
-							if (vo != null) {
-							%>
-							<%
-							if (userID.equals(cvo.getWriter()) || userID.equals("admin") || userID.equals("skalswn")) {
-							%>
 							<div align="right" style="width: 40%; display:inline-block; margin-bottom: 40px;">
-								<span style="width: 100px; height: 30px;"> <a
+							<span style="width: 100px; height: 30px;"> <a
 									href="c_Communitychange.jsp?num=<%=cvo.getC_seq()%>">
 										<button style="background-color: #f5a425; color: white; border: none; width: 10%; height: 30px;">수정</button>
 								</a>
@@ -188,8 +184,12 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 								</span>
 							</div>
 							</div>
-							<%}%>
-							<%}%>
+							<%}else{%>
+							<div align="center" style="width: 100%; display:inline-block; margin-bottom: 40px;">
+							<a href="c_Community.jsp"><button
+									style="background-color: #f5a425; width: 10%; height: 30px; color: white; border: none;">뒤로가기</button></a>
+							</div>
+							<%}}%>
 							<form action="c_Comment">
 								<br> 
 								<span> <input value="<%=cvo.getC_seq()%>"
@@ -221,7 +221,7 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 										</td>
 										<%if (vo != null) {if (userID.equals(cvo.getWriter()) || userID.equals("admin") || userID.equals("skalswn")) { %>
 										<td style="text-align: right;">
-											<a href="s_c_Commentdelete?num=<%=cm_arr.get(i).getCm_seq()%>">삭제</a><%}} %>
+											<a href="c_Commentdelete?num=<%=cm_arr.get(i).getCm_seq()%>">삭제</a><%}} %>
 										</td>
 									</tr>
 									<tr><td colspan="2"><hr color = "white"></td></tr>
@@ -232,6 +232,8 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 						</div>
 					</div>
 					<br><br>
+				</article>
+				<br>
 					<span style="width: 100px; height: 30px;"> <a
 						href="past_c?num=<%=cvo.getC_seq()%>">
 							<button
@@ -243,7 +245,6 @@ Community_commentVO cmvo = (Community_commentVO)session.getAttribute("cmvo");
 								style="background-color: #f5a425; color: white; font-size: 14px; border: none; width: 5%; height: 30px;">다음글</button>
 					</a>
 					</span>
-				</article>
 			</div>
 		</div>
 	</section>

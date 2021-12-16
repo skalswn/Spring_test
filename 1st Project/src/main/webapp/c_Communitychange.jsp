@@ -128,13 +128,14 @@ if(session.getAttribute("vo") != null){
 										</tr>
 											<tr class="a">
 												<td colspan="2" style="text-align: right;"><br> 
-												<input name="file1" type="file" style="width: 30%; height: 30px;">
+												<input name="file1" type="file" style="width: 30%; height: 30px">
 												<input name="file2" type="file"	style="width: 30%; height: 30px"> 
 												<input name="file3" type="file" style="width: 30%; height: 30px">
 												</td>
 											</tr>
 										<tr>
-										<td colspan="2" align="right"><br> <input
+										<td colspan="2" align="center">
+										<input
 											type="reset" value="ÃÊ±âÈ­"
 											style="background-color: #f5a425; margin-right: 2%; width: 70px; height: 30px;">
 											<input value="<%=cvo.getC_seq()%>" name="num"

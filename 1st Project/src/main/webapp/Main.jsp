@@ -9,22 +9,25 @@
 
   <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?fa\mily=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link
+	href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900"
+	rel="stylesheet">
 
-    <title>PSIT.com</title>
-    
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<title>PSIT.com</title>
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-grad-school.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    <link rel="stylesheet" href="assets/css/lightbox.css">
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="assets/css/fontawesome.css">
+<link rel="stylesheet" href="assets/css/templatemo-grad-school.css">
+<link rel="stylesheet" href="assets/css/owl.css">
+<link rel="stylesheet" href="assets/css/lightbox.css">
 <!--
     
 TemplateMo 557 Grad School 
@@ -48,16 +51,106 @@ if(vo!=null){
 	chvoarr = dao.selectPhase(id);
 }
 int amount_java = dao.amount_java();
-//int present_java=dao.present_java();
 int amount_javascript = dao.amount_javascript();
-//int present_javascript=dao.present_javascript();
 int amount_html=dao.amount_html();
-//int present_html=dao.present_html();
 int amount_python=dao.amount_python();
-//int present_python=dao.present_python();
-
+int present_java = dao.present_java(id);
+int present_javascript = dao.present_javascript(id);
+int present_html=dao.present_html(id);
+int present_python=dao.present_python(id);
 %>
-   
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['진행 학습량',     <%=present_python%>],
+          ['남은 학습량',     <%=amount_python-present_python%>]
+        ]);
+
+        var options = {
+        	backgroundColor: { fill:'transparent' },
+        	legend: `none`
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_python'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['진행 학습량',     <%=present_java%>],
+          ['남은 학습량',     <%=amount_java-present_java%>]
+        ]);
+
+        var options = {
+        	backgroundColor: { fill:'transparent' },
+        	legend: `none`
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_java'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['진행 학습량',     <%=present_html%>],
+          ['남은 학습량',     <%=amount_html-present_html%>]
+        ]);
+
+        var options = {
+        	backgroundColor: { fill:'transparent' },
+        	legend: `none`
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_html'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['진행 학습량',     <%=present_javascript%>],
+          ['남은 학습량',     <%=amount_javascript-present_javascript%>]
+        ]);
+
+        var options = {
+        	backgroundColor: { fill:'transparent' },
+        	legend: `none`
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_javascript'));
+
+        chart.draw(data, options);
+      }
+    </script>
   <!--header-->
   <header class="main-header clearfix" role="header">
     <div class="logo">
@@ -78,7 +171,7 @@ int amount_python=dao.amount_python();
         <li><a href="#">직무탐색</a>
         	<ul class="sub-menu">
             <li><a href="P_Psit.jsp">PSIT 검사</a></li>
-            <li><a href="P_Psit_store.jsp">My PSIT</a></li>
+            <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
           	</ul></li>
         <!-- <li><a h\ref="#section5">Video</a></li> -->
         <li><a href="StudyPage.jsp">단계별학습</a></li>
@@ -128,14 +221,26 @@ int amount_python=dao.amount_python();
 					<div align="right" style="float: right; width: 30%; height: 600px; background-color: rgba(250,250,250,0.1); text-align: center;">
 						<h4 style = "margin : 5%; font-size: 40px; text-transform: uppercase; font-weight: 800; color: #fff; letter-spacing: 1px;">학습진행현황</h4>
 							<table>
-								<%for(int i =0;i<chvoarr.size();i++) { %>
-								<%out.println(chvoarr.size()); %>
-								<% CheckVO chvo = chvoarr.get(i); %>
-										<tr>
-										<td class="language_a"><%=chvo.getLang() %> </td>
-										<td><%=chvo.getStep() %>단계 </td>
-										</tr>
-								<%} %>
+							<tr>
+							<td style="color: white;">파이썬</td>
+						    <td style="color: white;"><%=present_python %>/<%=amount_python %>단계 </td>
+						    <td><div id="piechart_python" style="width: 200px; height: 100px;"></div></td>
+							</tr>
+							<tr>
+							<td style="color: white;">자바</td>
+						    <td style="color: white;"><%=present_java %>/<%=amount_java %>단계 </td>
+						    <td><div id="piechart_java" style="width: 200px; height: 100px;"></div></td>
+							</tr>
+							<tr>
+							<td style="color: white;">HTML/CSS</td>
+						    <td style="color: white;"><%=present_html %>/<%=amount_html %>단계 </td>
+						    <td><div id="piechart_html" style="width: 200px; height: 100px;"></div></td>
+							</tr>
+							<tr>
+							<td style="color: white;">자바스크립트</td>
+						    <td style="color: white;"><%=present_javascript %>/<%=amount_javascript%>단계 </td>
+						    <td><div id="piechart_javascript" style="width: 200px; height: 100px;"></div></td>
+							</tr>
 							</table>
 					</div>					
 				</div>

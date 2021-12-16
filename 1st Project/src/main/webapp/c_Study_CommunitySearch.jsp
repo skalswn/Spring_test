@@ -57,79 +57,75 @@ table{
 	</style>
 </head>
 <body>
-
-				<%
-				MemberVO vo = null;
-				String userID = null;
-				if (session.getAttribute("vo") != null) {
-					vo = (MemberVO) session.getAttribute("vo");
-					userID = vo.getM_id();
-					System.out.print(userID);
-				} else {
-				%>
-				Response.Write("
-				<script>
-					alert('로그인 후 이용하실 수 있는 서비스 입니다.');
-				</script>
-				"); Response.Write("
-				<script>
-					location.href = 'Main.jsp';
-				</script>
-				");
-				<%
-				}
-				%>
-				<%
-				s_CommunityVO scvo = null;
-				if (session.getAttribute("cvo") != null) {
-					scvo = (s_CommunityVO) session.getAttribute("scvo");
-				}
-				DAO dao = new DAO();
-				ArrayList<s_CommunityVO> arr = dao.s_Community();
-				%>
-				<%!public Integer toInt(String x) {
+<%
+String choice = request.getParameter("choice");
+String search = request.getParameter("search_");
+DAO dao = new DAO();
+ArrayList<s_CommunityVO> arr = dao.search_s_Community(choice,search);
+if (arr.size()<=0){
+%>
+	Response.Write("<script>alert('검색결과가 없습니다.');</script>");
+	Response.Write("<script>location.href='c_Study_Community.jsp';</script>");
+<%}%>
+<% 
+MemberVO vo =null;
+String userID= null;
+if (session.getAttribute("vo") != null){
+	vo = (MemberVO)session.getAttribute("vo");
+	userID = vo.getM_id();
+	System.out.print(userID);
+}else{
+%>
+Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
+Response.Write("<script>location.href='Main.jsp';</script>");
+<%}%>
+<%!
+	public Integer toInt(String x){
 		int a = 0;
-		try {
+		try{
 			a = Integer.parseInt(x);
-		} catch (Exception e) {
-		}
+		}catch(Exception e){}
 		return a;
-	}%>
-				<%
-				int pageno = toInt(request.getParameter("pageno"));
-				if (pageno < 1) {
-					pageno = 1;
-				}
-				int total_record = arr.size();
-				int page_per_record_cnt = 5;
-				int group_per_page_cnt = 5;
-				int record_end_no = pageno * page_per_record_cnt;
-				int record_start_no = record_end_no - (page_per_record_cnt - 1);
-				if (record_end_no > total_record) {
-					record_end_no = total_record;
-				}
-				int total_page = total_record / page_per_record_cnt + (total_record % page_per_record_cnt > 0 ? 1 : 0);
-				if (pageno > total_page) {
-					pageno = total_page;
-				}
-				int group_no = pageno / group_per_page_cnt + (pageno % group_per_page_cnt > 0 ? 1 : 0);
-				int page_eno = group_no * group_per_page_cnt;
-				int page_sno = page_eno - (group_per_page_cnt - 1);
-				if (page_eno > total_page) {
-					page_eno = total_page;
-				}
+	}
+%>
+	<%
+	int pageno = toInt(request.getParameter("pageno"));
+	if(pageno<1){
+		pageno = 1;
+	}
+	System.out.println("pageno후"+pageno);
+	int total_record = arr.size();	
+	int page_per_record_cnt = 5;  
+	int group_per_page_cnt =5;     											
+	int record_end_no = pageno*page_per_record_cnt;				
+	int record_start_no = record_end_no-(page_per_record_cnt-1);
+	if(record_end_no>total_record){
+		record_end_no = total_record;
+	}								   									   
+	int total_page = total_record / page_per_record_cnt + (total_record % page_per_record_cnt>0 ? 1 : 0);
+	if(pageno==1){
+		pageno=1;
+	}else if(pageno>total_page){
+		pageno = total_page;
+	}
+	int group_no = pageno/group_per_page_cnt+(pageno%group_per_page_cnt>0 ? 1:0);			  	
+	int page_eno = group_no*group_per_page_cnt;		
+	int page_sno = page_eno-(group_per_page_cnt-1);		
+	if(page_eno>total_page){	
+		page_eno=total_page;
+	}
+	
+	int prev_pageno = page_sno-group_per_page_cnt;
+	int next_pageno = page_sno+group_per_page_cnt;
+	if(prev_pageno<1){	
+		prev_pageno=1;
 
-				int prev_pageno = page_sno - group_per_page_cnt;
-				int next_pageno = page_sno + group_per_page_cnt;
-				if (prev_pageno < 1) {
-					prev_pageno = 1;
+	}
+	if(next_pageno>total_page){	
+		next_pageno=total_page/group_per_page_cnt*group_per_page_cnt+1;
+	}
+%>
 
-				}
-				if (next_pageno > total_page) {
-					next_pageno = total_page / group_per_page_cnt * group_per_page_cnt + 1;
-
-				}
-				%>
 				<!--header-->
 				<header class="main-header clearfix" role="header">
 					<div class="logo">
@@ -253,12 +249,12 @@ table{
 					<%}%>
 					<a href="c_Study_Community.jsp?pageno=<%=next_pageno%>"> 다음 ≫</a>
 					
-					<form style = "padding: 20px 20px" action="c_Study_CommunitySearch.jsp">
-						<select style=" height: 40px; text-align: center; letter-spacing: 0.5px;" name="choice"><option value="제목">제목</option>
+					<form style = "padding: 20px 20px" action="search_s_community">
+						<select style=" height: 40px; text-align: center; letter-spacing: 0.5px;"><option value="제목">제목</option>
 							<option value="내용">내용</option>
 							<option value="작성자">작성자</option></select> 
-							<input style = "width : 30%;" type="text" name="search_">
-							<input style = "width : 10%; font-size: 16px" class="search_button" type="submit" value="검색">
+							<input style = "width : 30%;" type="text">
+							<input style = "width : 10%; font-size: 16px" class="search_button" type="button" value="검색">
 					</form>
 				</div>
 				<!-- Scripts -->
