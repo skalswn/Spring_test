@@ -1673,7 +1673,211 @@ public int present_python(String m_id) {
  }
    return java;
 }
+public ArrayList<CommunityVO> search_Community(String choice, String search) {
+	ArrayList<CommunityVO> arr = new ArrayList<CommunityVO>(); 
+	connection();
+	 try{ 
+		 if(choice.equals("title_s")) {
+			 String sql = "select* from tbl_community where ARTICLE_SUBJECT like ? order by article_seq desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1,"%"+search+"%");
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("ARTICLE_SEQ");
+			      String title = rs.getString("ARTICLE_SUBJECT");
+			      String content = rs.getString("ARTICLE_CONTENT");
+			      String day = rs.getString("REG_DATE");
+			      int c_cnt = rs.getInt("ARTICLE_CNT");
+			      String writer = rs.getString("M_ID");
+			      String file1 = rs.getString("ARTICLE_FILE1");
+			      String file2 = rs.getString("ARTICLE_FILE2");
+			      String file3 = rs.getString("ARTICLE_FILE3");
+			      CommunityVO vo =new CommunityVO(c_seq, title, content,day,c_cnt,writer,file1,file2,file3);
+			      arr.add(vo);
+			 }
+		 }else if(choice.equals("content_s")) {
+			 String sql = "select* from tbl_community where ARTICLE_CONTENT like ? order by article_seq desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1,"%"+search+"%");
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("ARTICLE_SEQ");
+			      String title = rs.getString("ARTICLE_SUBJECT");
+			      String content = rs.getString("ARTICLE_CONTENT");
+			      String day = rs.getString("REG_DATE");
+			      int c_cnt = rs.getInt("ARTICLE_CNT");
+			      String writer = rs.getString("M_ID");
+			      String file1 = rs.getString("ARTICLE_FILE1");
+			      String file2 = rs.getString("ARTICLE_FILE2");
+			      String file3 = rs.getString("ARTICLE_FILE3");
+			      CommunityVO vo =new CommunityVO(c_seq, title, content,day,c_cnt,writer,file1,file2,file3);
+			      arr.add(vo);
+			 }
+		 } else {
+			 String sql = "select* from tbl_community where M_ID like ? order by article_seq desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1,"%"+search+"%");
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("ARTICLE_SEQ");
+			      String title = rs.getString("ARTICLE_SUBJECT");
+			      String content = rs.getString("ARTICLE_CONTENT");
+			      String day = rs.getString("REG_DATE");
+			      int c_cnt = rs.getInt("ARTICLE_CNT");
+			      String writer = rs.getString("M_ID");
+			      String file1 = rs.getString("ARTICLE_FILE1");
+			      String file2 = rs.getString("ARTICLE_FILE2");
+			      String file3 = rs.getString("ARTICLE_FILE3");
+			      CommunityVO vo =new CommunityVO(c_seq, title, content,day,c_cnt,writer,file1,file2,file3);
+			      arr.add(vo);
+			 }
+		 }
+		 System.out.println(arr);
+	 }catch(Exception e){
+		 e.printStackTrace(); 
+	 }finally{ 
+		 close(); 
+		 }
+	return arr;
+ }
+public ArrayList<s_CommunityVO> search_s_Community(String choice, String search) {
+	ArrayList<s_CommunityVO> arr = new ArrayList<s_CommunityVO>(); 
+	connection();
+	 try{ 
+		 if(choice.equals("title_s")) {
+			 String sql = "select* from TBL_STUDY where STUDY_SUBJECT like ? order by STUDY_SEQ desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1,"%"+search+"%");
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("STUDY_SEQ");
+			      String title = rs.getString("STUDY_SUBJECT");
+			      String content = rs.getString("STUDY_CONTENT");
+			      String lang = rs.getString("STUDY_LANG");
+			      int c_cnt = rs.getInt("STUDY_CNT");
+			      String day = rs.getString("REG_DATE");
+			      String writer = rs.getString("M_ID");
+			      String file1 = rs.getString("STUDY_FILE1");
+			      s_CommunityVO scvo =new s_CommunityVO(c_seq, title, content,lang,c_cnt,day,writer,file1);
+			      arr.add(scvo);
+			 }
+		 }else if(choice.equals("content_s")) {
+			 String sql = "select* from TBL_STUDY where STUDY_CONTENT like ? order by STUDY_SEQ desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1,"%"+search+"%");
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("STUDY_SEQ");
+			      String title = rs.getString("STUDY_SUBJECT");
+			      String content = rs.getString("STUDY_CONTENT");
+			      String lang = rs.getString("STUDY_LANG");
+			      int c_cnt = rs.getInt("STUDY_CNT");
+			      String day = rs.getString("REG_DATE");
+			      String writer = rs.getString("M_ID");
+			      String file1 = rs.getString("STUDY_FILE1");
+			      s_CommunityVO scvo =new s_CommunityVO(c_seq, title, content,lang,c_cnt,day,writer,file1);
+			      arr.add(scvo);
+			 }
+		 } else {
+			 String sql = "select* from TBL_STUDY where M_ID like ? order by STUDY_SEQ desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1,"%"+search+"%");
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("STUDY_SEQ");
+			      String title = rs.getString("STUDY_SUBJECT");
+			      String content = rs.getString("STUDY_CONTENT");
+			      String lang = rs.getString("STUDY_LANG");
+			      int c_cnt = rs.getInt("STUDY_CNT");
+			      String day = rs.getString("REG_DATE");
+			      String writer = rs.getString("M_ID");
+			      String file1 = rs.getString("STUDY_FILE1");
+			      s_CommunityVO scvo =new s_CommunityVO(c_seq, title, content,lang,c_cnt,day,writer,file1);
+			      arr.add(scvo);
+			 }
+		 }
+	 }catch(Exception e){
+		 e.printStackTrace(); 
+	 }finally{ 
+		 close(); 
+		 }
+	return arr;
+ }
+public ArrayList<u_CommunityVO> search_u_Community(String choice, String search) {
+	ArrayList<u_CommunityVO> arr = new ArrayList<u_CommunityVO>(); 
+	connection();
+	 try{ 
+		 if(choice.equals("title_s")) {
+			 String sql = "select* from TBL_USED_MARKET where USED_SUBJECT like ? order by USED_SEQ desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1,"%"+search+"%");
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("USED_SEQ");
+			      String title = rs.getString("USED_SUBJECT");
+			      String content = rs.getString("USED_CONTENT");
+			      int price = rs.getInt("USED_PRICE");
+			      int c_cnt = rs.getInt("USED_CNT");
+			      String trade = rs.getString("USED_TRADE");
+			      String used_pay = rs.getString("USED_PAY");
+			      String reg_date = rs.getString("REG_DATE");
+			      String m_id = rs.getString("M_ID");
+			      String status = rs.getString("USED_STATUS");
+			      String file1 = rs.getString("FILE1");
+			      u_CommunityVO ucvo =new u_CommunityVO(c_seq, title, content,price,c_cnt,trade,used_pay,reg_date,m_id,status,file1);
+			      arr.add(ucvo);
+			 }
+		 }else if(choice.equals("content_s")) {
+			 String sql = "select* from TBL_USED_MARKET where USED_CONTENT like ? order by USED_SEQ desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1,"%"+search+"%");
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("USED_SEQ");
+			      String title = rs.getString("USED_SUBJECT");
+			      String content = rs.getString("USED_CONTENT");
+			      int price = rs.getInt("USED_PRICE");
+			      int c_cnt = rs.getInt("USED_CNT");
+			      String trade = rs.getString("USED_TRADE");
+			      String used_pay = rs.getString("USED_PAY");
+			      String reg_date = rs.getString("REG_DATE");
+			      String m_id = rs.getString("M_ID");
+			      String status = rs.getString("USED_STATUS");
+			      String file1 = rs.getString("FILE1");
+			      u_CommunityVO ucvo =new u_CommunityVO(c_seq, title, content,price,c_cnt,trade,used_pay,reg_date,m_id,status,file1);
+			      arr.add(ucvo);
+			 }
+		 } else {
+			 String sql = "select* from TBL_USED_MARKET where M_ID like ? order by USED_SEQ desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1,"%"+search+"%");
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("USED_SEQ");
+			      String title = rs.getString("USED_SUBJECT");
+			      String content = rs.getString("USED_CONTENT");
+			      int price = rs.getInt("USED_PRICE");
+			      int c_cnt = rs.getInt("USED_CNT");
+			      String trade = rs.getString("USED_TRADE");
+			      String used_pay = rs.getString("USED_PAY");
+			      String reg_date = rs.getString("REG_DATE");
+			      String m_id = rs.getString("M_ID");
+			      String status = rs.getString("USED_STATUS");
+			      String file1 = rs.getString("FILE1");
+			      u_CommunityVO ucvo =new u_CommunityVO(c_seq, title, content,price,c_cnt,trade,used_pay,reg_date,m_id,status,file1);
+			      arr.add(ucvo);
+			 }
+		 }
+	 }catch(Exception e){
+		 e.printStackTrace(); 
+	 }finally{ 
+		 close(); 
+		 }
+	return arr;
+ }
+
 }	
+
 
 
 

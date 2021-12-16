@@ -140,7 +140,7 @@ if(session.getAttribute("vo") != null){
 					 </tr>
 					<tr class="a" class="cm_tr" >
 										<td style="width: 80px; text-align: center">³»¿ë</td>
-										<td><textarea class="textarea" name="title" style="resize: none; height: 500px; width:80%;" ></textarea></td>
+										<td><textarea class="textarea" name="content" style="resize: none; height: 500px; width:80%;" ></textarea></td>
 									</tr>
 
 									<div style="text-align: center">
