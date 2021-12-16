@@ -82,12 +82,12 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");%>
   <div>
     <nav id="mapimg">
     <%String num=request.getParameter("num");%>
-    
+    <!--회원일 때 로드맵 보여주고, 학습페이지로 링크 이동하는 코드  -->
+    <%if(vo!=null) { %>
         <%if(num.equals("1")){%>
        		<p>※ JavaScript, HTML/CSS에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요! </p>
 	        <img usemap="#front" src="assets/images/frontEnd.png">
 				<map name="front">
-					
 					<area name = "JavaScript" shape="rect" coords="297,397,430,445" href="ShowAllCodingService?lang=<%=lang4%>">
 					<area name = "html/css" shape="rect" coords="298,268,431,381" href="ShowAllCodingService?lang=<%=lang3%>">
 				</map>
@@ -105,7 +105,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");%>
             <p>※ Java에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요! </p>
 	        	<img usemap="#android" src="assets/images/android.png">
 					<map name="android">
-						<area name = "Java" shape="rect" coords="94,72,198,99" href="ShowAllCodingService?lang=<%=lang2%>">
+						<area name = "Java" shape="rect" coords="13,161,152,188" href="ShowAllCodingService?lang=<%=lang2%>">
 					</map>
 				<br>
 				<img src="assets/images/ios.png">
@@ -134,6 +134,34 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");%>
 					<area name = "Python" shape="rect" coords="609,15,703,41" href="ShowAllCodingService?lang=<%=lang1%>">
 				</map><br><br><br><br>
 		<%}%>
+		<!-- 회원이 아닐때 로드맵 보여주는 코드=================================================== -->
+		<%}else { %>
+		 <%if(num.equals("1")){%>
+	        <img src="assets/images/frontEnd.png">
+        <%}else if(num.equals("2")) {%>
+	        <img src="assets/images/backEnd.png">
+        <%}else if(num.equals("3")) {%>
+	        <img src="assets/images/android.png">
+			<br>
+			<img src="assets/images/ios.png">
+        <%}else if(num.equals("4")) {%>
+        	<br><br><br><br><br>
+    		<img src="assets/images/infoEng.png">
+    		<br><br><br><br><br>
+   		<%}else if(num.equals("5")) {%>
+			<img src="assets/images/ai.png">
+				<br>	
+        	<img src="assets/images/machineLearning.png">
+		<%}else if(num.equals("6")) {%>
+            <br><br><br>
+			<img src="assets/images/dataEng.png">
+			<br><br><br><br>
+		<%}%>
+		
+		<%}%>
+		
+		
+		
 		</nav>
 		</div>
         <footer>
