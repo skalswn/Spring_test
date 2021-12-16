@@ -6,15 +6,6 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
-<<<<<<< HEAD
-<body>
-	<img usemap="#wow" src="assets/images/j_001.png">
-	<map name="wow">
-		<area shape="circle" coords="100,100,100" href="http://www.naver.com">
-		<area shape="circle" coords="200,200,100" href="http://www.google.com">
-		<area shape="circle" coords="300,300,100" href="http://www.daum.net">
-		<area shape="circle" coords="400,400,100" href="http://www.naver.com">
-=======
 
 <body>
 <!-- 백엔드 -->
@@ -38,7 +29,7 @@
 <!-- 프론트엔드 -->	
 <img usemap="#front" src="assets/images/frontEnd.png">
 	<map name="front">
-		<area name = "JavaScript" shape="rect" coords="297,397,430,445" href="http://www.google.com">
+		<area name = "JavaScript" shape="rect" coords="297,397,430,445" href="ShowAllCodingService.java?lang='파이썬'">
 		<area name = "html/css" shape="rect" coords="298,268,431,381" href="http://www.naver.com">
 	</map>
 	
@@ -55,7 +46,6 @@
 	<map name="data">
 		<area name = "JavaScript" shape="rect" coords="297,397,430,445" href="http://www.google.com">
 		<area name = "html/css" shape="rect" coords="298,268,431,381" href="http://www.naver.com">
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-Bigdata-7/PSIT.git
 	</map>
 
 

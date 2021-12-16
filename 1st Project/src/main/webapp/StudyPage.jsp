@@ -200,7 +200,6 @@ section.coming-soon form{
 	            <%} %>
 	   </ul>
 	   </div>
-	         
 	         <%if(vo.getM_id().equals("admin")){ %>
 	            <button onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
 	         <%} %>
