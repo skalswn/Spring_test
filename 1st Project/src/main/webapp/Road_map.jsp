@@ -20,13 +20,18 @@
     <link rel="stylesheet" href="assets/css/templatemo-grad-school.css">
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
-<!--
-    
-TemplateMo 557 Grad School
-
-https://templatemo.com/tm-557-grad-school
-
--->
+	
+	<style>
+		p{
+		text-align: center;
+		font-weight: 700px;
+		font-size:20px;
+		}	
+		#mapimg{
+		padding-top : 5%;
+		text-align: center;
+		}
+	</style>
   </head>
 
 <body>
@@ -77,28 +82,78 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 		</nav>
   </header>
   <div>
-    <nav>
-    <br><br><br><br><br><br><br><br><br><br>
+    <nav id="mapimg">
     <%String num=request.getParameter("num");%>
+    
         <%if(num.equals("1")){%>
-        	<p>로드맵1</p>
+       		<p>※ JavaScript, HTML/CSS에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요! </p>
+	        <img usemap="#front" src="assets/images/frontEnd.png">
+				<map name="front">
+					<area name = "JavaScript" shape="rect" coords="297,397,430,445" href="http://www.google.com">
+					<area name = "html/css" shape="rect" coords="298,268,431,381" href="http://www.naver.com">
+				</map>
         <%}else if(num.equals("2")) {%>
-        	<p>로드맵2</p>
+            <p>※ Java, JavaScript,  HTML/CSS, Python에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요! </p>
+	        <img usemap="#back" src="assets/images/backEnd.png">
+				<map name="back">
+					<area name = "Java" shape="rect" coords="755,247,853,278" href="http://www.daum.net">
+					<area name = "JavaScript" shape="rect" coords="755,446,855,476" href="http://www.google.com">
+					<area name = "JavaScript" shape="rect" coords="624,187,724,216" href="http://www.google.com">
+					<area name = "html/css" shape="rect" coords="625,92,724,170" href="http://www.naver.com">
+					<area name = "Python" shape="rect" coords="755,407,855,436" href="http://www.naver.com">
+				</map>
         <%}else if(num.equals("3")) {%>
-        	<p>로드맵3</p>
+            <p>※ Java에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요! </p>
+	        	<img usemap="#android" src="assets/images/android.png">
+					<map name="android">
+						<area name = "Java" shape="rect" coords="94,72,198,99" href="http://www.daum.net">
+					</map>
+				<br>
+				<img src="assets/images/ios.png">
         <%}else if(num.equals("4")) {%>
-    		<p>로드맵4</p>
+        	<br><br><br><br><br>
+    		<img src="assets/images/infoEng.png">
+    		<br><br><br><br><br>
    		<%}else if(num.equals("5")) {%>
-			<p>로드맵5</p>
+            <p>※ Python에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요! </p>
+				<img usemap="#ai" src="assets/images/ai.png">
+				<map name="ai">
+					<area name = "Python" shape="rect" coords="480,313,629,363" href="http://www.daum.net">
+				</map>
+           <p><br>※ Java, JavaScript, Python에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요! </p>
+        	<img usemap="#machine" src="assets/images/machineLearning.png">
+				<map name="machine">
+					<area name = "Java" shape="rect" coords="828,175,960,205" href="http://www.daum.net">
+					<area name = "JavaScript" shape="rect" coords="829,225,961,255" href="http://www.google.com">
+					<area name = "Python" shape="rect" coords="828,274,961,303" href="http://www.naver.com">
+				</map>
 		<%}else if(num.equals("6")) {%>
-			<p>로드맵6</p>
-		<%}else{%>
-			<p>로드맵7</p>
+            <p><br><br><br>※ Java, Python에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요! </p>
+			<img usemap="#data" src="assets/images/dataEng.png">
+				<map name="data">
+					<area name = "Java" shape="rect" coords="608,57,702,81" href="http://www.daum.net">
+					<area name = "Python" shape="rect" coords="609,15,703,41" href="http://www.naver.com">
+				</map><br><br><br><br>
 		<%}%>
-		
 		</nav>
+		</div>
+        <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <p><i class="fa fa-copyright"></i> Copyright 2021 by PSIT
+              
+               | Design: <a href="https://templatemo.com" rel="sponsored" target="_parent">TemplateMo</a><br>
+               Distributed By: <a href="https://themewagon.com" rel="sponsored" target="_blank">ThemeWagon</a>
+              
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+		
    
-    </div>
+    
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
