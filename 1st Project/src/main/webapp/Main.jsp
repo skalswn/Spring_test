@@ -80,13 +80,14 @@ int present_python=dao.present_python(id);
 
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['진행 학습량',     <%=present_python%>],
-          ['남은 학습량',     <%=amount_python-present_python%>]
+          ['남은 학습량',     <%=amount_python-present_python%>],
+          ['진행 학습량',     <%=present_python%>]
         ]);
 
         var options = {
         	backgroundColor: { fill:'transparent' },
-        	legend: `none`
+        	legend: `none`,
+        	colors: ['transparent','#f5a425']
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart_python'));
@@ -103,13 +104,14 @@ int present_python=dao.present_python(id);
 
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['진행 학습량',     <%=present_java%>],
-          ['남은 학습량',     <%=amount_java-present_java%>]
+          ['남은 학습량',     <%=amount_java-present_java%>],
+          ['진행 학습량',     <%=present_java%>]
         ]);
 
         var options = {
         	backgroundColor: { fill:'transparent' },
-        	legend: `none`
+        	legend: `none`,
+        	colors: ['transparent','#f5a425']
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart_java'));
@@ -126,13 +128,14 @@ int present_python=dao.present_python(id);
 
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['진행 학습량',     <%=present_html%>],
-          ['남은 학습량',     <%=amount_html-present_html%>]
+          ['남은 학습량',     <%=amount_html-present_html%>],
+          ['진행 학습량',     <%=present_html%>]
         ]);
 
         var options = {
         	backgroundColor: { fill:'transparent' },
-        	legend: `none`
+        	legend: `none`,
+        	colors: ['transparent','#f5a425']
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart_html'));
@@ -149,13 +152,14 @@ int present_python=dao.present_python(id);
 
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
+          ['남은 학습량',     <%=amount_javascript-present_javascript%>],
           ['진행 학습량',     <%=present_javascript%>],
-          ['남은 학습량',     <%=amount_javascript-present_javascript%>]
         ]);
 
         var options = {
         	backgroundColor: { fill:'transparent' },
-        	legend: `none`
+        	legend: `none`,
+        	colors: ['transparent','#f5a425']
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart_javascript'));
