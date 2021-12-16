@@ -283,6 +283,102 @@ public class DAO {
 			 }
 		return arr;
 	 }
+//	자유게시판 검색 기능
+	public CommunityVO communitySerch1(String str, String text) {
+//		String sql = null;
+		try {
+			connection();
+			
+//			if(str.equals("title")) {
+//				sql = "select ARTICLE_SEQ from tbl_community where ARTICLE_SUBJECT=? and ARTICLE_CONTENT=?";
+//			}
+//			else if(str.equals("content")) {
+//				sql = "select ARTICLE_SEQ from tbl_community where ARTICLE_CONTENT=? and ARTICLE_CONTENT=?";
+//			}else {
+//				sql = "select ARTICLE_SEQ from tbl_community where M_ID=? and ARTICLE_CONTENT=?";
+//			}
+			
+			String sql = "select * from tbl_community where ARTICLE_SUBJECT=? and ARTICLE_CONTENT=?";
+			
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,str);
+			psmt.setString(2,text);
+	
+			rs =  psmt.executeQuery();
+			
+			if(rs.next() == true) {
+				   int c_seq = rs.getInt("ARTICLE_SEQ");
+				   String title = rs.getString("ARTICLE_SUBJECT");
+				   String content = rs.getString("ARTICLE_CONTENT");
+				   String date = rs.getString("REG_DATE");
+				   int cnt = rs.getInt("ARTICLE_CNT");
+				   String writer = rs.getString("M_ID");
+				   String filename1 = rs.getString("ARTICLE_FILE1");
+				   String filename2 = rs.getString("ARTICLE_FILE2");
+				   String filename3 = rs.getString("ARTICLE_FILE3");
+				   
+				   bo = new CommunityVO(c_seq,title,content,date,cnt,writer,filename1,filename2,filename3);
+			}
+		} catch (Exception e) {
+		}finally {
+			close();
+		}
+		return bo;
+	}
+	
+	
+	public ArrayList<CommunityVO> communitySerch(String serchfield, String text) {
+		
+		ArrayList<CommunityVO> cmvoarr = new ArrayList<>();
+		
+		try {
+			connection();
+			
+			String sql = "select * from tbl_community WHERE "+serchfield +"= "+ "'"+ text+"'" ;
+			System.out.println(sql);
+//			if(str.equals("title")) {
+//				sql = "select ARTICLE_SEQ from tbl_community where ARTICLE_SUBJECT=? and ARTICLE_CONTENT=?";
+//			}
+//			else if(str.equals("content")) {
+//				sql = "select ARTICLE_SEQ from tbl_community where ARTICLE_CONTENT=? and ARTICLE_CONTENT=?";
+//			}else {
+//				sql = "select ARTICLE_SEQ from tbl_community where M_ID=? and ARTICLE_CONTENT=?";
+//			}
+//			String sql = "select * from tbl_community where ARTICLE_SUBJECT=?";
+			
+			psmt = conn.prepareStatement(sql);
+//			psmt.setString(1,text);
+	
+			rs =  psmt.executeQuery();
+			
+			while(rs.next() == true) {
+				   int c_seq = rs.getInt("ARTICLE_SEQ");
+				   String title = rs.getString("ARTICLE_SUBJECT");
+				   String content = rs.getString("ARTICLE_CONTENT");
+				   String date = rs.getString("REG_DATE");
+				   int cnt = rs.getInt("ARTICLE_CNT");
+				   String writer = rs.getString("M_ID");
+				   String filename1 = rs.getString("ARTICLE_FILE1");
+				   String filename2 = rs.getString("ARTICLE_FILE2");
+				   String filename3 = rs.getString("ARTICLE_FILE3");
+				   
+				   bo = new CommunityVO(c_seq,title,content,date,cnt,writer,filename1,filename2,filename3);
+//				   bo = new CommunityVO(title, content);
+				   System.out.println("DAO"+bo);
+				   cmvoarr.add(bo);
+				   System.out.println("DAO에cmvoarr"+bo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return cmvoarr;
+	}
+	
+	
+	
+	
 	
 // 자유게시판 자기글 보기========================================================================================
 	public CommunityVO communityview(int num) {

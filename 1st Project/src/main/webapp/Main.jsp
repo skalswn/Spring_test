@@ -13,6 +13,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
+
 <meta name="author" content="">
 <link
 	href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900"
@@ -50,7 +51,7 @@ h4#status {
 </head>
 
 
-<body>
+<body style="font-family: 'Montserrat', sans-serif!important;">
 <%
 // 로그인 안되어있을 때 메뉴바 다르게 하기 위해 vo가져오기
 
@@ -59,8 +60,8 @@ DAO dao = new DAO();
 String id = null;
 ArrayList<CheckVO> chvoarr = null;
 if(vo!=null){
-	id = vo.getM_id();
-	chvoarr = dao.selectPhase(id);
+   id = vo.getM_id();
+   chvoarr = dao.selectPhase(id);
 }
 int amount_java = dao.amount_java();
 int amount_javascript = dao.amount_javascript();
@@ -185,7 +186,7 @@ int present_python=dao.present_python(id);
           </ul> -->
      <% if(vo!=null){%>
         <li><a href="#">직무탐색</a>
-        	<ul class="sub-menu">
+           <ul class="sub-menu">
             <li><a href="P_Psit.jsp">PSIT 검사</a></li>
             <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
           	</ul></li>
@@ -198,7 +199,7 @@ int present_python=dao.present_python(id);
             <li><a href="c_Used_Community.jsp">중고거래 게시판</a></li>
           </ul></li>
         <%if(vo.getM_id().equals("admin")){ %>
-	        <li><a href="ManageUser.jsp" class="external">회원관리</a></li>
+           <li><a href="ManageUser.jsp" class="external">회원관리</a></li>
         <%}else{ %>
         <li><a href="My_page.jsp" class="external">마이페이지</a></li>
         <%} %>
@@ -335,30 +336,30 @@ int present_python=dao.present_python(id);
     </div>
   </section>
 
-	<section class="section why-us" data-section="section2">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12" style="text-align: center;">
-					<div class="section-heading">
-						<h2>What is IT?</h2>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<img src="assets/images/001.png" style="width: 100%">
-				</div>
-				<div id='tabs'>
-					<section class='tabs-content'>
-						<article id='tabs-1'>
-							<div class="row">
-								<div class="col-md-6"></div>
-							</div>
-						</article>
-					</section>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--IT직무내용부분---------------------------------------------------------------------------------------------------------------------------------------->
+   <section class="section why-us" data-section="section2">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12" style="text-align: center;">
+               <div class="section-heading">
+                  <h2>What is IT?</h2>
+               </div>
+            </div>
+            <div class="col-md-12">
+               <img src="assets/images/001.png" style="width: 100%">
+            </div>
+            <div id='tabs'>
+               <section class='tabs-content'>
+                  <article id='tabs-1'>
+                     <div class="row">
+                        <div class="col-md-6"></div>
+                     </div>
+                  </article>
+               </section>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--IT직무내용부분---------------------------------------------------------------------------------------------------------------------------------------->
 <section class="section courses" data-section="section4">
     <div class="container-fluid">
       <div class="row">
@@ -390,7 +391,7 @@ int present_python=dao.present_python(id);
             <img src="assets/images/j_005.png" alt="Course #3">
             <div class="down-content">
               <div class="text-button-pay">
-             	<%String c ="3"; %>
+                <%String c ="3"; %>
                 <a href="Road_map.jsp?num=<%=c%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
@@ -439,7 +440,7 @@ int present_python=dao.present_python(id);
     <section class="section coming-soon" data-section="section3">
     <div class="container">
       <div class="row">
-      	<div class="col-md-12" style="text-align : center;">
+         <div class="col-md-12" style="text-align : center;">
             <div class="section-heading">
             <h2>IT 전망</h2>
           </div>
@@ -462,20 +463,20 @@ int present_python=dao.present_python(id);
     </div>
   </section>
   
-  	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<p>
-						<i class="fa fa-copyright"></i> Copyright 2020 by Grad School |
-						Design: <a href="https://templatemo.com" rel="sponsored"
-							target="_parent">TemplateMo</a><br> Distributed By: <a
-							href="https://themewagon.com" rel="sponsored" target="_blank">ThemeWagon</a>
-					</p>
-				</div>
-			</div>
-		</div>
-	</footer>
+     <footer>
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <p>
+                  <i class="fa fa-copyright"></i> Copyright 2020 by Grad School |
+                  Design: <a href="https://templatemo.com" rel="sponsored"
+                     target="_parent">TemplateMo</a><br> Distributed By: <a
+                     href="https://themewagon.com" rel="sponsored" target="_blank">ThemeWagon</a>
+               </p>
+            </div>
+         </div>
+      </div>
+   </footer>
   <!-- Scripts 지우면안됨------------------------------------------------------------------------------------------------------------------>
   <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -539,6 +540,3 @@ int present_python=dao.present_python(id);
     </script>
 </body>
 </html>
-
-
-

@@ -137,15 +137,15 @@ s_Community_commentVO cmvo = (s_Community_commentVO)session.getAttribute("cmvo")
 						<table id="list">
 									<tr style="height: 40px">
 									<td class = "part" style="text-align: center">분류</td>
-									<td style="text-align: left"><h6> <%=scvo.getSTUDY_LANG() %></h6></td>
+									<td style="text-align: left; margin-left: 1%;"><h6 style="margin-left: 1%;"> <%=scvo.getSTUDY_LANG() %></h6></td>
 								</tr>
 								<tr style="height: 40px">
 									<td class = "part" style="text-align: center">제목</td>
-									<td style="text-align: left"><h6><%=scvo.getSTUDY_SUBJECT() %></h6></td>
+									<td style="text-align: left; margin-left: 1%;"><h6 style="margin-left: 1%;"><%=scvo.getSTUDY_SUBJECT() %></h6></td>
 								</tr>
 								<tr class="a" class="cm_tr" style="height: 50%">
 									<td rowspan = "2" class = "part" style="text-align: center;">내용</td>
-									<td style="text-align: left; vertical-align: initial;"><h6><%=scvo.getSTUDY_CONTENT()%></h6></td>
+									<td style="text-align: left; vertical-align: initial; margin-left: 1%;"><h6 style="margin-left: 1%;"><%=scvo.getSTUDY_CONTENT()%></h6></td>
 								</tr>
 								<tr style="height: 30%">
 								<%if(scvo.getSTUDY_FILE1().equals("none.png")) { %>
