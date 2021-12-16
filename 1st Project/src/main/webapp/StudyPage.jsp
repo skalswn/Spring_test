@@ -103,12 +103,11 @@ section.coming-soon form{
    ArrayList<CodingVO> codingarray=(ArrayList<CodingVO>)request.getAttribute("codingarray");
    DAO dao = new DAO();
    /* CheckVO chvo = (CheckVO)request.getAttribute("chvo"); */
-//   CheckVO chvo1 = dao.getPhase(vo.getM_id(), "파이썬");
-  // CheckVO chvo2 = dao.getPhase(vo.getM_id(), "자바");
- //  CheckVO chvo3 = dao.getPhase(vo.getM_id(), "HTML");
- //  CheckVO chvo4 = dao.getPhase(vo.getM_id(), "자바스크립트");
-   
-   	
+   CheckVO chvo1 = dao.getPhase(vo.getM_id(), "파이썬");
+   CheckVO chvo2 = dao.getPhase(vo.getM_id(), "자바");
+   CheckVO chvo3 = dao.getPhase(vo.getM_id(), "HTML");
+   CheckVO chvo4 = dao.getPhase(vo.getM_id(), "자바스크립트");
+   CodingVO codingvo = null;
    /* CheckVO chvo = null;
    if(request.getAttribute("chvo") != null){
       chvo=(CheckVO)request.getAttribute("chvo");
@@ -183,7 +182,7 @@ section.coming-soon form{
 	      <%for(int i=0; i<codingarray.size(); i++){%>
 	         <%
 	         int cnt=0;
-	         CodingVO codingvo=codingarray.get(i); 
+	         codingvo=codingarray.get(i); 
 	         cnt=dao.Check_Phase(codingvo.getCoding_seq(),vo.getM_id(),codingvo.getCoding_lang());
 	         %>
 	         <br>
@@ -203,10 +202,10 @@ section.coming-soon form{
 	   </div>
 	         
 	         <%if(vo.getM_id().equals("admin")){ %>
-	            <%-- <button onclick="location.href='DeleteCodingService?seq=<%= codingvo.getCoding_seq() %>';">문제삭제</button> --%>
+	            <button onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
 	         <%} %>
 	      <%} %>
-	      <%-- <%} %> --%> 
+	  <%--  <%}%>  --%> 
 
 	<!--for문 끝  ----->
 	

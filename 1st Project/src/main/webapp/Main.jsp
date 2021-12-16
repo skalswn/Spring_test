@@ -13,6 +13,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
+
 <meta name="author" content="">
 <link
 	href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900"
@@ -35,10 +36,22 @@ TemplateMo 557 Grad School
 https://templatemo.com/tm-557-grad-school
 
 -->
+<style>
+h4#status {
+	text-shadow: -2px 0 #F2F1F6, 0 2px #F2F1F6, 2px 0 #F2F1F6, 0 -2px #F2F1F6;
+	margin-top : 15%; 
+	font-size: 40px; 
+	text-transform: uppercase; 
+	font-weight: 800; 
+	color: #f5a425; 
+	letter-spacing: 1px;
+	margin-bottom: 15%;
+}
+</style>
 </head>
 
 
-<body>
+<body style="font-family: 'Montserrat', sans-serif!important;">
 <%
 // 로그인 안되어있을 때 메뉴바 다르게 하기 위해 vo가져오기
 
@@ -47,8 +60,8 @@ DAO dao = new DAO();
 String id = null;
 ArrayList<CheckVO> chvoarr = null;
 if(vo!=null){
-	id = vo.getM_id();
-	chvoarr = dao.selectPhase(id);
+   id = vo.getM_id();
+   chvoarr = dao.selectPhase(id);
 }
 int amount_java = dao.amount_java();
 int amount_javascript = dao.amount_javascript();
@@ -169,7 +182,7 @@ int present_python=dao.present_python(id);
           </ul> -->
      <% if(vo!=null){%>
         <li><a href="#">직무탐색</a>
-        	<ul class="sub-menu">
+           <ul class="sub-menu">
             <li><a href="P_Psit.jsp">PSIT 검사</a></li>
             <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
           	</ul></li>
@@ -182,7 +195,7 @@ int present_python=dao.present_python(id);
             <li><a href="c_Used_Community.jsp">중고거래 게시판</a></li>
           </ul></li>
         <%if(vo.getM_id().equals("admin")){ %>
-	        <li><a href="ManageUser.jsp" class="external">회원관리</a></li>
+           <li><a href="ManageUser.jsp" class="external">회원관리</a></li>
         <%}else{ %>
         <li><a href="My_page.jsp" class="external">마이페이지</a></li>
         <%} %>
@@ -204,42 +217,46 @@ int present_python=dao.present_python(id);
 		<% if(vo!=null){%>
 		<div class="video-overlay header-text">
 			<div class="caption">
-				<div style="float: left; width: 50%; margin: 10%;">
+				<div style="float: left; width: 50%; margin-top: 10%;">
 					<h2>
 						<em>PSIT</em> : Personal IT
 					</h2>
-					<h4 style="font-size: 30px; color:white; font-weight: 700"> PSIT : Personal IT</h4>
 					<h4 style="font-size: 20px; color:white;"> PSIT란 자신의 성향 분석을 통해 IT직무를 추천받는 서비스 입니다.</h4>
 					<div class="main-button">
 						<div class="scroll-to-section"></div>
 						<br><br>
-						<a href="P_Psit.jsp">검사하러가기</a>
+						<a href="P_Psit.jsp">GO TEST</a>
 					</div>
 				</div>
 				<div>
 					
-					<div align="right" style="float: right; width: 30%; height: 600px; background-color: rgba(250,250,250,0.1); text-align: center;">
-						<h4 style = "margin : 5%; font-size: 40px; text-transform: uppercase; font-weight: 800; color: #fff; letter-spacing: 1px;">학습진행현황</h4>
-							<table>
+					<div align="right" style="float: right; width: 30%; background-color: rgba(250,250,250,0.1); text-align: center;">
+						<h4 id="status">study status</h4>
+							<table style="width: 100%;">
+							<tr style = "background-color: rgba(250,250,250,0.1); height: 40px">
+							<th style="font-size: 20px; color: white; width:40%;">Subject</th>
+						    <th style="font-size: 20px; color: white; width:30%">Step</th>
+						    <th style="font-size: 20px; color: white; width: 30%">Status</th>
+						    </tr>
 							<tr>
-							<td style="color: white;">파이썬</td>
-						    <td style="color: white;"><%=present_python %>/<%=amount_python %>단계 </td>
-						    <td><div id="piechart_python" style="width: 200px; height: 100px;"></div></td>
+							<td style="color: white; width:40%">파이썬</td>
+						    <td style="color: white; width:30%"><%=present_python %>/<%=amount_python %>단계 </td>
+						    <td style="width: 30%"><div id="piechart_python" style="width: 100px; height: 100px; display:inline-block;"></div></td>
 							</tr>
 							<tr>
-							<td style="color: white;">자바</td>
-						    <td style="color: white;"><%=present_java %>/<%=amount_java %>단계 </td>
-						    <td><div id="piechart_java" style="width: 200px; height: 100px;"></div></td>
+							<td style="color: white; width:40%">자바</td>
+						    <td style="color: white; width:30%"><%=present_java %>/<%=amount_java %>단계 </td>
+						    <td style="width: 30%"><div id="piechart_java" style="width: 100px; height: 100px; display:inline-block;"></div></td>
+						    </tr>
+						    <tr>
+							<td style="color: white; width:40%">HTML/CSS</td>
+						    <td style="color: white; width:30%"><%=present_html %>/<%=amount_html %>단계 </td>
+						    <td style="width: 30%"><div id="piechart_html" style="width: 100px; height: 100px; display:inline-block;"></div></td>
 							</tr>
 							<tr>
-							<td style="color: white;">HTML/CSS</td>
-						    <td style="color: white;"><%=present_html %>/<%=amount_html %>단계 </td>
-						    <td><div id="piechart_html" style="width: 200px; height: 100px;"></div></td>
-							</tr>
-							<tr>
-							<td style="color: white;">자바스크립트</td>
-						    <td style="color: white;"><%=present_javascript %>/<%=amount_javascript%>단계 </td>
-						    <td><div id="piechart_javascript" style="width: 200px; height: 100px;"></div></td>
+							<td style="color: white; width:40%">자바스크립트</td>
+						    <td style="color: white; width:30%"><%=present_javascript %>/<%=amount_javascript%>단계 </td>
+						    <td style="width: 30%"><div id="piechart_javascript" style="width: 100px; height: 100px; display:inline-block;"></div></td>
 							</tr>
 							</table>
 					</div>					
@@ -253,12 +270,11 @@ int present_python=dao.present_python(id);
 					<h2>
 						<em>PSIT</em> : Personal IT
 					</h2>
-					<h4 style="font-size: 30px; color:white; font-weight: 700"> PSIT : Personal IT</h4>
 					<h4 style="font-size: 20px; color:white;"> PSIT란 자신의 성향 분석을 통해 IT직무를 추천받는 서비스 입니다.</h4>
 					<div class="main-button">
 						<div class="scroll-to-section"></div>
 						<br><br>
-						<a href="Login.jsp"><span style = "font-size : 25px">로그인하고</span><br>검사하러가기</a>
+						<a href="Login.jsp">GO TEST<br><span style = "font-size : 15px; color: #fff; font-weight: 500;">After Login</span></a>
 					</div>
 				</div>
 			</div>
@@ -316,30 +332,30 @@ int present_python=dao.present_python(id);
     </div>
   </section>
 
-	<section class="section why-us" data-section="section2">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12" style="text-align: center;">
-					<div class="section-heading">
-						<h2>What is IT?</h2>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<img src="assets/images/001.png" style="width: 100%">
-				</div>
-				<div id='tabs'>
-					<section class='tabs-content'>
-						<article id='tabs-1'>
-							<div class="row">
-								<div class="col-md-6"></div>
-							</div>
-						</article>
-					</section>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--IT직무내용부분---------------------------------------------------------------------------------------------------------------------------------------->
+   <section class="section why-us" data-section="section2">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12" style="text-align: center;">
+               <div class="section-heading">
+                  <h2>What is IT?</h2>
+               </div>
+            </div>
+            <div class="col-md-12">
+               <img src="assets/images/001.png" style="width: 100%">
+            </div>
+            <div id='tabs'>
+               <section class='tabs-content'>
+                  <article id='tabs-1'>
+                     <div class="row">
+                        <div class="col-md-6"></div>
+                     </div>
+                  </article>
+               </section>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--IT직무내용부분---------------------------------------------------------------------------------------------------------------------------------------->
 <section class="section courses" data-section="section4">
     <div class="container-fluid">
       <div class="row">
@@ -371,7 +387,7 @@ int present_python=dao.present_python(id);
             <img src="assets/images/j_005.png" alt="Course #3">
             <div class="down-content">
               <div class="text-button-pay">
-             	<%String c ="3"; %>
+                <%String c ="3"; %>
                 <a href="Road_map.jsp?num=<%=c%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
@@ -420,7 +436,7 @@ int present_python=dao.present_python(id);
     <section class="section coming-soon" data-section="section3">
     <div class="container">
       <div class="row">
-      	<div class="col-md-12" style="text-align : center;">
+         <div class="col-md-12" style="text-align : center;">
             <div class="section-heading">
             <h2>IT 전망</h2>
           </div>
@@ -443,20 +459,20 @@ int present_python=dao.present_python(id);
     </div>
   </section>
   
-  	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<p>
-						<i class="fa fa-copyright"></i> Copyright 2020 by Grad School |
-						Design: <a href="https://templatemo.com" rel="sponsored"
-							target="_parent">TemplateMo</a><br> Distributed By: <a
-							href="https://themewagon.com" rel="sponsored" target="_blank">ThemeWagon</a>
-					</p>
-				</div>
-			</div>
-		</div>
-	</footer>
+     <footer>
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <p>
+                  <i class="fa fa-copyright"></i> Copyright 2020 by Grad School |
+                  Design: <a href="https://templatemo.com" rel="sponsored"
+                     target="_parent">TemplateMo</a><br> Distributed By: <a
+                     href="https://themewagon.com" rel="sponsored" target="_blank">ThemeWagon</a>
+               </p>
+            </div>
+         </div>
+      </div>
+   </footer>
   <!-- Scripts 지우면안됨------------------------------------------------------------------------------------------------------------------>
   <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -520,6 +536,3 @@ int present_python=dao.present_python(id);
     </script>
 </body>
 </html>
-
-
-

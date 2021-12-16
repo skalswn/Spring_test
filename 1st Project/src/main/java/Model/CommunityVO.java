@@ -24,6 +24,17 @@ public class CommunityVO {
 		this.file2 = file2;
 		this.file3 = file3;
 	}
+	
+	
+////////////////////////// 잠시 확인용
+	public CommunityVO(String title, String content) {
+		this.title = title;
+		this.content = content;
+	}
+///////////////////////////////////////
+
+
+
 	public int getC_seq() {
 		return c_seq;
 	}
