@@ -48,16 +48,102 @@ if(vo!=null){
 	chvoarr = dao.selectPhase(id);
 }
 int amount_java = dao.amount_java();
-//int present_java=dao.present_java();
 int amount_javascript = dao.amount_javascript();
-//int present_javascript=dao.present_javascript();
 int amount_html=dao.amount_html();
-//int present_html=dao.present_html();
 int amount_python=dao.amount_python();
-//int present_python=dao.present_python();
-
 %>
-   
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['진행 학습량',     <%=amount_python%>],
+          ['남은 학습량',     <%=amount_python%>]
+        ]);
+
+        var options = {
+        	backgroundColor: { fill:'transparent' },
+        	legend: `none`
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_python'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['진행 학습량',     <%=amount_python%>],
+          ['남은 학습량',     <%=amount_java%>]
+        ]);
+
+        var options = {
+        	backgroundColor: { fill:'transparent' },
+        	legend: `none`
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_java'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['진행 학습량',     <%=amount_python%>],
+          ['남은 학습량',     <%=amount_html%>]
+        ]);
+
+        var options = {
+        	backgroundColor: { fill:'transparent' },
+        	legend: `none`
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_html'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['진행 학습량',     <%=amount_python%>],
+          ['남은 학습량',     <%=amount_javascript%>]
+        ]);
+
+        var options = {
+        	backgroundColor: { fill:'transparent' },
+        	legend: `none`
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_javascript'));
+
+        chart.draw(data, options);
+      }
+    </script>
   <!--header-->
   <header class="main-header clearfix" role="header">
     <div class="logo">
@@ -128,14 +214,26 @@ int amount_python=dao.amount_python();
 					<div align="right" style="float: right; width: 30%; height: 600px; background-color: rgba(250,250,250,0.1); text-align: center;">
 						<h4 style = "margin : 5%; font-size: 40px; text-transform: uppercase; font-weight: 800; color: #fff; letter-spacing: 1px;">학습진행현황</h4>
 							<table>
-								<%for(int i =0;i<chvoarr.size();i++) { %>
-								<%out.println(chvoarr.size()); %>
-								<% CheckVO chvo = chvoarr.get(i); %>
-										<tr>
-										<td class="language_a"><%=chvo.getLang() %> </td>
-										<td><%=chvo.getStep() %>단계 </td>
-										</tr>
-								<%} %>
+							<tr>
+							<td style="color: white;">파이썬</td>
+						    <td style="color: white;"><%=1 %>/<%=amount_python %>단계 </td>
+						    <td><div id="piechart_python" style="width: 200px; height: 100px;"></div></td>
+							</tr>
+							<tr>
+							<td style="color: white;">자바</td>
+						    <td style="color: white;"><%=1 %>/<%=amount_java %>단계 </td>
+						    <td><div id="piechart_java" style="width: 200px; height: 100px;"></div></td>
+							</tr>
+							<tr>
+							<td style="color: white;">HTML/CSS</td>
+						    <td style="color: white;"><%=1 %>/<%=amount_html %>단계 </td>
+						    <td><div id="piechart_html" style="width: 200px; height: 100px;"></div></td>
+							</tr>
+							<tr>
+							<td style="color: white;">자바스크립트</td>
+						    <td style="color: white;"><%=1 %>/<%=amount_javascript%>단계 </td>
+						    <td><div id="piechart_javascript" style="width: 200px; height: 100px;"></div></td>
+							</tr>
 							</table>
 					</div>					
 				</div>
