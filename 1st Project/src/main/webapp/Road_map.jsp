@@ -89,7 +89,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
        		<p>※ JavaScript, HTML/CSS에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요! </p>
 	        <img usemap="#front" src="assets/images/frontEnd.png">
 				<map name="front">
-					<area name = "JavaScript" shape="rect" coords="297,397,430,445" href="http://www.google.com">
+					<area name = "JavaScript" shape="rect" coords="297,397,430,445" href="ShowAllCodingService?lang='자바스크립트'">
 					<area name = "html/css" shape="rect" coords="298,268,431,381" href="http://www.naver.com">
 				</map>
         <%}else if(num.equals("2")) {%>
