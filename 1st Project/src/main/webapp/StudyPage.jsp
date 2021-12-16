@@ -107,7 +107,7 @@ section.coming-soon form{
    CheckVO chvo2 = dao.getPhase(vo.getM_id(), "자바");
    CheckVO chvo3 = dao.getPhase(vo.getM_id(), "HTML");
    CheckVO chvo4 = dao.getPhase(vo.getM_id(), "자바스크립트");
-   
+   CodingVO codingvo = null;
    /* CheckVO chvo = null;
    if(request.getAttribute("chvo") != null){
       chvo=(CheckVO)request.getAttribute("chvo");
@@ -185,34 +185,33 @@ section.coming-soon form{
 	<!--문제나오는 부분  ---->
 	   <%if(codingarray!=null){ %>
 	      <%for(int i=0; i<codingarray.size(); i++){%>
-	         <%CodingVO codingvo=codingarray.get(i); %>
+	         <%codingvo=codingarray.get(i); %>
 	         <br>
 	   <div id="phase" >
-	   <ul>
-	   
-	         <%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%>
-	         <a id="gostudy" href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a>
-	             <%-- <%if(chvo3!=null){ %> --%> 
-	               <%if(chvo1.getStep()>=codingvo.getCoding_seq()){%> 
-	                  <img src="./images/checkbook.png" width=50px height=50px>
-	                  <%}else if(chvo2.getStep()>=codingvo.getCoding_seq()){ %>
-	                  <img src="./images/checkbook.png" width=50px height=50px>
-	                  <%}else if(chvo3.getStep()>=codingvo.getCoding_seq()){ %>
-	                  <img src="./images/checkbook.png" width=50px height=50px>
-	                  <%}else if(chvo4.getStep()>=codingvo.getCoding_seq()){ %>
-	                  <img src="./images/checkbook.png" width=50px height=50px>
-	               <%}else{ %>
-	                  <img src="./images/nocheckbook.png" width=50px height=50px>
-	               <%} %>
-	            <%} %>
+       <ul>
+            <%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%>
+            <a id="gostudy" href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a>
+            <%-- <%if(chvo3!=null){ %> --%> 
+            <%if(chvo1.getStep()>=codingvo.getCoding_seq()){%> 
+            	<img src="./images/checkbook.png" width=50px height=50px>
+            <%}else if(chvo2.getStep()>=codingvo.getCoding_seq()){ %>
+            	<img src="./images/checkbook.png" width=50px height=50px>
+            <%}else if(chvo3.getStep()>=codingvo.getCoding_seq()){ %>
+            	<img src="./images/checkbook.png" width=50px height=50px>
+            <%}else if(chvo4.getStep()>=codingvo.getCoding_seq()){ %>
+            	<img src="./images/checkbook.png" width=50px height=50px>
+            <%}else{ %>
+            	<img src="./images/nocheckbook.png" width=50px height=50px>
+            <%} %>
+            <%} %>
 	   </ul>
 	   </div>
 	         
 	         <%if(vo.getM_id().equals("admin")){ %>
-	            <%-- <button onclick="location.href='DeleteCodingService?seq=<%= codingvo.getCoding_seq() %>';">문제삭제</button> --%>
+	            <button onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
 	         <%} %>
 	      <%} %>
-	      <%-- <%} %> --%> 
+	  <%--  <%}%>  --%> 
 
 	<!--for문 끝  ----->
 	
