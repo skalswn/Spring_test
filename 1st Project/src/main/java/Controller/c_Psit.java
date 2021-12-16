@@ -24,39 +24,39 @@ public class c_Psit extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String sample = request.getParameter("sample");
-		String job_no="";
+		String job_no=",";
 	if(sample.contains("ENFJ")){
-		 job_no=job_no+"1";
+		 job_no=job_no+"인공지능/머신러닝";
 	}if(sample.contains("ENFP")){
-		 job_no=job_no+"2";
+		 job_no=job_no+"인공지능/머신러닝,앱 개발자";
 	}if(sample.contains("ENTJ")){
-		job_no=job_no+"3";
+		job_no=job_no+"데이터 엔지니어";
 	}if(sample.contains("ENTP")){
-		job_no=job_no+"4"; 
+		job_no=job_no+"인공지능/머신러닝,데이터 엔지니어"; 
 	}if(sample.contains("ESFJ")){
-		job_no=job_no+"5";
+		job_no=job_no+"프로젝트 매니저";
 	}if(sample.contains("ESFP")){
-		job_no=job_no+"5"; 
+		job_no=job_no+"프로젝트 매니저"; 
 	}if(sample.contains("ESTJ")){
-		job_no=job_no+"백앤드"; 
+		job_no=job_no+"데이터 엔지니어, 프로젝트 매니저"; 
 	}if(sample.contains("ENTP")){
-		job_no=job_no+"백앤드"; 
+		job_no=job_no+"데이터 엔지니어"; 
 	}if(sample.contains("INFJ")){
-		job_no=job_no+"7"; 
+		job_no=job_no+"백엔드 개발자, 인공지능/머신러닝"; 
 	}if(sample.contains("INFP")){
-		job_no=job_no+"7";
+		job_no=job_no+"인공지능/머신러닝";
 	}if(sample.contains("INTJ")){
-		job_no=job_no+"1";
+		job_no=job_no+"백엔드 개발자,인공지능/머신러닝";
 	 }if(sample.contains("INTP")){
-		job_no=job_no+"프론트";
+		job_no=job_no+"백엔드 개발자,인공지능/머신러닝";
 	}if(sample.contains("ISFJ")){
-		job_no=job_no+"백앤드"; 
+		job_no=job_no+"프로젝트 매니저"; 
 	}if(sample.contains("ISFP")){
-		job_no=job_no+"빅데이터 엔지니어"; 
+		job_no=job_no+"프론트엔드 개발자"; 
 	}if(sample.contains("ISTJ")){
-		job_no=job_no+"1"; 
+		job_no=job_no+"정보보안전문가"; 
 	}if(sample.contains("ISTP")){
-		job_no=job_no+"1"; 
+		job_no=job_no+"데이터 엔지니어"; 
 	 }
 		MemberVO vo=(MemberVO)session.getAttribute("vo");
 		String M_ID=vo.getM_id();
@@ -66,17 +66,42 @@ public class c_Psit extends HttpServlet {
 		PsitVO PS = dao.PSTORE(M_ID);
 	if (psitnum > 0) { 
 		System.out.println("저장 성공");
-		if(job_no.contains("백앤드")) {
-			
-		
-		response.sendRedirect("http://localhost:8081/1st_Project/Road_map.jsp?num=1");
 		}
-		}else { 
+
+		else { 
 		System.out.println("저장 실패");
 	 }
-	}
+	response.sendRedirect("http://localhost:8081/1st_Project/P_Psit_Result.jsp");
+//	 if(job_no.contains("인공지능")) {		
+//		response.sendRedirect("http://localhost:8081/1st_Project/Road_map.jsp?num=5");
+//		}
+//		
+//	else if(job_no.contains("앱")) {		
+//		response.sendRedirect("http://localhost:8081/1st_Project/Road_map.jsp?num=3");
+//		}
+//
+//	else if(job_no.contains("백엔드")) {		
+//		response.sendRedirect("http://localhost:8081/1st_Project/Road_map.jsp?num=2");
+//		}
+//		
+//	else if(job_no.contains("데이터")) {		
+//		response.sendRedirect("http://localhost:8081/1st_Project/Road_map.jsp?num=6");
+//		}
+//		
+//	else if(job_no.contains("프론트엔드")) {		
+//		response.sendRedirect("http://localhost:8081/1st_Project/Road_map.jsp?num=1");
+//		}
+//		
+//	else if(job_no.contains("프로젝트")) {		
+//		response.sendRedirect("http://localhost:8081/1st_Project/Road_map.jsp?num=7");
+//		}
+//		
+//	else if(job_no.contains("정보보안전문가")) {		
+//		response.sendRedirect("http://localhost:8081/1st_Project/Road_map.jsp?num=4");
+//		
+//	}
 
-}
+}}
 	
 
 
