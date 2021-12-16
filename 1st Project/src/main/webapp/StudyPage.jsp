@@ -103,22 +103,18 @@ section.coming-soon form{
    ArrayList<CodingVO> codingarray=(ArrayList<CodingVO>)request.getAttribute("codingarray");
    DAO dao = new DAO();
    /* CheckVO chvo = (CheckVO)request.getAttribute("chvo"); */
-   CheckVO chvo1 = dao.getPhase(vo.getM_id(), "파이썬");
-   CheckVO chvo2 = dao.getPhase(vo.getM_id(), "자바");
-   CheckVO chvo3 = dao.getPhase(vo.getM_id(), "HTML");
-   CheckVO chvo4 = dao.getPhase(vo.getM_id(), "자바스크립트");
+//   CheckVO chvo1 = dao.getPhase(vo.getM_id(), "파이썬");
+  // CheckVO chvo2 = dao.getPhase(vo.getM_id(), "자바");
+ //  CheckVO chvo3 = dao.getPhase(vo.getM_id(), "HTML");
+ //  CheckVO chvo4 = dao.getPhase(vo.getM_id(), "자바스크립트");
    
+   	
    /* CheckVO chvo = null;
    if(request.getAttribute("chvo") != null){
       chvo=(CheckVO)request.getAttribute("chvo");
    }
    System.out.println(chvo); 
    /* System.out.println(chvo.getStep()); */
-   out.print(chvo1); 
-   System.out.println(chvo1.getStep()); 
-   System.out.println(chvo2.getStep()); 
-   System.out.println(chvo3.getStep()); 
-   System.out.println(chvo4.getStep()); 
 %>
 <%-- <%if(chvo!=null){ %>
              <%System.out.println(chvo.getStep()); %>
@@ -185,25 +181,23 @@ section.coming-soon form{
 	<!--문제나오는 부분  ---->
 	   <%if(codingarray!=null){ %>
 	      <%for(int i=0; i<codingarray.size(); i++){%>
-	         <%CodingVO codingvo=codingarray.get(i); %>
+	         <%
+	         int cnt=0;
+	         CodingVO codingvo=codingarray.get(i); 
+	         cnt=dao.Check_Phase(codingvo.getCoding_seq(),vo.getM_id(),codingvo.getCoding_lang());
+	         %>
 	         <br>
 	   <div id="phase" >
 	   <ul>
 	   
 	         <%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%>
-	         <a id="gostudy" href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a>
+	         <a id="gostudy" href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a> 
 	             <%-- <%if(chvo3!=null){ %> --%> 
-	               <%if(chvo1.getStep()>=codingvo.getCoding_seq()){%> 
-	                  <img src="./images/checkbook.png" width=50px height=50px>
-	                  <%}else if(chvo2.getStep()>=codingvo.getCoding_seq()){ %>
-	                  <img src="./images/checkbook.png" width=50px height=50px>
-	                  <%}else if(chvo3.getStep()>=codingvo.getCoding_seq()){ %>
-	                  <img src="./images/checkbook.png" width=50px height=50px>
-	                  <%}else if(chvo4.getStep()>=codingvo.getCoding_seq()){ %>
+	               <%if(cnt==-1){%> 
 	                  <img src="./images/checkbook.png" width=50px height=50px>
 	               <%}else{ %>
 	                  <img src="./images/nocheckbook.png" width=50px height=50px>
-	               <%} %>
+	               <%} %>  
 	            <%} %>
 	   </ul>
 	   </div>
@@ -255,11 +249,5 @@ section.coming-soon form{
         //according to loftblog tut
        
     </script>
-    
-    
-    
-    
-    
-    
 </body>
 </html>

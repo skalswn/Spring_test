@@ -737,69 +737,28 @@ public class DAO {
 		   return lognum;
 	}
 //학습단계저장하기 update문======================================================================================
-	public int CheckPhase(int seq, String m_id, String lang) {
+public int CheckPhase(int seq, String m_id, String lang) {
 		
 		try {
 			connection();
-			int past_seq=0;
-			String sql1 = "select plan_step from tbl_coding_plan where m_id=? and PLAN_LANG=?";
-			System.out.println(m_id);
-			psmt = conn.prepareStatement(sql1);
+			String sql = "select plan_step from tbl_coding_plan where m_id=? and PLAN_LANG=? and plan_step=?";
+			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, m_id);
 			psmt.setString(2, lang);
+			psmt.setInt(3, seq);
 			rs = psmt.executeQuery();
 			if(rs.next()==true) {
-				past_seq=rs.getInt("plan_step");
-			}
-			if(lang.equals("자바")) {
-				if (seq>past_seq) {
-					String sql = "update tbl_coding_plan set plan_step=? where m_id=? and plan_lang=?";
-					psmt = conn.prepareStatement(sql);
-					psmt.setInt(1, seq-30);
-					psmt.setString(2, m_id);
-					psmt.setString(3, lang);
-					cnt = psmt.executeUpdate();
-				}else {
-					cnt=0;
-				}
-			}else if(lang.equals("자바스크립트")) {
-				if (seq>past_seq) {
-					String sql = "update tbl_coding_plan set plan_step=? where m_id=? and plan_lang=?";
-					psmt = conn.prepareStatement(sql);
-					psmt.setInt(1, seq);
-					psmt.setString(2, m_id);
-					psmt.setString(3, lang);
-					cnt = psmt.executeUpdate();
-				}else {
-					cnt=0;
-				}
-			}else if(lang.equals("HTML")) {
-				if (seq>past_seq) {
-					String sql = "update tbl_coding_plan set plan_step=? where m_id=? and plan_lang=?";
-					psmt = conn.prepareStatement(sql);
-					psmt.setInt(1, seq-60);
-					psmt.setString(2, m_id);
-					psmt.setString(3, lang);
-					cnt = psmt.executeUpdate();
-				}else {
-					cnt=0;
-				}
-			}else if(lang.equals("파이썬")) {
-				if (seq>past_seq) {
-					String sql = "update tbl_coding_plan set plan_step=? where m_id=? and plan_lang=?";
-					psmt = conn.prepareStatement(sql);
-					psmt.setInt(1, seq-90);
-					psmt.setString(2, m_id);
-					psmt.setString(3, lang);
-					cnt = psmt.executeUpdate();
-				}else {
-					cnt=0;
-				}
+				System.out.println("1번");
+				cnt=-1;
 			}else {
-				cnt=0;
+				System.out.println("2번");
+				String sql0 ="insert into tbl_coding_plan values(TBL_CODING_PLAN_SEQ.NEXTVAL,?,?,?)";
+				psmt = conn.prepareStatement(sql0);
+				psmt.setString(1, lang);
+				psmt.setInt(2, seq);
+				psmt.setString(3, m_id);
+				cnt=psmt.executeUpdate();
 			}
-						
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -1626,7 +1585,100 @@ public class DAO {
      }
 		return img;
 	}
-	
+public int Check_Phase(int seq, String m_id, String lang) {
+		
+		try {
+			connection();
+			String sql = "select plan_step from tbl_coding_plan where m_id=? and PLAN_LANG=? and plan_step=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, m_id);
+			psmt.setString(2, lang);
+			psmt.setInt(3, seq);
+			rs = psmt.executeQuery();
+			if(rs.next()==true) {
+				cnt=-1;
+			}else {
+				cnt=0;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return cnt;
+	}
+public int present_java(String m_id) {
+	int java = 0;
+	connection();  
+ 	try{
+	   String sql = "select * from tbl_coding_plan where PLAN_LANG='자바' and M_ID=?";
+	   psmt = conn.prepareStatement(sql);
+	   psmt.setString(1, m_id);
+	   rs = psmt.executeQuery();
+	   while(rs.next() == true) {
+		  java=java+1;
+	      }
+	      }catch(Exception e){
+	        e.printStackTrace();
+	      }finally{
+	        close();
+ }
+   return java;
+}
+public int present_javascript(String m_id) {
+	int java = 0;
+	connection();  
+ 	try{
+ 		String sql = "select * from tbl_coding_plan where PLAN_LANG='자바스크립트' and M_ID=?";
+	   psmt = conn.prepareStatement(sql);
+	   psmt.setString(1, m_id);
+	   rs = psmt.executeQuery();
+	   while(rs.next() == true) {
+		  java=java+1;
+	      }
+	      }catch(Exception e){
+	        e.printStackTrace();
+	      }finally{
+	        close();
+ }
+   return java;
+}
+public int present_html(String m_id) {
+	int java = 0;
+	connection();  
+ 	try{
+ 		String sql = "select * from tbl_coding_plan where PLAN_LANG='HTML' and M_ID=?";
+	   psmt = conn.prepareStatement(sql);
+	   psmt.setString(1, m_id);
+	   rs = psmt.executeQuery();
+	   while(rs.next() == true) {
+		  java=java+1;
+	      }
+	      }catch(Exception e){
+	        e.printStackTrace();
+	      }finally{
+	        close();
+ }
+   return java;
+}
+public int present_python(String m_id) {
+	int java = 0;
+	connection();  
+ 	try{
+ 		String sql = "select * from tbl_coding_plan where PLAN_LANG='파이썬' and M_ID=?";
+	   psmt = conn.prepareStatement(sql);
+	   psmt.setString(1, m_id);
+	   rs = psmt.executeQuery();
+	   while(rs.next() == true) {
+		  java=java+1;
+	      }
+	      }catch(Exception e){
+	        e.printStackTrace();
+	      }finally{
+	        close();
+ }
+   return java;
+}
 }	
 
 
