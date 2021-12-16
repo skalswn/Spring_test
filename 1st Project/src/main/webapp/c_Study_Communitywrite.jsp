@@ -29,8 +29,12 @@
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <style>
 	table{
-		width: 50%;
-		height : 50%;
+		width: 100%;
+		height : 100%;
+		
+	}
+	table#list td.part{
+		width : 20%;
 	}
 
 </style>
@@ -95,39 +99,36 @@ if(session.getAttribute("vo") != null){
 							style="background-color: rgba(250, 250, 250, 0.2);">
 							<h2 align="center" style="padding: 1%">스터디게시판 - 새 글 작성</h2>
 
-							<form action="c_Study_Communitywrite" method="post"
+							<form action="s_c_Communitywrite" method="post"
 								enctype="multipart/form-data">
 								<div align="center">
-									<table id="list" style="margin: 1%">
+								<br>
+									<table id="list" style="width:80%">
 										<tr class="a">
-											<br>
-											<td rows="30" cols="100" style="text-align: center">분류</td>
-											<td><textarea name="title" rows="1" cols="20"
-													style="resize: none;"></textarea></td>
+											<td class = "part" style="text-align: center;">제목</td>
+											<td><textarea class="textarea" name="title" style="resize: none; height: 40px; width:80%;" placeholder="제목을 입력해주세요" ></textarea></td>
+
 										</tr>
 										<tr class="a">
-											<td rows="30" cols="100" style="text-align: center"><br>제목</td>
-											<td><textarea name="title" rows="1" cols="90"
-													style="resize: none;" placeholder="제목을 입력해주세요"></textarea></td>
-
+											<td class = "part" style="text-align: center;">분류</td>
+											<td><select style="height: 40px" name="language"><option value="1">파이썬</option><option value="2">자바</option><option value="3">HTML/CSS</option><option value="4">자바스크립트</option></select></td>
 										</tr>
 										<tr class="a" class="cm_tr" style="height: 10px">
 											<td style="width: 80px; text-align: center">내용</td>
-											<td><textarea name="content" rows="20" cols="90"
-													style="resize: none;"></textarea></td>
+											<td><textarea class="textarea" name="content" style="resize: none; height: 500px; width:80%;" ></textarea></td>
 										</tr>
 										<div style="text-align: center;">
 											<tr class="a">
-												<td colspan="2" align="right"><br> <input
-													name="file1" type="file" style="width: 300px; height: 30px">
+												<td colspan="2" align="center"><input
+													name="file1" type="file" style="width: 30%; height: 30px">
 													<input name="file2" type="file"
 													style="width: 300px; height: 30px"> <input
-													name="file3" type="file" style="width: 300px; height: 30px">
+													name="file3" type="file" style="width: 30%; height: 30px">
 												</td>
 											</tr>
 										</div>
 										<tr>
-											<td colspan="2" align="right"><br> <input
+											<td colspan="2" align="center"><input
 												type="reset" value="초기화"
 												style="background-color: #f5a425; margin-right: 2%; width: 70px; height: 30px;">
 												<input type="submit" value="작성하기"

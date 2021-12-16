@@ -29,9 +29,12 @@
 <link rel="stylesheet" href="assets/css/lightbox.css">
 <style>
 	table{
-		width: 50%;
-		height : 50%;
+		width: 100%;
+		height : 100%;
 		
+	}
+	table#list td.part{
+		width : 20%;
 	}
 
 </style>
@@ -48,6 +51,43 @@ if(session.getAttribute("vo") != null){
 	Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
 	Response.Write("<script>location.href='Main.jsp';</script>");
 <%}%>
+
+<header class="main-header clearfix" role="header">
+		<div class="logo">
+			<a href="Main.jsp"><em>PSIT</em> <span
+				style="font-size: x-large;">Personal IT</span></a>
+		</div>
+		<a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+		<nav id="menu" class="main-nav" role="navigation">
+			<ul class="main-menu">
+				<li><a href="Main.jsp">Home</a></li>
+				<% if(vo!=null){%>
+				<li><a href="#">직무탐색</a>
+					<ul class="sub-menu">
+						<li><a href="P_Psit.jsp">PSIT 검사</a></li>
+						<li><a href="P_Psit_Result.jsp">My PSIT</a></li>
+					</ul></li>
+				<li><a href="StudyPage.jsp">단계별학습</a></li>
+				<li><a class="external">커뮤니티</a>
+					<ul class="sub-menu">
+						<li><a href="c_Community.jsp">자유게시판</a></li>
+						<li><a href="c_Study_Community.jsp">스터디 게시판</a></li>
+						<li><a href="c_Used_Community.jsp">중고거래 게시판</a></li>
+					</ul></li>
+				<%if(vo.getM_id().equals("admin")) { %>
+				<li><a href="ManageUser.jsp" class="external">회원관리</a></li>
+				<%}else{ %>
+				<li><a href="My_page.jsp" class="external">마이페이지</a></li>
+				<%} %>
+				<li><a href="LogoutService" class="external">로그아웃</a></li>
+				<%} else {%>
+				<li><a href="Login.jsp">Login</a></li>
+				<li><a href="Join.jsp">Join</a></li>
+				<%} %>
+			</ul>
+		</nav>
+	</header>
+
 <section style="color: white; text-align: center;"
 		class="section coming-soon" data-section="section3">
 		<div class="col-8  col-12-narrower imp-narrower"
@@ -58,37 +98,35 @@ if(session.getAttribute("vo") != null){
 			<div id="board"
 				style="background-color: rgba(250, 250, 250, 0.2);">
 				<h2 align="center" style="padding: 1%">자유게시판 - 새 글 작성</h2>
-				
 				<form action="c_Communitywrite" method="post" enctype="multipart/form-data" >
 				<div align="center">
-				<table id="list" style="margin: 1%">
+				<br>
+				<table id="list" style="width:80%">
 					<tr class="a">
-						<td rows="30" cols="100" style="text-align: center"><br>제목</td>
-						<td><br><textarea name="title" rows="1" cols="90" style="resize: none;" placeholder="제목을 입력해주세요" ></textarea></td>
+						<td class = "part" style="text-align: center;">제목</td>
+						<td><textarea class="textarea" name="title" style="resize: none; height: 40px; width:80%;" placeholder="제목을 입력해주세요" ></textarea></td>
 					</tr>
 					<tr class="a" class="cm_tr" style="height: 10px">
-								<td style="width: 80px; text-align: center">내용</td>
-								<td><textarea name="content" rows="20" cols="90"
-										style="resize: none;"></textarea></td>
+								<td class = "part" style="text-align: center">내용</td>
+								<td><textarea class="textarea" name="content" style="resize: none; height: 500px; width:80%;" ></textarea></td>
 							</tr>
 					<div style="text-align: center">
 								<tr class="a">
-									<td colspan="2" align="right">
-									<br>
-										<input name="file1" type="file" style="width : 300px; height : 30px"> 
-										<input name="file2" type="file" style="width : 300px; height : 30px"> 
-										<input name="file3"	type="file" style="width : 300px; height : 30px">
+									<td colspan="2" align="center">
+										<input name="file1" type="file" style="width : 30%; height : 30px"> 
+										<input name="file2" type="file" style="width : 30%; height : 30px"> 
+										<input name="file3"	type="file" style="width : 30%; height : 30px">
 									</td>
 								</tr>
 							</div>
 							<tr>
-							<td colspan="2" align="right">
-							<br>
+							<td colspan="2" align="center">
 							 <input type="reset" value="초기화" style="background-color:#f5a425; margin-right: 2%; width : 70px; height : 30px;" > 
 							 <input type="submit" value="작성하기" style="background-color:#f5a425; margin-right: 2%; width : 70px; height : 30px;">
 							 </td>
 					</tr>
 				</table>
+				</div>
 				</form>
 			</div>
 			<!-- Scripts -->

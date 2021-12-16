@@ -53,27 +53,28 @@ table{
 </style>
 </head>
 <body>
-	<%
-CommunityVO cvo = null;
-if(session.getAttribute("cvo") !=null){
-	cvo = (CommunityVO)session.getAttribute("cvo");
-}
+<%
+String choice = request.getParameter("choice");
+String search = request.getParameter("search_");
 DAO dao = new DAO();
-ArrayList<CommunityVO> arr = dao.Community();
+ArrayList<CommunityVO> arr = dao.search_Community(choice,search);
+if (arr.size()<=0){
 %>
-<%	
+	Response.Write("<script>alert('검색결과가 없습니다.');</script>");
+	Response.Write("<script>location.href='c_Community.jsp';</script>");
+<%}%>
+<% 
 MemberVO vo =null;
 String userID= null;
 if (session.getAttribute("vo") != null){
 	vo = (MemberVO)session.getAttribute("vo");
 	userID = vo.getM_id();
 	System.out.print(userID);
-}else{%>
+}else{
+%>
 Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
 Response.Write("<script>location.href='Main.jsp';</script>");
 <%}%>
-<%ArrayList<CommunityVO> cmvoarr = (ArrayList<CommunityVO>)request.getAttribute("cmvoarr"); %>
-<%CommunityVO cmvo = (CommunityVO)request.getAttribute("cmvo");%>
 <%!
 	public Integer toInt(String x){
 		int a = 0;
@@ -88,8 +89,8 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 	if(pageno<1){
 		pageno = 1;
 	}
-	int total_record = arr.size();
-	System.out.print(arr.size());
+	System.out.println("pageno후"+pageno);
+	int total_record = arr.size();	
 	int page_per_record_cnt = 5;  
 	int group_per_page_cnt =5;     											
 	int record_end_no = pageno*page_per_record_cnt;				
@@ -98,7 +99,9 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 		record_end_no = total_record;
 	}								   									   
 	int total_page = total_record / page_per_record_cnt + (total_record % page_per_record_cnt>0 ? 1 : 0);
-	if(pageno>total_page){
+	if(pageno==1){
+		pageno=1;
+	}else if(pageno>total_page){
 		pageno = total_page;
 	}
 	int group_no = pageno/group_per_page_cnt+(pageno%group_per_page_cnt>0 ? 1:0);			  	
@@ -117,7 +120,6 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 	if(next_pageno>total_page){	
 		next_pageno=total_page/group_per_page_cnt*group_per_page_cnt+1;
 	}
-
 %>
 
 	<!--header-->
@@ -181,11 +183,8 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 								<td class="cm_td">날짜</td>
 								<td class="cm_td">조회수</td>
 							</tr>
-							
-							
 							<%if (arr.size() >= (pageno) * 5) {%>
 							<%for (int i = 0; i < 5; i++) {%>
-							
 							<tr class="main_tr" style = "height: 35px">
 								<%String result = arr.get(i + (pageno - 1) * 5).getDay().substring(5, 11);%>
 								<td class="main_td" style="width : 100px"><a class="main_a"
@@ -199,8 +198,7 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 								<td class="main_td" style="width : 200px"><a class="main_a"
 									href="c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getC_seq()%>"><%=arr.get(i + (pageno - 1) * 5).getC_cnt()%></a></td>
 							</tr>
-							<%} %>
-							<%}else if (arr.size() < (pageno) * 5) {%>
+							<%}%><%} else if (arr.size() < (pageno) * 5) {%>
 							<%for (int i = 0; i < 5-((pageno) * 5 - arr.size()); i++) {	%>
 							<tr class="main_tr">
 								<%
@@ -230,12 +228,13 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 						<%if (i < page_eno) {%>,<%}	%><%}%>
 						<a href="c_Community.jsp?pageno=<%=next_pageno%>" >다음 ≫</a>
 						
-						<form style = "padding: 20px 20px" action="c_CommunitySearch.jsp">
-							    <select style=" height: 40px; text-align: center; letter-spacing: 0.5px;" name="choice"><option value="title_s">제목</option>
-								<option value="content_s">내용</option>
-								<option value="writer_s">작성자</option></select> 
-								<input style = "width : 30%;" type="text" name="search_">
-								<input style = "width : 10%; font-size: 16px" class="search_button" type="submit" value="검색">
+						
+						<form style = "padding: 20px 20px" action="search_community">
+							<select style=" height: 40px; text-align: center; letter-spacing: 0.5px;" name="choice"><option value="제목">제목</option>
+								<option value="내용">내용</option>
+								<option value="작성자">작성자</option></select> 
+								<input style = "width : 30%;" type="text">
+								<input style = "width : 10%; font-size: 16px" class="search_button" type="button" value="검색">
 						</form>
 					</div>
 					<!-- Scripts -->

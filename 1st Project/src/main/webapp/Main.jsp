@@ -9,22 +9,25 @@
 
   <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?fa\mily=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link
+	href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900"
+	rel="stylesheet">
 
-    <title>PSIT.com</title>
-    
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<title>PSIT.com</title>
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-grad-school.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    <link rel="stylesheet" href="assets/css/lightbox.css">
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="assets/css/fontawesome.css">
+<link rel="stylesheet" href="assets/css/templatemo-grad-school.css">
+<link rel="stylesheet" href="assets/css/owl.css">
+<link rel="stylesheet" href="assets/css/lightbox.css">
 <!--
     
 TemplateMo 557 Grad School 
@@ -51,8 +54,103 @@ int amount_java = dao.amount_java();
 int amount_javascript = dao.amount_javascript();
 int amount_html=dao.amount_html();
 int amount_python=dao.amount_python();
+int present_java = dao.present_java(id);
+int present_javascript = dao.present_javascript(id);
+int present_html=dao.present_html(id);
+int present_python=dao.present_python(id);
 %>
-   
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['진행 학습량',     <%=present_python%>],
+          ['남은 학습량',     <%=amount_python-present_python%>]
+        ]);
+
+        var options = {
+        	backgroundColor: { fill:'transparent' },
+        	legend: `none`
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_python'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['진행 학습량',     <%=present_java%>],
+          ['남은 학습량',     <%=amount_java-present_java%>]
+        ]);
+
+        var options = {
+        	backgroundColor: { fill:'transparent' },
+        	legend: `none`
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_java'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['진행 학습량',     <%=present_html%>],
+          ['남은 학습량',     <%=amount_html-present_html%>]
+        ]);
+
+        var options = {
+        	backgroundColor: { fill:'transparent' },
+        	legend: `none`
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_html'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['진행 학습량',     <%=present_javascript%>],
+          ['남은 학습량',     <%=amount_javascript-present_javascript%>]
+        ]);
+
+        var options = {
+        	backgroundColor: { fill:'transparent' },
+        	legend: `none`
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_javascript'));
+
+        chart.draw(data, options);
+      }
+    </script>
   <!--header-->
   <header class="main-header clearfix" role="header">
     <div class="logo">
@@ -73,8 +171,8 @@ int amount_python=dao.amount_python();
         <li><a href="#">직무탐색</a>
            <ul class="sub-menu">
             <li><a href="P_Psit.jsp">PSIT 검사</a></li>
-            <li><a href="P_Psit_store.jsp">My PSIT</a></li>
-             </ul></li>
+            <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
+          	</ul></li>
         <!-- <li><a h\ref="#section5">Video</a></li> -->
         <li><a href="StudyPage.jsp">단계별학습</a></li>
         <li><a href="#" class="external">커뮤니티</a>
@@ -102,58 +200,70 @@ int amount_python=dao.amount_python();
       <video autoplay muted loop id="bg-video">
           <source src="assets/images/course-video.mp4" type="video/mp4" />
       </video>
-      
-      <% if(vo!=null){%>
-      <div class="video-overlay header-text">
-         <div class="caption">
-            <div style="float: left; width: 50%; margin: 10%;">
-               <h2>
-                  <em>PSIT</em> : Personal IT
-               </h2>
-               <h4 style="font-size: 30px; color:white; font-weight: 700"> PSIT : Personal IT</h4>
-               <h4 style="font-size: 20px; color:white;"> PSIT란 자신의 성향 분석을 통해 IT직무를 추천받는 서비스 입니다.</h4>
-               <div class="main-button">
-                  <div class="scroll-to-section"></div>
-                  <br><br>
-                  <a href="P_Psit.jsp">검사하러가기</a>
-               </div>
-            </div>
-            <div>
-               
-               <div align="right" style="float: right; width: 30%; height: 600px; background-color: rgba(250,250,250,0.1); text-align: center;">
-                  <h4 style = "margin : 5%; font-size: 40px; text-transform: uppercase; font-weight: 800; color: #fff; letter-spacing: 1px;">학습진행현황</h4>
-                     <table>
-                        <%for(int i =0;i<chvoarr.size();i++) { %>
-                        <%System.out.println(chvoarr.size()); %>
-                        <% CheckVO chvo = chvoarr.get(i); %>
-                              <tr>
-                              <td class="language_a"><%=chvo.getLang() %> </td>
-                              <td><%=chvo.getStep() %>단계 </td>
-                              </tr>
-                        <%} %>
-                     </table>
-               </div>               
-            </div>
-         </div>
-      </div>
-      <%}else{ %>
-      <div class="video-overlay header-text">
-         <div class="caption">
-            <div>
-               <h2>
-                  <em>PSIT</em> : Personal IT
-               </h2>
-               <h4 style="font-size: 30px; color:white; font-weight: 700"> PSIT : Personal IT</h4>
-               <h4 style="font-size: 20px; color:white;"> PSIT란 자신의 성향 분석을 통해 IT직무를 추천받는 서비스 입니다.</h4>
-               <div class="main-button">
-                  <div class="scroll-to-section"></div>
-                  <br><br>
-                  <a href="Login.jsp"><span style = "font-size : 25px">로그인하고</span><br>검사하러가기</a>
-               </div>
-            </div>
-         </div>
-      </div><%} %>
-   </section>
+		
+		<% if(vo!=null){%>
+		<div class="video-overlay header-text">
+			<div class="caption">
+				<div style="float: left; width: 50%; margin: 10%;">
+					<h2>
+						<em>PSIT</em> : Personal IT
+					</h2>
+					<h4 style="font-size: 30px; color:white; font-weight: 700"> PSIT : Personal IT</h4>
+					<h4 style="font-size: 20px; color:white;"> PSIT란 자신의 성향 분석을 통해 IT직무를 추천받는 서비스 입니다.</h4>
+					<div class="main-button">
+						<div class="scroll-to-section"></div>
+						<br><br>
+						<a href="P_Psit.jsp">검사하러가기</a>
+					</div>
+				</div>
+				<div>
+					
+					<div align="right" style="float: right; width: 30%; height: 600px; background-color: rgba(250,250,250,0.1); text-align: center;">
+						<h4 style = "margin : 5%; font-size: 40px; text-transform: uppercase; font-weight: 800; color: #fff; letter-spacing: 1px;">학습진행현황</h4>
+							<table>
+							<tr>
+							<td style="color: white;">파이썬</td>
+						    <td style="color: white;"><%=present_python %>/<%=amount_python %>단계 </td>
+						    <td><div id="piechart_python" style="width: 200px; height: 100px;"></div></td>
+							</tr>
+							<tr>
+							<td style="color: white;">자바</td>
+						    <td style="color: white;"><%=present_java %>/<%=amount_java %>단계 </td>
+						    <td><div id="piechart_java" style="width: 200px; height: 100px;"></div></td>
+							</tr>
+							<tr>
+							<td style="color: white;">HTML/CSS</td>
+						    <td style="color: white;"><%=present_html %>/<%=amount_html %>단계 </td>
+						    <td><div id="piechart_html" style="width: 200px; height: 100px;"></div></td>
+							</tr>
+							<tr>
+							<td style="color: white;">자바스크립트</td>
+						    <td style="color: white;"><%=present_javascript %>/<%=amount_javascript%>단계 </td>
+						    <td><div id="piechart_javascript" style="width: 200px; height: 100px;"></div></td>
+							</tr>
+							</table>
+					</div>					
+				</div>
+			</div>
+		</div>
+		<%}else{ %>
+		<div class="video-overlay header-text">
+			<div class="caption">
+				<div>
+					<h2>
+						<em>PSIT</em> : Personal IT
+					</h2>
+					<h4 style="font-size: 30px; color:white; font-weight: 700"> PSIT : Personal IT</h4>
+					<h4 style="font-size: 20px; color:white;"> PSIT란 자신의 성향 분석을 통해 IT직무를 추천받는 서비스 입니다.</h4>
+					<div class="main-button">
+						<div class="scroll-to-section"></div>
+						<br><br>
+						<a href="Login.jsp"><span style = "font-size : 25px">로그인하고</span><br>검사하러가기</a>
+					</div>
+				</div>
+			</div>
+		</div><%} %>
+	</section>
   <!-- ***** Main Banner Area End ***** -->
 
 

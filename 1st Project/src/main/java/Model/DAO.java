@@ -429,6 +429,15 @@ public class DAO {
 			   lognum = psmt.executeUpdate();
 			   if (lognum>0) {
 				   System.out.println("성공");
+				   String sql0 = "select article_seq from tbl_community where m_id=? and article_subject=? and article_content=?";
+				   psmt = conn.prepareStatement(sql0);
+				   psmt.setString(1,writer);
+				   psmt.setString(2,title);
+				   psmt.setString(3,content);
+				   rs = psmt.executeQuery();
+				   if(rs.next()==true) {
+					   lognum=rs.getInt("article_seq");
+				   }
 			   }
 			      }catch(Exception e){
 			    	 System.out.println("실패");
@@ -833,32 +842,28 @@ public class DAO {
 		   return lognum;
 	}
 //학습단계저장하기 update문======================================================================================
-	public int CheckPhase(int seq, String m_id, String lang) {
+public int CheckPhase(int seq, String m_id, String lang) {
 		
 		try {
 			connection();
-			int past_seq=0;
-			String sql1 = "select plan_step from tbl_coding_plan where m_id=? and PLAN_LANG=?";
-			System.out.println(m_id);
-			psmt = conn.prepareStatement(sql1);
+			String sql = "select plan_step from tbl_coding_plan where m_id=? and PLAN_LANG=? and plan_step=?";
+			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, m_id);
 			psmt.setString(2, lang);
+			psmt.setInt(3, seq);
 			rs = psmt.executeQuery();
 			if(rs.next()==true) {
-				past_seq=rs.getInt("plan_step");
-			}
-			if (seq>past_seq) {
-				String sql = "update tbl_coding_plan set plan_step=? where m_id=? and plan_lang=?";
-				psmt = conn.prepareStatement(sql);
-				psmt.setInt(1, seq);
-				psmt.setString(2, m_id);
-				psmt.setString(3, lang);
-				cnt = psmt.executeUpdate();
+				System.out.println("1번");
+				cnt=-1;
 			}else {
-				cnt=0;
+				System.out.println("2번");
+				String sql0 ="insert into tbl_coding_plan values(TBL_CODING_PLAN_SEQ.NEXTVAL,?,?,?)";
+				psmt = conn.prepareStatement(sql0);
+				psmt.setString(1, lang);
+				psmt.setInt(2, seq);
+				psmt.setString(3, m_id);
+				cnt=psmt.executeUpdate();
 			}
-			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -924,46 +929,31 @@ public class DAO {
 	  }	
 
 // 회원가입 시 단계별학습에 언어 끼워넣는 메소드
-	public void Insertlang(String id) {
-		
-		try {
-			connection();
-
-			String sql = "insert into TBL_CODING_PLAN values(TBL_CODING_PLAN_SEQ.NEXTVAL, ? , 1, ?)";
-				
-			psmt = conn.prepareStatement(sql);
-			
-			psmt.setString(1, "파이썬");
-			psmt.setString(2, id);
-			psmt.addBatch();
-			
-			psmt.setString(1, "자바");
-			psmt.setString(2, id);
-			psmt.addBatch();
-			
-			psmt.setString(1, "HTML");
-			psmt.setString(2, id);
-			psmt.addBatch();
-
-			psmt.setString(1, "자바스크립트");
-			psmt.setString(2, id);
-			psmt.addBatch();
-			
-			int cnt[] = psmt.executeBatch();
-			
-			if (cnt != null) {
-				System.out.println("언어추가성공");
-			}
-			else {
-			
-				System.out.println("언어추가실패");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-	}
+		/*
+		 * public void Insertlang(String id) {
+		 * 
+		 * try { connection();
+		 * 
+		 * String sql =
+		 * "insert into TBL_CODING_PLAN values(TBL_CODING_PLAN_SEQ.NEXTVAL, ? , 0, ?)";
+		 * 
+		 * psmt = conn.prepareStatement(sql);
+		 * 
+		 * psmt.setString(1, "파이썬"); psmt.setString(2, id); psmt.addBatch();
+		 * 
+		 * psmt.setString(1, "자바"); psmt.setString(2, id); psmt.addBatch();
+		 * 
+		 * psmt.setString(1, "HTML"); psmt.setString(2, id); psmt.addBatch();
+		 * 
+		 * psmt.setString(1, "자바스크립트"); psmt.setString(2, id); psmt.addBatch();
+		 * 
+		 * int cnt[] = psmt.executeBatch();
+		 * 
+		 * if (cnt != null) { System.out.println("언어추가성공"); } else {
+		 * 
+		 * System.out.println("언어추가실패"); } } catch (Exception e) { e.printStackTrace();
+		 * } finally { close(); } }
+		 */
 
 // 회원수정 메소드==============================================================================================	
 	public int Update(String m_id, String m_pw, String m_email, String m_name, String m_nick, String m_gender,
@@ -1685,7 +1675,305 @@ public class DAO {
      }
 		return img;
 	}
+public int Check_Phase(int seq, String m_id, String lang) {
+		
+		try {
+			connection();
+			String sql = "select plan_step from tbl_coding_plan where m_id=? and PLAN_LANG=? and plan_step=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, m_id);
+			psmt.setString(2, lang);
+			psmt.setInt(3, seq);
+			rs = psmt.executeQuery();
+			if(rs.next()==true) {
+				cnt=-1;
+			}else {
+				cnt=0;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return cnt;
+	}
+public int present_java(String m_id) {
+	int java = 0;
+	connection();  
+ 	try{
+	   String sql = "select * from tbl_coding_plan where PLAN_LANG='자바' and M_ID=?";
+	   psmt = conn.prepareStatement(sql);
+	   psmt.setString(1, m_id);
+	   rs = psmt.executeQuery();
+	   while(rs.next() == true) {
+		  java=java+1;
+	      }
+	      }catch(Exception e){
+	        e.printStackTrace();
+	      }finally{
+	        close();
+ }
+   return java;
+}
+public int present_javascript(String m_id) {
+	int java = 0;
+	connection();  
+ 	try{
+ 		String sql = "select * from tbl_coding_plan where PLAN_LANG='자바스크립트' and M_ID=?";
+	   psmt = conn.prepareStatement(sql);
+	   psmt.setString(1, m_id);
+	   rs = psmt.executeQuery();
+	   while(rs.next() == true) {
+		  java=java+1;
+	      }
+	      }catch(Exception e){
+	        e.printStackTrace();
+	      }finally{
+	        close();
+ }
+   return java;
+}
+public int present_html(String m_id) {
+	int java = 0;
+	connection();  
+ 	try{
+ 		String sql = "select * from tbl_coding_plan where PLAN_LANG='HTML' and M_ID=?";
+	   psmt = conn.prepareStatement(sql);
+	   psmt.setString(1, m_id);
+	   rs = psmt.executeQuery();
+	   while(rs.next() == true) {
+		  java=java+1;
+	      }
+	      }catch(Exception e){
+	        e.printStackTrace();
+	      }finally{
+	        close();
+ }
+   return java;
+}
+public int present_python(String m_id) {
+	int java = 0;
+	connection();  
+ 	try{
+ 		String sql = "select * from tbl_coding_plan where PLAN_LANG='파이썬' and M_ID=?";
+	   psmt = conn.prepareStatement(sql);
+	   psmt.setString(1, m_id);
+	   rs = psmt.executeQuery();
+	   while(rs.next() == true) {
+		  java=java+1;
+	      }
+	      }catch(Exception e){
+	        e.printStackTrace();
+	      }finally{
+	        close();
+ }
+   return java;
+}
+public ArrayList<CommunityVO> search_Community(String choice, String search) {
+	ArrayList<CommunityVO> arr = new ArrayList<CommunityVO>(); 
+	connection();
+	 try{ 
+		 if(choice.equals("title_s")) {
+			 String sql = "select* from tbl_community where ARTICLE_SUBJECT like ? order by article_seq desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1,"%"+search+"%");
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("ARTICLE_SEQ");
+			      String title = rs.getString("ARTICLE_SUBJECT");
+			      String content = rs.getString("ARTICLE_CONTENT");
+			      String day = rs.getString("REG_DATE");
+			      int c_cnt = rs.getInt("ARTICLE_CNT");
+			      String writer = rs.getString("M_ID");
+			      String file1 = rs.getString("ARTICLE_FILE1");
+			      String file2 = rs.getString("ARTICLE_FILE2");
+			      String file3 = rs.getString("ARTICLE_FILE3");
+			      CommunityVO vo =new CommunityVO(c_seq, title, content,day,c_cnt,writer,file1,file2,file3);
+			      arr.add(vo);
+			 }
+		 }else if(choice.equals("content_s")) {
+			 String sql = "select* from tbl_community where ARTICLE_CONTENT like ? order by article_seq desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1,"%"+search+"%");
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("ARTICLE_SEQ");
+			      String title = rs.getString("ARTICLE_SUBJECT");
+			      String content = rs.getString("ARTICLE_CONTENT");
+			      String day = rs.getString("REG_DATE");
+			      int c_cnt = rs.getInt("ARTICLE_CNT");
+			      String writer = rs.getString("M_ID");
+			      String file1 = rs.getString("ARTICLE_FILE1");
+			      String file2 = rs.getString("ARTICLE_FILE2");
+			      String file3 = rs.getString("ARTICLE_FILE3");
+			      CommunityVO vo =new CommunityVO(c_seq, title, content,day,c_cnt,writer,file1,file2,file3);
+			      arr.add(vo);
+			 }
+		 } else {
+			 String sql = "select* from tbl_community where M_ID like ? order by article_seq desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1,"%"+search+"%");
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("ARTICLE_SEQ");
+			      String title = rs.getString("ARTICLE_SUBJECT");
+			      String content = rs.getString("ARTICLE_CONTENT");
+			      String day = rs.getString("REG_DATE");
+			      int c_cnt = rs.getInt("ARTICLE_CNT");
+			      String writer = rs.getString("M_ID");
+			      String file1 = rs.getString("ARTICLE_FILE1");
+			      String file2 = rs.getString("ARTICLE_FILE2");
+			      String file3 = rs.getString("ARTICLE_FILE3");
+			      CommunityVO vo =new CommunityVO(c_seq, title, content,day,c_cnt,writer,file1,file2,file3);
+			      arr.add(vo);
+			 }
+		 }
+		 System.out.println(arr);
+	 }catch(Exception e){
+		 e.printStackTrace(); 
+	 }finally{ 
+		 close(); 
+		 }
+	return arr;
+ }
+public ArrayList<s_CommunityVO> search_s_Community(String choice, String search) {
+	ArrayList<s_CommunityVO> arr = new ArrayList<s_CommunityVO>(); 
+	connection();
+	 try{ 
+		 if(choice.equals("title_s")) {
+			 String sql = "select* from TBL_STUDY where STUDY_SUBJECT like ? order by STUDY_SEQ desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1,"%"+search+"%");
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("STUDY_SEQ");
+			      String title = rs.getString("STUDY_SUBJECT");
+			      String content = rs.getString("STUDY_CONTENT");
+			      String lang = rs.getString("STUDY_LANG");
+			      int c_cnt = rs.getInt("STUDY_CNT");
+			      String day = rs.getString("REG_DATE");
+			      String writer = rs.getString("M_ID");
+			      String file1 = rs.getString("STUDY_FILE1");
+			      s_CommunityVO scvo =new s_CommunityVO(c_seq, title, content,lang,c_cnt,day,writer,file1);
+			      arr.add(scvo);
+			 }
+		 }else if(choice.equals("content_s")) {
+			 String sql = "select* from TBL_STUDY where STUDY_CONTENT like ? order by STUDY_SEQ desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1,"%"+search+"%");
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("STUDY_SEQ");
+			      String title = rs.getString("STUDY_SUBJECT");
+			      String content = rs.getString("STUDY_CONTENT");
+			      String lang = rs.getString("STUDY_LANG");
+			      int c_cnt = rs.getInt("STUDY_CNT");
+			      String day = rs.getString("REG_DATE");
+			      String writer = rs.getString("M_ID");
+			      String file1 = rs.getString("STUDY_FILE1");
+			      s_CommunityVO scvo =new s_CommunityVO(c_seq, title, content,lang,c_cnt,day,writer,file1);
+			      arr.add(scvo);
+			 }
+		 } else {
+			 String sql = "select* from TBL_STUDY where M_ID like ? order by STUDY_SEQ desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1,"%"+search+"%");
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("STUDY_SEQ");
+			      String title = rs.getString("STUDY_SUBJECT");
+			      String content = rs.getString("STUDY_CONTENT");
+			      String lang = rs.getString("STUDY_LANG");
+			      int c_cnt = rs.getInt("STUDY_CNT");
+			      String day = rs.getString("REG_DATE");
+			      String writer = rs.getString("M_ID");
+			      String file1 = rs.getString("STUDY_FILE1");
+			      s_CommunityVO scvo =new s_CommunityVO(c_seq, title, content,lang,c_cnt,day,writer,file1);
+			      arr.add(scvo);
+			 }
+		 }
+	 }catch(Exception e){
+		 e.printStackTrace(); 
+	 }finally{ 
+		 close(); 
+		 }
+	return arr;
+ }
+public ArrayList<u_CommunityVO> search_u_Community(String choice, String search) {
+	ArrayList<u_CommunityVO> arr = new ArrayList<u_CommunityVO>(); 
+	connection();
+	 try{ 
+		 if(choice.equals("title_s")) {
+			 String sql = "select* from TBL_USED_MARKET where USED_SUBJECT like ? order by USED_SEQ desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1,"%"+search+"%");
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("USED_SEQ");
+			      String title = rs.getString("USED_SUBJECT");
+			      String content = rs.getString("USED_CONTENT");
+			      int price = rs.getInt("USED_PRICE");
+			      int c_cnt = rs.getInt("USED_CNT");
+			      String trade = rs.getString("USED_TRADE");
+			      String used_pay = rs.getString("USED_PAY");
+			      String reg_date = rs.getString("REG_DATE");
+			      String m_id = rs.getString("M_ID");
+			      String status = rs.getString("USED_STATUS");
+			      String file1 = rs.getString("FILE1");
+			      u_CommunityVO ucvo =new u_CommunityVO(c_seq, title, content,price,c_cnt,trade,used_pay,reg_date,m_id,status,file1);
+			      arr.add(ucvo);
+			 }
+		 }else if(choice.equals("content_s")) {
+			 String sql = "select* from TBL_USED_MARKET where USED_CONTENT like ? order by USED_SEQ desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1,"%"+search+"%");
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("USED_SEQ");
+			      String title = rs.getString("USED_SUBJECT");
+			      String content = rs.getString("USED_CONTENT");
+			      int price = rs.getInt("USED_PRICE");
+			      int c_cnt = rs.getInt("USED_CNT");
+			      String trade = rs.getString("USED_TRADE");
+			      String used_pay = rs.getString("USED_PAY");
+			      String reg_date = rs.getString("REG_DATE");
+			      String m_id = rs.getString("M_ID");
+			      String status = rs.getString("USED_STATUS");
+			      String file1 = rs.getString("FILE1");
+			      u_CommunityVO ucvo =new u_CommunityVO(c_seq, title, content,price,c_cnt,trade,used_pay,reg_date,m_id,status,file1);
+			      arr.add(ucvo);
+			 }
+		 } else {
+			 String sql = "select* from TBL_USED_MARKET where M_ID like ? order by USED_SEQ desc";
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1,"%"+search+"%");
+			 rs =  psmt.executeQuery();
+			 while(rs.next()) {
+				  int c_seq = rs.getInt("USED_SEQ");
+			      String title = rs.getString("USED_SUBJECT");
+			      String content = rs.getString("USED_CONTENT");
+			      int price = rs.getInt("USED_PRICE");
+			      int c_cnt = rs.getInt("USED_CNT");
+			      String trade = rs.getString("USED_TRADE");
+			      String used_pay = rs.getString("USED_PAY");
+			      String reg_date = rs.getString("REG_DATE");
+			      String m_id = rs.getString("M_ID");
+			      String status = rs.getString("USED_STATUS");
+			      String file1 = rs.getString("FILE1");
+			      u_CommunityVO ucvo =new u_CommunityVO(c_seq, title, content,price,c_cnt,trade,used_pay,reg_date,m_id,status,file1);
+			      arr.add(ucvo);
+			 }
+		 }
+	 }catch(Exception e){
+		 e.printStackTrace(); 
+	 }finally{ 
+		 close(); 
+		 }
+	return arr;
+ }
+
 }	
+
 
 
 
