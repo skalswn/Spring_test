@@ -36,6 +36,18 @@ TemplateMo 557 Grad School
 https://templatemo.com/tm-557-grad-school
 
 -->
+<style>
+h4#status {
+	text-shadow: -2px 0 #F2F1F6, 0 2px #F2F1F6, 2px 0 #F2F1F6, 0 -2px #F2F1F6;
+	margin-top : 15%; 
+	font-size: 40px; 
+	text-transform: uppercase; 
+	font-weight: 800; 
+	color: #f5a425; 
+	letter-spacing: 1px;
+	margin-bottom: 15%;
+}
+</style>
 </head>
 
 
@@ -205,42 +217,46 @@ int present_python=dao.present_python(id);
 		<% if(vo!=null){%>
 		<div class="video-overlay header-text">
 			<div class="caption">
-				<div style="float: left; width: 50%; margin: 10%;">
+				<div style="float: left; width: 50%; margin-top: 10%;">
 					<h2>
 						<em>PSIT</em> : Personal IT
 					</h2>
-					<h4 style="font-size: 30px; color:white; font-weight: 700"> PSIT : Personal IT</h4>
 					<h4 style="font-size: 20px; color:white;"> PSIT란 자신의 성향 분석을 통해 IT직무를 추천받는 서비스 입니다.</h4>
 					<div class="main-button">
 						<div class="scroll-to-section"></div>
 						<br><br>
-						<a href="P_Psit.jsp">검사하러가기</a>
+						<a href="P_Psit.jsp">GO TEST</a>
 					</div>
 				</div>
 				<div>
 					
-					<div align="right" style="float: right; width: 30%; height: 600px; background-color: rgba(250,250,250,0.1); text-align: center;">
-						<h4 style = "margin : 5%; font-size: 40px; text-transform: uppercase; font-weight: 800; color: #fff; letter-spacing: 1px;">학습진행현황</h4>
-							<table>
+					<div align="right" style="float: right; width: 30%; background-color: rgba(250,250,250,0.1); text-align: center;">
+						<h4 id="status">study status</h4>
+							<table style="width: 100%;">
+							<tr style = "background-color: rgba(250,250,250,0.1); height: 40px">
+							<th style="font-size: 20px; color: white; width:40%;">Subject</th>
+						    <th style="font-size: 20px; color: white; width:30%">Step</th>
+						    <th style="font-size: 20px; color: white; width: 30%">Status</th>
+						    </tr>
 							<tr>
-							<td style="color: white;">파이썬</td>
-						    <td style="color: white;"><%=present_python %>/<%=amount_python %>단계 </td>
-						    <td><div id="piechart_python" style="width: 200px; height: 100px;"></div></td>
+							<td style="color: white; width:40%">파이썬</td>
+						    <td style="color: white; width:30%"><%=present_python %>/<%=amount_python %>단계 </td>
+						    <td style="width: 30%"><div id="piechart_python" style="width: 100px; height: 100px; display:inline-block;"></div></td>
 							</tr>
 							<tr>
-							<td style="color: white;">자바</td>
-						    <td style="color: white;"><%=present_java %>/<%=amount_java %>단계 </td>
-						    <td><div id="piechart_java" style="width: 200px; height: 100px;"></div></td>
+							<td style="color: white; width:40%">자바</td>
+						    <td style="color: white; width:30%"><%=present_java %>/<%=amount_java %>단계 </td>
+						    <td style="width: 30%"><div id="piechart_java" style="width: 100px; height: 100px; display:inline-block;"></div></td>
+						    </tr>
+						    <tr>
+							<td style="color: white; width:40%">HTML/CSS</td>
+						    <td style="color: white; width:30%"><%=present_html %>/<%=amount_html %>단계 </td>
+						    <td style="width: 30%"><div id="piechart_html" style="width: 100px; height: 100px; display:inline-block;"></div></td>
 							</tr>
 							<tr>
-							<td style="color: white;">HTML/CSS</td>
-						    <td style="color: white;"><%=present_html %>/<%=amount_html %>단계 </td>
-						    <td><div id="piechart_html" style="width: 200px; height: 100px;"></div></td>
-							</tr>
-							<tr>
-							<td style="color: white;">자바스크립트</td>
-						    <td style="color: white;"><%=present_javascript %>/<%=amount_javascript%>단계 </td>
-						    <td><div id="piechart_javascript" style="width: 200px; height: 100px;"></div></td>
+							<td style="color: white; width:40%">자바스크립트</td>
+						    <td style="color: white; width:30%"><%=present_javascript %>/<%=amount_javascript%>단계 </td>
+						    <td style="width: 30%"><div id="piechart_javascript" style="width: 100px; height: 100px; display:inline-block;"></div></td>
 							</tr>
 							</table>
 					</div>					
@@ -254,12 +270,11 @@ int present_python=dao.present_python(id);
 					<h2>
 						<em>PSIT</em> : Personal IT
 					</h2>
-					<h4 style="font-size: 30px; color:white; font-weight: 700"> PSIT : Personal IT</h4>
 					<h4 style="font-size: 20px; color:white;"> PSIT란 자신의 성향 분석을 통해 IT직무를 추천받는 서비스 입니다.</h4>
 					<div class="main-button">
 						<div class="scroll-to-section"></div>
 						<br><br>
-						<a href="Login.jsp"><span style = "font-size : 25px">로그인하고</span><br>검사하러가기</a>
+						<a href="Login.jsp">GO TEST<br><span style = "font-size : 15px; color: #fff; font-weight: 500;">After Login</span></a>
 					</div>
 				</div>
 			</div>
