@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
@@ -38,7 +39,6 @@ public class s_c_Communitychange extends HttpServlet {
 		String filename1 = "none.png";
 		
 		int num = Integer.parseInt(multi.getParameter("num"));
-		System.out.println(num);
 		try {
 			filename1 = URLEncoder.encode(multi.getFilesystemName("file1"), "euc-kr");
 		} catch (Exception e) {
@@ -50,7 +50,11 @@ public class s_c_Communitychange extends HttpServlet {
 			response.sendRedirect("s_c_Communityview?num="+num);
 		}else {
 			System.out.println("게시글 수정 실패!");
-			response.sendRedirect("c_Study_Community.jsp");
+			//response.sendRedirect("c_Community.jsp");
+			response.setContentType("text/html; charset=UTF-8"); 
+			PrintWriter writer = response.getWriter(); 
+			writer.println("<script>alert('게시판 수정이 정상적으로 이루어지지 않았습니다.'); history.back();</script>");
+			writer.close();
 		}
 		
 	}

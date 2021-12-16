@@ -66,6 +66,10 @@ int amount_java = dao.amount_java();
 int amount_javascript = dao.amount_javascript();
 int amount_html=dao.amount_html();
 int amount_python=dao.amount_python();
+int present_java = dao.present_java(id);
+int present_javascript = dao.present_javascript(id);
+int present_html=dao.present_html(id);
+int present_python=dao.present_python(id);
 %>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -76,8 +80,8 @@ int amount_python=dao.amount_python();
 
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['진행 학습량',     <%=amount_python%>],
-          ['남은 학습량',     <%=amount_python%>]
+          ['진행 학습량',     <%=present_python%>],
+          ['남은 학습량',     <%=amount_python-present_python%>]
         ]);
 
         var options = {
@@ -99,8 +103,8 @@ int amount_python=dao.amount_python();
 
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['진행 학습량',     <%=amount_python%>],
-          ['남은 학습량',     <%=amount_java%>]
+          ['진행 학습량',     <%=present_java%>],
+          ['남은 학습량',     <%=amount_java-present_java%>]
         ]);
 
         var options = {
@@ -122,8 +126,8 @@ int amount_python=dao.amount_python();
 
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['진행 학습량',     <%=amount_python%>],
-          ['남은 학습량',     <%=amount_html%>]
+          ['진행 학습량',     <%=present_html%>],
+          ['남은 학습량',     <%=amount_html-present_html%>]
         ]);
 
         var options = {
@@ -145,8 +149,8 @@ int amount_python=dao.amount_python();
 
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['진행 학습량',     <%=amount_python%>],
-          ['남은 학습량',     <%=amount_javascript%>]
+          ['진행 학습량',     <%=present_javascript%>],
+          ['남은 학습량',     <%=amount_javascript-present_javascript%>]
         ]);
 
         var options = {
@@ -232,25 +236,25 @@ int amount_python=dao.amount_python();
 							<th style="font-size: 20px; color: white; width:40%;">Subject</th>
 						    <th style="font-size: 20px; color: white; width:30%">Step</th>
 						    <th style="font-size: 20px; color: white; width: 30%">Status</th>
-							</tr>
+						    </tr>
 							<tr>
 							<td style="color: white; width:40%">파이썬</td>
-						    <td style="color: white; width:30%"><%=1 %>/<%=amount_python %>단계 </td>
+						    <td style="color: white; width:30%"><%=present_python %>/<%=amount_python %>단계 </td>
 						    <td style="width: 30%"><div id="piechart_python" style="width: 100px; height: 100px; display:inline-block;"></div></td>
 							</tr>
 							<tr>
 							<td style="color: white; width:40%">자바</td>
-						    <td style="color: white; width:30%"><%=1 %>/<%=amount_java %>단계 </td>
+						    <td style="color: white; width:30%"><%=present_java %>/<%=amount_java %>단계 </td>
 						    <td style="width: 30%"><div id="piechart_java" style="width: 100px; height: 100px; display:inline-block;"></div></td>
-							</tr>
-							<tr>
+						    </tr>
+						    <tr>
 							<td style="color: white; width:40%">HTML/CSS</td>
-						    <td style="color: white; width:30%"><%=1 %>/<%=amount_html %>단계 </td>
+						    <td style="color: white; width:30%"><%=present_html %>/<%=amount_html %>단계 </td>
 						    <td style="width: 30%"><div id="piechart_html" style="width: 100px; height: 100px; display:inline-block;"></div></td>
 							</tr>
 							<tr>
 							<td style="color: white; width:40%">자바스크립트</td>
-						    <td style="color: white; width:30%"><%=1 %>/<%=amount_javascript%>단계 </td>
+						    <td style="color: white; width:30%"><%=present_javascript %>/<%=amount_javascript%>단계 </td>
 						    <td style="width: 30%"><div id="piechart_javascript" style="width: 100px; height: 100px; display:inline-block;"></div></td>
 							</tr>
 							</table>

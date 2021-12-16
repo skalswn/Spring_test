@@ -24,7 +24,7 @@ public class CheckPhase extends HttpServlet {
 		DAO dao = new DAO();
 		request.setCharacterEncoding("euc-kr");
 //		//파라미터 seq수집
-		int seq = (int) request.getAttribute("seq");
+		int seq = (int)request.getAttribute("seq");
 		//세션에서 id값 가져오기
 		HttpSession	session = request.getSession();
 		MemberVO vo = (MemberVO)session.getAttribute("vo");
@@ -34,22 +34,16 @@ public class CheckPhase extends HttpServlet {
 		System.out.println(lang);
 		int cnt = dao.CheckPhase(seq, m_id, lang);
 		if(cnt>0) {
-			System.out.println("단계저장성공");
-		}
-		else {
-			System.out.println("단계저장실패");
-		}
-//		===================================================
-		CheckVO chvo = dao.getPhase(m_id, lang);
-
-		if(chvo!=null) {
-			System.out.println("chvo보내기성공!");
-			request.setAttribute("chvo", chvo);
+			System.out.println("저장!");
+			request.setAttribute("lang", lang);
 			RequestDispatcher rd = request.getRequestDispatcher("ShowAllCodingService");
 			rd.forward(request, response);
 		}
 		else {
-			System.out.println("chvo보내기실패");
+			System.out.println("저장실패");
+			request.setAttribute("lang", lang);
+			RequestDispatcher rd = request.getRequestDispatcher("ShowAllCodingService");
+			rd.forward(request, response);
 		}
 	}
 }

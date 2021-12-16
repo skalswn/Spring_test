@@ -135,12 +135,12 @@ if(session.getAttribute("vo") != null){
 					</tr>
 					<tr>
 					<td class = "part" style="text-align: center;">가격</td>
-										<td align="left"><textarea name="price" style="resize: none; height: 40px; width: 26.3%"></textarea>
+										<td align="left"><textarea name="price" style="resize: none; height: 40px; width: 26.3%;"></textarea>
 											</td>
 					 </tr>
 					<tr class="a" class="cm_tr" >
 										<td style="width: 80px; text-align: center">내용</td>
-										<td><textarea class="textarea" name="title" style="resize: none; height: 500px; width:80%;" ></textarea></td>
+										<td><textarea class="textarea" name="content" style="resize: none; height: 500px; width:80%;" ></textarea></td>
 									</tr>
 
 									<div style="text-align: center">

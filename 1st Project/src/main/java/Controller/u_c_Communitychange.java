@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
@@ -50,7 +51,11 @@ public class u_c_Communitychange extends HttpServlet {
 			response.sendRedirect("u_c_Communityview?num="+num);
 		}else {
 			System.out.println("게시글 수정 실패!");
-			response.sendRedirect("u_c_Community.jsp");
+			//response.sendRedirect("c_Community.jsp");
+			response.setContentType("text/html; charset=UTF-8"); 
+			PrintWriter writer = response.getWriter(); 
+			writer.println("<script>alert('게시판 수정이 정상적으로 이루어지지 않았습니다.'); history.back();</script>");
+			writer.close();
 		}
 		
 	}

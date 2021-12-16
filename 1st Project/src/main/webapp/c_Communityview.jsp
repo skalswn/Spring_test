@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="EUC-KR">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
@@ -64,7 +64,7 @@ if (session.getAttribute("vo") != null){
 	<script>location.href='Main.jsp';</script>
 	");
 	<%}%>
-	<% 
+<% 
 DAO dao = new DAO();
 CommunityVO cvo = (CommunityVO)session.getAttribute("cvo");
 ArrayList<Community_commentVO> cm_arr = dao.cm_Community(cvo.getC_seq());

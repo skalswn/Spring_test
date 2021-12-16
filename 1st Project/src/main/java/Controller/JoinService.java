@@ -46,7 +46,7 @@ public class JoinService extends HttpServlet {
 				
 				rd.forward(request, response);
 				
-				dao.Insertlang(m_id);
+				//dao.Insertlang(m_id);
 				System.out.println("회원가입 성공");
 			}	 
 			else {

@@ -60,10 +60,10 @@ public class c_Communitywrite extends HttpServlet {
 		int lognum=dao.community_write(title,writer,content,filename1, filename2, filename3);
 		if (lognum>0) {
 			System.out.println("게시글 작성 성공!");
-			response.sendRedirect("c_Community.jsp");
+			response.sendRedirect("c_Communityview?num="+lognum);
 		}else {
 			System.out.println("게시글 작성 실패!");
-			response.sendRedirect("c_Comminity.jsp");
+			response.sendRedirect("c_Community.jsp");
 		}
 		
 	}
