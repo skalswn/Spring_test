@@ -191,7 +191,6 @@ table{
 					<button type="button" style="background-color:#f5a425;color: white;width: 100px;height: 40px;border-radius: 0px;border: none;outline: none;font-size: 13px;letter-spacing: 0.5px;" onclick="location.href='c_Study_Communitywrite.jsp';" >새 글 작성</button>
 					</div>
 					<br>
-					
 					<table>
 						<tr id="head_tr" class="cm_tr" style = "height: 35px">
 							<td class="cm_td">번호</td>
