@@ -333,6 +333,15 @@ public class DAO {
 			   lognum = psmt.executeUpdate();
 			   if (lognum>0) {
 				   System.out.println("성공");
+				   String sql0 = "select article_seq from tbl_community where m_id=? and article_subject=? and article_content=?";
+				   psmt = conn.prepareStatement(sql0);
+				   psmt.setString(1,writer);
+				   psmt.setString(2,title);
+				   psmt.setString(3,content);
+				   rs = psmt.executeQuery();
+				   if(rs.next()==true) {
+					   lognum=rs.getInt("article_seq");
+				   }
 			   }
 			      }catch(Exception e){
 			    	 System.out.println("실패");
@@ -824,46 +833,31 @@ public int CheckPhase(int seq, String m_id, String lang) {
 	  }	
 
 // 회원가입 시 단계별학습에 언어 끼워넣는 메소드
-	public void Insertlang(String id) {
-		
-		try {
-			connection();
-
-			String sql = "insert into TBL_CODING_PLAN values(TBL_CODING_PLAN_SEQ.NEXTVAL, ? , 1, ?)";
-				
-			psmt = conn.prepareStatement(sql);
-			
-			psmt.setString(1, "파이썬");
-			psmt.setString(2, id);
-			psmt.addBatch();
-			
-			psmt.setString(1, "자바");
-			psmt.setString(2, id);
-			psmt.addBatch();
-			
-			psmt.setString(1, "HTML");
-			psmt.setString(2, id);
-			psmt.addBatch();
-
-			psmt.setString(1, "자바스크립트");
-			psmt.setString(2, id);
-			psmt.addBatch();
-			
-			int cnt[] = psmt.executeBatch();
-			
-			if (cnt != null) {
-				System.out.println("언어추가성공");
-			}
-			else {
-			
-				System.out.println("언어추가실패");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-	}
+		/*
+		 * public void Insertlang(String id) {
+		 * 
+		 * try { connection();
+		 * 
+		 * String sql =
+		 * "insert into TBL_CODING_PLAN values(TBL_CODING_PLAN_SEQ.NEXTVAL, ? , 0, ?)";
+		 * 
+		 * psmt = conn.prepareStatement(sql);
+		 * 
+		 * psmt.setString(1, "파이썬"); psmt.setString(2, id); psmt.addBatch();
+		 * 
+		 * psmt.setString(1, "자바"); psmt.setString(2, id); psmt.addBatch();
+		 * 
+		 * psmt.setString(1, "HTML"); psmt.setString(2, id); psmt.addBatch();
+		 * 
+		 * psmt.setString(1, "자바스크립트"); psmt.setString(2, id); psmt.addBatch();
+		 * 
+		 * int cnt[] = psmt.executeBatch();
+		 * 
+		 * if (cnt != null) { System.out.println("언어추가성공"); } else {
+		 * 
+		 * System.out.println("언어추가실패"); } } catch (Exception e) { e.printStackTrace();
+		 * } finally { close(); } }
+		 */
 
 // 회원수정 메소드==============================================================================================	
 	public int Update(String m_id, String m_pw, String m_email, String m_name, String m_nick, String m_gender,

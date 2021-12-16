@@ -99,7 +99,7 @@ if(session.getAttribute("vo") != null){
 							style="background-color: rgba(250, 250, 250, 0.2);">
 							<h2 align="center" style="padding: 1%">스터디게시판 - 새 글 작성</h2>
 
-							<form action="c_Study_Communitywrite" method="post"
+							<form action="s_c_Communitywrite" method="post"
 								enctype="multipart/form-data">
 								<div align="center">
 								<br>
@@ -111,11 +111,11 @@ if(session.getAttribute("vo") != null){
 										</tr>
 										<tr class="a">
 											<td class = "part" style="text-align: center;">분류</td>
-											<td><select style="height: 40px"><option value="1">파이썬</option><option value="2">자바</option><option value="3">HTML/CSS</option><option value="4">자바스크립트</option></select></td>
+											<td><select style="height: 40px" name="language"><option value="1">파이썬</option><option value="2">자바</option><option value="3">HTML/CSS</option><option value="4">자바스크립트</option></select></td>
 										</tr>
 										<tr class="a" class="cm_tr" style="height: 10px">
 											<td style="width: 80px; text-align: center">내용</td>
-											<td><textarea class="textarea" name="title" style="resize: none; height: 500px; width:80%;" ></textarea></td>
+											<td><textarea class="textarea" name="content" style="resize: none; height: 500px; width:80%;" ></textarea></td>
 										</tr>
 										<div style="text-align: center;">
 											<tr class="a">
