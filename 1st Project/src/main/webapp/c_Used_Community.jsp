@@ -156,7 +156,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 				<article style="height: 100%">
 					<div id="board"
 						style="background-color: rgba(250, 250, 250, 0.2); height: 100%;">
-						<h2 style="padding: 3%">중고거래게시판</h2>
+						<a href="c_Used_Community.jsp"><h2 style="padding: 3%">중고거래게시판</h2></a>
 						<div align=right style="margin-right: 10px">
 							<button type="button"
 								style="background-color: #f5a425; color: white; width: 100px; height: 40px; border-radius: 0px; border: none; outline: none; font-size: 13px; letter-spacing: 0.5px;"
