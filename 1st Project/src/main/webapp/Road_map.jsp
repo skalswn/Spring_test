@@ -97,7 +97,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");%>
 				<map name="back">
 					<area name = "Java" shape="rect" coords="755,247,853,278" href="ShowAllCodingService?lang=<%=lang2%>">
 					<area name = "JavaScript" shape="rect" coords="755,446,855,476" href="ShowAllCodingService?lang=<%=lang4%>">
-					<area name = "JavaScript" shape="rect" coords="624,187,724,216" href="ShowAllCodingService?lang=<%=lang4%>">
+					<area ㄴname = "JavaScript" shape="rect" coords="624,187,724,216" href="ShowAllCodingService?lang=<%=lang4%>">
 					<area name = "html/css" shape="rect" coords="625,92,724,170" href="ShowAllCodingService?lang=<%=lang3%>">
 					<area name = "Python" shape="rect" coords="755,407,855,436" href="ShowAllCodingService?lang=<%=lang1%>">
 				</map>
@@ -110,9 +110,9 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");%>
 				<br>
 				<img src="assets/images/ios.png">
         <%}else if(num.equals("4")) {%>
-        	<br><br><br><br><br>
+        	<br><br><br><br>
     		<img src="assets/images/infoEng.png">
-    		<br><br><br><br><br>
+    		<br><br><br><br><br><br>
    		<%}else if(num.equals("5")) {%>
             <p>※ Python에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요! </p>
 				<img usemap="#ai" src="assets/images/ai.png">
@@ -142,12 +142,12 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");%>
 	        <img src="assets/images/backEnd.png">
         <%}else if(num.equals("3")) {%>
 	        <img src="assets/images/android.png">
-			<br>
+			<br><br>
 			<img src="assets/images/ios.png">
         <%}else if(num.equals("4")) {%>
-        	<br><br><br><br><br>
+        	<br><br><br><br>
     		<img src="assets/images/infoEng.png">
-    		<br><br><br><br><br>
+    		<br><br><br><br><br><br>
    		<%}else if(num.equals("5")) {%>
 			<img src="assets/images/ai.png">
 				<br>	
