@@ -25,10 +25,10 @@ public class c_Comment extends HttpServlet {
 		MemberVO vo = (MemberVO)session.getAttribute("vo");
 		String userID =vo.getM_id();
 		CommunityVO cvo = (CommunityVO)session.getAttribute("cvo");
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("EUC-KR");
 		DAO dao=new DAO();
 		int c_seq=Integer.parseInt(request.getParameter("num"));
-		String cm_content=request.getParameter("C_comment");
+		String cm_content=(String)request.getParameter("C_comment");
 		System.out.println(cm_content);
 		String writer=userID;
 		int lognum = dao.cm_write(c_seq,cm_content,writer);

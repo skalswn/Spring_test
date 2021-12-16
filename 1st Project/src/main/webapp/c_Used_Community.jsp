@@ -182,7 +182,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 									<td class="main_td" style="width: 1200px"><a class="main_a"
 										href="u_c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getUSED_SEQ()%>"><%=arr.get(i + (pageno - 1) * 5).getUSED_SUBJECT()%></a></td>
 									<td class="main_td" style="width: 200px"><a class="main_a"
-										href="u_c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getUSED_SEQ()%>"><%=arr.get(i + (pageno - 1) * 5).getUSED_PRICE()%></a></td>
+										href="u_c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getUSED_SEQ()%>"><%=arr.get(i + (pageno - 1) * 5).getUSED_PRICE()%>¿ø</a></td>
 									<td class="main_td" style="width: 300px"><a class="main_a"
 										href="u_c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getUSED_SEQ()%>"><%=arr.get(i + (pageno - 1) * 5).getM_ID()%></a></td>
 									<td class="main_td" style="width: 100px"><a class="main_a"
@@ -200,7 +200,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 									<td class="main_td" style="width: 1200px"><a class="main_a"
 										href="u_c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getUSED_SEQ()%>"><%=arr.get(i + (pageno - 1) * 5).getUSED_SUBJECT()%></a></td>
 									<td class="main_td" style="width: 200px"><a class="main_a"
-										href="u_c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getUSED_SEQ()%>"><%=arr.get(i + (pageno - 1) * 5).getUSED_PRICE()%></a></td>
+										href="u_c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getUSED_SEQ()%>"><%=arr.get(i + (pageno - 1) * 5).getUSED_PRICE()%>¿ø</a></td>
 									<td class="main_td" style="width: 300px"><a class="main_a"
 										href="u_c_Communityview?num=<%=arr.get(i + (pageno - 1) * 5).getUSED_SEQ()%>"><%=arr.get(i + (pageno - 1) * 5).getM_ID()%></a></td>
 									<td class="main_td" style="width: 100px"><a class="main_a"

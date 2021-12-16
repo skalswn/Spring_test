@@ -153,7 +153,7 @@ if(session.getAttribute("vo") != null){
 
 										<tr class="a" class="cm_tr" >
 											<td style="width: 80px; text-align: center">³»¿ë</td>
-											<td><textarea class="textarea" name="title" style="resize: none; height: 500px; width:80%;" ><%=ucvo.getUSED_CONTENT()%></textarea></td>
+											<td><textarea class="textarea" name="content" style="resize: none; height: 500px; width:80%;" ><%=ucvo.getUSED_CONTENT()%></textarea></td>
 										</tr>
 										<tr>
 											<td colspan="2" align="center"><input style="width: 30%" name="file1" type="file">

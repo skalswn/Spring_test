@@ -135,7 +135,7 @@ if(session.getAttribute("vo") != null){
 					</tr>
 					<tr>
 					<td class = "part" style="text-align: center;">АЁАн</td>
-										<td align="left"><textarea name="price" style="resize: none; height: 40px; width: 26.3%"></textarea>
+										<td align="left"><textarea name="price" style="resize: none; height: 40px; width: 26.3%;"></textarea>
 											</td>
 					 </tr>
 					<tr class="a" class="cm_tr" >
