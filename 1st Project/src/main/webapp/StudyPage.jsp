@@ -194,15 +194,24 @@ section.coming-soon form{
 	             <%-- <%if(chvo3!=null){ %> --%> 
 	               <%if(cnt==-1){%> 
 	                  <img src="./images/checkbook.png" width=50px height=50px>
+			         <%if(vo.getM_id().equals("admin")){ %>
+			            <button onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">巩力昏力</button>
+			         <%} %>
 	               <%}else{ %>
 	                  <img src="./images/nocheckbook.png" width=50px height=50px>
+			         <%if(vo.getM_id().equals("admin")){ %>
+			            <button onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">巩力昏力</button>
+			         <%} %>
 	               <%} %>  
 	            <%} %>
 	   </ul>
 	   </div>
+<<<<<<< HEAD
 	         <%if(vo.getM_id().equals("admin")){ %>
 	            <button onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">巩力昏力</button>
 	         <%} %>
+=======
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-Bigdata-7/PSIT.git
 	      <%} %>
 	  <%--  <%}%>  --%> 
 
