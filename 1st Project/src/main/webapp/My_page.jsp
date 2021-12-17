@@ -72,15 +72,14 @@ https://templatemo.com/tm-557-grad-school
 
 		<!-- Wrapper -->
 	<section class="section coming-soon" data-section="section3">
-		<div>
-			<h4 style="color: white;" align="center"><%=vo.getM_id()%>(<%=vo.getM_name()%>)¥‘
-				æ»≥Á«œººø‰!
-			</h4>
-		</div>
 		<div style="text-align: center;">
 			<div style="display: inline-block; width: 30%;">
 				<div class="col-md-5" style="flex: 100%; max-width: 100%;">
 					<div class="right-content">
+		<div>
+			<h4 style="color: white; font-weight: 600;"><%=vo.getM_id()%>(<%=vo.getM_name()%>)¥‘ æ»≥Á«œººø‰!
+			</h4><br>
+		</div>
 						<form id="contact" action="InfoService" method="post"
 							align="center">
 							<div class="row">
@@ -135,6 +134,7 @@ https://templatemo.com/tm-557-grad-school
 										<textarea class="textarea" name="memo" rows="5"
 											placeholder="<%if (vo.getM_memo() != null) {%><%=vo.getM_memo()%><%}%>"></textarea>
 									</fieldset>
+									<br>
 								</div>
 								<div class="col-md-12">
 									<fieldset>
