@@ -426,7 +426,7 @@ int present_python=dao.present_python(id);
             <img src="assets/images/j_013.png" alt="">
             <div class="down-content">
               <div class="text-button-pay">
-               
+               <!-- 프로젝트매니저는 로드맵이 없음 -->
                 
               </div>
             </div>
