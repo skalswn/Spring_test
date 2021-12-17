@@ -52,10 +52,7 @@ width: 20%;
     letter-spacing: 0.5px;
 }
 
-.btne{
-text-align: right;
-margin-right: 18.5%;
-}
+
 
 </style>
 </head>
