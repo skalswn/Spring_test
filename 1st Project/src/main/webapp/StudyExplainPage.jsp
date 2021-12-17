@@ -7,38 +7,50 @@
 <%@page import="java.util.*" %>    
 <!DOCTYPE html>
 <html>
- <head>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+<meta name="author" content="">
+<link
+	href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900"
+	rel="stylesheet">
 
-    <title>PSIT.com</title>
-    
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<title>PSIT.com</title>
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-grad-school.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    <link rel="stylesheet" href="assets/css/lightbox.css">
-<!--
-    
-TemplateMo 557 Grad School
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-https://templatemo.com/tm-557-grad-school
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="assets/css/fontawesome.css">
+<link rel="stylesheet" href="assets/css/templatemo-grad-school.css">
+<link rel="stylesheet" href="assets/css/owl.css">
+<link rel="stylesheet" href="assets/css/lightbox.css">
+<style>
+#btn{
+	background-color: #f5a425;
+	width: 20%;
+    height: 40px;
+    border-radius: 0px;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
 
--->
+</style>
+
   </head>
 <body>
 <%
 int seq=1;
 String lang=null;
 MemberVO vo = (MemberVO)session.getAttribute("vo");
-out.print(vo);
+
 //CodingExplainVO codingexplainvo = (CodingExplainVO)request.getAttribute("codingexplainvo");
 DAO dao = new DAO();
 if(request.getParameter("seq") != null){
@@ -51,7 +63,8 @@ ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
 <!--header-->
   <header class="main-header clearfix" role="header">
     <div class="logo">
-      <a href="Main.jsp"><em>Welcome</em> PSIT</a> 
+      <a href="Main.jsp"><em>PSIT</em> <span
+				style="font-size: x-large;">Personal IT</span></a>
     </div>
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
    <nav id="menu" class="main-nav" role="navigation">
@@ -84,31 +97,23 @@ ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
 			</nav>
     
   </header>
-
-<%-- 
-	<table>
-		<tr>
-		<%if(arr.getCoding_explain2()!=null){ %>
-			<td style="white-space: pre-line;"><%=codingexplainvo.getCoding_explain1() %></td>
-			<td style="white-space: pre-line;"><%=codingexplainvo.getCoding_explain2() %></td>
-		</tr>
-		<%}else{ %>
-		<td style="white-space: pre-line;">
-			<%=codingexplainvo.getCoding_explain1() %>
-		<%} %>
-		</td>
-	</table>
-	
-		<a href="StudyCoding.jsp?seq=<%=codingexplainvo.getCoding_ex_seq()%>">문제풀어보기</a>
- --%>	
-	<%for(int i=0;i<arr.size();i++){ %>
-	<div style="white-space:pre;">
-			<h2><%=arr.get(i).getCoding_explain1() %></h2>
-			<p><%=arr.get(i).getCoding_explain2() %></p>
-	<%}%>
-	
-	<a href="StudyCoding.jsp?seq=<%=seq%>">문제풀어보기</a>
-	</div>
+  
+	<section style="color: white; text-align: center;"
+		class="section coming-soon" data-section="section3">
+		<div class="col-8  col-12-narrower imp-narrower"
+			style="max-width: 90% !important; display: inline-block;">
+			
+				<%for(int i=0;i<arr.size();i++){ %>
+					<div style="white-space:pre;">
+						<h1><%=arr.get(i).getCoding_explain1() %></h1>
+						<span style="text-align: left;">
+						<p style="font-size: 15px;"><%=arr.get(i).getCoding_explain2() %></p></span>
+					</div>	
+				<%}%>
+			<div>
+				<a href="StudyCoding.jsp?seq=<%=seq%>"><button id = btn>문제풀어보기</button></a>
+			</div> 
+		</div> 
 	<!-- Scripts 지우면안됨------------------------------------------------------------------------------------------------------------------>
   <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -121,6 +126,7 @@ ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
     <script src="assets/js/slick-slider.js"></script>
     <script src="assets/js/custom.js"></script>
     
+    </section>
     
 	<footer>
 		<div class="container">
@@ -137,6 +143,6 @@ ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
 			</div>
 		</div>
 	</footer>
-	
+
 </body>
 </html>
