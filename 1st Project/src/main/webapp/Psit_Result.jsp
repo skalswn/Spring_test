@@ -20,28 +20,28 @@
 <style>
 
 div{
-text-align: center;
+	text-align: center;
 
 }
 
 #big {
-margin:3%;
+	margin:3%;
 }
 
 img{
-width:500px;
-height:700px;
+	width:500px;
+	height:700px;
 }
 
 strong{
-text-align: center;
-font-size: 30px;
-font-weight: 800px;
+	text-align: center;
+	font-size: 30px;
+	font-weight: 800px;
 }
 
 #btn{
-background-color: #f5a425;
-width: 20%;
+	background-color: #f5a425;
+	width: 20%;
     height: 40px;
     border-radius: 0px;
     border: none;
@@ -51,7 +51,18 @@ width: 20%;
     margin-bottom: 20px;
     letter-spacing: 0.5px;
 }
-
+#btnn{
+	background-color: rgba(250,250,250,0.1);
+	width: 20%;
+    height: 40px;
+    border-radius: 0px;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
 
 
 </style>
@@ -292,7 +303,8 @@ String job_no ="";
 			<% }%>
 			</div>
 			 <a href="c_Psit?sample=<%=sample%>"> <button id = "btn">저장 후 MY PSIT로 이동하기</button></a>
-			 <a href="P_Psit.jsp"> <button id = "btn">다시검사하러 가기!</button></a>
+			 <br>
+			 <a href="P_Psit.jsp"> <button id = "btnn">다시검사하러 가기!</button></a>
 						</div>
 					</article>
 				</div>
