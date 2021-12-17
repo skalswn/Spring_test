@@ -1563,7 +1563,7 @@ public int CheckPhase(int seq, String m_id, String lang) {
 			   String REG_DATE = rs.getString("REG_DATE");
 			   String M_ID = rs.getString("M_ID");
 		       PS = new PsitVO(c_seq,PSIT_TYPE,PSIT_JOB,REG_DATE,M_ID);
-		      }
+		  }
 		      }catch(Exception e){
 		        e.printStackTrace();
 		      }finally{

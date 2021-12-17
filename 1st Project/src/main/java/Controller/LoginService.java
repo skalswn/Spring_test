@@ -25,11 +25,15 @@ public class LoginService extends HttpServlet {
 		DAO dao = new DAO();
 		MemberVO vo = dao.Login(id, pw);
 		
+	     
+
+
+	출처: https://dololak.tistory.com/706 [코끼리를 냉장고에 넣는 방법]
 		if (vo != null) {
 			System.out.println("로그인 성공");
 			HttpSession session = request.getSession();
-			
 			session.setAttribute("vo", vo);
+			session.setMaxInactiveInterval(60*60*24);
 			response.sendRedirect("Main.jsp");
 		} else {
 			System.out.println("로그인 실패");

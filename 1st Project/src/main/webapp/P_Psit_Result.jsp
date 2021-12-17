@@ -61,18 +61,38 @@ margin-right: 18.5%;
 </style>
 </head>
 <body>
-	<%
-	MemberVO vo = null;
-	if(session.getAttribute("vo") != null){
-		vo=(MemberVO)session.getAttribute("vo");
-	}
-	DAO dao = new DAO();
-	PsitVO pstore=dao.PSTORE(vo.getM_id());
-	String sample = pstore.getPSIT_TYPE();
-	 
-	String job_no = pstore.getPSIT_JOB();
-	%>
-	
+<%
+MemberVO vo = null;
+String sample=null;
+String job_no=null;
+PsitVO pstore=null;
+String userID= null;
+DAO dao = new DAO();
+if(session.getAttribute("vo") != null){
+	vo=(MemberVO)session.getAttribute("vo");
+	userID = vo.getM_id();
+	pstore=dao.PSTORE(vo.getM_id());
+}else{%>
+	<%System.out.print("왜?");%>
+Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
+Response.Write("<script>location.href='Main.jsp';</script>");
+<%}%>
+<%if(pstore==null){%>
+Response.Write("
+<script>
+if(confirm('해당 서비스는 검사후 사용하실 수 있습니다. 검사를 진행 하시겠습니까?')==true){
+	location.href='P_Psit.jsp';
+}else{
+	location.href='Main.jsp';
+}
+</script>");
+<%
+}else{
+sample = pstore.getPSIT_TYPE();
+job_no = pstore.getPSIT_JOB();
+}
+%>
+
 	<header class="main-header clearfix" role="header">
 		<div class="logo">
 			<a href="Main.jsp"><em>PSIT</em> <span
@@ -109,7 +129,7 @@ margin-right: 18.5%;
 			</ul>
 		</nav>
 	</header>
-	
+<%if(pstore != null && vo!=null){ %>
 	<!--  직무 MBTI 보여주기  -->
 	<section style="color: white; text-align: center;"
 		class="section coming-soon" data-section="section3">
@@ -333,7 +353,7 @@ margin-right: 18.5%;
 				<br><br>
 				</div>	
 			<% }%>
-		
+		<% }%>
 
 		
 		<%-- 로드맵 안에 학습하러가기가 있으니까 빼는게 나을 것 같아요.

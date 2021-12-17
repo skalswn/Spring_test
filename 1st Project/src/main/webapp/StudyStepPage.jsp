@@ -119,6 +119,7 @@ button.bb{
 #tbl1{
    display: inline-table;
    width: 30%;
+
    
 }
 #tbl2{
@@ -222,7 +223,7 @@ section.coming-soon form{
             codingvo=codingarray.get(i); 
             cnt=dao.Check_Phase(codingvo.getCoding_seq(),vo.getM_id(),codingvo.getCoding_lang());
             %>
-	            <%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%>
+	           <%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%>
 	                  <%if(cnt==-1){%> 
 	                    <img src="./images/checkbook.png" width=50px height=50px>
 			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">학습하러가기!</button> 

@@ -53,7 +53,7 @@ table{
 </style>
 </head>
 <body>
-	<%
+<%
 CommunityVO cvo = null;
 if(session.getAttribute("cvo") !=null){
 	cvo = (CommunityVO)session.getAttribute("cvo");

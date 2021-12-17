@@ -41,15 +41,26 @@ public class check_answer extends HttpServlet {
 //			response.sendRedirect("StudyExplainPage.jsp?seq="+seq);
 //		}
 		if (check.equals("wright") ) {
-			System.out.println("정답"); 
+			System.out.println("정답");
+			response.setContentType("text/html; charset=UTF-8"); 
+			PrintWriter writers = response.getWriter(); 
+			writers.println("<script>alert('정답입니다.');</script>");
+			writers.println("<script>location.href='CheckPhase.jsp?seq="+seq+"';</script>");
+			writers.close();
 			RequestDispatcher rd =request.getRequestDispatcher("CheckPhase");
 			request.setAttribute("seq", seq); 
 			rd.forward(request, response);
 		}else {
 			System.out.println("오답");
-			response.sendRedirect("StudyExplainPage.jsp?seq="+seq);
-			
+			response.setContentType("text/html; charset=UTF-8"); 
+			PrintWriter writers = response.getWriter(); 
+			writers.println("<script>alert('틀렸습니다.');</script>");
+			writers.println("<script>location.href='StudyExplainPage.jsp?seq="+seq+"';</script>");
+			writers.close();
 		}
+
+		
+		
 //		HttpSession session = request.getSession();
 //		MemberVO vo = (MemberVO)session.getAttribute("vo");
 //		String m_id = vo.getM_id();
