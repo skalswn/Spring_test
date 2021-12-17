@@ -48,7 +48,7 @@ h4#status {
    margin-bottom: 15%;
 }
 body {
-   height: 100vh;
+   height: 100%;
 }
 
 #c {
@@ -63,12 +63,23 @@ body {
 #a {
    height: 15%;
 }
-#aa input{
+#langselect{
+	width: 70%;
+    height: 100%;
+    margin-bottom: 10%;
+}
+#langselect td.lang{
+	text-align: rignt;
+}
+#langselect td.langslc{
+	text-align: left;
+}
+#langselect input{
    display: inline-block;
     text-align: left;
     margin-right: 20px;
     margin-left: 20px;
-/*     width: 20px; */
+	width: 20px;
     height: 20px;
     border-radius: 0px;
     color: #fff;
@@ -77,7 +88,7 @@ body {
 	background-color:#f5a425;
 	width :20%;
 }
-#addQ{
+button.bb{
 	background-color:#f5a425;
 	width :20%;
 	height: 40px;
@@ -98,13 +109,6 @@ body {
     margin-bottom: 10px;
 }
 
-#gostudy{
-   background-color:#f5a425;
-   width :100px;
-   margin-right: 20px;
-    margin-left: 20px;
-    height: 20px;
-}
 #tbl{
    display: inline-table;
    width: 80%;
@@ -291,63 +295,69 @@ int present_python=dao.present_python(vo.getM_id());
          <div id="content" style="height: 100%; text-align: center;">
  <table id="tbl">
  <tr>
- <td style="width: 50%">
-     <div id="lang">    
+ <td style="width: 50%;  background-color: rgba(250,250,250,0.1);">
       <form action="ShowAllCodingService" method="post" style="text-align: center;">
-         <div id="aa">
-         <table>
+         <div style="text-align: center; width: 60%; display: -webkit-inline-box;">
+            	   <div style="width: 100%;">
+                  <h4 id="status" style="margin-bottom: 0;">select</h4>
+                  <h4 id="status" style="margin-top : 0;">language</h4>
+         <div>
+         <table id="langselect" align="center">
          <tr>
-            <td>파이썬</td>
-            <td><input type="radio" name="lang" value="파이썬"></td>
+            <td class="lang">파이썬</td>
+            <td class="langslc"><input type="radio" name="lang" value="파이썬"></td>
          </tr>
          <tr>
-            <td>자바</td>
-            <td><input type="radio" name="lang" value="자바"></td>
+            <td class="lang">자바</td>
+            <td class="langslc"><input type="radio" name="lang" value="자바"></td>
          </tr>
          <tr>
-            <td>HTML/CSS</td>
-            <td><input type="radio" name="lang" value="HTML"></td>
+            <td class="lang">HTML/CSS</td>
+            <td class="langslc"><input type="radio" name="lang" value="HTML"></td>
          </tr>
          <tr>
-            <td>자바스크립트</td>
-            <td><input type="radio" name="lang" value="자바스크립트"></td>
+            <td class="lang">자바스크립트</td>
+            <td class="langslc"><input type="radio" name="lang" value="자바스크립트"></td>
          </tr>
          </table>
          </div> 
+         </div> 
+         </div>
+         <br><br> 
          <input id = "bb" type="submit" value="문제보기">
       </form>
          <%if(vo.getM_id().equals("admin")){ %>
-         <a href="InsertCoding.jsp"><button id = "addQ">문제추가</button></a>
+         <a href="InsertCoding.jsp"><button class = "bb">문제추가</button></a>
          <%} %>
-      </div>
    </td>
-   <td style="text-align: center; vertical-align: initial;">
+   <td style="text-align: center; vertical-align: initial; background-color: rgba(250,250,250,0.1); ">
    <!--문제나오는 부분  ---->
       <%if(codingarray!=null){ %>
+      <div id="phase" >
          <%for(int i=0; i<codingarray.size(); i++){%>
             <%
             int cnt=0;
             codingvo=codingarray.get(i); 
             cnt=dao.Check_Phase(codingvo.getCoding_seq(),vo.getM_id(),codingvo.getCoding_lang());
             %>
-      <div id="phase" >
             <%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%>
-            <a id="gostudy" href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a> 
                   <%if(cnt==-1){%> 
                      <img src="./images/checkbook.png" width=50px height=50px>
+		            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">학습하러가기!</button> 
                   <%if(vo.getM_id().equals("admin")){ %>
-                     <button onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
+                     <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
                   <%} %>
                   <%}else{ %>
                      <img src="./images/nocheckbook.png" width=50px height=50px>
+		            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">학습하러가기!</button> 
                   <%if(vo.getM_id().equals("admin")){ %>
-                     <button onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
+                     <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
                   <%} %>
                   <%} %>  
                <%}}else{
             	   %>
-            	   <div style="text-align: center; width: 60%; display: -webkit-inline-box;">
-            	   <div style="width: 100%; background-color: rgba(250,250,250,0.1); ">
+            	   <div style="text-align: center; width: 70%; display: -webkit-inline-box;">
+            	   <div style="width: 100%;">
                   <h4 id="status">study status</h4>
                      <table style="width: 100%;">
                      <tr style = "background-color: rgba(250,250,250,0.1); height: 40px">
