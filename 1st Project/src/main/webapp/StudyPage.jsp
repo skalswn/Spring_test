@@ -334,7 +334,6 @@ int present_python=dao.present_python(vo.getM_id());
    <!--문제나오는 부분  ---->
       <table style="width:100%">
 
-      
       <%if(codingarray!=null){ %>
             <%for(int i=0; i<codingarray.size(); i++){%>
          <tr>
