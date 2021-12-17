@@ -37,6 +37,16 @@ https://templatemo.com/tm-557-grad-school
 
 -->
 <style>
+h4#status {
+	text-shadow: -2px 0 #F2F1F6, 0 2px #F2F1F6, 2px 0 #F2F1F6, 0 -2px #F2F1F6;
+	margin-top : 15%; 
+	font-size: 40px; 
+	text-transform: uppercase; 
+	font-weight: 800; 
+	color: #f5a425; 
+	letter-spacing: 1px;
+	margin-bottom: 15%;
+}
 body {
    height: 100vh;
 }
@@ -94,6 +104,9 @@ section.coming-soon form{
     width: 100%;
     text-align: center;
 }
+#my_status{
+	
+}
 </style>
 </head>
 <body>
@@ -115,6 +128,112 @@ section.coming-soon form{
    System.out.println(chvo); 
    /* System.out.println(chvo.getStep()); */
 %>
+<%
+int amount_java = dao.amount_java();
+int amount_javascript = dao.amount_javascript();
+int amount_html=dao.amount_html();
+int amount_python=dao.amount_python();
+int present_java = dao.present_java(vo.getM_id());
+int present_javascript = dao.present_javascript(vo.getM_id());
+int present_html=dao.present_html(vo.getM_id());
+int present_python=dao.present_python(vo.getM_id());
+%>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['남은 학습량',     <%=amount_python-present_python%>],
+          ['진행 학습량',     <%=present_python%>]
+        ]);
+
+        var options = {
+        	backgroundColor: { fill:'transparent' },
+        	legend: `none`,
+        	colors: ['transparent','#f5a425']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_python'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['남은 학습량',     <%=amount_java-present_java%>],
+          ['진행 학습량',     <%=present_java%>]
+        ]);
+
+        var options = {
+        	backgroundColor: { fill:'transparent' },
+        	legend: `none`,
+        	colors: ['transparent','#f5a425']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_java'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['남은 학습량',     <%=amount_html-present_html%>],
+          ['진행 학습량',     <%=present_html%>]
+        ]);
+
+        var options = {
+        	backgroundColor: { fill:'transparent' },
+        	legend: `none`,
+        	colors: ['transparent','#f5a425']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_html'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['남은 학습량',     <%=amount_javascript-present_javascript%>],
+          ['진행 학습량',     <%=present_javascript%>],
+        ]);
+
+        var options = {
+        	backgroundColor: { fill:'transparent' },
+        	legend: `none`,
+        	colors: ['transparent','#f5a425']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_javascript'));
+
+        chart.draw(data, options);
+      }
+    </script>
 <%-- <%if(chvo!=null){ %>
              <%System.out.println(chvo.getStep()); %>
          <%} %> --%>
@@ -210,11 +329,39 @@ section.coming-soon form{
 	
 			</div>
 			</div>
-		
+					<div align="right" style="float: right; width: 500px; background-color: rgba(250,250,250,0.1); text-align: center;">
+						<h4 id="status">study status</h4>
+							<table style="width: 100%;">
+							<tr style = "background-color: rgba(250,250,250,0.1); height: 40px">
+							<th style="font-size: 20px; color: white; width:40%;">Subject</th>
+						    <th style="font-size: 20px; color: white; width:30%">Step</th>
+						    <th style="font-size: 20px; color: white; width: 30%">Status</th>
+						    </tr>
+							<tr>
+							<td style="color: white; width:40%">파이썬</td>
+						    <td style="color: white; width:30%"><%=present_python %>/<%=amount_python %>단계 </td>
+						    <td style="width: 30%"><div id="piechart_python" style="width: 100px; height: 100px; display:inline-block;"></div></td>
+							</tr>
+							<tr>
+							<td style="color: white; width:40%">자바</td>
+						    <td style="color: white; width:30%"><%=present_java %>/<%=amount_java %>단계 </td>
+						    <td style="width: 30%"><div id="piechart_java" style="width: 100px; height: 100px; display:inline-block;"></div></td>
+						    </tr>
+						    <tr>
+							<td style="color: white; width:40%">HTML/CSS</td>
+						    <td style="color: white; width:30%"><%=present_html %>/<%=amount_html %>단계 </td>
+						    <td style="width: 30%"><div id="piechart_html" style="width: 100px; height: 100px; display:inline-block;"></div></td>
+							</tr>
+							<tr>
+							<td style="color: white; width:40%">자바스크립트</td>
+						    <td style="color: white; width:30%"><%=present_javascript %>/<%=amount_javascript%>단계 </td>
+						    <td style="width: 30%"><div id="piechart_javascript" style="width: 100px; height: 100px; display:inline-block;"></div></td>
+							</tr>
+							</table>
+					</div>					
 		</section>
 	</td>
 </table>
-
    <footer>
       <div class="container">
          <div class="row">

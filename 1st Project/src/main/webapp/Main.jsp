@@ -233,7 +233,6 @@ int present_python=dao.present_python(id);
 					</div>
 				</div>
 				<div>
-					
 					<div align="right" style="float: right; width: 30%; background-color: rgba(250,250,250,0.1); text-align: center;">
 						<h4 id="status">study status</h4>
 							<table style="width: 100%;">
