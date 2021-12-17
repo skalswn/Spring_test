@@ -295,19 +295,6 @@ String job_no ="";
 			<% }%>
 			</div>
 			 <a href="c_Psit?sample=<%=sample%>"> <button id = "btn">저장 후 MY PSIT로 이동하기</button></a>
-			 
-			
-			
-<%-- 		로그인해야 검사할수 있으니까 이 부분은 필요가 없는 것 같아요
-<%if (vo != null){%>	
-	 <a href="c_Psit?sample=<%=sample%>">  저장 후 MY PSIT로 이동하기</a>
-	 <%//  a태그를 클릭해야 저장 됨 !!!   %>
-	<% }else{%>
-		<a href="1st_Project/Road_map.jsp?num=1"> 첫번째 매칭 직무 설명보러가기</a>
-	<%} %> --%>
-
-								
-							
 						</div>
 					</article>
 				</div>
@@ -338,6 +325,5 @@ String job_no ="";
 		</div>
 	</div>
 </footer>
-
 </body>
 </html>
