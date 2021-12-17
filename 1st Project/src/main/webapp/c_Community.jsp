@@ -89,7 +89,6 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 		pageno = 1;
 	}
 	int total_record = arr.size();
-	System.out.print(arr.size());
 	int page_per_record_cnt = 5;  
 	int group_per_page_cnt =5;     											
 	int record_end_no = pageno*page_per_record_cnt;				

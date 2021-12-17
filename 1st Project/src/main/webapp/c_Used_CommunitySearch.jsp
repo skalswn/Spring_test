@@ -226,19 +226,19 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 							</table>
 							
 							<br>
-							<a href="c_Used_Community.jsp?pageno=<%=prev_pageno%>">≪ 이전</a>
+							<a href="c_Used_CommunitySearch.jsp?pageno=<%=prev_pageno%>&choice=<%=choice%>&search_=<%=search%>">≪ 이전</a>
 						<%for (int i = page_sno; i <= page_eno; i++) {%>
-						<a href="c_Used_Community.jsp?pageno=<%=i%>"> <%if (pageno == i) {%>
+						<a href="c_Used_CommunitySearch.jsp?pageno=<%=i%>&choice=<%=choice%>&search_=<%=search%>"> <%if (pageno == i) {%>
 							<span id="cho"><%=i%></span> <%} else {%> <%=i%> <%}%>
 						</a>
 						<%if (i < page_eno) {%>,<%}	%><%}%>
-						<a href="c_Used_Community.jsp?pageno=<%=next_pageno%>" >다음 ≫</a>
+						<a href="c_Used_CommunitySearch.jsp?pageno=<%=next_pageno%>&choice=<%=choice%>&search_=<%=search%>" >다음 ≫</a>
 	
 							<form style="padding: 20px 20px" action="search_u_community">
 								<select
 									style="height: 40px; text-align: center; letter-spacing: 0.5px;"><option
-										value="제목">제목</option>
-									<option value="내용">내용</option>
+										value="title_s">제목</option>
+									<option value="content_s">내용</option>
 									<option value="작성자">작성자</option></select> <input style="width: 30%;"
 									type="text"> <input style="width: 10%; font-size: 16px"
 									class="search_button" type="button" value="검색">
