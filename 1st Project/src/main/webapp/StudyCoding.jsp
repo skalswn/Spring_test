@@ -81,7 +81,6 @@ String coding_img =dao.ShowimgCoding(seq);
          style="max-width: 100% !important; height: 100%;">
          <div id="content" style="height: 100%; text-align: center;">
 	<div style="white-space:pre;">
-		<p>선택한 문제 나올 곳</p>
 		<%if(coding_img !=null){%>
 			<img src="./images/<%=URLDecoder.decode(coding_img, "euc-kr") %>">
 		<%} %>
@@ -106,9 +105,7 @@ String coding_img =dao.ShowimgCoding(seq);
 	
 	<div>
 		<button onclick="location.href='ShowAllCodingService?lang=<%=codingvo.getCoding_lang()%>';">다른문제 풀기</button></a>
-		<%-- <a href="StudyPage.jsp"><button onclick="location.href='CheckPhase?seq=<%=codingvo.getCoding_seq()%>';">다른문제 풀기</button></a> --%>
 	</div>
-	<%-- <button onclick="location.href='CheckPhase?seq=<%= codingvo.getCoding_seq() %>';">다른문제 풀기</button> --%>
 	</div>
 	</div>
 	</section>
