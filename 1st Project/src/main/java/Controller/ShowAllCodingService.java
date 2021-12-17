@@ -36,7 +36,7 @@ public class ShowAllCodingService extends HttpServlet {
 		ArrayList<CodingVO> codingarray = new ArrayList<>();
 		codingarray = dao.ShowAllCoding(lang);
 		System.out.println(lang);
-		RequestDispatcher rd = request.getRequestDispatcher("StudyPage.jsp"); 
+		RequestDispatcher rd = request.getRequestDispatcher("StudyStepPage.jsp"); 
 		request.setAttribute("codingarray", codingarray);
 		rd.forward(request, response); 
 	}
