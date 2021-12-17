@@ -9,7 +9,7 @@
 
   <head>
 
-<meta charset="utf-8">
+<meta charset="EUC-KR">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
@@ -426,8 +426,8 @@ int present_python=dao.present_python(id);
             <img src="assets/images/j_013.png" alt="">
             <div class="down-content">
               <div class="text-button-pay">
-               <%String g ="7"; %>
-                <a href="Road_map.jsp?num=<%=g%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
+               
+                
               </div>
             </div>
           </div>
