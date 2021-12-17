@@ -71,7 +71,7 @@ public class c_Psit extends HttpServlet {
 		else { 
 		System.out.println("저장 실패");
 	 }
-	response.sendRedirect("http://localhost:8081/1st_Project/P_Psit_Result.jsp");
+	response.sendRedirect("P_Psit_Result.jsp");
 //	 if(job_no.contains("인공지능")) {		
 //		response.sendRedirect("http://localhost:8081/1st_Project/Road_map.jsp?num=5");
 //		}
