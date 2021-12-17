@@ -97,7 +97,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");%>
 				<map name="back">
 					<area name = "Java" shape="rect" coords="755,247,853,278" href="ShowAllCodingService?lang=<%=lang2%>">
 					<area name = "JavaScript" shape="rect" coords="755,446,855,476" href="ShowAllCodingService?lang=<%=lang4%>">
-					<area ¤¤name = "JavaScript" shape="rect" coords="624,187,724,216" href="ShowAllCodingService?lang=<%=lang4%>">
+					<area name = "JavaScript" shape="rect" coords="624,187,724,216" href="ShowAllCodingService?lang=<%=lang4%>">
 					<area name = "html/css" shape="rect" coords="625,92,724,170" href="ShowAllCodingService?lang=<%=lang3%>">
 					<area name = "Python" shape="rect" coords="755,407,855,436" href="ShowAllCodingService?lang=<%=lang1%>">
 				</map>
