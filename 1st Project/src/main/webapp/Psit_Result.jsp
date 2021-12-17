@@ -295,6 +295,7 @@ String job_no ="";
 			<% }%>
 			</div>
 			 <a href="c_Psit?sample=<%=sample%>"> <button id = "btn">저장 후 MY PSIT로 이동하기</button></a>
+			 <a href="P_Psit.jsp"> <button id = "btn">다시검사하러 가기!</button></a>
 						</div>
 					</article>
 				</div>
