@@ -84,7 +84,7 @@ ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
 			</nav>
     
   </header>
-  <br><br><br><br><br><br>
+
 <%-- 
 	<table>
 		<tr>
@@ -106,8 +106,22 @@ ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
 			<h2><%=arr.get(i).getCoding_explain1() %></h2>
 			<p><%=arr.get(i).getCoding_explain2() %></p>
 	<%}%>
+	
 	<a href="StudyCoding.jsp?seq=<%=seq%>">문제풀어보기</a>
 	</div>
+	<!-- Scripts 지우면안됨------------------------------------------------------------------------------------------------------------------>
+  <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/tabs.js"></script>
+    <script src="assets/js/video.js"></script>
+    <script src="assets/js/slick-slider.js"></script>
+    <script src="assets/js/custom.js"></script>
+    
+    
 	<footer>
 		<div class="container">
 			<div class="row">
@@ -124,19 +138,5 @@ ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
 		</div>
 	</footer>
 	
-		<!-- Scripts 지우면안됨------------------------------------------------------------------------------------------------------------------>
-  <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <script src="assets/js/isotope.min.js"></script>
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/lightbox.js"></script>
-    <script src="assets/js/tabs.js"></script>
-    <script src="assets/js/video.js"></script>
-    <script src="assets/js/slick-slider.js"></script>
-    <script src="assets/js/custom.js"></script>
-    
-    
 </body>
 </html>
