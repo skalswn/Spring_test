@@ -8,7 +8,7 @@
 <head>
 <meta charset="EUC-KR">
 
-<title>PSIT.com - RSIT_Result</title>
+<title>PSIT.com - My PSIT</title>
 
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -48,7 +48,7 @@ width: 20%;
     border: none;
     outline: none;
     color: #fff;
-    font-size: 17px;
+    font-size: 16px;
     margin-bottom: 20px;
     letter-spacing: 0.5px;
 }
@@ -127,7 +127,7 @@ margin-right: 18.5%;
 				<%-- <%job_no=job_no+"인공지능/머신러닝"; %> --%>
 				<strong> 인공지능 & 머신러닝<br><br></strong> 
 				<div>
-					<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+					<div class="btne"><a href="1st_Project/Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 					<br>
 					<img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
 					<br><br>
@@ -138,7 +138,7 @@ margin-right: 18.5%;
 				<%--<%job_no=job_no+"인공지능/머신러닝,앱개발자"; %>--%>
 				<strong> 1. 인공지능 & 머신러닝<br><br></strong> 
 				<div>
-					<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+					<div class="btne"><a href="1st_Project/Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 					<br>
 					<img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
 					<br><br>
@@ -146,7 +146,7 @@ margin-right: 18.5%;
 				<br><br>
 				<strong>2. 앱개발자<br><br></strong>
 				<div>
-				 	<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=3"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+				 	<div class="btne"><a href="1st_Project/Road_map.jsp?num=3"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 					<br>
 				 	<img src="JOB_EP_IMG/App_1.png" alt=""/><img src = "JOB_EP_IMG/App_2.png">
 					<br><br>
@@ -156,7 +156,7 @@ margin-right: 18.5%;
 				<%--<%job_no=job_no+"데이터 엔지니어"; %>--%>
 				<strong> 데이터 엔지니어<br><br></strong> 
 				<div>
-					<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=6"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+					<div class="btne"><a href="1st_Project/Road_map.jsp?num=6"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 					<br>
 					<img src="JOB_EP_IMG/DataEG_1.png" alt=""/><img src = "JOB_EP_IMG/DataEG_2.png">
 					<br><br>
@@ -166,7 +166,7 @@ margin-right: 18.5%;
 				<%--<%job_no=job_no+"인공지능/머신러닝,데이터 엔지니어"; %>--%>
 				<strong>1. 인공지능&머신러닝<br><br></strong> 
 				<div>
-					<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+					<div class="btne"><a href="1st_Project/Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 					<br>
 					<img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
 					<br><br>
@@ -174,7 +174,7 @@ margin-right: 18.5%;
 				<br><br>
 				<strong>2. 데이터 엔지니어<br><br></strong> 
 				<div> 
-					<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=6"> <button id="btn">매칭 직무 로드맵 보러 가기</button></a></div>
+					<div class="btne"><a href="1st_Project/Road_map.jsp?num=6"> <button id="btn">매칭 직무 로드맵 보러 가기</button></a></div>
 					<br>
 					<img src="JOB_EP_IMG/DataEG_1.png" alt=""/><img src = "JOB_EP_IMG/DataEG_2.png">
 					<br><br>
@@ -184,7 +184,7 @@ margin-right: 18.5%;
 				<%--<%job_no=job_no+"프로젝트 매니저"; %>--%>
 				<strong>프로젝트 매니저<br><br></strong> 
 			 	<div>
-				 	<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=7"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+				 	<div class="btne"><a href="1st_Project/Road_map.jsp?num=7"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 				 	<br>
 				 	<img src="JOB_EP_IMG/ProjectMG_1.png" alt=""/><img src = "JOB_EP_IMG/ProjectMG_2.png">
 				 	<br><br>
@@ -194,7 +194,7 @@ margin-right: 18.5%;
 				<%--<%job_no=job_no+"프로젝트 매니저"; %>--%>
 				<strong> 프로젝트 매니저<br><br></strong> 
 			 	<div>
-				 	<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=7"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+				 	<div class="btne"><a href="1st_Project/Road_map.jsp?num=7"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 				 	<br>
 				 	<img src="JOB_EP_IMG/ProjectMG_1.png" alt=""/><img src = "JOB_EP_IMG/ProjectMG_2.png">
 				 	<br><br>
@@ -204,7 +204,7 @@ margin-right: 18.5%;
 			<%--<%job_no=job_no+"데이터 엔지니어,프로젝트 매니저"; %>--%>
 				<strong>1. 데이터 엔지니어<br><br></strong>
 				<div>
-					<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=6"><button id="btn">매칭 직무 로드맵 보러 가기</button></a></div>
+					<div class="btne"><a href="1st_Project/Road_map.jsp?num=6"><button id="btn">매칭 직무 로드맵 보러 가기</button></a></div>
 					<br>
 					<img src="JOB_EP_IMG/DataEG_1.png" alt=""/><img src = "JOB_EP_IMG/DataEG_2.png">
 					<br><br>
@@ -212,7 +212,7 @@ margin-right: 18.5%;
 				<br><br>
 				<strong>2.프로젝트 매니저<br><br></strong>
 				<div>
-					<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=7"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+					<div class="btne"><a href="1st_Project/Road_map.jsp?num=7"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 					<br>
 					<img src="JOB_EP_IMG/ProjectMG_1.png" alt=""/><img src = "JOB_EP_IMG/ProjectMG_2.png">
 					<br><br>
@@ -223,25 +223,25 @@ margin-right: 18.5%;
 				<%--<%job_no="데이터 엔지니어"; %>--%>
 				<strong>데이터 엔지니어<br><br> </strong>
 				<div>
-					<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=6"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+					<div class="btne"><a href="1st_Project/Road_map.jsp?num=6"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 					<br>
 					<img src="JOB_EP_IMG/DataEG_1.png" alt=""/><img src = "JOB_EP_IMG/DataEG_1.png">
 					<br><br>
 				</div>	
 			<% }%>
-			<%if(sample.contains("INFJ")){%>--%>
+			<%if(sample.contains("INFJ")){%>
 				<%--<%job_no="백엔드 개발자, 인공지능/머신러닝"; %>--%>
 				<strong> 1. 백엔드 개발자<br><br></strong> 
 				<div>
-					<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=2"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+					<div class="btne"><a href="1st_Project/Road_map.jsp?num=2"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 				    <br>
 					<img src="JOB_EP_IMG/Backend_1.png" alt=""/><img src = "JOB_EP_IMG/Backend_2.png">
 				    <br><br>
 				</div>	
 				<br><br>
-				<strong>2. 인공지능&머신러닝</strong>
+				<strong>2. 인공지능&머신러닝<br><br></strong>
 				<div>
-					 <div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+					 <div class="btne"><a href="1st_Project/Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 					 <br>
 					 <img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
 					 <br><br>
@@ -251,7 +251,7 @@ margin-right: 18.5%;
 				<%--<%job_no="인공지능/머신러닝"; %>--%>
 				<strong> 인공지능&머신러닝<br><br></strong>
 				<div>
-					<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+					<div class="btne"><a href="1st_Project/Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 					<br>
 					<img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
 					<br><br>
@@ -261,7 +261,7 @@ margin-right: 18.5%;
 				<%--<%job_no="백엔드 개발자, 인공지능/머신러닝"; %>--%>
 				<strong> 1. 백엔드 개발자<br><br></strong>
 				<div>
-					<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=2"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+					<div class="btne"><a href="1st_Project/Road_map.jsp?num=2"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 					
 					<img src="JOB_EP_IMG/Backend_1.png" alt=""/><img src = "JOB_EP_IMG/Backend_2.png">
 					<br><br>
@@ -269,7 +269,7 @@ margin-right: 18.5%;
 				<br><br>
 				<strong> 2. 인공지능&머신러닝<br><br></strong>	
 				<div>
-					<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+					<div class="btne"><a href="1st_Project/Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 					
 					<img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
 					<br><br>
@@ -279,7 +279,7 @@ margin-right: 18.5%;
 				<%--<%job_no="백엔드 개발자, 인공지능/머신러닝"; %>--%>
 				<strong> 1. 백엔드 개발자<br><br></strong>	 
 				<div>
-					<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=2"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+					<div class="btne"><a href="1st_Project/Road_map.jsp?num=2"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 					<br>
 					<img src="JOB_EP_IMG/Backend_1.png" alt=""/><img src = "JOB_EP_IMG/Backend_2.png">
 					<br><br>
@@ -287,7 +287,7 @@ margin-right: 18.5%;
 				<br><br>
 				<strong>2. 인공지능&머신러닝<br><br></strong> 	
 				<div>
-					<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+					<div class="btne"><a href="1st_Project/Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 					<br>
 					<img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
 					<br><br>
@@ -297,7 +297,7 @@ margin-right: 18.5%;
 				<%--<%job_no="프로젝트 매니저"; %>--%>
 				<strong> 프로젝트 매니저<br><br></strong>
 				<div>
-					<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=7"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+					<div class="btne"><a href="1st_Project/Road_map.jsp?num=7"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 					<br>
 					<img src="JOB_EP_IMG/ProjectMG_1.png" alt=""/><img src = "JOB_EP_IMG/ProjectMG_2.png">
 					<br><br>
@@ -307,7 +307,7 @@ margin-right: 18.5%;
 				<%--<%job_no="프론트 개발자"; %>--%>
 				<strong> 프론트 개발자<br><br></strong>
 				<div>
-					<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=1"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+					<div class="btne"><a href="1st_Project/Road_map.jsp?num=1"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 					<br>
 					<img src="JOB_EP_IMG/Front_1.png" alt=""/><img src = "JOB_EP_IMG/Front_2.png">
 					<br><br>
@@ -315,9 +315,9 @@ margin-right: 18.5%;
 			<% }%>
 			<%if(sample.contains("ISTJ")){%>
 				<%--<%job_no="정보 보안 전문가"; %>--%>
-				<strong> 정보 보안 전문가</strong>
+				<strong> 정보 보안 전문가<br><br></strong>
 				<div>
-					<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=4"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+					<div class="btne"><a href="1st_Project/Road_map.jsp?num=4"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 					<br>
 					<img src="JOB_EP_IMG/Security_1.png" alt=""/><img src = "JOB_EP_IMG/Security_2.png">
 					<br><br>
@@ -325,9 +325,9 @@ margin-right: 18.5%;
 			<% }%>
 			<%if(sample.contains("ISTP")){%>
 				<%--<%job_no="인공지능/머신러닝"; %>--%>
-				<strong> 인공지능&머신러닝</strong>
+				<strong> 인공지능&머신러닝<br><br></strong>
 				<div>
-					<div class="btne"><a href="http://localhost:8081/1st_Project/Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+					<div class="btne"><a href="1st_Project/Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 					<br>
 					<img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
 				<br><br>
@@ -338,7 +338,7 @@ margin-right: 18.5%;
 		
 		<%-- 로드맵 안에 학습하러가기가 있으니까 빼는게 나을 것 같아요.
 		 <%if (vo != null){%>
-			<a href="http://localhost:8081/1st_Project/StudyPage.jsp">학습하러 가기</a>
+			<a href="1st_Project/StudyPage.jsp">학습하러 가기</a>
 		
 			<!-- job_no 이용하여 해당  직무 보기 -->
 			

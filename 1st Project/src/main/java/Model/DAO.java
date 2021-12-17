@@ -755,7 +755,6 @@ public class DAO {
 			psmt.setString(2, m_id);
 			rs = psmt.executeQuery();
 			if (rs.next() == true) {
-//				int PLAN_SEQ = rs.getInt("PLAN_SEQ");
 				String coding_lang = rs.getString("PLAN_LANG");
 				int plan_step = rs.getInt("PLAN_STEP");
 				String id = rs.getString("M_ID");
@@ -837,7 +836,6 @@ public class DAO {
 		 	try{
 			   String sql = "update TBL_COMMUNITY set ARTICLE_SUBJECT=?,ARTICLE_CONTENT=?,ARTICLE_FILE1=?,ARTICLE_FILE2=?,ARTICLE_FILE3=? where ARTICLE_SEQ=?";
 			   psmt = conn.prepareStatement(sql);
-			   //5. 바인드 변수 채우기
 			   psmt.setString(1,title);
 			   psmt.setString(2,content);
 			   psmt.setString(3,filename1);

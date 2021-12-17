@@ -41,7 +41,7 @@ String coding_img =dao.ShowimgCoding(seq);
 <!--header-->
   <header class="main-header clearfix" role="header">
     <div class="logo">
-      <a href="Main.jsp"><em>Welcome</em> PSIT</a> 
+      <a href="Main.jsp"><em>PSIT</em> <span style = "font-size: x-large;">Personal IT</span></a> 
     </div>
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
@@ -74,7 +74,12 @@ String coding_img =dao.ShowimgCoding(seq);
 			</nav>
     
   </header>
-  <br><br><br><br><br><br>
+
+<section style="color: white;"
+      class="section coming-soon" data-section="section3">
+      <div class="col-8  col-12-narrower imp-narrower"
+         style="max-width: 100% !important; height: 100%;">
+         <div id="content" style="height: 100%; text-align: center;">
 	<div style="white-space:pre;">
 		<p>선택한 문제 나올 곳</p>
 		<%if(coding_img !=null){%>
@@ -103,6 +108,9 @@ String coding_img =dao.ShowimgCoding(seq);
 		<a href="StudyPage.jsp"><button onclick="location.href='CheckPhase?seq=<%= codingvo.getCoding_seq() %>';">다른문제 풀기</button></a>
 	</div>
 	<%-- <button onclick="location.href='CheckPhase?seq=<%= codingvo.getCoding_seq() %>';">다른문제 풀기</button> --%>
+	</div>
+	</div>
+	</section>
 
 <footer>
 		<div class="container">

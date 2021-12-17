@@ -64,34 +64,34 @@ body {
    height: 15%;
 }
 #langselect{
-	width: 70%;
+   width: 70%;
     height: 100%;
     margin-bottom: 10%;
 }
 #langselect td.lang{
-	text-align: rignt;
+   text-align: rignt;
 }
 #langselect td.langslc{
-	text-align: left;
+   text-align: left;
 }
 #langselect input{
    display: inline-block;
     text-align: left;
     margin-right: 20px;
     margin-left: 20px;
-	width: 20px;
+   width: 20px;
     height: 20px;
     border-radius: 0px;
     color: #fff;
 }
 #bb{
-	background-color:#f5a425;
-	width :20%;
+   background-color:#f5a425;
+   width :20%;
 }
 button.bb{
-	background-color:#f5a425;
-	width :20%;
-	height: 40px;
+   background-color:#f5a425;
+   width :20%;
+   height: 40px;
     border-radius: 0px;
     border: none;
     color: #fff;
@@ -281,8 +281,8 @@ int present_python=dao.present_python(vo.getM_id());
                   <%} %>
             <li><a href="LogoutService" class="external">로그아웃</a></li>
             <%} else {%>
-		            <li><a href="Login.jsp">Login</a></li>
-		            <li><a href="Join.jsp">Join</a></li>
+                  <li><a href="Login.jsp">Login</a></li>
+                  <li><a href="Join.jsp">Join</a></li>
             <%} %>
          </ul>
          </nav>
@@ -297,8 +297,8 @@ int present_python=dao.present_python(vo.getM_id());
  <tr>
  <td style="width: 50%;  background-color: rgba(250,250,250,0.1);">
       <form action="ShowAllCodingService" method="post" style="text-align: center;">
-         <div style="text-align: center; width: 60%; display: -webkit-inline-box;">
-            	   <div style="width: 100%;">
+         <div style="text-align: center; width: 70%; display: -webkit-inline-box;">
+                  <div style="width: 100%;">
                   <h4 id="status" style="margin-bottom: 0;">select</h4>
                   <h4 id="status" style="margin-top : 0;">language</h4>
          <div>
@@ -332,34 +332,43 @@ int present_python=dao.present_python(vo.getM_id());
    </td>
    <td style="text-align: center; vertical-align: initial; background-color: rgba(250,250,250,0.1); ">
    <!--문제나오는 부분  ---->
+      <table style="width:100%">
+
       <%if(codingarray!=null){ %>
-      <div id="phase" >
-         <%for(int i=0; i<codingarray.size(); i++){%>
+            <%for(int i=0; i<codingarray.size(); i++){%>
+         <tr>
+         <td>
             <%
             int cnt=0;
             codingvo=codingarray.get(i); 
             cnt=dao.Check_Phase(codingvo.getCoding_seq(),vo.getM_id(),codingvo.getCoding_lang());
             %>
-            <%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%>
-                  <%if(cnt==-1){%> 
-                     <img src="./images/checkbook.png" width=50px height=50px>
-		            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">학습하러가기!</button> 
-                  <%if(vo.getM_id().equals("admin")){ %>
-                     <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
-                  <%} %>
-                  <%}else{ %>
-                     <img src="./images/nocheckbook.png" width=50px height=50px>
-		            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">학습하러가기!</button> 
-                  <%if(vo.getM_id().equals("admin")){ %>
-                     <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
-                  <%} %>
-                  <%} %>  
-               <%}}else{
-            	   %>
-            	   <div style="text-align: center; width: 70%; display: -webkit-inline-box;">
-            	   <div style="width: 100%;">
+               <%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%>
+                     <%if(cnt==-1){%> 
+                       <img src="./images/checkbook.png" width=50px height=50px>
+                     <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">학습하러가기!</button> 
+                     <%if(vo.getM_id().equals("admin")){ %>
+                        <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
+                     <%} %>
+                     <%}else{ %>
+                       <img src="./images/nocheckbook.png" width=50px height=50px>
+                     <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">학습하러가기!</button> 
+                     <%if(vo.getM_id().equals("admin")){ %>
+                        <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
+                     <%} %>
+                     <%} %> 
+          <!-- for문 -->  
+           <%} %>  
+          </td>
+          </tr>
+          
+          
+          <!-- codingarray not null -->
+               <%}else{%>
+                  <div style="text-align: center; width: 70%; display: -webkit-inline-box;">
+                  <div style="width: 100%;">
                   <h4 id="status">study status</h4>
-                     <table style="width: 100%;">
+                     <table style="width: 80%; display: inline-table;">
                      <tr style = "background-color: rgba(250,250,250,0.1); height: 40px">
                      <th style="font-size: 20px; color: white; width:40%;">Subject</th>
                       <th style="font-size: 20px; color: white; width:30%">Step</th>
@@ -389,7 +398,7 @@ int present_python=dao.present_python(vo.getM_id());
                </div>    
                </div>    
                <%}%>
-      </div>
+               </table>
       </td>
       </tr>
    <!--for문 끝  ----->
