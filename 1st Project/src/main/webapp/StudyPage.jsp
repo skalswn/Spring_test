@@ -203,18 +203,9 @@ section.coming-soon form{
 			            <button onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">巩力昏力</button>
 			         <%} %>
 	               <%} %>  
-	            <%} %>
+	            <%}} %>
 	   </ul>
 	   </div>
-<<<<<<< HEAD
-	         <%if(vo.getM_id().equals("admin")){ %>
-	            <button onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">巩力昏力</button>
-	         <%} %>
-=======
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-Bigdata-7/PSIT.git
-	      <%} %>
-	  <%--  <%}%>  --%> 
-
 	<!--for巩 场  ----->
 	
 			</div>
