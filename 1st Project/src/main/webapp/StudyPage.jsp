@@ -329,6 +329,7 @@ int present_python=dao.present_python(vo.getM_id());
    
          </div>
          </div>
+         <%if (codingarray==null){%>
                <div align="right" style="float: right; width: 500px; background-color: rgba(250,250,250,0.1); text-align: center;">
                   <h4 id="status">study status</h4>
                      <table style="width: 100%;">
@@ -358,7 +359,8 @@ int present_python=dao.present_python(vo.getM_id());
                       <td style="width: 30%"><div id="piechart_javascript" style="width: 100px; height: 100px; display:inline-block;"></div></td>
                      </tr>
                      </table>
-               </div>               
+               </div>   
+           <%}%>            
       </section>
    </td>
 </table>

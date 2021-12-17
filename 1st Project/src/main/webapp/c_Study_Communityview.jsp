@@ -145,7 +145,7 @@ s_Community_commentVO cmvo = (s_Community_commentVO)session.getAttribute("cmvo")
 								</tr>
 								<tr class="a" class="cm_tr" style="height: 50%">
 									<td rowspan = "2" class = "part" style="text-align: center;">³»¿ë</td>
-									<td style="text-align: left; vertical-align: initial; margin-left: 1%;"><h6 style="margin-left: 1%;"><%=scvo.getSTUDY_CONTENT()%></h6></td>
+									<td style="text-align: left; vertical-align: initial; margin-left: 1%;"><h6 style="margin-left: 1%; white-space: pre-line;"><%=scvo.getSTUDY_CONTENT()%></h6></td>
 								</tr>
 								<tr style="height: 30%">
 								<%if(scvo.getSTUDY_FILE1().equals("none.png")) { %>

@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.catalina.connector.Response;
+
 public class DAO {
 	   CommunityVO bo=null;
 	   u_CommunityVO vo =null;
@@ -416,8 +418,13 @@ public class DAO {
 // 자유게시판 글쓰기========================================================================================
 	public int community_write(String title, String writer, String content, String file1,String file2,String file3) {
 		
-		 connection();  
+		 connection(); 
 		 	try{
+		 	if(title.contains("공지사항") && !writer.equals("admin")) {
+					 lognum=-1;
+			}else if(content.contains("병신") || content.contains("등신")||content.contains("지랄")) {
+					 lognum=-2;
+			}else {
 			   String sql = "insert into tbl_community(article_seq, article_subject,article_content,m_id,ARTICLE_FILE1,ARTICLE_FILE2,ARTICLE_FILE3) values(tbl_community_SEQ.NEXTVAL, ?,?,?,?,?,?)";
 			   psmt = conn.prepareStatement(sql);	 
 			   psmt.setString(1,title);
@@ -439,6 +446,7 @@ public class DAO {
 					   lognum=rs.getInt("article_seq");
 				   }
 			   }
+			}
 			      }catch(Exception e){
 			    	 System.out.println("실패");
 			        e.printStackTrace();
@@ -474,6 +482,11 @@ public class DAO {
 	public int cm_write(int c_seq, String cm_content, String writer) {
 		connection();  
 	 	try{
+	 		if(cm_content.contains("공지사항") && !writer.equals("admin")) {
+				 lognum=-1;
+	 		}else if(cm_content.contains("병신") || cm_content.contains("등신")||cm_content.contains("지랄")) {
+				 lognum=-2;
+	 		}else {
 		   String sql = "insert into tbl_community_reply(COMM_REPLY_SEQ, ARTICLE_SEQ,COMM_REPLY_CONTENT,M_ID) values(TBL_COMMUNITY_REPLY_SEQ.NEXTVAL, ?,?,?)";
 		   psmt = conn.prepareStatement(sql);	 
 		   psmt.setInt(1,c_seq);
@@ -483,6 +496,7 @@ public class DAO {
 		   if (lognum>0) {
 			   System.out.println("성공");
 		   }
+	 	}
 		      }catch(Exception e){
 		    	 System.out.println("실패");
 		        e.printStackTrace();
@@ -1049,6 +1063,11 @@ public int CheckPhase(int seq, String m_id, String lang) {
 	public int s_community_write(String title, String language, String writer, String content, String filename1) {
 		connection();  
 	 	try{
+	 		if(title.contains("공지사항") && !writer.equals("admin")) {
+				 lognum=-1;
+	 		}else if(content.contains("병신") ||content.contains("등신")||content.contains("지랄")||title.contains("병신") ||title.contains("등신")||title.contains("지랄")) {
+				 lognum=-2;
+	 		}else {
 		   String sql = "insert into TBL_STUDY(STUDY_SEQ, STUDY_SUBJECT,STUDY_CONTENT,STUDY_LANG,M_ID,STUDY_FILE1) values(TBL_STUDY_SEQ.NEXTVAL, ?,?,?,?,?)";
 		   psmt = conn.prepareStatement(sql);	 
 		   psmt.setString(1,title);
@@ -1060,6 +1079,7 @@ public int CheckPhase(int seq, String m_id, String lang) {
 		   if (lognum>0) {
 			   System.out.println("성공");
 		   }
+	 	}
 		      }catch(Exception e){
 		    	 System.out.println("실패");
 		        e.printStackTrace();
@@ -1150,6 +1170,11 @@ public int CheckPhase(int seq, String m_id, String lang) {
 	public int s_cm_write(int c_seq, String cm_content, String writer) {
 		connection();  
 	 	try{
+	 		if(cm_content.contains("공지사항") && !writer.equals("admin")) {
+				 lognum=-1;
+	 		}else if(cm_content.contains("병신") ||cm_content.contains("등신")||cm_content.contains("지랄")) {
+				 lognum=-2;
+	 		}else {
 		   String sql = "insert into TBL_STUDY_COMMENT(C_STUDY_SEQ, STUDY_SEQ,C_STUDY_CONTENT,M_ID) values(TBL_STUDY_COMMENT_SEQ.NEXTVAL, ?,?,?)";
 		   psmt = conn.prepareStatement(sql);	 
 		   psmt.setInt(1,c_seq);
@@ -1159,6 +1184,7 @@ public int CheckPhase(int seq, String m_id, String lang) {
 		   if (lognum>0) {
 			   System.out.println("성공");
 		   }
+	 	}
 		      }catch(Exception e){
 		    	 System.out.println("실패");
 		        e.printStackTrace();
@@ -1203,6 +1229,11 @@ public int CheckPhase(int seq, String m_id, String lang) {
 			String content, String filename1) {
 		connection();  
 	 	try{
+	 		if(title.contains("공지사항") && !writer.equals("admin")) {
+				 lognum=-1;
+	 		}else if(content.contains("병신") ||content.contains("등신")||content.contains("지랄")||title.contains("병신") ||title.contains("등신")||title.contains("지랄")) {
+				 lognum=-2;
+	 		}else {
 		   String sql = "insert into TBL_USED_MARKET(USED_SEQ, USED_SUBJECT,USED_CONTENT,USED_PRICE,USED_TRADE,USED_PAY,M_ID,USED_STATUS,FILE1) values(TBL_USED_MARKET_SEQ.NEXTVAL,?,?,?,?,?,?,?,?)";
 		   psmt = conn.prepareStatement(sql);	 
 		   psmt.setString(1,title);
@@ -1217,6 +1248,7 @@ public int CheckPhase(int seq, String m_id, String lang) {
 		   if (lognum>0) {
 			   System.out.println("성공");
 		   }
+	 		}
 		      }catch(Exception e){
 		    	 System.out.println("실패");
 		        e.printStackTrace();
@@ -1289,6 +1321,11 @@ public int CheckPhase(int seq, String m_id, String lang) {
 	public int u_cm_write(int c_seq, String cm_content, String writer) {
 		connection();  
 	 	try{
+	 		if(cm_content.contains("공지사항") && !writer.equals("admin")) {
+				 lognum=-1;
+	 		}else if(cm_content.contains("병신") ||cm_content.contains("등신")||cm_content.contains("지랄")) {
+				 lognum=-2;
+	 		}else {
 		   String sql = "insert into TBL_MARKET_REPLY(UM_SEQ, USED_SEQ,UM_COMMENT,M_ID) values(TBL_MARKET_REPLY_SEQ.NEXTVAL, ?,?,?)";
 		   psmt = conn.prepareStatement(sql);	 
 		   psmt.setInt(1,c_seq);
@@ -1298,6 +1335,7 @@ public int CheckPhase(int seq, String m_id, String lang) {
 		   if (lognum>0) {
 			   System.out.println("성공");
 		   }
+	 		}
 		      }catch(Exception e){
 		    	 System.out.println("실패");
 		        e.printStackTrace();

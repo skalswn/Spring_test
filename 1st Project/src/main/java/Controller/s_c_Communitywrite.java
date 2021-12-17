@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
@@ -51,7 +52,17 @@ public class s_c_Communitywrite extends HttpServlet {
 		}
 		DAO dao=new DAO();
 		int lognum=dao.s_community_write(title,language,writer,content,filename1);
-		if (lognum>0) {
+		if(lognum==-1) {
+			response.setContentType("text/html; charset=UTF-8"); 
+			PrintWriter writers = response.getWriter(); 
+			writers.println("<script>alert('공지사항은 관리자만 작성할 수 있습니다.'); history.back();</script>");
+			writers.close();
+		}else if(lognum==-2) {
+			response.setContentType("text/html; charset=UTF-8"); 
+			PrintWriter writers = response.getWriter(); 
+			writers.println("<script>alert('게시판에서 금칙어 사용이 확인되었습니다.'); history.back();</script>");
+			writers.close();
+		}else if (lognum>0) {
 			System.out.println("공부게시글 작성 성공!");
 			response.sendRedirect("c_Study_Community.jsp");
 		}else {
