@@ -297,7 +297,7 @@ int present_python=dao.present_python(vo.getM_id());
  <tr>
  <td style="width: 50%;  background-color: rgba(250,250,250,0.1);">
       <form action="ShowAllCodingService" method="post" style="text-align: center;">
-         <div style="text-align: center; width: 60%; display: -webkit-inline-box;">
+         <div style="text-align: center; width: 70%; display: -webkit-inline-box;">
             	   <div style="width: 100%;">
                   <h4 id="status" style="margin-bottom: 0;">select</h4>
                   <h4 id="status" style="margin-top : 0;">language</h4>
@@ -332,9 +332,11 @@ int present_python=dao.present_python(vo.getM_id());
    </td>
    <td style="text-align: center; vertical-align: initial; background-color: rgba(250,250,250,0.1); ">
    <!--문제나오는 부분  ---->
+   	<table style="width:100%">
       <%if(codingarray!=null){ %>
-      <div id="phase" >
          <%for(int i=0; i<codingarray.size(); i++){%>
+         <tr>
+         <td>
             <%
             int cnt=0;
             codingvo=codingarray.get(i); 
@@ -354,12 +356,14 @@ int present_python=dao.present_python(vo.getM_id());
                      <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
                   <%} %>
                   <%} %>  
-               <%}}else{
-            	   %>
+          </td>
+               <%}%>
+               </tr>
+               <%}else{%>
             	   <div style="text-align: center; width: 70%; display: -webkit-inline-box;">
             	   <div style="width: 100%;">
                   <h4 id="status">study status</h4>
-                     <table style="width: 100%;">
+                     <table style="width: 80%; display: inline-table;">
                      <tr style = "background-color: rgba(250,250,250,0.1); height: 40px">
                      <th style="font-size: 20px; color: white; width:40%;">Subject</th>
                       <th style="font-size: 20px; color: white; width:30%">Step</th>
@@ -389,7 +393,7 @@ int present_python=dao.present_python(vo.getM_id());
                </div>    
                </div>    
                <%}%>
-      </div>
+               </table>
       </td>
       </tr>
    <!--for문 끝  ----->
