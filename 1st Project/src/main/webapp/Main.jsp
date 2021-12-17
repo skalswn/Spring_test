@@ -74,7 +74,8 @@ int present_python=dao.present_python(id);
 
         var options = {
         	backgroundColor: { fill:'transparent' },
-        	legend: `none`
+        	legend: `none`,
+        	colors: ['red','green']
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart_python'));
