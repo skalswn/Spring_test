@@ -427,8 +427,7 @@ int present_python=dao.present_python(id);
             <img src="assets/images/j_013.png" alt="">
             <div class="down-content">
               <div class="text-button-pay">
-               <%String g ="7"; %>
-                <a href="Road_map.jsp?num=<%=g%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
+               <!-- 프로젝트매니저는 로드맵이 없음 -->
               </div>
             </div>
           </div>
