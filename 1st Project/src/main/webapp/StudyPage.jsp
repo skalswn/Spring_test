@@ -74,12 +74,22 @@ body {
     color: #fff;
 }
 #bb{
-background-color:orange;
-width :20%;
+	background-color:#f5a425;
+	width :20%;
+}
+#addQ{
+	background-color:#f5a425;
+	width :20%;
+	height: 40px;
+    border-radius: 0px;
+    border: none;
+    color: #fff;
+    font-size: 13px;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
 }
 #lang{
-
-   height: 100vh;
+   height: 100%;
 }
 #phase{
        /* border: darkslategray; */
@@ -89,14 +99,15 @@ width :20%;
 }
 
 #gostudy{
-   background-color:orange;
+   background-color:#f5a425;
    width :100px;
    margin-right: 20px;
     margin-left: 20px;
     height: 20px;
 }
 #tbl{
-   align : center;
+   display: inline-table;
+   width: 80%;
 }
 section.coming-soon form{
    background-color: transparent;
@@ -266,8 +277,8 @@ int present_python=dao.present_python(vo.getM_id());
                   <%} %>
             <li><a href="LogoutService" class="external">로그아웃</a></li>
             <%} else {%>
-            <li><a href="Login.jsp">Login</a></li>
-            <li><a href="Join.jsp">Join</a></li>
+		            <li><a href="Login.jsp">Login</a></li>
+		            <li><a href="Join.jsp">Join</a></li>
             <%} %>
          </ul>
          </nav>
@@ -276,26 +287,41 @@ int present_python=dao.present_python(vo.getM_id());
    <section style="color: white;"
       class="section coming-soon" data-section="section3">
       <div class="col-8  col-12-narrower imp-narrower"
-         style="max-width: 90% !important; height: 100%;">
-         <div id="content" style="height: 100%">
+         style="max-width: 100% !important; height: 100%;">
+         <div id="content" style="height: 100%; text-align: center;">
  <table id="tbl">
- <td>
+ <tr>
+ <td style="width: 50%">
      <div id="lang">    
       <form action="ShowAllCodingService" method="post" style="text-align: center;">
          <div id="aa">
-            파이썬<input type="radio" name="lang" value="파이썬"> 
-            <span>자바<input type="radio" name="lang" value="자바"> </span>
-            <span>HTML/CSS<input type="radio" name="lang" value="HTML"></span>
-            <span>자바스크립트<input type="radio" name="lang" value="자바스크립트"></span>
+         <table>
+         <tr>
+            <td>파이썬</td>
+            <td><input type="radio" name="lang" value="파이썬"></td>
+         </tr>
+         <tr>
+            <td>자바</td>
+            <td><input type="radio" name="lang" value="자바"></td>
+         </tr>
+         <tr>
+            <td>HTML/CSS</td>
+            <td><input type="radio" name="lang" value="HTML"></td>
+         </tr>
+         <tr>
+            <td>자바스크립트</td>
+            <td><input type="radio" name="lang" value="자바스크립트"></td>
+         </tr>
+         </table>
          </div> 
          <input id = "bb" type="submit" value="문제보기">
-         <%if(vo.getM_id().equals("admin")){ %>
-         <a href="InsertCoding.jsp"><button id = "bb">문제추가</button></a>
-         <%} %>
       </form>
+         <%if(vo.getM_id().equals("admin")){ %>
+         <a href="InsertCoding.jsp"><button id = "addQ">문제추가</button></a>
+         <%} %>
       </div>
    </td>
-   <td>
+   <td style="text-align: center; vertical-align: initial;">
    <!--문제나오는 부분  ---->
       <%if(codingarray!=null){ %>
          <%for(int i=0; i<codingarray.size(); i++){%>
@@ -304,13 +330,9 @@ int present_python=dao.present_python(vo.getM_id());
             codingvo=codingarray.get(i); 
             cnt=dao.Check_Phase(codingvo.getCoding_seq(),vo.getM_id(),codingvo.getCoding_lang());
             %>
-            <br>
       <div id="phase" >
-      <ul>
-      
             <%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%>
             <a id="gostudy" href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a> 
-                <%-- <%if(chvo3!=null){ %> --%> 
                   <%if(cnt==-1){%> 
                      <img src="./images/checkbook.png" width=50px height=50px>
                   <%if(vo.getM_id().equals("admin")){ %>
@@ -322,14 +344,10 @@ int present_python=dao.present_python(vo.getM_id());
                      <button onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
                   <%} %>
                   <%} %>  
-               <%}} %>
-      </ul>
-      </div>
-   <!--for문 끝  ----->
-   
-         </div>
-         </div>
-               <div align="right" style="float: right; width: 500px; background-color: rgba(250,250,250,0.1); text-align: center;">
+               <%}}else{
+            	   %>
+            	   <div style="text-align: center; width: 60%; display: -webkit-inline-box;">
+            	   <div style="width: 100%; background-color: rgba(250,250,250,0.1); ">
                   <h4 id="status">study status</h4>
                      <table style="width: 100%;">
                      <tr style = "background-color: rgba(250,250,250,0.1); height: 40px">
@@ -358,10 +376,18 @@ int present_python=dao.present_python(vo.getM_id());
                       <td style="width: 30%"><div id="piechart_javascript" style="width: 100px; height: 100px; display:inline-block;"></div></td>
                      </tr>
                      </table>
-               </div>               
-      </section>
-   </td>
+               </div>    
+               </div>    
+               <%}%>
+      </div>
+      </td>
+      </tr>
+   <!--for문 끝  ----->
+   
 </table>
+         </div>
+         </div>
+      </section>
    <footer>
       <div class="container">
          <div class="row">
