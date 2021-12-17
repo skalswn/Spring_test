@@ -48,7 +48,8 @@ width: 20%;
     border: none;
     outline: none;
     color: #fff;
-    font-size: 17px;
+    font-size: 16px;
+   
     margin-bottom: 20px;
     letter-spacing: 0.5px;
 }
