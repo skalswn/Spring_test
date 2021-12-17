@@ -9,7 +9,7 @@
 
   <head>
 
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
@@ -61,7 +61,7 @@ String id = null;
 ArrayList<CheckVO> chvoarr = null;
 if(vo!=null){
    id = vo.getM_id();
-   chvoarr = dao.selectPhase(id);
+   chvoarr = dao.selectPhase(id); 
 }
 int amount_java = dao.amount_java();
 int amount_javascript = dao.amount_javascript();
@@ -233,6 +233,7 @@ int present_python=dao.present_python(id);
 					</div>
 				</div>
 				<div>
+					
 					<div align="right" style="float: right; width: 30%; background-color: rgba(250,250,250,0.1); text-align: center;">
 						<h4 id="status">study status</h4>
 							<table style="width: 100%;">
@@ -426,8 +427,8 @@ int present_python=dao.present_python(id);
             <img src="assets/images/j_013.png" alt="">
             <div class="down-content">
               <div class="text-button-pay">
-               
-                
+               <%String g ="7"; %>
+                <a href="Road_map.jsp?num=<%=g%>">로드맵보러가기 <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
