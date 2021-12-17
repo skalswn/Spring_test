@@ -119,5 +119,6 @@ String job_no ="";
 <% }else{%>
 	<a href="http://localhost:8081/1st_Project/Road_map.jsp?num=1"> 첫번째 매칭 직무 설명보러가기</a>
 <%} %>
+	 <P><br><a href="P_Psit.jsp">검사 다시하기</a></P>	
 </body>
 </html>
