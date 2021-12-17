@@ -119,101 +119,102 @@ section.coming-soon form{
              <%System.out.println(chvo.getStep()); %>
          <%} %> --%>
    <!--header-->
-   <header class="main-header clearfix" role="header">
-      <div class="logo">
-            <a href="Main.jsp"><em>PSIT</em> <span style = "font-size: x-large;">Personal IT</span></a> 
-      </div>
-      <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
-      <nav id="menu" class="main-nav" role="navigation">
-         <ul class="main-menu">
-            <li><a href="Main.jsp">Home</a></li>
-            <% if(vo!=null){%>
-            <li><a href="#">직무탐색</a>
-              <ul class="sub-menu">
-               <li><a href="P_Psit.jsp">PSIT 검사</a></li>
-               <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
-                </ul></li>
-            <li><a href="StudyPage.jsp">단계별학습</a></li>
-            <li><a class="external">커뮤니티</a>
-               <ul class="sub-menu">
-                  <li><a href="c_Community.jsp">자유게시판</a></li>
-                  <li><a href="c_Study_Community.jsp">스터디 게시판</a></li>
-                  <li><a href="c_Used_Community.jsp">중고거래 게시판</a></li>
-                  </ul></li>
-                  <%if(vo.getM_id().equals("admin")){ %>
-                  <li><a href="ManageUser.jsp" class="external">회원관리</a></li>
-                  <%}else{ %>
-                  <li><a href="My_page.jsp" class="external">마이페이지</a></li>
-                  <%} %>
-            <li><a href="LogoutService" class="external">로그아웃</a></li>
-            <%} else {%>
-            <li><a href="Login.jsp">Login</a></li>
-            <li><a href="Join.jsp">Join</a></li>
-            <%} %>
-         </ul>
-         </nav>
-   </header>
+     <header class="main-header clearfix" role="header">
+    <div class="logo">
+      <a href="Main.jsp"><em>PSIT</em> <span style = "font-size: x-large;">Personal IT</span></a> 
+    </div>
+    <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+    <nav id="menu" class="main-nav" role="navigation">
+			<ul class="main-menu">
+				<li><a href="Main.jsp">Home</a></li>
+				<% if(vo!=null){%>
+				<li><a href="#">직무탐색</a>
+	        	<ul class="sub-menu">
+	            <li><a href="P_Psit.jsp">PSIT 검사</a></li>
+	            <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
+	          	</ul></li>
+				<li><a href="StudyPage.jsp">단계별학습</a></li>
+				<li><a class="external">커뮤니티</a>
+					<ul class="sub-menu">
+						<li><a href="c_Community.jsp">자유게시판</a></li>
+						<li><a href="c_Study_Community.jsp">스터디 게시판</a></li>
+						<li><a href="c_Used_Community.jsp">중고거래 게시판</a></li>
+						</ul></li>
+						<%if(vo.getM_id().equals("admin")){ %>
+						<li><a href="ManageUser.jsp" class="external">회원관리</a></li>
+						<%}else{ %>
+						<li><a href="My_page.jsp" class="external">마이페이지</a></li>
+						<%} %>
+				<li><a href="LogoutService" class="external">로그아웃</a></li>
+				<%} else {%>
+				<li><a href="Login.jsp">Login</a></li>
+				<li><a href="Join.jsp">Join</a></li>
+				<%} %>
+			</ul>
+			</nav>
+    
+  </header>
    
    <section style="color: white;"
-		class="section coming-soon" data-section="section3">
-		<div class="col-8  col-12-narrower imp-narrower"
-			style="max-width: 90% !important; height: 100%;">
-			<div id="content" style="height: 100%">
+      class="section coming-soon" data-section="section3">
+      <div class="col-8  col-12-narrower imp-narrower"
+         style="max-width: 90% !important; height: 100%;">
+         <div id="content" style="height: 100%">
  <table id="tbl">
+      <%if(vo.getM_id().equals("admin")){ %>
+<tr>
  <td>
-	  <div id="lang">    
-	   <%if(vo.getM_id().equals("admin")){ %>
-	      <a href="InsertCoding.jsp"><button>문제추가</button></a>
-	      <%} %>
-	   <form action="ShowAllCodingService" method="post" style="text-align: center;">
-	      <div id="aa">
-	         파이썬<input type="radio" name="lang" value="파이썬"> 
-	         <span>자바<input type="radio" name="lang" value="자바"> </span>
-	         <span>HTML/CSS<input type="radio" name="lang" value="HTML"></span>
-	         <span>자바스크립트<input type="radio" name="lang" value="자바스크립트"></span>
-	      </div> 
-	      <input id = "bb" type="submit" value="문제보기">
-	   </form>
-	   </div>
-	</td>
-	<td>
-	<!--문제나오는 부분  ---->
-	   <%if(codingarray!=null){ %>
-	      <%for(int i=0; i<codingarray.size(); i++){%>
-	         <%
-	         int cnt=0;
-	         codingvo=codingarray.get(i); 
-	         cnt=dao.Check_Phase(codingvo.getCoding_seq(),vo.getM_id(),codingvo.getCoding_lang());
-	         %>
-	         <br>
-	   <div id="phase" >
-	   <ul>
-	   
-	         <%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%>
-	         <a id="gostudy" href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a> 
-	             <%-- <%if(chvo3!=null){ %> --%> 
-	               <%if(cnt==-1){%> 
-	                  <img src="./images/checkbook.png" width=50px height=50px>
-			         <%if(vo.getM_id().equals("admin")){ %>
-			            <button onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
-			         <%} %>
-	               <%}else{ %>
-	                  <img src="./images/nocheckbook.png" width=50px height=50px>
-			         <%if(vo.getM_id().equals("admin")){ %>
-			            <button onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
-			         <%} %>
-	               <%} %>  
-	            <%}} %>
-	   </ul>
-	   </div>
-	<!--for문 끝  ----->
-	
-			</div>
-			</div>
-		
-		</section>
-	</td>
-</table>
+     <div id="lang">    
+         <a href="InsertCoding.jsp"><button>문제추가</button></a>
+         <%} %>
+      <form action="ShowAllCodingService" method="post" style="text-align: center;">
+         <div id="aa">
+            파이썬<input type="radio" name="lang" value="파이썬"> 
+            <span>자바<input type="radio" name="lang" value="자바"> </span>
+            <span>HTML/CSS<input type="radio" name="lang" value="HTML"></span>
+            <span>자바스크립트<input type="radio" name="lang" value="자바스크립트"></span>
+         </div> 
+         <input id = "bb" type="submit" value="문제보기">
+      </form>
+      </div>
+   </td>
+</tr>
+   <!--문제나오는 부분  ---->
+      <%if(codingarray!=null){ %>
+         <%for(int i=0; i<codingarray.size(); i++){%>
+            <%
+            int cnt=0;
+            codingvo=codingarray.get(i); 
+            cnt=dao.Check_Phase(codingvo.getCoding_seq(),vo.getM_id(),codingvo.getCoding_lang());
+            %>
+					<tr>
+						<td>
+							<div id="phase">
+
+								<%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%>
+								<a id="gostudy"
+									href="StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>">학습하러가기!</a>
+								<%if(cnt==-1){%>
+								<img src="./images/checkbook.png" width=50px height=50px>
+								<%if(vo.getM_id().equals("admin")){ %>
+								<button
+									onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
+								<%} %>
+								<%}else{ %>
+								<img src="./images/nocheckbook.png" width=50px height=50px>
+								<%if(vo.getM_id().equals("admin")){ %>
+								<button
+									onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
+								<%} %>
+								<%} %>
+								<%}} %>
+							</div>
+						</td>
+					</tr>
+			</table>
+         </div>
+         </div>
+</section>
 
    <footer>
       <div class="container">
