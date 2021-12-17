@@ -143,112 +143,7 @@ section.coming-soon form{
    System.out.println(chvo); 
    /* System.out.println(chvo.getStep()); */
 %>
-<%
-int amount_java = dao.amount_java();
-int amount_javascript = dao.amount_javascript();
-int amount_html=dao.amount_html();
-int amount_python=dao.amount_python();
-int present_java = dao.present_java(vo.getM_id());
-int present_javascript = dao.present_javascript(vo.getM_id());
-int present_html=dao.present_html(vo.getM_id());
-int present_python=dao.present_python(vo.getM_id());
-%>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['남은 학습량',     <%=amount_python-present_python%>],
-          ['진행 학습량',     <%=present_python%>]
-        ]);
-
-        var options = {
-           backgroundColor: { fill:'transparent' },
-           legend: `none`,
-           colors: ['transparent','#f5a425']
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_python'));
-
-        chart.draw(data, options);
-      }
-    </script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['남은 학습량',     <%=amount_java-present_java%>],
-          ['진행 학습량',     <%=present_java%>]
-        ]);
-
-        var options = {
-           backgroundColor: { fill:'transparent' },
-           legend: `none`,
-           colors: ['transparent','#f5a425']
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_java'));
-
-        chart.draw(data, options);
-      }
-    </script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['남은 학습량',     <%=amount_html-present_html%>],
-          ['진행 학습량',     <%=present_html%>]
-        ]);
-
-        var options = {
-           backgroundColor: { fill:'transparent' },
-           legend: `none`,
-           colors: ['transparent','#f5a425']
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_html'));
-
-        chart.draw(data, options);
-      }
-    </script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['남은 학습량',     <%=amount_javascript-present_javascript%>],
-          ['진행 학습량',     <%=present_javascript%>],
-        ]);
-
-        var options = {
-           backgroundColor: { fill:'transparent' },
-           legend: `none`,
-           colors: ['transparent','#f5a425']
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_javascript'));
-
-        chart.draw(data, options);
-      }
-    </script>
 <%-- <%if(chvo!=null){ %>
              <%System.out.println(chvo.getStep()); %>
          <%} %> --%>
@@ -296,46 +191,14 @@ int present_python=dao.present_python(vo.getM_id());
  <table id="tbl">
  <tr>
  <td style="width: 50%;  background-color: rgba(250,250,250,0.1);">
-      <form action="ShowAllCodingService" method="post" style="text-align: center;">
-         <div style="text-align: center; width: 70%; display: -webkit-inline-box;">
-            	   <div style="width: 100%;">
-                  <h4 id="status" style="margin-bottom: 0;">select</h4>
-                  <h4 id="status" style="margin-top : 0;">language</h4>
-         <div>
-         <table id="langselect" align="center">
-         <tr>
-            <td class="lang">파이썬</td>
-            <td class="langslc"><input type="radio" name="lang" value="파이썬"></td>
-         </tr>
-         <tr>
-            <td class="lang">자바</td>
-            <td class="langslc"><input type="radio" name="lang" value="자바"></td>
-         </tr>
-         <tr>
-            <td class="lang">HTML/CSS</td>
-            <td class="langslc"><input type="radio" name="lang" value="HTML"></td>
-         </tr>
-         <tr>
-            <td class="lang">자바스크립트</td>
-            <td class="langslc"><input type="radio" name="lang" value="자바스크립트"></td>
-         </tr>
-         </table>
-         </div> 
-         </div> 
-         </div>
-         <br><br> 
-         <input id = "bb" type="submit" value="문제보기">
-      </form>
-         <%if(vo.getM_id().equals("admin")){ %>
-         <a href="InsertCoding.jsp"><button class = "bb">문제추가</button></a>
-         <%} %>
    </td>
    <td style="text-align: center; vertical-align: initial; background-color: rgba(250,250,250,0.1); ">
+  <div style="text-align: center; width: 70%; display: -webkit-inline-box;">
+  
+  <a href="StudyPage.jsp">다른언어를 풀어볼까</a>
    <!--문제나오는 부분  ---->
    	<table style="width:100%">
-
    	
-      <%if(codingarray!=null){ %>
          	<%for(int i=0; i<codingarray.size(); i++){%>
          <tr>
          <td>
@@ -363,42 +226,6 @@ int present_python=dao.present_python(vo.getM_id());
           </td>
           </tr>
           
-          
-          <!-- codingarray not null -->
-               <%}else{%>
-            	   <div style="text-align: center; width: 70%; display: -webkit-inline-box;">
-            	   <div style="width: 100%;">
-                  <h4 id="status">study status</h4>
-                     <table style="width: 80%; display: inline-table;">
-                     <tr style = "background-color: rgba(250,250,250,0.1); height: 40px">
-                     <th style="font-size: 20px; color: white; width:40%;">Subject</th>
-                      <th style="font-size: 20px; color: white; width:30%">Step</th>
-                      <th style="font-size: 20px; color: white; width: 30%">Status</th>
-                      </tr>
-                     <tr>
-                     <td style="color: white; width:40%">파이썬</td>
-                      <td style="color: white; width:30%"><%=present_python %>/<%=amount_python %>단계 </td>
-                      <td style="width: 30%"><div id="piechart_python" style="width: 100px; height: 100px; display:inline-block;"></div></td>
-                     </tr>
-                     <tr>
-                     <td style="color: white; width:40%">자바</td>
-                      <td style="color: white; width:30%"><%=present_java %>/<%=amount_java %>단계 </td>
-                      <td style="width: 30%"><div id="piechart_java" style="width: 100px; height: 100px; display:inline-block;"></div></td>
-                      </tr>
-                      <tr>
-                     <td style="color: white; width:40%">HTML/CSS</td>
-                      <td style="color: white; width:30%"><%=present_html %>/<%=amount_html %>단계 </td>
-                      <td style="width: 30%"><div id="piechart_html" style="width: 100px; height: 100px; display:inline-block;"></div></td>
-                     </tr>
-                     <tr>
-                     <td style="color: white; width:40%">자바스크립트</td>
-                      <td style="color: white; width:30%"><%=present_javascript %>/<%=amount_javascript%>단계 </td>
-                      <td style="width: 30%"><div id="piechart_javascript" style="width: 100px; height: 100px; display:inline-block;"></div></td>
-                     </tr>
-                     </table>
-               </div>    
-               </div>    
-               <%}%>
                </table>
       </td>
       </tr>
