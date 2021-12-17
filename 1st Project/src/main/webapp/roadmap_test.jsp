@@ -29,7 +29,7 @@
 <!-- 프론트엔드 -->	
 <img usemap="#front" src="assets/images/frontEnd.png">
 	<map name="front">
-		<area name = "JavaScript" shape="rect" coords="297,397,430,445" href="http://www.google.com">
+		<area name = "JavaScript" shape="rect" coords="297,397,430,445" href="ShowAllCodingService.java?lang='파이썬'">
 		<area name = "html/css" shape="rect" coords="298,268,431,381" href="http://www.naver.com">
 	</map>
 	

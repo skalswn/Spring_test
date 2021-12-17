@@ -111,7 +111,7 @@ if(session.getAttribute("vo") != null){
 										</tr>
 										<tr class="a">
 											<td class = "part" style="text-align: center;">분류</td>
-											<td><select style="height: 40px" name="language"><option value="1">파이썬</option><option value="2">자바</option><option value="3">HTML/CSS</option><option value="4">자바스크립트</option></select></td>
+											<td><select style="height: 40px" name="language"><option value="파이썬">파이썬</option><option value="자바">자바</option><option value="HTML/CSS">HTML/CSS</option><option value="자바스크립트">자바스크립트</option></select></td>
 										</tr>
 										<tr class="a" class="cm_tr" style="height: 10px">
 											<td style="width: 80px; text-align: center">내용</td>
