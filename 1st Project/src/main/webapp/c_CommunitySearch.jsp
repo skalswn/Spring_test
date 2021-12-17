@@ -69,7 +69,6 @@ String userID= null;
 if (session.getAttribute("vo") != null){
 	vo = (MemberVO)session.getAttribute("vo");
 	userID = vo.getM_id();
-	System.out.print(userID);
 }else{
 %>
 Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
@@ -89,7 +88,6 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 	if(pageno<1){
 		pageno = 1;
 	}
-	System.out.println("pageno후"+pageno);
 	int total_record = arr.size();	
 	int page_per_record_cnt = 5;  
 	int group_per_page_cnt =5;     											
@@ -220,20 +218,18 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 							
 						</table>
 						<br>
-						<a href="c_Community.jsp?pageno=<%=prev_pageno%>">≪ 이전</a>
+						<a href="c_CommunitySearch.jsp?pageno=<%=prev_pageno%>&choice=<%=choice%>&search_=<%=search%>">≪ 이전</a>
 						<%for (int i = page_sno; i <= page_eno; i++) {%>
-						<a href="c_Community.jsp?pageno=<%=i%>"> <%if (pageno == i) {%>
+						<a href="c_CommunitySearch.jsp?pageno=<%=i%>&choice=<%=choice%>&search_=<%=search%>"> <%if (pageno == i) {%>
 							<span id="cho"><%=i%></span> <%} else {%> <%=i%> <%}%>
 						</a>
 						<%if (i < page_eno) {%>,<%}	%><%}%>
-						<a href="c_Community.jsp?pageno=<%=next_pageno%>" >다음 ≫</a>
-						
-						
-						<form style = "padding: 20px 20px" action="search_community">
-							<select style=" height: 40px; text-align: center; letter-spacing: 0.5px;" name="choice"><option value="제목">제목</option>
-								<option value="내용">내용</option>
-								<option value="작성자">작성자</option></select> 
-								<input style = "width : 30%;" type="text">
+						<a href="c_CommunitySearch.jsp?pageno=<%=next_pageno%>&choice=<%=choice%>&search_=<%=search%>" >다음 ≫</a>
+						<form style = "padding: 20px 20px" action="c_CommunitySearch.jsp">
+							<select style=" height: 40px; text-align: center; letter-spacing: 0.5px;" name="choice"><option value="title_s">제목</option>
+								<option value="content_s">내용</option>
+								<option value="writer_s">작성자</option></select> 
+								<input style = "width : 30%;" type="text" name="search_">
 								<input style = "width : 10%; font-size: 16px" class="search_button" type="button" value="검색">
 						</form>
 					</div>
