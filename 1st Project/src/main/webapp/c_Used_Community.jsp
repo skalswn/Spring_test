@@ -224,8 +224,8 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 							<form style="padding: 20px 20px" action="c_Used_CommunitySearch.jsp">
 								<select
 									style="height: 40px; text-align: center; letter-spacing: 0.5px;" name="choice"><option
-										value="제목">제목</option>
-									<option value="내용">내용</option>
+										value="title_s">제목</option>
+									<option value="content_s">내용</option>
 									<option value="작성자">작성자</option></select> <input style="width: 30%;"
 									type="text" name="search_"> <input style="width: 10%; font-size: 16px"
 									class="search_button" type="submit" value="검색">
