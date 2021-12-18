@@ -143,6 +143,9 @@ section.coming-soon form{
 	font-weight: 700; 
 	font-size: 60px;
 }
+a.delete{
+	font-size: 15px;
+}
 </style>
 </head>
 <body>
@@ -241,13 +244,13 @@ section.coming-soon form{
 	                    <img src="./images/checkbook.png" width=50px height=50px>
 			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">GO!</button> 
 	                  <%if(vo.getM_id().equals("admin")){ %>
-	                     <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
+	                     <a class="delete" href='DeleteCodingService?seq=<%=codingvo.getCoding_seq()%>'>　삭제</a>
 	                  <%} %>
 	                  <%}else{ %>
 	                    <img src="./images/nocheckbook.png" width=50px height=50px>
 			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">GO!</button> 
 	                  <%if(vo.getM_id().equals("admin")){ %>
-	                     <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
+	                     <a class="delete" href='DeleteCodingService?seq=<%=codingvo.getCoding_seq()%>'>　삭제</a>
 	                  <%} %>
 	                  <%} %> 
           <!-- for문 -->  
@@ -273,13 +276,13 @@ section.coming-soon form{
 	                    <img src="./images/checkbook.png" width=50px height=50px>
 			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">GO!</button> 
 	                  <%if(vo.getM_id().equals("admin")){ %>
-	                     <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
+	                     <a class="delete" href='DeleteCodingService?seq=<%=codingvo.getCoding_seq()%>'>　삭제</a>
 	                  <%} %>
 	                  <%}else{ %>
 	                    <img src="./images/nocheckbook.png" width=50px height=50px>
 			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">GO!</button> 
 	                  <%if(vo.getM_id().equals("admin")){ %>
-	                     <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
+	                     <a class="delete" href='DeleteCodingService?seq=<%=codingvo.getCoding_seq()%>'>　삭제</a>
 	                  <%} %>
 	                  <%} %> 
           <!-- for문 -->  
@@ -306,13 +309,13 @@ section.coming-soon form{
 	                    <img src="./images/checkbook.png" width=50px height=50px>
 			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">GO!</button> 
 	                  <%if(vo.getM_id().equals("admin")){ %>
-	                     <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
+	                     <a class="delete" href='DeleteCodingService?seq=<%=codingvo.getCoding_seq()%>'>　삭제</a>
 	                  <%} %>
 	                  <%}else{ %>
 	                    <img src="./images/nocheckbook.png" width=50px height=50px>
 			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">GO!</button> 
 	                  <%if(vo.getM_id().equals("admin")){ %>
-	                     <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
+	                     <a class="delete" href='DeleteCodingService?seq=<%=codingvo.getCoding_seq()%>'>　삭제</a>
 	                  <%} %>
 	                  <%} %> 
           <!-- for문 -->  
