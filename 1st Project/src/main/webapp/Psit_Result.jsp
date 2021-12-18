@@ -63,6 +63,10 @@ strong{
     margin-bottom: 20px;
     letter-spacing: 0.5px;
 }
+.btne{
+text-align: right;
+margin-right: 18.5%;
+}
 
 
 </style>
@@ -134,22 +138,42 @@ String job_no ="";
 						
 		<div id = big>
 		<!-- 인공지능 머신러닝 -->
-		<%if(sample.contains("ENFJ")||sample.contains("ENFP")||sample.contains("ENTP")||sample.contains("INFJ")||sample.contains("INFP")||sample.contains("INTJ")||sample.contains("INTP")){%>
+		<%if(sample.contains("ENFJ")||sample.contains("INFJ")||sample.contains("INFP")||sample.contains("INTJ")||sample.contains("INTP")){%>
 			<strong> 인공지능 & 머신러닝<br><br></strong> 
 			<div>
+			<div class="btne"><a href="Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 				<img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
 				<br><br>
 			</div>
 		<% }%>
+		
+		<!-- 인공지능/앱 개발자 -->
+		<%if(sample.contains("ENFP")){%>
+		<strong> 인공지능 & 머신러닝<br><br></strong> 
+			<div>
+			<div class="btne"><a href="Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+				<img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
+				<br><br>
+			</div>
+		<strong> 앱개발자<br><br></strong>
+			<div>
+			 	<div class="btne"><a href="Road_map.jsp?num=3"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+				<br>
+			 	<img src="JOB_EP_IMG/App_1.png" alt=""/><img src = "JOB_EP_IMG/App_2.png">
+				<br><br>
+			</div>
+		<% }%>
+		
 		<!-- 데이터 엔지니어 -->
 		<%if(sample.contains("ENTJ")||sample.contains("ENTP")||sample.contains("ESTJ")||sample.contains("ESTP")||sample.contains("ISTP")){%>
 			<strong> 데이터 엔지니어<br><br></strong> 
 			<div> 
+			<div class="btne"><a href="Road_map.jsp?num=6"><button id="btn">매칭 직무 로드맵 보러 가기</button></a></div>
 				<img src="JOB_EP_IMG/DataEG_1.png" alt=""/><img src = "JOB_EP_IMG/DataEG_2.png">
 				<br><br>
 			</div>	
 		<% }%>
-		<!-- 기획자 -->	
+		<!-- 프로젝트 매니저(로드맵X) -->	
 		<%if(sample.contains("ESFJ")||sample.contains("ESFP")||sample.contains("ESTJ")||sample.contains("ISFJ")){%>
 			<strong>프로젝트 매니저<br><br></strong> 
 		 	<div>
@@ -161,6 +185,7 @@ String job_no ="";
 		<%if(sample.contains("INFJ")||sample.contains("INTJ")||sample.contains("INTP")){%>
 			<strong> 백엔드 개발자<br><br></strong> 
 			<div>
+			<div class="btne"><a href="Road_map.jsp?num=2"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 				<img src="JOB_EP_IMG/Backend_1.png" alt=""/><img src = "JOB_EP_IMG/Backend_2.png">
 				<br><br>
 			</div>	
@@ -169,6 +194,7 @@ String job_no ="";
 		<%if(sample.contains("ISFP")){%>
 			<strong> 프론트 개발자<br><br></strong>
 			<div>
+			<div class="btne"><a href="Road_map.jsp?num=1"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 				<img src="JOB_EP_IMG/Front_1.png" alt=""/><img src = "JOB_EP_IMG/Front_2.png">
 				<br><br>
 			</div>	
@@ -177,6 +203,7 @@ String job_no ="";
 		<%if(sample.contains("ISTJ")){%>
 			<strong> 정보 보안 전문가<br><br></strong>
 			<div>
+			<div class="btne"><a href="Road_map.jsp?num=4"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
 				<img src="JOB_EP_IMG/Security_1.png" alt=""/><img src = "JOB_EP_IMG/Security_2.png">
 				<br><br>
 			</div>
