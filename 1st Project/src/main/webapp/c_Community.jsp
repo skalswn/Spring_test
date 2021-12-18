@@ -117,7 +117,7 @@ Response.Write("<script>location.href='Main.jsp';</script>");
 		next_pageno=total_page/group_per_page_cnt*group_per_page_cnt+1;
 	}
 
-%>
+    %>
 
 	<!--header-->
 	<header class="main-header clearfix" role="header">
