@@ -213,13 +213,13 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 							</table>
 							
 							<br>
-							<a href="c_Used_Community.jsp?pageno=<%=prev_pageno%>">≪ 이전</a>
+							<a href="c_Used_Community.jsp?pageno=<%=prev_pageno%>">≪ 이전　</a>
 						<%for (int i = page_sno; i <= page_eno; i++) {%>
 						<a href="c_Used_Community.jsp?pageno=<%=i%>"> <%if (pageno == i) {%>
 							<span id="cho"><%=i%></span> <%} else {%> <%=i%> <%}%>
 						</a>
-						<%if (i < page_eno) {%>,<%}	%><%}%>
-						<a href="c_Used_Community.jsp?pageno=<%=next_pageno%>" >다음 ≫</a>
+						<%if (i < page_eno) {%>　<%}	%><%}%>
+						<a href="c_Used_Community.jsp?pageno=<%=next_pageno%>" >　다음 ≫</a>
 	
 							<form style="padding: 20px 20px" action="c_Used_CommunitySearch.jsp">
 								<select

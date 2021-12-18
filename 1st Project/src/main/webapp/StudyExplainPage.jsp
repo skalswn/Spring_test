@@ -106,8 +106,8 @@ ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
 				<%for(int i=0;i<arr.size();i++){ %>
 					<div style="white-space:pre;">
 						<h1><%=arr.get(i).getCoding_explain1() %></h1>
-						<span style="text-align: left;">
-						<p style="font-size: 15px;"><%=arr.get(i).getCoding_explain2() %></p></span>
+						<div style="text-align: left;">
+						<p style="font-size: 15px;"><%=arr.get(i).getCoding_explain2() %></p></div>
 					</div>	
 				<%}%>
 			<div>

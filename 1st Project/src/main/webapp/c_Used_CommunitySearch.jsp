@@ -62,7 +62,7 @@ ArrayList<u_CommunityVO> arr = dao.search_u_Community(choice,search);
 if (arr.size()<=0){
 %>
 	Response.Write("<script>alert('검색결과가 없습니다.');</script>");
-	Response.Write("<script>location.href='c_Study_Community.jsp';</script>");
+	Response.Write("<script>location.href='c_Used_Community.jsp';</script>");
 <%}%>
 <% 
 MemberVO vo =null;

@@ -77,7 +77,7 @@ https://templatemo.com/tm-557-grad-school
 				<div class="col-md-5" style="flex: 100%; max-width: 100%;">
 					<div class="right-content">
 		<div>
-			<h4 style="color: white; font-weight: 600;"><%=vo.getM_id()%>(<%=vo.getM_name()%>)¥‘ æ»≥Á«œººø‰!
+			<br><h4 style="color: white; font-weight: 600;"><%=vo.getM_id()%>(<%=vo.getM_name()%>)¥‘ æ»≥Á«œººø‰!
 			</h4><br>
 		</div>
 						<form id="contact" action="InfoService" method="post"
