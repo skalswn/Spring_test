@@ -148,10 +148,10 @@ section.coming-soon form{
    ArrayList<CodingVO> codingarray=(ArrayList<CodingVO>)request.getAttribute("codingarray");
    DAO dao = new DAO();
    /* CheckVO chvo = (CheckVO)request.getAttribute("chvo"); */
-   CheckVO chvo1 = dao.getPhase(vo.getM_id(), "파이썬");
+/*    CheckVO chvo1 = dao.getPhase(vo.getM_id(), "파이썬");
    CheckVO chvo2 = dao.getPhase(vo.getM_id(), "자바");
    CheckVO chvo3 = dao.getPhase(vo.getM_id(), "HTML");
-   CheckVO chvo4 = dao.getPhase(vo.getM_id(), "자바스크립트");
+   CheckVO chvo4 = dao.getPhase(vo.getM_id(), "자바스크립트"); */
    CodingVO codingvo = null;
    /* CheckVO chvo = null;
    if(request.getAttribute("chvo") != null){

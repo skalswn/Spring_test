@@ -138,7 +138,7 @@ job_no = pstore.getPSIT_JOB();
 			<div id="content">
 				<article>
 					<div id="board">
-					<h2> <br><%=vo.getM_id()%> 님의 PSIT 검사 결과</h2>
+					<h2> <br><%=vo.getM_nick()%> 님의 PSIT 검사 결과</h2>
 
 		<div id = big>
 		<!-- 인공지능 머신러닝 -->
