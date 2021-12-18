@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-    <title>PSIT.com - Road_map</title>
+    <title>PSIT.com - Road_Map</title>
     
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -22,14 +22,22 @@
     <link rel="stylesheet" href="assets/css/lightbox.css">
 	
 	<style>
-		p{
+		span{
 		text-align: center;
-		font-weight: 700px;
+		font-weight: 700;
 		font-size:20px;
 		}	
+		
 		#mapimg{
-		padding-top : 5%;
+		padding-top : 2%;
 		text-align: center;
+		}
+		#rdm{
+		color :rgba(22,34,57,0.95);
+		font-size:50px; 
+		padding-top: 85px; 
+		padding-left :57px;
+		font-weight : 700
 		}
 	</style>
   </head>
@@ -80,19 +88,20 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");%>
 			</nav>
   </header>
   <div>
+  <div id="rdm">Road-Map</div>
     <nav id="mapimg">
     <%String num=request.getParameter("num");%>
     <!--회원일 때 로드맵 보여주고, 학습페이지로 링크 이동하는 코드  -->
     <%if(vo!=null) { %>
         <%if(num.equals("1")){%>
-       		<p>※ JavaScript, HTML/CSS에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요! </p>
+       		<span>※ JavaScript, HTML/CSS에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요! </span><br><br>
 	        <img usemap="#front" src="assets/images/frontEnd.png">
 				<map name="front">
 					<area name = "JavaScript" shape="rect" coords="297,397,430,445" href="ShowAllCodingService?lang=<%=lang4%>">
 					<area name = "html/css" shape="rect" coords="298,268,431,381" href="ShowAllCodingService?lang=<%=lang3%>">
 				</map>
         <%}else if(num.equals("2")) {%>
-            <p>※ Java, JavaScript,  HTML/CSS, Python에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요! </p>
+            <span>※ Java, JavaScript,  HTML/CSS, Python에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요!</span><br><br>
 	        <img usemap="#back" src="assets/images/backEnd.png">
 				<map name="back">
 					<area name = "Java" shape="rect" coords="755,247,853,278" href="ShowAllCodingService?lang=<%=lang2%>">
@@ -102,7 +111,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");%>
 					<area name = "Python" shape="rect" coords="755,407,855,436" href="ShowAllCodingService?lang=<%=lang1%>">
 				</map>
         <%}else if(num.equals("3")) {%>
-            <p>※ Java에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요! </p>
+            <span>※ Java에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요!</span><br><br>
 	        	<img usemap="#android" src="assets/images/android.png">
 					<map name="android">
 						<area name = "Java" shape="rect" coords="13,161,152,188" href="ShowAllCodingService?lang=<%=lang2%>">
@@ -110,16 +119,16 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");%>
 				<br>
 				<img src="assets/images/ios.png">
         <%}else if(num.equals("4")) {%>
-        	<br><br><br><br>
+        	<br>
     		<img src="assets/images/infoEng.png">
     		<br><br><br><br><br><br>
    		<%}else if(num.equals("5")) {%>
-            <p>※ Python에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요! </p>
+            <br><span>※ Python에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요!</span><br><br>
 				<img usemap="#ai" src="assets/images/ai.png">
 				<map name="ai">
 					<area name = "Python" shape="rect" coords="480,313,629,363" href="ShowAllCodingService?lang=<%=lang1%>">
 				</map>
-           <p><br>※ Java, JavaScript, Python에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요! </p>
+          <br><br><br><span>※ Java, JavaScript, Python에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요!</span><br><br>
         	<img usemap="#machine" src="assets/images/machineLearning.png">
 				<map name="machine">
 					<area name = "Java" shape="rect" coords="828,175,960,205" href="ShowAllCodingService?lang=<%=lang2%>">
@@ -127,7 +136,7 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");%>
 					<area name = "Python" shape="rect" coords="828,274,961,303" href="ShowAllCodingService?lang=<%=lang1%>">
 				</map>
 		<%}else if(num.equals("6")) {%>
-            <p><br><br><br>※ Java, Python에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요! </p>
+            <span>※ Java, Python에 대하여 학습하시려면 이미지의 해당 과목을 클릭하세요!</span><br><br>
 			<img usemap="#data" src="assets/images/dataEng.png">
 				<map name="data">
 					<area name = "Java" shape="rect" coords="608,57,702,81" href="ShowAllCodingService?lang=<%=lang2%>">

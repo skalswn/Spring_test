@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,11 +40,17 @@ public class InfoService extends HttpServlet {
 		int cnt = dao.Update(m_id, m_pw, m_email, m_name, m_nick, m_gender, m_memo);
 
 		if (cnt > 0) {
-			System.out.println("수정 성공");
+			response.setContentType("text/html; charset=UTF-8"); 
+			PrintWriter writers = response.getWriter(); 
+			writers.println("<script>alert('회원정보가 수정되었습니다.');</script>");
+			
+			writers.println("<script>location.href='Main.jsp';</script>");
+
+			writers.close();
 			session.setAttribute("vo",new MemberVO(m_id, m_pw, m_email, m_name, m_nick, m_gender,m_memo));
-			response.sendRedirect("UpdateSuccess.jsp");
+//			response.sendRedirect("Main.jsp");
 		} else {
-			 System.out.println("수정 실패");
+			
 			 response.sendRedirect("Main.jsp");
 		}
 		 
