@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -28,9 +29,14 @@ public class ShowAllCodingService extends HttpServlet {
 		if(request.getAttribute("lang") != null) {
 			lang =(String)request.getAttribute("lang");
 			System.out.println(lang);
-		}else {
+		}else if (request.getParameter("lang") !=null){
 			lang = request.getParameter("lang");
 			System.out.println(lang);
+		}else {
+			response.setContentType("text/html; charset=UTF-8"); 
+			PrintWriter writers = response.getWriter(); 
+			writers.println("<script>alert('언어를 선택하여 주십시오'); history.back();</script>");
+			writers.close();
 		}
 		DAO dao = new DAO();
 		ArrayList<CodingVO> codingarray = new ArrayList<>();

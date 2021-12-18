@@ -140,7 +140,7 @@ u_Community_commentVO cmvo = (u_Community_commentVO)session.getAttribute("cmvo")
 									<td style="text-align: left;"><h6 style="margin-left: 1%;"><%=ucvo.getM_ID() %></h6></td>
 								</tr>
 								<tr style="height: 50%">
-									<td rowspan="2" class="part" style="text-align: center;">내용</td>
+									<td rowspan="2" class="part" style="text-align: center; white-space: pre-line;">내용</td>
 									<td
 										style="text-align: left; vertical-align: initial; margin-left: 1%;"><h6
 											style="margin-left: 1%;"><%=ucvo.getUSED_CONTENT() %></h6></td>

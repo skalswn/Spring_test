@@ -402,8 +402,7 @@ int present_python=dao.present_python(vo.getM_id());
       </td>
       </tr>
    <!--for¹® ³¡  ----->
-   
-</table>
+   </table>
          </div>
          </div>
       </section>

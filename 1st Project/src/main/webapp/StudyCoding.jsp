@@ -122,7 +122,7 @@ String coding_img =dao.ShowimgCoding(seq);
 	
 	</div>
 	<div>
-		<a href="StudyPage.jsp"><button onclick="location.href='CheckPhase?seq=<%= codingvo.getCoding_seq() %>';">다른문제 풀기</button></a>
+		<button onclick="location.href='ShowAllCodingService?lang=<%=codingvo.getCoding_lang()%>';">다른문제 풀기</button></a>
 	</div>
 	</div>
 	</section>

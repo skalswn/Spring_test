@@ -113,7 +113,7 @@ if(session.getAttribute("vo") != null){
 					<div style="text-align: center">
 								<tr class="a">
 									<td colspan="2" align="center">
-										<input name="file1" type="file" style="width : 30%; height : 30px"> 
+										<input name="file1" type="file" style="width : 30%; height : 30px">
 										<input name="file2" type="file" style="width : 30%; height : 30px"> 
 										<input name="file3"	type="file" style="width : 30%; height : 30px">
 									</td>
