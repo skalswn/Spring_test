@@ -98,7 +98,7 @@ ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
     
   </header>
   
-	<section style="color: white; text-align: center;"
+	<section style="color: white; text-align: center; height:100%"
 		class="section coming-soon" data-section="section3">
 		<div class="col-8  col-12-narrower imp-narrower"
 			style="max-width: 90% !important; display: inline-block;">
