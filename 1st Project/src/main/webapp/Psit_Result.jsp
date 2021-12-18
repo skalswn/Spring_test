@@ -63,6 +63,10 @@ strong{
     margin-bottom: 20px;
     letter-spacing: 0.5px;
 }
+.btne{
+text-align: right;
+margin-right: 18.5%;
+}
 
 
 </style>
@@ -132,175 +136,78 @@ String job_no ="";
 					<div id="board">
 					<h2> <br><%=vo.getM_id()%> 님의 PSIT 검사 결과</h2>
 						
-							
-
 		<div id = big>
-			<%if(sample.contains("ENFJ")){%>
-				<%-- <%job_no=job_no+"인공지능/머신러닝"; %> --%>
-				<strong> 인공지능 & 머신러닝<br><br></strong> 
-				<div>
-					<img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
-					<br><br>
-				</div>
-				 
-			<% }%>
-			<%if(sample.contains("ENFP")){%>
-				<%--<%job_no=job_no+"인공지능/머신러닝,앱개발자"; %>--%>
-				<strong> 1. 인공지능 & 머신러닝<br><br></strong> 
-				<div>
-					<img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
-					<br><br>
-				</div>
+		<!-- 인공지능 머신러닝 -->
+		<%if(sample.contains("ENFJ")||sample.contains("INFJ")||sample.contains("INFP")||sample.contains("INTJ")||sample.contains("INTP")){%>
+			<strong> 인공지능 & 머신러닝<br><br></strong> 
+			<div>
+			<div class="btne"><a href="Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+				<img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
 				<br><br>
-				<strong>2. 앱개발자<br><br></strong>
-				<div>
-				 	<img src="JOB_EP_IMG/App_1.png" alt=""/><img src = "JOB_EP_IMG/App_2.png">
-					<br><br>
-				</div>	
-			<% }%>
-			<%if(sample.contains("ENTJ")){%>
-				<%--<%job_no=job_no+"데이터 엔지니어"; %>--%>
-				<strong> 데이터 엔지니어<br><br></strong> 
-				<div>
-					<img src="JOB_EP_IMG/DataEG_1.png" alt=""/><img src = "JOB_EP_IMG/DataEG_2.png">
-					<br><br>
-				</div>	
-			<% }%>
-			<%if(sample.contains("ENTP")){%>
-				<%--<%job_no=job_no+"인공지능/머신러닝,데이터 엔지니어"; %>--%>
-				<strong>1. 인공지능&머신러닝<br><br></strong> 
-				<div>
-					<img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
-					<br><br>
-				</div>
+			</div>
+		<% }%>
+		
+		<!-- 인공지능/앱 개발자 -->
+		<%if(sample.contains("ENFP")){%>
+		<strong> 인공지능 & 머신러닝<br><br></strong> 
+			<div>
+			<div class="btne"><a href="Road_map.jsp?num=5"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+				<img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
 				<br><br>
-				<strong>2. 데이터 엔지니어<br><br></strong> 
-				<div> 
-					<img src="JOB_EP_IMG/DataEG_1.png" alt=""/><img src = "JOB_EP_IMG/DataEG_2.png">
-					<br><br>
-				</div>	
-			<% }%>
-			<%if(sample.contains("ESFJ")){%>
-				<%--<%job_no=job_no+"프로젝트 매니저"; %>--%>
-				<strong>프로젝트 매니저<br><br></strong> 
-			 	<div>
-				 	<img src="JOB_EP_IMG/ProjectMG_1.png" alt=""/><img src = "JOB_EP_IMG/ProjectMG_2.png">
-				 	<br><br>
-			 	</div>
-			<% }%>
-			<%if(sample.contains("ESFP")){%>
-				<%--<%job_no=job_no+"프로젝트 매니저"; %>--%>
-				<strong> 프로젝트 매니저<br><br></strong> 
-			 	<div>
-				 	<img src="JOB_EP_IMG/ProjectMG_1.png" alt=""/><img src = "JOB_EP_IMG/ProjectMG_2.png">
-				 	<br><br>
-			 	</div>
-			 <% }%>
-			<%if(sample.contains("ESTJ")){%>
-			<%--<%job_no=job_no+"데이터 엔지니어,프로젝트 매니저"; %>--%>
-				<strong>1. 데이터 엔지니어<br><br></strong>
-				<div>
-					<img src="JOB_EP_IMG/DataEG_1.png" alt=""/><img src = "JOB_EP_IMG/DataEG_2.png">
-					<br><br>
-				</div>
+			</div>
+		<strong> 앱개발자<br><br></strong>
+			<div>
+			 	<div class="btne"><a href="Road_map.jsp?num=3"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+				<br>
+			 	<img src="JOB_EP_IMG/App_1.png" alt=""/><img src = "JOB_EP_IMG/App_2.png">
 				<br><br>
-				<strong>2.프로젝트 매니저<br><br></strong>
-				<div>
-					<img src="JOB_EP_IMG/ProjectMG_1.png" alt=""/><img src = "JOB_EP_IMG/ProjectMG_2.png">
-					<br><br>
-				</div>
-			
-			<% }%>
-			<%if(sample.contains("ESTP")){%>
-				<%--<%job_no="데이터 엔지니어"; %>--%>
-				<strong>데이터 엔지니어<br><br> </strong>
-				<div>
-					<img src="JOB_EP_IMG/DataEG_1.png" alt=""/><img src = "JOB_EP_IMG/DataEG_1.png">
-					<br><br>
-				</div>	
-			<% }%>
-			<%if(sample.contains("INFJ")){%>
-				<%--<%job_no="백엔드 개발자, 인공지능/머신러닝"; %>--%>
-				<strong> 1. 백엔드 개발자<br><br></strong> 
-				<div>
-					<img src="JOB_EP_IMG/Backend_1.png" alt=""/><img src = "JOB_EP_IMG/Backend_2.png">
-				    <br><br>
-				</div>	
+			</div>
+		<% }%>
+		
+		<!-- 데이터 엔지니어 -->
+		<%if(sample.contains("ENTJ")||sample.contains("ENTP")||sample.contains("ESTJ")||sample.contains("ESTP")||sample.contains("ISTP")){%>
+			<strong> 데이터 엔지니어<br><br></strong> 
+			<div> 
+			<div class="btne"><a href="Road_map.jsp?num=6"><button id="btn">매칭 직무 로드맵 보러 가기</button></a></div>
+				<img src="JOB_EP_IMG/DataEG_1.png" alt=""/><img src = "JOB_EP_IMG/DataEG_2.png">
 				<br><br>
-				<strong>2. 인공지능&머신러닝<br><br></strong>
-				<div>
-					 <img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
-					 <br><br>
-				 </div>
-			<% }%>
-			<%if(sample.contains("INFP")){%>
-				<%--<%job_no="인공지능/머신러닝"; %>--%>
-				<strong> 인공지능&머신러닝<br><br></strong>
-				<div>
-					<img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
-					<br><br>
-				</div>	
-			<% }%>
-			<%if(sample.contains("INTJ")){%>
-				<%--<%job_no="백엔드 개발자, 인공지능/머신러닝"; %>--%>
-				<strong> 1. 백엔드 개발자<br><br></strong>
-				<div>
-					<img src="JOB_EP_IMG/Backend_1.png" alt=""/><img src = "JOB_EP_IMG/Backend_2.png">
-					<br><br>
-				</div>
+			</div>	
+		<% }%>
+		<!-- 프로젝트 매니저(로드맵X) -->	
+		<%if(sample.contains("ESFJ")||sample.contains("ESFP")||sample.contains("ESTJ")||sample.contains("ISFJ")){%>
+			<strong>프로젝트 매니저<br><br></strong> 
+		 	<div>
+			 	<img src="JOB_EP_IMG/ProjectMG_1.png" alt=""/><img src = "JOB_EP_IMG/ProjectMG_2.png">
+			 	<br><br>
+		 	</div>	
+		<% }%>
+		<!-- 백엔드 -->
+		<%if(sample.contains("INFJ")||sample.contains("INTJ")||sample.contains("INTP")){%>
+			<strong> 백엔드 개발자<br><br></strong> 
+			<div>
+			<div class="btne"><a href="Road_map.jsp?num=2"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+				<img src="JOB_EP_IMG/Backend_1.png" alt=""/><img src = "JOB_EP_IMG/Backend_2.png">
 				<br><br>
-				<strong> 2. 인공지능&머신러닝<br><br></strong>	
-				<div>
-					<img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
-					<br><br>
-				</div>
-				<% }%>
-			<%if(sample.contains("INTP")){%>
-				<%--<%job_no="백엔드 개발자, 인공지능/머신러닝"; %>--%>
-				<strong> 1. 백엔드 개발자<br><br></strong>	 
-				<div>
-					<img src="JOB_EP_IMG/Backend_1.png" alt=""/><img src = "JOB_EP_IMG/Backend_2.png">
-					<br><br>
-				</div>
+			</div>	
+		<% }%>
+		<!-- 프론트엔드 -->
+		<%if(sample.contains("ISFP")){%>
+			<strong> 프론트 개발자<br><br></strong>
+			<div>
+			<div class="btne"><a href="Road_map.jsp?num=1"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+				<img src="JOB_EP_IMG/Front_1.png" alt=""/><img src = "JOB_EP_IMG/Front_2.png">
 				<br><br>
-				<strong>2. 인공지능&머신러닝<br><br></strong> 	
-				<div>
-					<img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
-					<br><br>
-				</div>
-			<% }%>
-			<%if(sample.contains("ISFJ")){%>
-				<%--<%job_no="프로젝트 매니저"; %>--%>
-				<strong> 프로젝트 매니저<br><br></strong>
-				<div>
-					<img src="JOB_EP_IMG/ProjectMG_1.png" alt=""/><img src = "JOB_EP_IMG/ProjectMG_2.png">
-					<br><br>
-				</div>	
-			<% }%>
-			<%if(sample.contains("ISFP")){%>
-				<%--<%job_no="프론트 개발자"; %>--%>
-				<strong> 프론트 개발자<br><br></strong>
-				<div>
-					<img src="JOB_EP_IMG/Front_1.png" alt=""/><img src = "JOB_EP_IMG/Front_2.png">
-					<br><br>
-				</div>	
-			<% }%>
-			<%if(sample.contains("ISTJ")){%>
-				<%--<%job_no="정보 보안 전문가"; %>--%>
-				<strong> 정보 보안 전문가<br><br></strong>
-				<div>
-					<img src="JOB_EP_IMG/Security_1.png" alt=""/><img src = "JOB_EP_IMG/Security_2.png">
-					<br><br>
-				</div>
-			<% }%>
-			<%if(sample.contains("ISTP")){%>
-				<%--<%job_no="인공지능/머신러닝"; %>--%>
-				<strong> 인공지능&머신러닝<br><br></strong>
-				<div>
-					<img src="JOB_EP_IMG/AM_01.png" alt=""/><img src = "JOB_EP_IMG/AM_02.png">
+			</div>	
+		<% }%>
+		<!-- 정보 보안 -->
+		<%if(sample.contains("ISTJ")){%>
+			<strong> 정보 보안 전문가<br><br></strong>
+			<div>
+			<div class="btne"><a href="Road_map.jsp?num=4"><button id="btn"> 매칭 직무 로드맵 보러 가기</button></a></div>
+				<img src="JOB_EP_IMG/Security_1.png" alt=""/><img src = "JOB_EP_IMG/Security_2.png">
 				<br><br>
-				</div>	
-			<% }%>
+			</div>
+		 <% }%>
 			</div>
 			 <a href="c_Psit?sample=<%=sample%>"> <button id = "btn">저장 후 MY PSIT로 이동하기</button></a>
 			 <br>
@@ -318,7 +225,6 @@ String job_no ="";
 <script src="assets/js/util.js"></script>
 <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
-
 
 <footer>
 	<div class="container">

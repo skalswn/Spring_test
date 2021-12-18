@@ -33,16 +33,37 @@
     	float: left;
     	width: 68%;
     	display: inline-block;
+    	margin: 1px;
     }
     div#anssubmit{
-    	width: 10%;
+    	background-color: #f5a425;
+    	width: 30%;
     	display: inline-block;
+    	margin: 1px;
+    }
+    div#answer{
+    	width: 100%;
+    	text-align: center;
     }
     #ansform{
     	background-color: transparent;
+    	display: inline-block;
     }
     #ansform input{
     	margin: 0;
+    }
+    #other{
+	    width: 20%;
+	    height: 40px;
+	    background-color: rgba(250,250,250,0.1);
+	    border-radius: 0px;
+	    border: none;
+	    outline: none;
+	    color: #fff;
+	    font-size: 13px;
+	    letter-spacing: 0.5px;
+	    margin:1%;
+	    display: inline-block;
     }
     </style>
 </head>
@@ -93,7 +114,7 @@ String coding_img =dao.ShowimgCoding(seq);
     
   </header>
 
-<section style="color: white; height: 900px;"
+<section style="color: white; height: 900px; text-align: center;"
       class="section coming-soon" data-section="section3">
       <div class="col-8  col-12-narrower imp-narrower"
          style="max-width: 100% !important; height: 100%;">
@@ -107,6 +128,8 @@ String coding_img =dao.ShowimgCoding(seq);
 		<%} %>
 	</div>
 	
+	<div id="answer">
+	<div style="display:inline-block; width: 70%">
 	<form id = "ansform" action="check_answer">
 	<div id="ansinput">
 		<%if(seq==codingvo.getCoding_seq()) {%>
@@ -119,14 +142,13 @@ String coding_img =dao.ShowimgCoding(seq);
 		<input type="submit" value="제출하기">
 	</div>
 	</form>
-	
 	</div>
-	<div>
-		<button onclick="location.href='ShowAllCodingService?lang=<%=codingvo.getCoding_lang()%>';">다른문제 풀기</button></a>
 	</div>
+	</div>
+		<button id="other" onclick="location.href='ShowAllCodingService?lang=<%=codingvo.getCoding_lang()%>';">다른문제 풀기</button>
 	</div>
 	</section>
-
+	
 <footer>
 		<div class="container">
 			<div class="row">
@@ -142,6 +164,7 @@ String coding_img =dao.ShowimgCoding(seq);
 			</div>
 		</div>
 	</footer>
+
 	
 		<!-- Scripts 지우면안됨------------------------------------------------------------------------------------------------------------------>
   <!-- Bootstrap core JavaScript -->
