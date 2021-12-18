@@ -63,6 +63,7 @@
 	    font-size: 13px;
 	    letter-spacing: 0.5px;
 	    margin:1%;
+	    margin-top:3%;
 	    display: inline-block;
     }
     h2{
@@ -118,7 +119,7 @@ String coding_img =dao.ShowimgCoding(seq);
     
   </header>
 
-<section style="color: white; height: 900px; text-align: center;"
+<section style="color: white; text-align: center;"
       class="section coming-soon" data-section="section3">
       <div class="col-8  col-12-narrower imp-narrower"
          style="max-width: 100% !important; height: 100%;">
@@ -150,8 +151,8 @@ String coding_img =dao.ShowimgCoding(seq);
 	</form>
 	</div>
 	</div>
-	</div>
 		<button id="other" onclick="location.href='ShowAllCodingService?lang=<%=codingvo.getCoding_lang()%>';">다른문제 풀기</button>
+	</div>
 	</div>
 	</section>
 	
