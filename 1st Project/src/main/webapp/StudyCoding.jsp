@@ -26,6 +26,25 @@
     <link rel="stylesheet" href="assets/css/templatemo-grad-school.css">
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
+    
+    <style>
+    
+    div#ansinput{
+    	float: left;
+    	width: 68%;
+    	display: inline-block;
+    }
+    div#anssubmit{
+    	width: 10%;
+    	display: inline-block;
+    }
+    #ansform{
+    	background-color: transparent;
+    }
+    #ansform input{
+    	margin: 0;
+    }
+    </style>
 </head>
 <body>
 
@@ -35,7 +54,6 @@ MemberVO vo = (MemberVO)session.getAttribute("vo");
 int seq = Integer.parseInt(request.getParameter("seq"));
 DAO dao = new DAO();
 CodingVO codingvo = dao.ShowStudyCoding(seq);
-//CodingExplainVO codingexplainvo = dao.CodingExplain(seq);
 String coding_img =dao.ShowimgCoding(seq);
 %>
 <!--header-->
@@ -75,39 +93,36 @@ String coding_img =dao.ShowimgCoding(seq);
     
   </header>
 
-<section style="color: white;"
+<section style="color: white; height: 900px;"
       class="section coming-soon" data-section="section3">
       <div class="col-8  col-12-narrower imp-narrower"
          style="max-width: 100% !important; height: 100%;">
          <div id="content" style="height: 100%; text-align: center;">
 	<div style="white-space:pre;">
-		<p>선택한 문제 나올 곳</p>
 		<%if(coding_img !=null){%>
 			<img src="./images/<%=URLDecoder.decode(coding_img, "euc-kr") %>">
 		<%} %>
 		<%if(seq==codingvo.getCoding_seq()){ %>
-			<%System.out.println("문제보기 성공!"); %>
-			<p><%=codingvo.getCoding_q()%></p>
+			<h2>문제 : <%=codingvo.getCoding_q()%></h2>
 		<%} %>
 	</div>
 	
-	<div>
-	<form action="check_answer">
+	<form id = "ansform" action="check_answer">
+	<div id="ansinput">
 		<%if(seq==codingvo.getCoding_seq()) {%>
 			<input type="text" name= "answer">
-			<%-- <% System.out.println("해설보기 성공..");%>
-			<p><%=codingvo.getCoding_a() %></p>--%>
 		<%} %> 
 		<input value="<%=codingvo.getCoding_lang()%>" name="lang" style="display:none">
 		<input value="<%=codingvo.getCoding_seq()%>" name="num"  style="display:none">
-		<input type="submit" value="제출하기">
-	</form>
 	</div>
+	<div id="anssubmit">
+		<input type="submit" value="제출하기">
+	</div>
+	</form>
 	
+	</div>
 	<div>
 		<a href="StudyPage.jsp"><button onclick="location.href='CheckPhase?seq=<%= codingvo.getCoding_seq() %>';">다른문제 풀기</button></a>
-	</div>
-	<%-- <button onclick="location.href='CheckPhase?seq=<%= codingvo.getCoding_seq() %>';">다른문제 풀기</button> --%>
 	</div>
 	</div>
 	</section>
