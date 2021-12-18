@@ -70,6 +70,7 @@ body {
 }
 #langselect td.lang{
    text-align: rignt;
+   vertical-align: top;
 }
 #langselect td.langslc{
    text-align: left;

@@ -104,13 +104,15 @@ ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
 			style="max-width: 90% !important; display: inline-block;">
 			
 				<%for(int i=0;i<arr.size();i++){ %>
-					<div style="white-space:pre;">
+					<div style="white-space:pre-line; text-align: left;">
+						<br>
 						<h1><%=arr.get(i).getCoding_explain1() %></h1>
 						<span style="text-align: left;">
-						<p style="font-size: 15px;"><%=arr.get(i).getCoding_explain2() %></p></span>
+						<span style="font-size: 15px;"><%=arr.get(i).getCoding_explain2() %></span></span>
 					</div>	
 				<%}%>
-			<div>
+			
+			<div style="margin-top: 10%;">
 				<a href="StudyCoding.jsp?seq=<%=seq%>"><button id = btn>문제풀어보기</button></a>
 			</div> 
 		</div> 
