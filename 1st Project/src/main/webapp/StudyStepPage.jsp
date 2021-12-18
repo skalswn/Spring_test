@@ -90,14 +90,15 @@ body {
 }
 button.bb{
 	background-color:#f5a425;
-	width :20%;
+	width :15%;
 	height: 40px;
-    border-radius: 0px;
+    border-radius: 20px;
     border: none;
     color: #fff;
-    font-size: 13px;
+    font-size: 20px;
     margin-bottom: 20px;
     letter-spacing: 0.5px;
+    margin-left: 2%;
 }
 #lang{
    height: 100%;
@@ -111,24 +112,17 @@ button.bb{
 
 #tbl{
    display: inline-table;
-   width: 30%;
-	float : left;
+   width: 100%;
 }
 
-/* test */
 #tbl1{
    display: inline-table;
-   width: 30%;
-
-   
+   width: 100%;
 }
 #tbl2{
    display: inline-table;
-   width: 30%;
-	float:right;
+   width: 100%;
 }
-/* test */
-
 
 section.coming-soon form{
    background-color: transparent;
@@ -136,8 +130,18 @@ section.coming-soon form{
     width: 100%;
     text-align: center;
 }
-#my_status{
-   
+#tbls{
+   width: 100%;
+   font-size: 25px;
+}
+#tbls td{
+   width: 33.33%;
+}
+#printlang{
+	text-align: left;
+	margin-left: 10%;
+	font-weight: 700; 
+	font-size: 60px;
 }
 </style>
 </head>
@@ -205,12 +209,21 @@ section.coming-soon form{
       <div class="col-8  col-12-narrower imp-narrower"
          style="max-width: 100% !important; height: 100%;">
          <div id="content" style="height: 100%; text-align: center;">
+<h1 id="printlang">
+	<%if(codingarray.get(0).getCoding_lang().equals("파이썬")){%>
+	Python<%}else if(codingarray.get(0).getCoding_lang().equals("자바")){ %>
+	Java<%}else if(codingarray.get(0).getCoding_lang().equals("자바스크립트")){ %>
+	JavaScript<%}else if(codingarray.get(0).getCoding_lang().equals("HTML")){ %>
+	HTML/CSS
+	<%}else{%><%=codingarray.get(0).getCoding_lang()%><%}%>
+</h1>   
          
-         
-         
+<table id="tbls">
+<tr>
+<td> 
  <table id="tbl">
  <tr>
- 	<td style="width: 50%;  background-color: rgba(250,250,250,0.1);">
+ 	<td>
  	
  	<%-- <%for(int i=0; i<codingarray.size(); i++){%> --%>
     
@@ -223,16 +236,16 @@ section.coming-soon form{
             codingvo=codingarray.get(i); 
             cnt=dao.Check_Phase(codingvo.getCoding_seq(),vo.getM_id(),codingvo.getCoding_lang());
             %>
-	           <%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%>
+	           <%=(i+1)%>단계
 	                  <%if(cnt==-1){%> 
 	                    <img src="./images/checkbook.png" width=50px height=50px>
-			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">학습하러가기!</button> 
+			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">GO!</button> 
 	                  <%if(vo.getM_id().equals("admin")){ %>
 	                     <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
 	                  <%} %>
 	                  <%}else{ %>
 	                    <img src="./images/nocheckbook.png" width=50px height=50px>
-			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">학습하러가기!</button> 
+			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">GO!</button> 
 	                  <%if(vo.getM_id().equals("admin")){ %>
 	                     <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
 	                  <%} %>
@@ -242,13 +255,11 @@ section.coming-soon form{
     	</td>
     	</tr>
 		    	</table>
-		    	
-		    	
-	<table id="tbl1">
+</td>		    	
+<td>		    	
+<table id="tbl1">
  <tr>
- 	<td style="width: 50%;  background-color: rgba(250,250,250,0.1);">
-		    	
-		    	
+ 	<td>
      <%for(int i=10; i<20; i++){%>
      <tr>
          <td>
@@ -257,16 +268,16 @@ section.coming-soon form{
             codingvo=codingarray.get(i); 
             cnt=dao.Check_Phase(codingvo.getCoding_seq(),vo.getM_id(),codingvo.getCoding_lang());
             %>
-	            <%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%>
+	            <%=(i+1)%>단계
 	                  <%if(cnt==-1){%> 
 	                    <img src="./images/checkbook.png" width=50px height=50px>
-			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">학습하러가기!</button> 
+			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">GO!</button> 
 	                  <%if(vo.getM_id().equals("admin")){ %>
 	                     <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
 	                  <%} %>
 	                  <%}else{ %>
 	                    <img src="./images/nocheckbook.png" width=50px height=50px>
-			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">학습하러가기!</button> 
+			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">GO!</button> 
 	                  <%if(vo.getM_id().equals("admin")){ %>
 	                     <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
 	                  <%} %>
@@ -277,13 +288,11 @@ section.coming-soon form{
     	</tr>
     	
     	</table>
-    	
-    	
-    	<table id="tbl2">
+</td>
+<td>
+<table id="tbl2">
  <tr>
- 	<td style="width: 50%;  background-color: rgba(250,250,250,0.1);">
- 	
- 	
+ 	<td>
     	<%for(int i=20; i<codingarray.size(); i++){%>
          <tr>
          <td>
@@ -292,16 +301,16 @@ section.coming-soon form{
             codingvo=codingarray.get(i); 
             cnt=dao.Check_Phase(codingvo.getCoding_seq(),vo.getM_id(),codingvo.getCoding_lang());
             %>
-	            <%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%>
+	            <%=(i+1)%>단계
 	                  <%if(cnt==-1){%> 
 	                    <img src="./images/checkbook.png" width=50px height=50px>
-			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">학습하러가기!</button> 
+			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">GO!</button> 
 	                  <%if(vo.getM_id().equals("admin")){ %>
 	                     <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
 	                  <%} %>
 	                  <%}else{ %>
 	                    <img src="./images/nocheckbook.png" width=50px height=50px>
-			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">학습하러가기!</button> 
+			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">GO!</button> 
 	                  <%if(vo.getM_id().equals("admin")){ %>
 	                     <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
 	                  <%} %>
@@ -310,47 +319,11 @@ section.coming-soon form{
 	                  <%} %> 
     	</td>
     </tr>
+    </table>
+    </td>
+    <tr>
+    </table>
     
-    
-    <%-- <td style="text-align: center; vertical-align: initial; background-color: rgba(250,250,250,0.1); ">
-  	<div style="text-align: center; width: 70%; display: -webkit-inline-box;">
-  
-  <a href="StudyPage.jsp">다른언어를 풀어볼까</a>
-   <!--문제나오는 부분  ---->
-   	<table style="width:100%">
-   	
-         	 <%for(int i=0; i<codingarray.size(); i++){%>
-         <tr>
-         <td>
-            <%
-            int cnt=0;
-            codingvo=codingarray.get(i); 
-            cnt=dao.Check_Phase(codingvo.getCoding_seq(),vo.getM_id(),codingvo.getCoding_lang());
-            %>
-	            <%=(i+1)%>단계 / 시퀀스 : <%=codingvo.getCoding_seq()%>
-	                  <%if(cnt==-1){%> 
-	                    <img src="./images/checkbook.png" width=50px height=50px>
-			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">학습하러가기!</button> 
-	                  <%if(vo.getM_id().equals("admin")){ %>
-	                     <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
-	                  <%} %>
-	                  <%}else{ %>
-	                    <img src="./images/nocheckbook.png" width=50px height=50px>
-			            <button class="bb" onclick="location.href='StudyExplainPage.jsp?seq=<%=codingvo.getCoding_seq()%>';">학습하러가기!</button> 
-	                  <%if(vo.getM_id().equals("admin")){ %>
-	                     <button class = "bb" onclick="location.href='DeleteCodingService?seq=<%=codingvo.getCoding_seq() %>';">문제삭제</button>
-	                  <%} %>
-	                  <%} %> 
-          <!-- for문 -->  
-           <%} %>   
-          </td>
-          </tr>
-          
-               </table>
-       </td>
-      </tr> --%>
-   
-</table>
          </div>
          </div>
       </section>

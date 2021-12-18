@@ -65,6 +65,10 @@
 	    margin:1%;
 	    display: inline-block;
     }
+    h2{
+    	text-align: left;
+		line-height: 150%;
+    }
     </style>
 </head>
 <body>
@@ -119,12 +123,14 @@ String coding_img =dao.ShowimgCoding(seq);
       <div class="col-8  col-12-narrower imp-narrower"
          style="max-width: 100% !important; height: 100%;">
          <div id="content" style="height: 100%; text-align: center;">
-	<div style="white-space:pre;">
+	<div style="white-space:pre; text-align: center;">
 		<%if(coding_img !=null){%>
 			<img src="./images/<%=URLDecoder.decode(coding_img, "euc-kr") %>">
 		<%} %>
 		<%if(seq==codingvo.getCoding_seq()){ %>
+		<div style="display: inline-block; width:73%;">
 			<h2>¹®Á¦ : <%=codingvo.getCoding_q()%></h2>
+		</div>
 		<%} %>
 	</div>
 	
