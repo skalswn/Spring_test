@@ -101,14 +101,14 @@ ArrayList<CodingExplainVO> arr = dao.codingexplain_view(seq);
 	<section style="color: white; text-align: center; height:100%"
 		class="section coming-soon" data-section="section3">
 		<div class="col-8  col-12-narrower imp-narrower"
-			style="max-width: 90% !important; display: inline-block;">
+			style="max-width: 80% !important; display: inline-block;">
 			
 				<%for(int i=0;i<arr.size();i++){ %>
-					<div style="white-space:pre-line; text-align: left;">
+					<div style="white-space:pre-line; text-align: left; font-size: 20px;">
 						<br>
 						<h1><%=arr.get(i).getCoding_explain1() %></h1>
 						<span style="text-align: left;">
-						<span style="font-size: 15px;"><%=arr.get(i).getCoding_explain2() %></span></span>
+						<span><%=arr.get(i).getCoding_explain2() %></span></span>
 
 					</div>	
 				<%}%>
