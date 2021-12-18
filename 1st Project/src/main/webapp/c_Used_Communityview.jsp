@@ -100,7 +100,7 @@ u_Community_commentVO cmvo = (u_Community_commentVO)session.getAttribute("cmvo")
 				<%} else {%>
 				<li><a href="Login.jsp">Login</a></li>
 				<li><a href="Join.jsp">Join</a></li>
-				<%} %>
+				<%}%>
 			</ul>
 		</nav>
 	</header>
@@ -109,7 +109,6 @@ u_Community_commentVO cmvo = (u_Community_commentVO)session.getAttribute("cmvo")
 		<div class="col-8  col-12-narrower imp-narrower"
 			style="max-width: 90% !important; display: inline-block;">
 			<div id="content">
-				<article>		
 			<div id = "board" style="background-color: rgba(250, 250, 250, 0.2);">
 			<div align="center">
 							<h2 align="center" style="padding-top: 2%; padding-bottom: 3%">
@@ -154,33 +153,34 @@ u_Community_commentVO cmvo = (u_Community_commentVO)session.getAttribute("cmvo")
 										src="./images/<%=URLDecoder.decode(ucvo.getFILE1(), "euc-kr")%>">
 									</td>
 									<%
-									}
+									}}
 									%>
 								</tr>
 							</table>
-							<div style="text-align: center;">
-								<div align="left"
-									style="width: 40%; display: inline-block; margin-bottom: 40px;">
-									<a href="c_Community.jsp"><button
-											style="background-color: #f5a425; width: 20%; height: 30px; color: white; border: none;">뒤로가기</button></a>
-								</div>
-								<%}%>
-							<%if (vo != null){%>	
-						<%if (userID.equals(ucvo.getM_ID())||userID.equals("admin")||userID.equals("skalswn")) {%>
-						<div align="right" style="width: 40%; display:inline-block; margin-bottom: 40px;">
-								<span style="width: 100px; height: 30px;"> <a
+							<%if (vo != null) {%>
+							<%if (userID.equals(ucvo.getM_ID()) || userID.equals("admin") || userID.equals("skalswn")) {%>
+							<div align="left" style="width: 40%; display:inline-block; margin-bottom: 40px;">
+							<a href="c_Used_Community.jsp"><button
+									style="background-color: #f5a425; width: 20%; height: 30px; color: white; border: none;">뒤로가기</button></a>
+							</div>
+							<div align="right" style="width: 40%; display:inline-block; margin-bottom: 40px;">
+							<span style="width: 100px; height: 30px;"> <a
 									href="c_Used_Communitychange.jsp?num=<%=ucvo.getUSED_SEQ()%>">
 										<button style="background-color: #f5a425; color: white; border: none; width: 10%; height: 30px;">수정</button>
 								</a>
 								</span> <span style="width: 100px; height: 30px;"> <a
-									href="u_c_Communitydelete?num=<%=ucvo.getUSED_SEQ()%>">
+									href="c_Used_Communitydelete?num=<%=ucvo.getUSED_SEQ()%>">
 										<button style="background-color: #f5a425; color: white; border: none; width: 10%; height: 30px;">삭제</button>
 								</a>
 								</span>
-						</div>
-						<%}%>
-					<% }%>	
 							</div>
+							</div>
+							<%}else{%>
+							<div align="center" style="width: 100%; display:inline-block; margin-bottom: 40px;">
+							<a href="c_Used_Community.jsp"><button
+									style="background-color: #f5a425; width: 10%; height: 30px; color: white; border: none;">뒤로가기</button></a>
+							</div>
+							<%}}%>
 					</div>
 					<form action="u_c_Comment">
 								<br> 
@@ -233,7 +233,6 @@ u_Community_commentVO cmvo = (u_Community_commentVO)session.getAttribute("cmvo")
 								style="background-color: #f5a425; color: white; font-size: 14px; border: none; width: 5%; height: 30px;">다음글</button>
 					</a>
 					</span>							
-					</article>
 					</div>
 					</div>
 					</section>
