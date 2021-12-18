@@ -190,7 +190,7 @@ int present_python=dao.present_python(id);
             <li><a href="P_Psit.jsp">PSIT 검사</a></li>
             <li><a href="P_Psit_Result.jsp">My PSIT</a></li>
           	</ul></li>
-        <!-- <li><a h\ref="#section5">Video</a></li> -->
+        <li><div class="scroll-to-section"><a href="#section4">로드맵</a></div></li>
         <li><a href="StudyPage.jsp">단계별학습</a></li>
         <li><a href="#" class="external">커뮤니티</a>
           <ul class="sub-menu">
