@@ -65,7 +65,7 @@
 	    margin:1%;
 	    margin-top:3%;
 	    display: inline-block;
-    }
+    } 
     h2{
     	text-align: left;
 		line-height: 150%;
