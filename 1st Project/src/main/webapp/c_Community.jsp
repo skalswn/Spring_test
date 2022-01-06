@@ -61,7 +61,8 @@ if(session.getAttribute("cvo") !=null){
 DAO dao = new DAO();
 ArrayList<CommunityVO> arr = dao.Community();
 %>
-<%	
+<%
+//
 MemberVO vo =null;
 String userID= null;
 if (session.getAttribute("vo") != null){
@@ -69,6 +70,7 @@ if (session.getAttribute("vo") != null){
 	userID = vo.getM_id();
 	System.out.print(userID);
 }else{%>
+
 Response.Write("<script>alert('로그인 후 이용하실 수 있는 서비스 입니다.');</script>");
 Response.Write("<script>location.href='Main.jsp';</script>");
 <%}%>
